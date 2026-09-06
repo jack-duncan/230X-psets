@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .DS_Store
+
+# raw market data and the order-book caches derived from it
+ps1/data/*.zst
+ps1/data/cache/
