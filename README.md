@@ -65,10 +65,13 @@ Three plain modules (not paired with notebooks) sit under `ps1/notebooks/`:
 |---|---|
 | `mbo.py` | replays the Databento MBO feed (Nasdaq ITCH) into an order book |
 | `fx.py` | replays the EBS level-update feed into an order book, and computes triangular arbitrage |
-| `hfstats.py` | homework parts (a)–(k), written once against whichever book it is handed |
+| `hfstats.py` | homework parts (a)–(k) and the daily summary column, written once against whichever book it is handed |
+| `plots.py` | the homework figures -- 5-minute liquidity, 30-minute return variance / autocorrelation, ACFs -- for either panel |
 
-`mbo.Day` and `fx.Book` expose the same fields, so `hfstats` computes the same
-statistics for both panels from one definition. Both reconstructions cache to
+`mbo.Day` and `fx.Book` expose the same fields, so `hfstats` and `plots` compute the
+same statistics and draw the same figures for both panels from one definition.
+Figures and the per-panel summary tables are written to `ps1/figures/` when the
+notebooks run; the report draft is in `ps1/report/`. Both reconstructions cache to
 `ps1/data/cache/`; rebuild either with
 
 ```

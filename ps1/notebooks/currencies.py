@@ -58,6 +58,7 @@ import pandas as pd
 
 import fx
 import hfstats as hs
+import plots
 from hfstats import FREQS, MINUTE, summary
 
 books = fx.load()
@@ -380,39 +381,73 @@ pd.DataFrame({
 }).round(4)
 
 # %% [markdown]
-# ## Summary statistics table
+# ## Intraday plots
 #
-# The homework asks for one table. Levels are comparable within the currency panel;
-# against the equities panel only the relative measures — spreads in basis points,
-# realized volatility, autocorrelations — mean the same thing, because sizes here are
-# millions of base currency rather than shares.
+# The liquidity measures — spread, BBO depth and price impact — per five-minute
+# interval, then the variance and lag-1 autocorrelation of one-minute transaction
+# returns per thirty-minute interval, then the ACF of each return series to ten lags.
+# The two dotted lines mark the FOMC statement (12:30) and the release of the
+# Committee's first-ever rate projections (14:00), both on this date; the clock
+# evidence for reading the file's timestamps as Eastern time is in the observations.
+# One panel per pair, because the pairs share units but not levels.
 
 # %%
-def _headline(p, b):
-    grid, tr = b.grid, b.trades
-    r1s = hs.log_returns(hs.price_series(b, "1s"))
-    r1m = hs.log_returns(hs.price_series(b, MINUTE))
-    return {
-        "trades": len(tr),
-        "dollar volume (USD mm)": tr.value.sum(),
-        "trades / min": b_[p].trades.mean(),
-        "messages / min": (b_[p].updates + b_[p].deletes).mean(),
-        "spread (bps)": (1e4 * grid.spread / grid.mid).mean(),
-        "BBO depth (mm)": (grid.bid_sz + grid.ask_sz).mean(),
-        "band depth (mm)": f[p].band_depth.mean(),
-        "impact lambda (bps)": g[p].lambda_bps.mean(),
-        "RV mid, 1s (bps^2)": 1e8 * (r1s["mid"] ** 2).sum(),
-        "RV trade, 1s (bps^2)": 1e8 * (r1s["trade"] ** 2).sum(),
-        "RV mid, 1m (bps^2)": 1e8 * (r1m["mid"] ** 2).sum(),
-        "RV trade, 1m (bps^2)": 1e8 * (r1m["trade"] ** 2).sum(),
-        "AC1 mid, 1s": r1s["mid"].autocorr(1),
-        "AC1 trade, 1s": r1s["trade"].autocorr(1),
-        "AC1 mid, 1m": r1m["mid"].autocorr(1),
-        "AC1 trade, 1m": r1m["trade"].autocorr(1),
-    }
+_fomc = {"FOMC 12:30": pd.Timestamp(f"{fx.DATE} 12:30"),
+         "SEP 14:00": pd.Timestamp(f"{fx.DATE} 14:00")}
+liq5 = {p: plots.liquidity_by_interval(b) for p, b in books.items()}
+pd.concat({p: summary(v) for p, v in liq5.items()}, names=["pair", "series"]).round(3)
 
+# %%
+plots.plot_liquidity(books, "spread_bps", marks=_fomc, save="fx_spread_bps_5min");
 
-table = pd.DataFrame({p: _headline(p, b) for p, b in books.items()})
+# %%
+plots.plot_liquidity(books, "depth", marks=_fomc, save="fx_depth_5min");
+
+# %%
+plots.plot_liquidity(books, "lambda_bps", marks=_fomc, save="fx_lambda_bps_5min");
+
+# %% [markdown]
+# ### One-minute transaction returns by half hour
+#
+# Thirty one-minute returns per interval, so the lag-1 autocorrelation is estimated
+# on 29 pairs and the dashed lines at ±1.96/√n show how little a single half hour can
+# say on its own; the shape across the day is the thing to read.
+
+# %%
+ret30 = {p: plots.returns_by_interval(b) for p, b in books.items()}
+pd.concat(ret30, axis=1, names=["pair", ""]).round(3)
+
+# %%
+plots.plot_returns(books, "variance_bps2", marks=_fomc, save="fx_variance_bps2_30min");
+
+# %%
+plots.plot_returns(books, "ac1", marks=_fomc, save="fx_ac1_30min");
+
+# %% [markdown]
+# ### Autocorrelation functions
+#
+# One row per pair, midquote on the left and transaction price on the right; the
+# shaded band is ±1.96/√n. Ten lags is enough for every series to have settled.
+
+# %%
+for _fq in FREQS:
+    plots.plot_acf({f"{p} {s_}": i[p][_fq][s_] for p in books for s_ in ("mid", "trade")},
+                   lags=10, save=f"fx_acf_{_fq}", title=f"ACF of {_fq} log returns")
+
+# %% [markdown]
+# ## Summary statistics table
+#
+# The homework asks for one table: every part at the daily level, one column per
+# pair. Parts (a)–(g) are the mean of their per-minute values, so each row is the
+# average minute; (h)–(k) are whole-session figures at both sampling frequencies.
+# `hfstats.headline` builds the same column for the equities, so the two panels stack
+# into one table. Levels are comparable within this panel; against the equities only
+# the relative rows — spreads in basis points, realized variance, autocorrelations —
+# mean the same thing, because sizes here are millions of base currency, not shares.
+
+# %%
+table = pd.DataFrame({p: hs.headline(b) for p, b in books.items()})
+table.to_csv(plots.FIG_DIR / "summary_currencies.csv")
 table.round(4)
 
 # %% [markdown]
@@ -473,13 +508,38 @@ table.round(4)
 # holds to within the cost of crossing the cross, and the residual is a latency race
 # rather than a return available to a price-taker.
 #
-# **6. Both the deviations and the volatility cluster in the same window.** The
-# opportunities are concentrated in the first half hour (22 of 91) and after 13:00
-# (53 of 91), which is also where the day's largest moves sit — EUR/USD rallies
-# 1.1% over the session, most of it between 12:00 and 14:00. On 2012-01-25 the natural
-# candidate is the FOMC statement and press conference, though the file carries no
-# timezone so that identification is a hypothesis rather than something these data
-# establish. Either way the mechanism is the standard one: the triangle breaks when
-# prices move fast enough that the three books adjust at different speeds, so
-# arbitrage frequency is a symptom of information arriving, not of a market that is
-# generally mispriced.
+# **6. Both the deviations and the volatility cluster in the same window, and the
+# window is the FOMC.** The opportunities are concentrated in the first half hour
+# (22 of the 91 open seconds) and after 13:00 (53 of 91), which is also where the
+# day's largest moves sit — EUR/USD rallies 1.1% over the session, most of it between
+# 12:25 and 14:30. The file carries no timezone, but the clock identifies itself: on
+# 2012-01-25 the Committee released its first-ever rate projections at 14:00 ET, and
+# EUR/USD drops 20 bps in the 14:00–14:01 minute exactly; the statement itself was
+# scheduled for 12:30 ET, and the tape goes from zero prints in the 12:26 minute to
+# 231 in 12:28 as the mid jumps 17 bps — so the timestamps are Eastern, and the day's
+# volatility is the Fed's. The spread plot shows the same thing from the liquidity
+# side: EUR/JPY's five-minute spread spikes to 2.6 bps in the 12:25 interval, its
+# widest of the day, and impact λ in all three pairs peaks in the 12:30 and 14:00
+# intervals. The mechanism is the standard one: the triangle breaks when prices move
+# fast enough that the three books adjust at different speeds, so arbitrage frequency
+# is a symptom of information arriving, not of a market that is generally mispriced.
+#
+# **7. The intraday pattern is announcement-shaped rather than U-shaped.** On the
+# two majors the spread is narrowest late in the morning (0.68 bps for EUR/USD at
+# 10:55, 0.77 for USD/JPY at 11:45) and widens through the afternoon, ending 30–40%
+# wider than its morning low; the cross is different again, tightest in the first
+# ten minutes and widest — 2.6 bps, twice its mean — in the 12:25 interval that
+# contains the pre-statement jump. Depth shows no open-of-day trough at all: the
+# thinnest five-minute touch on each pair falls mid-session (11:20, 13:55, 15:40),
+# and EUR/JPY's touch is *deepest* at the open. Impact λ peaks on all three pairs in
+# the 12:25 and 14:00 intervals, and the half-hourly variance of one-minute returns
+# is five to ten times its mid-morning level in the 12:30–13:30 and 14:00–14:30
+# windows. FX has no opening auction and no overnight close on a 24-hour market, so
+# the equity U-shape has no reason to appear; what shapes this day is the scheduled
+# release, and the liquidity measures respond to it the way the models say — spreads
+# and impact up, as the adverse-selection component rises when information arrives.
+# The lag-1 autocorrelation of one-minute transaction returns is negative in most half
+# hours, the bounce signature, but flips to +0.57 for EUR/USD in the 12:00–12:30
+# window, where the price trends into the release: at one-minute sampling a fast
+# one-directional move reads as momentum, and the sign of the autocorrelation says
+# which of the two effects, bounce or drift, is winning in that half hour.

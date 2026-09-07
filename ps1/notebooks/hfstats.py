@@ -96,9 +96,15 @@ def ohlc_daily(day) -> pd.Series:
 
 
 def vwap_per_minute(day) -> pd.DataFrame:
-    """Part (d): volume-weighted average trade price in each minute."""
-    g = tape(day).resample(MINUTE)
-    return (g.value.sum() / g["size"].sum()).to_frame("vwap")
+    """Part (d): volume-weighted average trade price in each minute.
+
+    Weighted by ``size`` in the instrument's own units, not by ``value``: for the
+    currencies ``value`` is USD notional, so ``value / size`` is the USD conversion
+    rate rather than the pair's price (identically 1 for USD/JPY).
+    """
+    tr = tape(day)
+    g = (tr.price * tr["size"]).rename("pv").to_frame().assign(size=tr["size"]).resample(MINUTE)
+    return (g.pv.sum() / g["size"].sum()).to_frame("vwap")
 
 
 def spread_depth_per_minute(day) -> pd.DataFrame:
@@ -149,9 +155,14 @@ def band_depth_per_minute(day) -> pd.DataFrame:
 
 
 def price_impact_per_minute(day, horizon="5s", min_trades=10) -> pd.DataFrame:
-    """Part (g): per-minute slope of the 5s midquote return (bps) on trade sign.
+    """Part (g): per-minute slope of the 5s midquote return (bps) on trade sign."""
+    return price_impact(day, MINUTE, horizon=horizon, min_trades=min_trades)
 
-    Within each minute, regress the midquote return over the ``horizon`` following
+
+def price_impact(day, freq: str = MINUTE, horizon="5s", min_trades=10) -> pd.DataFrame:
+    """Part (g): slope of the 5s midquote return (bps) on trade sign, per ``freq``.
+
+    Within each interval, regress the midquote return over the ``horizon`` following
     each print on the sign of that print,
 
         1e4 * log(m[t+5s] / m[t]) = alpha + lambda * s[t],   s[t] in {-1, +1}
@@ -159,7 +170,8 @@ def price_impact_per_minute(day, horizon="5s", min_trades=10) -> pd.DataFrame:
     so ``lambda`` is the midquote move a buy pushes through, in basis points.  Because
     the regressor is binary the slope is just the difference in mean response between
     buys and sells, halved, which is computed here in closed form rather than by
-    looping OLS over 390 minutes.
+    looping OLS over 390 minutes.  Intervals with fewer than ``min_trades`` prints, or
+    with prints on one side only, cannot identify the slope and are left ``NaN``.
     """
     tr = tape(day).dropna(subset=["mid"])
     q = day.quotes.dropna(subset=["mid"])
@@ -173,7 +185,7 @@ def price_impact_per_minute(day, horizon="5s", min_trades=10) -> pd.DataFrame:
                        "sign": tr["sign"].to_numpy().astype(float)}, index=tr.index)
     df["cross"] = df.ret * df["sign"]
 
-    g = df.groupby(pd.Grouper(freq=MINUTE))
+    g = df.groupby(pd.Grouper(freq=freq))
     m, n = g.mean(), g.ret.count()
     # slope = cov(ret, sign) / var(sign), and var(sign) = 1 - mean(sign)^2 since sign^2 = 1
     var_sign = 1 - m["sign"] ** 2
@@ -249,4 +261,47 @@ def describe_day(day) -> dict:
         "close": tr.price.iloc[-1],
         "high": tr.price.max(),
         "low": tr.price.min(),
+    }
+
+
+def headline(day) -> dict:
+    """Every homework variable at the daily level, as one column of the summary table.
+
+    Parts (a)-(g) are reported as the mean of their per-minute values, so the row is
+    the average minute; (h)-(k) as the whole-session realized variance and lag-1
+    autocorrelation of each series at both sampling frequencies.  Levels (volume,
+    depth) are in the panel's own units -- dollars and shares for the stocks, USD
+    millions and millions of base currency for the pairs -- and only the relative
+    rows (bps, autocorrelations) compare across panels.
+    """
+    tr, g = tape(day), day.grid
+    ev = counts_per_minute(day)
+    msgs = ev.drop(columns="trades").sum(axis=1)
+    band = band_depth_per_minute(day)
+    imp = price_impact_per_minute(day)
+    r1s = log_returns(price_series(day, "1s"))
+    r1m = log_returns(price_series(day, MINUTE))
+    ohlc = ohlc_daily(day)
+    return {
+        "(a) dollar volume / min": dollar_volume_per_minute(day).dollar_volume.mean(),
+        "(b) trades / min": ev.trades.mean(),
+        "(b) orders or book messages / min": msgs.mean(),
+        "(c) open": ohlc["open"], "(c) high": ohlc["high"],
+        "(c) low": ohlc["low"], "(c) close": ohlc["close"],
+        "(d) VWAP, session": (tr.price * tr["size"]).sum() / tr["size"].sum(),
+        "(e) spread": g.spread.mean(),
+        "(e) spread (bps)": (1e4 * g.spread / g.mid).mean(),
+        "(e) BBO depth": (g.bid_sz + g.ask_sz).mean(),
+        "(f) depth within 2x avg spread": band.band_depth.mean(),
+        "(f) share of time band empty (%)": 100 * band.frac_empty.mean(),
+        "(g) impact lambda (bps), mean of minutes": imp.lambda_bps.mean(),
+        "(g) minutes identified": int(imp.lambda_bps.notna().sum()),
+        "(j) RV mid 1s (bps^2)": 1e8 * (r1s["mid"] ** 2).sum(),
+        "(j) RV trade 1s (bps^2)": 1e8 * (r1s["trade"] ** 2).sum(),
+        "(j) RV mid 1min (bps^2)": 1e8 * (r1m["mid"] ** 2).sum(),
+        "(j) RV trade 1min (bps^2)": 1e8 * (r1m["trade"] ** 2).sum(),
+        "(k) AC1 mid 1s": r1s["mid"].autocorr(1),
+        "(k) AC1 trade 1s": r1s["trade"].autocorr(1),
+        "(k) AC1 mid 1min": r1m["mid"].autocorr(1),
+        "(k) AC1 trade 1min": r1m["trade"].autocorr(1),
     }

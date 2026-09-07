@@ -6,6 +6,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
+#       jupytext_version: 1.19.5
 #   kernelspec:
 #     display_name: Python 3 (ipykernel)
 #     language: python
@@ -32,6 +33,10 @@
 # * `grid` — the book sampled at the end of every second, plus resting depth by
 #   distance from the mid
 #
+# Parts (a)–(k) are computed by `hfstats.py`, which is written once against these
+# objects and is also what the currencies notebook runs, so the two panels are
+# measured with one definition of every statistic.
+#
 # Three things about the raw feed worth stating up front, because they shape the
 # numbers below:
 #
@@ -49,17 +54,11 @@
 # %%
 import numpy as np
 import pandas as pd
-from statsmodels.stats.diagnostic import acorr_ljungbox
-from statsmodels.tsa.stattools import acf, pacf
 
+import hfstats as hs
 import mbo
-
-MINUTE = "1min"
-FREQS = ("1s", MINUTE)
-
-# The Nasdaq opening cross prints once, unsigned, and is ~30x a normal trade (671k
-# shares for NVDA). Left in, it dominates the first minute of every trade statistic.
-INCLUDE_CROSS = False
+import plots
+from hfstats import FREQS, MINUTE, summary, tape
 
 # Approximate, from the latest filings — the only input here that is not in the data.
 SHARES_OUT = {"NVDA": 24.4e9, "GPRO": 0.16e9}
@@ -67,24 +66,16 @@ SHARES_OUT = {"NVDA": 24.4e9, "GPRO": 0.16e9}
 days = mbo.load("NVDA", "GPRO")
 nvda, gpro = days["NVDA"], days["GPRO"]
 
-
-def tape(day):
-    """The trade tape used throughout, with or without the opening cross."""
-    return day.trades if INCLUDE_CROSS else day.trades[~day.trades.is_cross]
-
-
-def summary(df):
-    """Descriptive statistics, one row per variable."""
-    return df.describe().T
-
-
-nvda, gpro
+days
 
 # %% [markdown]
 # ## Choice of stocks
 #
 # Size shows up in the data long before we reach the statistics: NVDA trades ~12x as
-# often, but GPRO's quoted spread is ~90x wider in relative terms.
+# often, but GPRO's quoted spread is ~90x wider in relative terms. The opening cross
+# is excluded from the tape throughout (`hfstats.tape`): it prints once, unsigned, and
+# is ~30x a normal trade, so left in it dominates the first minute of every trade
+# statistic.
 
 # %%
 pd.DataFrame({
@@ -107,65 +98,41 @@ pd.DataFrame({
 # Traded notional, `price x size` summed within each minute.
 
 # %%
-def dollar_volume_per_minute(day):
-    """Part (a): dollar volume traded in each minute of the session."""
-    return tape(day)[["value"]].resample(MINUTE).sum().rename(
-        columns={"value": "dollar_volume"})
-
-
-# %%
-a_nvda = dollar_volume_per_minute(nvda)
-summary(a_nvda)
-
-# %%
-a_gpro = dollar_volume_per_minute(gpro)
-summary(a_gpro)
+a = {s: hs.dollar_volume_per_minute(d) for s, d in days.items()}
+pd.concat({s: summary(v) for s, v in a.items()}, names=["symbol", "series"]).round(0)
 
 # %% [markdown]
 # ## Part (b) — number of trades and number of orders per minute
 #
 # Trades are `T` prints; orders are `A` (add-order) messages, which only a full-depth
-# feed like ITCH exposes. Cancels are shown alongside — the ratio of cancels to adds is
-# the usual read on how much of the book is fleeting.
+# feed like ITCH exposes — these are the *displayed* orders, which is what the FAQ
+# asks for (hidden orders carry no add message and are seen only when they execute).
+# Cancels are shown alongside: the ratio of cancels to adds is the usual read on how
+# much of the book is fleeting.
 
 # %%
-def counts_per_minute(day):
-    """Part (b): trade prints, new orders and cancels arriving in each minute."""
-    return pd.DataFrame({
-        "trades": tape(day).price.resample(MINUTE).count().reindex(
-            day.events.index, fill_value=0),
-        "orders": day.events.adds,
-        "cancels": day.events.cancels,
-    })
-
+b = {s: hs.counts_per_minute(d) for s, d in days.items()}
+pd.concat({s: summary(v) for s, v in b.items()}, names=["symbol", "series"]).round(1)
 
 # %%
-b_nvda = counts_per_minute(nvda)
-summary(b_nvda)
-
-# %%
-b_gpro = counts_per_minute(gpro)
-summary(b_gpro)
+pd.DataFrame({s: {
+    "orders per trade": v.adds.sum() / max(v.trades.sum(), 1),
+    "cancels per add": v.cancels.sum() / max(v.adds.sum(), 1),
+} for s, v in b.items()}).round(2)
 
 # %% [markdown]
-# ## Part (c) — open, close, high and low prices per minute
+# ## Part (c) — open, close, high and low prices
 #
-# Trade-price OHLC. Minutes with no prints come back as `NaN` rather than being
-# forward-filled, so the counts show how often each name actually trades.
+# Both readings: the session's OHLC, and the per-minute trade-price OHLC. Minutes with
+# no prints come back as `NaN` rather than being forward-filled, so the `count` column
+# shows how often each name actually trades.
 
 # %%
-def ohlc_per_minute(day):
-    """Part (c): open / high / low / close of the trade price in each minute."""
-    return tape(day).price.resample(MINUTE).ohlc()
-
+pd.DataFrame({s: hs.ohlc_daily(d) for s, d in days.items()})
 
 # %%
-c_nvda = ohlc_per_minute(nvda)
-summary(c_nvda)
-
-# %%
-c_gpro = ohlc_per_minute(gpro)
-summary(c_gpro)
+c = {s: hs.ohlc_per_minute(d) for s, d in days.items()}
+pd.concat({s: summary(v) for s, v in c.items()}, names=["symbol", "series"]).round(4)
 
 # %% [markdown]
 # ## Part (d) — VWAP per minute
@@ -173,19 +140,8 @@ summary(c_gpro)
 # Size-weighted average trade price, `sum(p*q) / sum(q)` within the minute.
 
 # %%
-def vwap_per_minute(day):
-    """Part (d): volume-weighted average trade price in each minute."""
-    g = tape(day).resample(MINUTE)
-    return (g.value.sum() / g["size"].sum()).to_frame("vwap")
-
-
-# %%
-d_nvda = vwap_per_minute(nvda)
-summary(d_nvda)
-
-# %%
-d_gpro = vwap_per_minute(gpro)
-summary(d_gpro)
+d_ = {s: hs.vwap_per_minute(d) for s, d in days.items()}
+pd.concat({s: summary(v) for s, v in d_.items()}, names=["symbol", "series"]).round(4)
 
 # %% [markdown]
 # ## Part (e) — BBO spread and depth per minute
@@ -194,25 +150,8 @@ summary(d_gpro)
 # a time-weighted average, rather than one weighted by how often each name requotes.
 
 # %%
-def spread_depth_per_minute(day):
-    """Part (e): quoted spread and displayed size at the BBO, per minute."""
-    g = day.grid
-    return pd.DataFrame({
-        "spread": g.spread,
-        "spread_bps": 1e4 * g.spread / g.mid,
-        "bid_sz": g.bid_sz,
-        "ask_sz": g.ask_sz,
-        "depth": g.bid_sz + g.ask_sz,
-    }).resample(MINUTE).mean()
-
-
-# %%
-e_nvda = spread_depth_per_minute(nvda)
-summary(e_nvda)
-
-# %%
-e_gpro = spread_depth_per_minute(gpro)
-summary(e_gpro)
+e = {s: hs.spread_depth_per_minute(d) for s, d in days.items()}
+pd.concat({s: summary(v) for s, v in e.items()}, names=["symbol", "series"]).round(4)
 
 # %% [markdown]
 # ## Part (f) — depth within twice the day's average spread
@@ -222,33 +161,13 @@ summary(e_gpro)
 # mid, so the band is empty exactly when the prevailing spread exceeds twice its
 # average — `frac_empty` reports how often that happens. Note the degenerate case: if a
 # name's spread is always one tick, the band reaches no further than the BBO and (f)
-# just reproduces the depth from (e).
+# just reproduces the depth from (e). For NVDA at ~\$224 that is close to the truth.
 
 # %%
-def band_depth_per_minute(day):
-    """Part (f): resting size inside +/- one average spread of the mid, per minute."""
-    half_width = day.grid.spread.mean()               # half of "twice the average spread"
-    k = int(np.floor(half_width / 0.005))             # profile buckets are half a cent wide
-    inside = day.depth_bid[:, :k + 1].sum(1) + day.depth_ask[:, :k + 1].sum(1)
-    inside = pd.Series(inside, index=day.grid.index)
-
-    out = pd.DataFrame({
-        "band_depth": inside.resample(MINUTE).mean(),
-        "frac_empty": inside.eq(0).resample(MINUTE).mean(),
-    })
-    out.attrs["band"] = 2 * half_width
-    return out
-
-
-# %%
-f_nvda = band_depth_per_minute(nvda)
-print(f"band = ${f_nvda.attrs['band']:.4f} wide")
-summary(f_nvda)
-
-# %%
-f_gpro = band_depth_per_minute(gpro)
-print(f"band = ${f_gpro.attrs['band']:.4f} wide")
-summary(f_gpro)
+f = {s: hs.band_depth_per_minute(d) for s, d in days.items()}
+for s, v in f.items():
+    print(f"{s}: band = ${v.attrs['band']:.4f} wide")
+pd.concat({s: summary(v) for s, v in f.items()}, names=["symbol", "series"]).round(4)
 
 # %% [markdown]
 # ## Part (g) — 5-second price impact per minute
@@ -261,43 +180,13 @@ summary(f_gpro)
 #
 # $\lambda$ is the midquote move a buy pushes through, in basis points. Because $s_t$ is
 # binary the slope is just the difference in mean response between buys and sells,
-# halved — computed here in closed form rather than by looping OLS over 390 minutes.
+# halved — computed in closed form rather than by looping OLS over 390 minutes. Minutes
+# with fewer than ten prints, or with trades on one side only, cannot identify it and
+# are left blank.
 
 # %%
-def price_impact_per_minute(day, horizon="5s", min_trades=10):
-    """Part (g): per-minute slope of the 5s midquote return (bps) on trade sign."""
-    tr = tape(day).dropna(subset=["mid"])
-    q = day.quotes.dropna(subset=["mid"])
-    q = q[~q.index.duplicated(keep="last")].mid
-
-    ahead = tr.index + pd.Timedelta(horizon)
-    fwd = q.reindex(ahead, method="ffill").to_numpy(copy=True)
-    fwd[ahead > q.index[-1]] = np.nan          # prints with no full horizon left in the day
-
-    df = pd.DataFrame({"ret": 1e4 * np.log(fwd / tr.mid.to_numpy()),
-                       "sign": tr["sign"].to_numpy().astype(float)}, index=tr.index)
-    df["cross"] = df.ret * df["sign"]
-
-    g = df.groupby(pd.Grouper(freq=MINUTE))
-    m, n = g.mean(), g.ret.count()
-    # slope = cov(ret, sign) / var(sign), and var(sign) = 1 - mean(sign)^2 since sign^2 = 1
-    var_sign = 1 - m["sign"] ** 2
-    lam = (m.cross - m.ret * m["sign"]) / var_sign
-    ok = (n >= min_trades) & (var_sign > 1e-9)     # need both buys and sells to identify it
-    return pd.DataFrame({
-        "lambda_bps": lam.where(ok),
-        "alpha_bps": (m.ret - lam * m["sign"]).where(ok),
-        "n_trades": n,
-    })
-
-
-# %%
-g_nvda = price_impact_per_minute(nvda)
-summary(g_nvda)
-
-# %%
-g_gpro = price_impact_per_minute(gpro)
-summary(g_gpro)
+g = {s: hs.price_impact_per_minute(d) for s, d in days.items()}
+pd.concat({s: summary(v) for s, v in g.items()}, names=["symbol", "series"]).round(4)
 
 # %% [markdown]
 # ## Part (h) — one-second and one-minute midquote and transaction price series
@@ -306,42 +195,19 @@ summary(g_gpro)
 # the previous price, so the two series stay on a common clock.
 
 # %%
-def price_series(day, freq):
-    """Part (h): last midquote and last trade price in each interval of `freq`."""
-    return pd.DataFrame({
-        "mid": day.grid.mid.resample(freq).last(),
-        "trade": tape(day).price.resample(freq).last(),
-    }).ffill().dropna()
-
-
-# %%
-h_nvda = {f: price_series(nvda, f) for f in FREQS}
-pd.concat({f: summary(p) for f, p in h_nvda.items()}, names=["freq", "series"])
-
-# %%
-h_gpro = {f: price_series(gpro, f) for f in FREQS}
-pd.concat({f: summary(p) for f, p in h_gpro.items()}, names=["freq", "series"])
+h = {s: {fq: hs.price_series(d, fq) for fq in FREQS} for s, d in days.items()}
+pd.concat({(s, fq): summary(v) for s, d_ in h.items() for fq, v in d_.items()},
+          names=["symbol", "freq", "series"]).round(4)
 
 # %% [markdown]
 # ## Part (i) — log returns
 #
-# $r_t = \log(p_t) - \log(p_{t-1})$, for both the midquote and the transaction series.
+# $r_t = \log(p_t) - \log(p_{t-1})$, in basis points, for both series.
 
 # %%
-def log_returns(prices):
-    """Part (i): first differences of log prices."""
-    return np.log(prices).diff().dropna()
-
-
-# %%
-i_nvda = {f: log_returns(p) for f, p in h_nvda.items()}
-pd.concat({f: summary(1e4 * r).rename(index="{} (bps)".format)
-           for f, r in i_nvda.items()}, names=["freq", "series"])
-
-# %%
-i_gpro = {f: log_returns(p) for f, p in h_gpro.items()}
-pd.concat({f: summary(1e4 * r).rename(index="{} (bps)".format)
-           for f, r in i_gpro.items()}, names=["freq", "series"])
+i = {s: {fq: hs.log_returns(v) for fq, v in d_.items()} for s, d_ in h.items()}
+pd.concat({(s, fq): summary(1e4 * v) for s, d_ in i.items() for fq, v in d_.items()},
+          names=["symbol", "freq", "series"]).round(4)
 
 # %% [markdown]
 # ## Part (j) — realized variance
@@ -352,22 +218,34 @@ pd.concat({f: summary(1e4 * r).rename(index="{} (bps)".format)
 # traded price rather than the mid, the more of the variance is noise rather than signal.
 
 # %%
-def realized_variance(returns):
-    """Part (j): summed squared returns, with the daily and annualised volatility."""
-    rv = (returns ** 2).sum()
-    return pd.DataFrame({
-        "n": returns.count(),
-        "realized_var": rv,
-        "realized_vol": np.sqrt(rv),
-        "annualized_vol": np.sqrt(252 * rv),
-    })
+pd.concat({(s, fq): hs.realized_variance(v) for s, d_ in i.items() for fq, v in d_.items()},
+          names=["symbol", "freq", "series"])
 
-
-# %%
-pd.concat({f: realized_variance(r) for f, r in i_nvda.items()}, names=["freq", "series"])
+# %% [markdown]
+# ### Volatility signature
+#
+# RV of each series against the interval it is sampled at, in bps². For a price
+# contaminated by bid–ask bounce this curve falls as the interval lengthens; the share
+# of intervals with no price change shows how much of the high-frequency figure is
+# instead being held *down* by discreteness (the currencies notebook finds that effect
+# dominates for EBS mids).
 
 # %%
-pd.concat({f: realized_variance(r) for f, r in i_gpro.items()}, names=["freq", "series"])
+_freqs = ["1s", "2s", "5s", "10s", "30s", MINUTE, "2min", "5min"]
+
+
+def _signature(series):
+    """RV in bps^2, and the share of intervals with no price change, by frequency."""
+    out = {}
+    for fq in _freqs:
+        r = np.log(series.resample(fq).last().ffill().dropna()).diff().dropna()
+        out[fq] = {"RV (bps^2)": 1e8 * (r ** 2).sum(), "zero returns (%)": 100 * (r == 0).mean()}
+    return pd.DataFrame(out).T
+
+
+pd.concat({(s, k): _signature(src) for s, d in days.items()
+           for k, src in (("mid", d.grid.mid), ("trade", tape(d).price))},
+          axis=1, names=["symbol", "series", ""]).round(1)
 
 # %% [markdown]
 # ## Part (k) — autocorrelation of returns
@@ -380,21 +258,94 @@ pd.concat({f: realized_variance(r) for f, r in i_gpro.items()}, names=["freq", "
 # one-second and one-minute clocks.
 
 # %%
-def autocorrelation(returns, lags=10):
-    """Part (k): Box-Pierce Q with its p-value, plus the ACF and PACF at each lag."""
-    out = {}
-    for col in returns:
-        r = returns[col].dropna()
-        bp = acorr_ljungbox(r, lags=lags, boxpierce=True)
-        out[col, "acf"] = acf(r, nlags=lags, fft=True)[1:]
-        out[col, "pacf"] = pacf(r, nlags=lags)[1:]
-        out[col, "bp_stat"] = bp["bp_stat"].to_numpy()
-        out[col, "bp_pvalue"] = bp["bp_pvalue"].to_numpy()
-    return pd.DataFrame(out, index=pd.RangeIndex(1, lags + 1, name="lag"))
+pd.concat({(s, fq): hs.autocorrelation(v) for s, d_ in i.items() for fq, v in d_.items()},
+          names=["symbol", "freq", "lag"]).round(4)
 
-
-# %%
-pd.concat({f: autocorrelation(r) for f, r in i_nvda.items()}, names=["freq", "lag"])
+# %% [markdown]
+# ## Intraday plots
+#
+# The liquidity measures — spread, BBO depth and price impact — per five-minute
+# interval, then the variance and lag-1 autocorrelation of one-minute transaction
+# returns per thirty-minute interval, then the ACF of each return series to ten lags.
+# One panel per stock, because the two share units but differ in level by orders of
+# magnitude.
 
 # %%
-pd.concat({f: autocorrelation(r) for f, r in i_gpro.items()}, names=["freq", "lag"])
+liq5 = {s: plots.liquidity_by_interval(d) for s, d in days.items()}
+pd.concat({s: summary(v) for s, v in liq5.items()}, names=["symbol", "series"]).round(3)
+
+# %%
+plots.plot_liquidity(days, "spread_bps", save="eq_spread_bps_5min");
+
+# %%
+plots.plot_liquidity(days, "depth", save="eq_depth_5min");
+
+# %%
+plots.plot_liquidity(days, "lambda_bps", save="eq_lambda_bps_5min");
+
+# %% [markdown]
+# ### One-minute transaction returns by half hour
+#
+# Thirty one-minute returns per interval, so the lag-1 autocorrelation is estimated
+# on 29 pairs and the dashed lines at ±1.96/√n show how little a single half hour can
+# say on its own; the shape across the day is the thing to read.
+
+# %%
+ret30 = {s: plots.returns_by_interval(d) for s, d in days.items()}
+pd.concat(ret30, axis=1, names=["symbol", ""]).round(3)
+
+# %%
+plots.plot_returns(days, "variance_bps2", save="eq_variance_bps2_30min");
+
+# %%
+plots.plot_returns(days, "ac1", save="eq_ac1_30min");
+
+# %% [markdown]
+# ### Autocorrelation functions
+#
+# One row per stock, midquote on the left and transaction price on the right; the
+# shaded band is ±1.96/√n.
+
+# %%
+for _fq in FREQS:
+    plots.plot_acf({f"{s} {k}": i[s][_fq][k] for s in days for k in ("mid", "trade")},
+                   lags=10, save=f"eq_acf_{_fq}", title=f"ACF of {_fq} log returns")
+
+# %% [markdown]
+# ## Summary statistics table
+#
+# Every part at the daily level, one column per stock; the same `hfstats.headline`
+# column the currencies notebook produces, so the two panels stack into one table.
+# Dollar volume is in dollars and depth in shares here, against USD millions and
+# millions of base currency for the pairs, so only the relative rows compare across.
+
+# %%
+table = pd.DataFrame({s: hs.headline(d) for s, d in days.items()})
+table.to_csv(plots.FIG_DIR / "summary_equities.csv")
+table.round(4)
+
+# %% [markdown]
+# ## Observations
+#
+# *To be written once the notebook has been run against the Databento download —
+# the points below are what the framework predicts and should be checked against the
+# numbers above, then kept, sharpened or discarded.*
+#
+# 1. **Size and the cost of immediacy.** GPRO's spread in basis points should be one to
+#    two orders of magnitude wider than NVDA's, and its depth in dollars far thinner,
+#    with the gap widest at the open. Relate this to the inventory and adverse-selection
+#    components: at \$1.54 the one-cent tick alone is 65 bps, so GPRO's spread is
+#    tick-constrained from below and its depth at the touch should be large in shares
+#    but small in dollars.
+# 2. **Price impact.** $\lambda$ should be larger for GPRO in basis points; check
+#    whether it is larger in *cents* — for NVDA the 5-second impact will often be a
+#    fraction of a tick, showing up as a change in the mid only when the touch empties.
+# 3. **Bounce versus discreteness.** Compare the volatility signature of the trade
+#    series with that of the mid: for NVDA, sampled at one second, the transaction RV
+#    should exceed the midquote RV and lag-1 transaction autocorrelation should be
+#    negative; for GPRO, with a spread of one tick and a mid that moves in half-cent
+#    steps, look for the same zero-return pile-up the EBS mids show.
+# 4. **The intraday U.** Spreads and impact should be highest in the first half hour
+#    and fall through the day, with a smaller rise into the close; depth the mirror
+#    image; variance of one-minute returns highest at the open. Note the fleeting
+#    liquidity in the cancel-to-add ratio and how it moves through the day.
