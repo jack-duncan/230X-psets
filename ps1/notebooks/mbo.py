@@ -23,6 +23,7 @@ Reconstruction rules specific to Databento's ITCH mapping:
 from __future__ import annotations
 
 import heapq
+import os
 from array import array
 from dataclasses import dataclass
 from pathlib import Path
@@ -34,9 +35,13 @@ import pyarrow.compute as pc
 import pyarrow.csv as pacsv
 import zstandard
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 MBO_FILE = DATA_DIR / "xnas-itch-20260902.mbo.csv.zst"
 CACHE_DIR = DATA_DIR / "cache"
+
+DATASET = "XNAS.ITCH"
+SYMBOLS = ("NVDA", "GPRO")
 
 TZ = "America/New_York"
 DATE = "2026-09-02"
@@ -58,8 +63,75 @@ _CHUNK = 1 << 20              # events converted to Python ints per batch during
 # --------------------------------------------------------------------------- load
 
 
+def _api_key() -> str:
+    """The Databento key, from the environment or from a ``.env`` at the repo root.
+
+    The key is per person and is billed per byte downloaded, so it never lives in the
+    repo: copy ``.env.example`` to ``.env`` and put yours there (``.env`` is gitignored),
+    or export ``DATABENTO_API_KEY`` in your shell.
+    """
+    from dotenv import load_dotenv
+
+    load_dotenv(REPO_ROOT / ".env")          # a real environment variable wins over .env
+    key = os.environ.get("DATABENTO_API_KEY", "").strip()
+    if not key:
+        raise RuntimeError(
+            f"No Databento API key found.\n"
+            f"  cp {REPO_ROOT / '.env.example'} {REPO_ROOT / '.env'}\n"
+            f"then edit .env and set DATABENTO_API_KEY to your own key "
+            f"(databento.com -> Portal -> Keys)."
+        )
+    if not key.startswith("db-") or "xxx" in key:
+        raise RuntimeError(
+            "DATABENTO_API_KEY is still the placeholder, or does not look like a key "
+            "(expected 'db-...'). Edit .env and paste your own."
+        )
+    return key
+
+
+def download(*, force: bool = False) -> Path:
+    """Fetch the raw MBO file for the session, if it is not already on disk.
+
+    This is a billed request -- every book message both symbols published over the
+    regular session -- so the estimated cost is printed before anything is
+    transferred.  Databento serves DBN; it is converted here to the ``csv.zst`` that
+    ``_read_raw`` parses, with ``pretty_px`` for decimal prices and ``map_symbols``
+    for the ``symbol`` column.  Downloading happens at most once: the file is kept,
+    and ``build`` caches the reconstruction on top of it.
+    """
+    import databento as db
+
+    if MBO_FILE.exists() and not force:
+        return MBO_FILE
+
+    client = db.Historical(_api_key())
+    params = dict(
+        dataset=DATASET,
+        schema="mbo",
+        symbols=list(SYMBOLS),
+        start=OPEN.isoformat(),
+        end=CLOSE.isoformat(),
+    )
+    cost = client.metadata.get_cost(**params)
+    size = client.metadata.get_billable_size(**params)
+    print(f"Databento {DATASET} mbo {DATE} {'/'.join(SYMBOLS)}: "
+          f"{size / 1e9:.2f} GB billable, estimated ${cost:.2f} -- downloading")
+
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    dbn = DATA_DIR / f"xnas-itch-{DATE.replace('-', '')}.mbo.dbn.zst"
+    store = client.timeseries.get_range(**params, path=dbn)
+
+    tmp = MBO_FILE.with_name(MBO_FILE.name + ".part")
+    store.to_csv(tmp, pretty_px=True, pretty_ts=True, map_symbols=True,
+                 compression="zstd")
+    tmp.replace(MBO_FILE)
+    print(f"wrote {MBO_FILE} ({MBO_FILE.stat().st_size / 1e6:.0f} MB)")
+    return MBO_FILE
+
+
 def _read_raw() -> pa.Table:
     """Decompress and parse the whole MBO file (all symbols) into an Arrow table."""
+    download()
     with open(MBO_FILE, "rb") as fh:
         stream = zstandard.ZstdDecompressor().stream_reader(fh)
         return pacsv.read_csv(

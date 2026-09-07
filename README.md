@@ -6,7 +6,26 @@ Coursework for 230X (High-Frequency Finance).
 
 ```
 uv sync
+cp .env.example .env      # then paste your own Databento key into .env
 ```
+
+### Databento key
+
+The equities notebook pulls raw Nasdaq ITCH order-book messages from Databento, which
+needs a per-person API key. Get one at [databento.com](https://databento.com) (Portal →
+Keys) and put it in `.env` at the repo root:
+
+```
+DATABENTO_API_KEY=db-your-key-here
+```
+
+`.env` is gitignored — never commit a key. An exported `DATABENTO_API_KEY` in your
+shell also works and takes precedence.
+
+`mbo.py` reads the key from there and downloads `ps1/data/xnas-itch-20260902.mbo.csv.zst`
+on first use, printing the estimated cost before transferring anything. The download is
+billed by volume and only happens once; the file and the derived cache under
+`ps1/data/cache/` are both gitignored, so each collaborator downloads their own copy.
 
 ## Structure
 
@@ -40,6 +59,19 @@ uv run jupytext --sync ps1/notebooks/equities.py
 `--sync` preserves the outputs of cells you have already run, and works in both
 directions, so edits made in Jupyter flow back into the `.py`.
 
-`ps1/notebooks/mbo.py` is a plain module (not paired): it replays the Databento MBO
-feed into an order book and caches the result under `ps1/data/cache/`. The first build
-takes ~15s; after that it loads from cache. Rebuild with `uv run python ps1/notebooks/mbo.py`.
+Three plain modules (not paired with notebooks) sit under `ps1/notebooks/`:
+
+| module | what it does |
+|---|---|
+| `mbo.py` | replays the Databento MBO feed (Nasdaq ITCH) into an order book |
+| `fx.py` | replays the EBS level-update feed into an order book, and computes triangular arbitrage |
+| `hfstats.py` | homework parts (a)–(k), written once against whichever book it is handed |
+
+`mbo.Day` and `fx.Book` expose the same fields, so `hfstats` computes the same
+statistics for both panels from one definition. Both reconstructions cache to
+`ps1/data/cache/`; rebuild either with
+
+```
+uv run python ps1/notebooks/mbo.py     # ~15s, needs the Databento key
+uv run python ps1/notebooks/fx.py      # ~2s, reads the CSVs in ps1/data/
+```

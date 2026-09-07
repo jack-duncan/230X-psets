@@ -7,3 +7,9 @@ __pycache__/
 # raw market data and the order-book caches derived from it
 ps1/data/*.zst
 ps1/data/cache/
+
+# Databento credentials
+.env
+
+# PDFs
+.pdf
