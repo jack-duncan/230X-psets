@@ -1,15 +1,15 @@
 # MFE 230X — Homework 1: ITCH and EBS descriptive statistics
 
-*Draft for the bCourses submission. The currency half is complete and every number
-below is produced by `ps1/notebooks/currencies.ipynb`; the equity half is written
-as a template, to be filled once `equities.ipynb` has been run against the Databento
-download (see "Status" at the end). Figures are in `ps1/figures/`.*
+*Draft for the bCourses submission. Every number below is produced by
+`ps1/notebooks/currencies.ipynb` or `ps1/notebooks/equities.ipynb`, both executed
+in the repo; figures are in `ps1/figures/` and the two summary tables in
+`ps1/figures/summary_*.csv`.*
 
 ## 1. Data
 
 | panel | source | instruments | session |
 |---|---|---|---|
-| equities | Nasdaq TotalView-ITCH via Databento MBO (`XNAS.ITCH`) | NVDA (mega cap, ~\$5T), GPRO (micro cap, ~\$0.2B) | 2026-09-02, 09:30–16:00 ET |
+| equities | Nasdaq TotalView-ITCH via Databento MBO (`XNAS.ITCH`) | NVDA (mega cap, ~\$5.5T), GPRO (micro cap, ~\$0.27B; +40% on the day) | 2026-09-02, 09:30–16:00 ET |
 | currencies | EBS level-update and deal feeds (OneTick export) | EUR/USD, USD/JPY, EUR/JPY | 2012-01-25, 09:30–16:00 ET |
 
 The two panels are on different days because the EBS file supplied with the course is
@@ -19,7 +19,14 @@ signed trade tape, a BBO series and an end-of-second book grid — so the two pa
 are measured identically even though they are not contemporaneous.
 
 **ITCH.** Every add, cancel, fill and trade message is replayed into a full limit
-order book. An execution emits three records (`T`, `F`, `C`); only `A` and `C` move
+order book. Databento snapshots the book only at UTC midnight, so the request runs
+from there (20:00 ET the evening before, when Nasdaq's book is empty) to the close and
+the pre-market is replayed before the first 09:30 snapshot; only the regular session
+is recorded. This matters: resting pre-open orders are not re-added after the cross,
+and a book started empty at 09:30 misses 37% of GPRO's resting depth within \$0.50 of
+the mid at 09:31 (7% for NVDA), still 22% at 10:00, and 8% on average over the day;
+touch depth and spreads are essentially unaffected. With the full-day replay every
+session cancel references an order that was seen added. An execution emits three records (`T`, `F`, `C`); only `A` and `C` move
 the book and only `T` counts as a trade, so nothing is double-counted. `T.side` is the
 aggressor for lit executions; non-displayed executions and the opening cross arrive
 unsigned and are signed with the quote rule. The opening cross is dropped from the
@@ -47,37 +54,39 @@ released on 2012-01-25, so the stamps are Eastern time.
 
 Every part at the daily level, one column per instrument. Parts (a)–(g) are the mean
 of their per-minute values (the "average minute"); (h)–(k) are whole-session figures at
-both sampling frequencies. Levels are in each panel's own units — dollars and shares
+both sampling frequencies. For (g) the pooled row is one regression over every print
+in the session with Newey–West standard errors (20 lags), which weights busy minutes
+by their prints rather than equally; it is the number to quote, with its t-statistic. Levels are in each panel's own units — dollars and shares
 for the stocks, USD millions and millions of base currency for the pairs — so only
 the relative rows (bps, autocorrelations) compare across panels.
 
 | part / variable | EUR/USD | USD/JPY | EUR/JPY | NVDA | GPRO |
 |---|---:|---:|---:|---:|---:|
-| (a) dollar volume / min | 79.36 | 24.80 | 7.2682 | – | – |
-| (b) trades / min | 37.27 | 15.49 | 3.9538 | – | – |
-| (b) orders or book messages / min | 918.49 | 459.70 | 460.11 | – | – |
-| (c) open | 1.2974 | 78.05 | 101.24 | – | – |
-| (c) high | 1.3121 | 78.29 | 101.95 | – | – |
-| (c) low | 1.2947 | 77.56 | 101.20 | – | – |
-| (c) close | 1.3113 | 77.73 | 101.92 | – | – |
-| (d) VWAP, session | 1.3032 | 77.93 | 101.52 | – | – |
-| (e) spread | 0.0001 | 0.0079 | 0.0187 | – | – |
-| (e) spread (bps) | 0.8548 | 1.0130 | 1.8415 | – | – |
-| (e) BBO depth | 4.0511 | 4.4141 | 3.4630 | – | – |
-| (f) depth within 2x avg spread | 15.62 | 13.76 | 14.07 | – | – |
-| (f) share of time band empty (%) | 0.4786 | 0.8504 | 0.1282 | – | – |
-| (g) impact lambda (bps), mean of minutes | 0.2215 | 0.2229 | 0.5253 | – | – |
-| (g) minutes identified | 352.00 | 209.00 | 41.00 | – | – |
-| (j) RV mid 1s (bps^2) | 2,318 | 1,506 | 2,210 | – | – |
-| (j) RV trade 1s (bps^2) | 2,927 | 2,106 | 2,347 | – | – |
-| (j) RV mid 1min (bps^2) | 2,858 | 2,860 | 2,317 | – | – |
-| (j) RV trade 1min (bps^2) | 2,960 | 2,916 | 2,400 | – | – |
-| (k) AC1 mid 1s | 0.0227 | 0.0244 | 0.0373 | – | – |
-| (k) AC1 trade 1s | -0.0211 | -0.0132 | 0.0147 | – | – |
-| (k) AC1 mid 1min | 0.0053 | -0.0003 | -0.1747 | – | – |
-| (k) AC1 trade 1min | -0.0052 | -0.0034 | -0.1487 | – | – |
-
-*NVDA / GPRO columns: `ps1/figures/summary_equities.csv`, written when `equities.ipynb` runs.*
+| (a) dollar volume / min | 79.36 | 24.80 | 7.2682 | 13,103,791 | 72,105 |
+| (b) trades / min | 37.27 | 15.49 | 3.9538 | 891.75 | 75.16 |
+| (b) orders or book messages / min | 918.49 | 459.70 | 460.11 | 25,480 | 866.36 |
+| (c) open | 1.2974 | 78.05 | 101.24 | 218.87 | 1.220 |
+| (c) high | 1.3121 | 78.29 | 101.95 | 227.94 | 1.790 |
+| (c) low | 1.2947 | 77.56 | 101.20 | 218.47 | 1.180 |
+| (c) close | 1.3113 | 77.73 | 101.92 | 224.40 | 1.705 |
+| (d) VWAP, session | 1.3032 | 77.93 | 101.52 | 224.35 | 1.5191 |
+| (e) spread | 0.0001 | 0.0079 | 0.0187 | 0.0170 | 0.0100 |
+| (e) spread (bps) | 0.8548 | 1.0130 | 1.8415 | 0.7574 | 70.66 |
+| (e) BBO depth | 4.0511 | 4.4141 | 3.4630 | 462.35 | 50,682 |
+| (f) depth within 2x avg spread | 15.62 | 13.76 | 14.07 | 718.40 | 50,682 |
+| (f) share of time band empty (%) | 0.4786 | 0.8504 | 0.1282 | 1.0470 | 0.0000 |
+| (g) impact lambda (bps), mean of minutes | 0.2215 | 0.2229 | 0.5253 | 0.3339 | 22.71 |
+| (g) minutes identified | 352.00 | 209.00 | 41.00 | 390.00 | 252.00 |
+| (g) impact lambda (bps), pooled HAC | 0.2672 | 0.2758 | 0.5743 | 0.4608 | 26.65 |
+| (g) pooled t-stat | 17.98 | 14.78 | 12.27 | 27.62 | 27.54 |
+| (j) RV mid 1s (bps^2) | 2,318 | 1,506 | 2,210 | 32,435 | 2,827,123 |
+| (j) RV trade 1s (bps^2) | 2,927 | 2,106 | 2,347 | 33,019 | 2,864,420 |
+| (j) RV mid 1min (bps^2) | 2,858 | 2,860 | 2,317 | 27,306 | 2,545,496 |
+| (j) RV trade 1min (bps^2) | 2,960 | 2,916 | 2,400 | 27,280 | 2,683,408 |
+| (k) AC1 mid 1s | 0.0227 | 0.0244 | 0.0373 | 0.0250 | -0.0215 |
+| (k) AC1 trade 1s | -0.0211 | -0.0132 | 0.0147 | 0.0174 | -0.0224 |
+| (k) AC1 mid 1min | 0.0053 | -0.0003 | -0.1747 | -0.1183 | 0.0384 |
+| (k) AC1 trade 1min | -0.0052 | -0.0034 | -0.1487 | -0.1205 | 0.0309 |
 
 The full per-minute distributions (count, mean, sd, quartiles) of every variable are
 in the notebooks; the currency ones are all in `currencies.ipynb`, section by section.
@@ -128,8 +137,25 @@ The four most informative, chosen from the full set:
    for both majors; EUR/JPY alone has a lag-1 coefficient of −0.17 (mid) and −0.15
    (trade), five standard errors from zero.
 
-The rest of the set: `fx_depth_5min.png`, `fx_ac1_30min.png`, `fx_acf_1s.png`, and
-the equity counterparts `eq_*.png` once that notebook has run.
+And from the equity panel:
+
+5. **`eq_spread_bps_5min.png` — quoted spread per 5-minute interval.** NVDA opens at
+   1.8 bps and is below 0.8 within twenty minutes, ending the day at 0.53 with no rise
+   into the close. GPRO's line falls from 85 to 59 bps, but its spread is one cent in
+   99.6% of seconds: the line is the inverse of a price that rose 40%.
+6. **`eq_depth_5min.png` — BBO depth per 5-minute interval.** NVDA's touch holds
+   200 shares in the first five minutes, 360 at noon and 1,410 in the last five: the
+   closing auction attracts resting liquidity rather than draining it.
+7. **`eq_variance_bps2_30min.png` — variance of 1-minute transaction returns per half
+   hour.** NVDA's opening half hour is 237 bps² against 15 at 15:00, sixteen times,
+   with only a slight uptick at the close. GPRO peaks at 13:30–14:00, in its rally, not
+   at the open.
+8. **`eq_ac1_30min.png` — lag-1 autocorrelation per half hour.** Negative for NVDA in
+   nine of thirteen half hours, −0.51 in 11:30–12:00; positive for GPRO in most of the
+   half hours it spent trending.
+
+The rest of the set: `fx_depth_5min.png`, `fx_ac1_30min.png`, `fx_acf_1s.png`,
+`eq_lambda_bps_5min.png`, `eq_acf_1s.png`, `eq_acf_1min.png`.
 
 ## 4. Observations
 
@@ -196,23 +222,76 @@ one-minute transaction returns is negative in most half hours (bounce) but flips
 one-minute sampling a fast one-directional move reads as momentum, and the sign says
 which of the two effects is winning in that half hour.
 
-**Equities — to be written from the numbers.** The framework predicts: GPRO's spread
-one to two orders of magnitude wider in basis points than NVDA's, tick-constrained
-from below (one cent on a \$1.54 stock is 65 bps) so that its depth is large in shares
-but small in dollars; λ larger for GPRO in basis points, and for NVDA often a fraction
-of a tick so that the mid moves only when the touch empties; transaction RV above
-midquote RV and negative lag-1 transaction autocorrelation at one second for NVDA,
-with GPRO showing the same zero-return pile-up as the EBS mids; and a genuine U in
-spread, impact and variance with the open highest, since this market does have an
-opening auction and an overnight close. Each of these should be checked against the
-tables and either kept with its number or replaced by what the data actually show.
+**Size sets the equity spread, but the tick sets GPRO's.** NVDA quotes 1.7 cents
+wide (0.76 bps) and GPRO 1.0 cent (71 bps), a 93x gap in relative terms that is almost
+entirely the one-cent minimum: GPRO sits at one tick in 99.6% of seconds, so its
+spread in basis points is the inverse of its price and its "narrowing" from 85 to
+59 bps through the day is the rally. NVDA is one tick wide 41% of the time, so its
+spread carries information. Depth is where the tick-constraint prediction bites:
+GPRO rests 50,700 shares at the touch against NVDA's 462, which in dollars is \$73k
+against \$104k — the same order of magnitude, not "far thinner". A one-cent gate on a
+\$1.50 stock is wide enough that the queue behind it is long, and for GPRO the part (f)
+band never reaches past the touch. Volume tells the size story: \$5.1bn against
+\$28mm on the day, 892 against 75 prints a minute, 14 displayed orders per trade
+against 5, a cancel-to-add ratio near one for both, and a NVDA tape that is 74% odd
+lots with a median print of 25 shares.
+
+**Impact is larger for GPRO in basis points and smaller in cents.** Pooled over the
+session with HAC errors, λ is 0.46 bps for NVDA and 26.7 bps for GPRO (t = 28 for
+both); the per-minute means are 0.33 and 22.7. In price units that is one cent for
+NVDA — a signed trade moves the mid about one tick, 0.6 of its spread, within five
+seconds — and 0.4 cents for GPRO, under half a tick. GPRO's mid moves only in
+half-cent steps, so 26.7 bps is the probability a trade shifts the touch times the
+29–41 bps a half-tick is worth at its price. The currencies sit in between in relative
+terms: 0.27–0.57 bps of impact on spreads of 0.9–1.8 bps, so a print moves the EBS
+mid by a third of the spread where a NVDA print moves it by 0.6 and a GPRO print by
+0.4 — the three markets are closer in impact-to-spread than any level comparison
+suggests.
+
+**Bounce is weak in both stocks; discreteness and a one-minute transitory component
+show up instead.** For NVDA, transaction RV at one second exceeds midquote RV by only
+1.8% (33,019 against 32,435 bps²) and the lag-1 autocorrelation of one-second returns
+is *positive* for both series (+0.017 trade, +0.025 mid, Box–Pierce p < 0.01): with
+fifteen mostly odd-lot prints a second inside a 1.7-cent spread, the last trade of a
+second is essentially the touch, and the ACF is picking up gradual quote adjustment,
+not Roll's bounce. The volatility signature is two-sided — the midquote RV rises from
+32,400 bps² at one second to 35,000 at thirty seconds (21% of one-second mid returns
+are exactly zero, the same discreteness bias as the EBS mids), then falls to 27,300
+at one minute and 22,300 at five as a transitory component averages out. That
+component is visible directly: one-minute returns have a lag-1 autocorrelation of
+−0.12 for the mid and for trades (p = 0.02), negative in nine of thirteen half hours
+and −0.51 in 11:30–12:00, and since it is in the *mid* it is not bid–ask bounce.
+GPRO is the discreteness case taken to its limit — 97% of one-second midquote returns
+and 94% of transaction returns are zero — yet its RV falls monotonically from 2.83
+million bps² at one second to 2.40 million at thirty seconds, its one-second returns
+are negatively autocorrelated in both series (−0.02, p < 0.001), and trade RV exceeds
+mid RV at every frequency: the standard bounce signature, faint but present, from a
+print alternating between a bid and an ask one cent apart. Its one-minute returns
+show no autocorrelation (p = 0.45). Session RV is 1.8% for NVDA and 16.8% for GPRO.
+
+**The equity U is half a U.** NVDA's opening half hour is the extreme of everything:
+spread 1.8 bps in the first five minutes against 0.66 at noon, touch depth 200 shares
+against 360, the variance of one-minute returns 237 bps² against 15 in the 15:00 half
+hour, and 160k add messages in the 09:30 minute against a median of 9,900. But there
+is no second arm. Spread and impact fall monotonically to their lows in the last five
+minutes (0.53 bps and 0.24 bps) while depth rises to 1,410 shares and the busiest
+minute of the day is 15:59 with 675k shares: the closing auction attracts resting
+liquidity and volume without widening anything, the opposite of the open. The classic
+pattern here is a U in volume and an L in cost. GPRO's day is shaped by its own news
+rather than the clock: half-hour variance peaks at 12,900 bps² in 13:30–14:00 during
+the rally, not at the open (10,600), the largest one-minute move (+4.3%) is at 13:55,
+and while it trends the lag-1 autocorrelation of its one-minute returns is positive
+in most half hours (+0.22, +0.16, +0.20) — the same momentum-while-trending sign
+EUR/USD shows going into the FOMC release. Set beside the currency day, the contrast
+is the one the framework predicts: the market with an opening auction and an
+overnight close has its cost extreme at the open; the 24-hour market has none, and
+both markets have their variance extremes wherever the information arrived.
 
 ## 5. Status
 
 | item | state |
 |---|---|
 | currency parts (a)–(l), summary table, figures, observations | done, reproducible from the repo |
-| equity parts (a)–(k) code, figures code, summary table code | written, smoke-tested on stand-in data, **not yet run on ITCH** — needs a Databento key (`README.md`) |
-| equity observations | template above; write after the run |
-| combined summary table | both panels write `ps1/figures/summary_*.csv`; stack the two once the equity one exists |
+| equity parts (a)–(k), summary table, figures, observations | done, reproducible from the repo given a Databento key (`README.md`); the download was free on a standard account |
+| combined summary table | section 2 above; the two panels' `ps1/figures/summary_*.csv` stack row for row |
 | Datalore share | not done |

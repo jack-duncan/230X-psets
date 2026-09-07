@@ -19,10 +19,10 @@
 # Two Nasdaq-listed stocks at opposite ends of the size distribution, over one full
 # regular session (**2026-09-02, 09:30–16:00 ET**):
 #
-# | | ticker | ~price | size |
+# | | ticker | price on the day | market cap |
 # |---|---|---|---|
-# | mega cap | **NVDA** | \$224 | ~\$5T |
-# | micro cap | **GPRO** | \$1.54 | ~\$0.2B |
+# | mega cap | **NVDA** | \$219 → \$224 | ~\$5.5T |
+# | micro cap | **GPRO** | \$1.22 → \$1.71 (+40%) | ~\$0.27B |
 #
 # The source is Databento MBO for `XNAS.ITCH` — every add, cancel, fill and trade
 # message Nasdaq published, one row each. `mbo.py` replays those messages into a
@@ -46,10 +46,16 @@
 #    would double the volume.
 # 2. **`T.side` is the aggressor**, except for non-displayed executions and the cross,
 #    which arrive unsigned (22% of NVDA prints). Those are signed with the quote rule.
-# 3. **There is no snapshot record**, so the book is rebuilt from empty at 09:30.
-#    Nasdaq re-adds the pre-open book immediately after the opening cross, so only the
-#    first fraction of a second is incomplete — 0.3% of NVDA cancels and 0.8% of GPRO
-#    cancels reference an order we never saw added.
+# 3. **The book has to be built from the pre-market.** Databento snapshots the book only
+#    at UTC midnight, so the request runs from there (20:00 ET the evening before, when
+#    Nasdaq's book is empty) to the close and the pre-market is replayed before the
+#    first 09:30 snapshot; only the regular session is recorded. Started from an empty
+#    book at 09:30 instead, 0.3% of NVDA's and 0.8% of GPRO's session cancels reference
+#    an order never seen — resting pre-open orders, which are *not* re-added after the
+#    cross — and the resting depth within \$0.50 of the mid is understated by 7% (NVDA)
+#    and 37% (GPRO) at 09:31, still 2% and 22% at 10:00, and 0.2% and 8% on average over
+#    the day. Touch depth and spreads are unaffected for NVDA, and GPRO's touch by <1%.
+#    With the full-day replay `Day.unknown_cancels` is zero for both names.
 
 # %%
 import numpy as np
@@ -72,7 +78,10 @@ days
 # ## Choice of stocks
 #
 # Size shows up in the data long before we reach the statistics: NVDA trades ~12x as
-# often, but GPRO's quoted spread is ~90x wider in relative terms. The opening cross
+# often and turns over ~180x the dollars, but GPRO's quoted spread is ~93x wider in
+# relative terms. GPRO also happened to rally 40% on this day, from \$1.22 to \$1.71
+# in a steady climb between noon and 15:30 — worth keeping in mind wherever a GPRO
+# statistic is quoted in basis points of a moving price. The opening cross
 # is excluded from the tape throughout (`hfstats.tape`): it prints once, unsigned, and
 # is ~30x a normal trade, so left in it dominates the first minute of every trade
 # statistic.
@@ -161,7 +170,9 @@ pd.concat({s: summary(v) for s, v in e.items()}, names=["symbol", "series"]).rou
 # mid, so the band is empty exactly when the prevailing spread exceeds twice its
 # average — `frac_empty` reports how often that happens. Note the degenerate case: if a
 # name's spread is always one tick, the band reaches no further than the BBO and (f)
-# just reproduces the depth from (e). For NVDA at ~\$224 that is close to the truth.
+# just reproduces the depth from (e). GPRO — one tick wide in 99.6% of seconds — is
+# exactly that case; NVDA's 1.7-cent average spread puts the band one level past the
+# touch.
 
 # %%
 f = {s: hs.band_depth_per_minute(d) for s, d in days.items()}
@@ -187,6 +198,15 @@ pd.concat({s: summary(v) for s, v in f.items()}, names=["symbol", "series"]).rou
 # %%
 g = {s: hs.price_impact_per_minute(d) for s, d in days.items()}
 pd.concat({s: summary(v) for s, v in g.items()}, names=["symbol", "series"]).round(4)
+
+# %% [markdown]
+# The mean of per-minute slopes weights a thin minute as much as a busy one. The
+# pooled alternative — every print in the session in one regression, with Newey–West
+# standard errors for the overlapping 5-second windows — is the single number an
+# economist would quote, and it comes with a t-statistic.
+
+# %%
+pd.DataFrame({s: hs.price_impact_pooled(d) for s, d in days.items()}).T.round(4)
 
 # %% [markdown]
 # ## Part (h) — one-second and one-minute midquote and transaction price series
@@ -327,25 +347,71 @@ table.round(4)
 # %% [markdown]
 # ## Observations
 #
-# *To be written once the notebook has been run against the Databento download —
-# the points below are what the framework predicts and should be checked against the
-# numbers above, then kept, sharpened or discarded.*
-#
-# 1. **Size and the cost of immediacy.** GPRO's spread in basis points should be one to
-#    two orders of magnitude wider than NVDA's, and its depth in dollars far thinner,
-#    with the gap widest at the open. Relate this to the inventory and adverse-selection
-#    components: at \$1.54 the one-cent tick alone is 65 bps, so GPRO's spread is
-#    tick-constrained from below and its depth at the touch should be large in shares
-#    but small in dollars.
-# 2. **Price impact.** $\lambda$ should be larger for GPRO in basis points; check
-#    whether it is larger in *cents* — for NVDA the 5-second impact will often be a
-#    fraction of a tick, showing up as a change in the mid only when the touch empties.
-# 3. **Bounce versus discreteness.** Compare the volatility signature of the trade
-#    series with that of the mid: for NVDA, sampled at one second, the transaction RV
-#    should exceed the midquote RV and lag-1 transaction autocorrelation should be
-#    negative; for GPRO, with a spread of one tick and a mid that moves in half-cent
-#    steps, look for the same zero-return pile-up the EBS mids show.
-# 4. **The intraday U.** Spreads and impact should be highest in the first half hour
-#    and fall through the day, with a smaller rise into the close; depth the mirror
-#    image; variance of one-minute returns highest at the open. Note the fleeting
-#    liquidity in the cancel-to-add ratio and how it moves through the day.
+# 1. **Size sets the spread, but not the dollar depth.** NVDA quotes 1.7 cents wide
+#    (0.76 bps) and GPRO 1.0 cent (71 bps): a 93x gap in relative terms that is almost
+#    entirely the tick. GPRO sits at the one-cent minimum in 99.6% of seconds, so its
+#    spread in basis points is just the inverse of its price — 85 bps in the first five
+#    minutes at \$1.22, 59 bps in the last at \$1.70 — and the "narrowing" through the
+#    day in the spread figure is the rally, not a liquidity change. NVDA is one tick
+#    wide only 41% of the time, so its spread does carry information. Depth at the touch
+#    is where the tick-constraint prediction bites: GPRO rests 50,700 shares at the BBO
+#    against NVDA's 462 — but in dollars that is \$73k against \$104k, the same order of
+#    magnitude, not "far thinner". A one-cent spread on a \$1.50 stock is such a wide
+#    gate that the queue behind it is long; the band measure (f) shows the same thing,
+#    since for GPRO the ±1-spread band never reaches past the touch. Volume tells the
+#    size story more honestly: \$5.1bn against \$28mm on the day, 892 against 75 prints
+#    a minute, 14 displayed orders per trade against 5, and a cancel-to-add ratio of
+#    about one for both — nearly every displayed order is cancelled rather than filled.
+#    NVDA's tape is 74% odd lots (median print 25 shares); GPRO's median print is a
+#    round lot.
+# 2. **Impact is larger for GPRO in basis points and smaller in cents.** Pooled over the
+#    session with HAC errors, λ is 0.46 bps for NVDA (t = 28) and 26.7 bps for GPRO
+#    (t = 28); the per-minute means are 0.33 and 22.7 bps, lower because thin minutes
+#    weigh as much as busy ones. In price units that is 1.0 cent for NVDA — a signed
+#    trade moves the mid by about one tick, roughly 0.6 of its spread, within five
+#    seconds — and 0.4 cents for GPRO, less than half a tick. GPRO's mid can only move
+#    in half-cent steps, so 26.7 bps is the *probability* that a trade shifts the touch
+#    times the 29–41 bps that one half-tick is worth at its price; its λ falls through
+#    the afternoon in the figure for the same mechanical reason its spread does.
+#    NVDA's λ is highest in the first five minutes (0.55 bps) with spikes to 1.3 at
+#    09:55 and 1.2 at 11:00, and lowest into the close (0.24).
+# 3. **Bounce is weak in both names; what shows up instead is discreteness and a
+#    transitory component at one minute.** For NVDA, transaction RV at one second
+#    exceeds midquote RV by only 1.8% (33,019 against 32,435 bps²), and the lag-1
+#    autocorrelation of one-second returns is *positive* for both series (+0.017 trade,
+#    +0.025 mid, Box–Pierce p < 0.01): with 15 prints a second, mostly odd lots inside
+#    or at a 1.7-cent spread, the last trade of each second is essentially the touch,
+#    and what the ACF picks up is gradual quote adjustment, not Roll's bounce. The
+#    volatility signature is two-sided: the midquote RV *rises* from 32,400 bps² at one
+#    second to 35,000 at thirty seconds (21% of one-second mid returns are exactly zero,
+#    so discreteness holds the fine-grid figure down, as it does for the EBS mids) and
+#    then falls to 27,300 at one minute and 22,300 at five, where a transitory component
+#    averages out. That component is visible directly: the lag-1 autocorrelation of
+#    one-minute returns is −0.12 for the mid and −0.12 for trades (p = 0.02), negative in
+#    nine of thirteen half hours and −0.51 in 11:30–12:00, and it is in the *mid*, so it
+#    is not bid–ask bounce. GPRO is the discreteness case: 97% of its one-second
+#    midquote returns and 94% of its transaction returns are zero, yet its RV falls
+#    monotonically from 2.83 million bps² at one second to 2.40 million at thirty
+#    seconds and is flat after that, its one-second returns are negatively
+#    autocorrelated in both series (−0.02, p < 0.001), and trade RV exceeds mid RV at
+#    every frequency — the standard bounce signature, faint but there, from a print
+#    that alternates between a bid and an ask one cent apart. Its one-minute returns
+#    show no autocorrelation at all (p = 0.45). The session RV is 1.8% for NVDA and
+#    16.8% for GPRO — a 40% day.
+# 4. **The U is half a U.** NVDA's opening half hour is the extreme of everything:
+#    spread 1.8 bps in the first five minutes against 0.66 at noon, depth 200 shares
+#    against 360, and the variance of one-minute returns 237 bps² against 15 in the
+#    15:00 half hour — sixteen times. But there is no second arm. Spread and impact fall
+#    monotonically to their lows in the last five minutes (0.53 bps, 0.24 bps) while
+#    depth triples to 1,410 shares and the busiest minute of the day is 15:59 with
+#    675k shares: the closing auction attracts resting liquidity and volume without
+#    widening anything, the opposite of the open. The variance ticks up only slightly in
+#    the last half hour (30 against 15 bps²). The classic pattern is a U in *volume*
+#    and an L in *cost*. GPRO's day is shaped by its own news rather than the clock:
+#    half-hour variance peaks at 12,900 bps² in 13:30–14:00, during the rally, not at
+#    the open (10,600), and the largest one-minute move (+4.3%) is at 13:55. While it
+#    trends the lag-1 autocorrelation of its one-minute returns is positive in most half
+#    hours (+0.22, +0.16, +0.20), the same momentum-while-trending sign the EUR/USD
+#    series shows going into the FOMC release. Its cancel-to-add ratio is 1.03 for the
+#    day; NVDA's is 0.97, with the 09:30 minute alone carrying 160k add messages against a
+#    median of 9,900 — the fleeting-liquidity burst is an opening phenomenon.

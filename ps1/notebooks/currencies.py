@@ -219,6 +219,15 @@ g = {p: hs.price_impact_per_minute(b) for p, b in books.items()}
 pd.concat({p: summary(v) for p, v in g.items()}, names=["pair", "series"]).round(4)
 
 # %% [markdown]
+# The mean of per-minute slopes weights a thin minute as much as a busy one. The
+# pooled alternative — every print in the session in one regression, with Newey–West
+# standard errors for the overlapping 5-second windows — is the single number an
+# economist would quote, and it comes with a t-statistic.
+
+# %%
+pd.DataFrame({p: hs.price_impact_pooled(b) for p, b in books.items()}).T.round(4)
+
+# %% [markdown]
 # ## Part (h) — one-second and one-minute midquote and transaction price series
 #
 # The last quote and the last print in each interval. Intervals with no trade inherit

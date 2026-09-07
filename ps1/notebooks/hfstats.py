@@ -43,9 +43,9 @@ def bucket_width(day) -> float:
 
     Both reconstructions bin resting size by distance from the mid in half-ticks, so
     this is half the market's tick: half a cent for the stocks, half a tenth-of-a-pip
-    for the currencies.
+    for the currencies.  Both ``mbo.Day`` and ``fx.Book`` carry ``tick``.
     """
-    return getattr(day, "tick", 0.01) / 2
+    return day.tick / 2
 
 
 def summary(df: pd.DataFrame) -> pd.DataFrame:
@@ -173,16 +173,7 @@ def price_impact(day, freq: str = MINUTE, horizon="5s", min_trades=10) -> pd.Dat
     looping OLS over 390 minutes.  Intervals with fewer than ``min_trades`` prints, or
     with prints on one side only, cannot identify the slope and are left ``NaN``.
     """
-    tr = tape(day).dropna(subset=["mid"])
-    q = day.quotes.dropna(subset=["mid"])
-    q = q[~q.index.duplicated(keep="last")].mid
-
-    ahead = tr.index + pd.Timedelta(horizon)
-    fwd = q.reindex(ahead, method="ffill").to_numpy(copy=True)
-    fwd[ahead > q.index[-1]] = np.nan          # prints with no full horizon left in the day
-
-    df = pd.DataFrame({"ret": 1e4 * np.log(fwd / tr.mid.to_numpy()),
-                       "sign": tr["sign"].to_numpy().astype(float)}, index=tr.index)
+    df = _impact_frame(day, horizon)
     df["cross"] = df.ret * df["sign"]
 
     g = df.groupby(pd.Grouper(freq=freq))
@@ -196,6 +187,37 @@ def price_impact(day, freq: str = MINUTE, horizon="5s", min_trades=10) -> pd.Dat
         "alpha_bps": (m.ret - lam * m["sign"]).where(ok),
         "n_trades": n,
     })
+
+
+def _impact_frame(day, horizon="5s") -> pd.DataFrame:
+    """Per print: the ``horizon``-ahead midquote return (bps) and the trade sign."""
+    tr = tape(day).dropna(subset=["mid"])
+    q = day.quotes.dropna(subset=["mid"])
+    q = q[~q.index.duplicated(keep="last")].mid
+
+    ahead = tr.index + pd.Timedelta(horizon)
+    fwd = q.reindex(ahead, method="ffill").to_numpy(copy=True)
+    fwd[ahead > q.index[-1]] = np.nan          # prints with no full horizon left in the day
+
+    return pd.DataFrame({"ret": 1e4 * np.log(fwd / tr.mid.to_numpy()),
+                         "sign": tr["sign"].to_numpy().astype(float)}, index=tr.index)
+
+
+def price_impact_pooled(day, horizon="5s", maxlags: int = 20) -> pd.Series:
+    """Part (g), pooled: one full-session regression with Newey-West (HAC) errors.
+
+    The per-minute mean of ``price_impact`` weights a thin minute as much as a busy
+    one; this is the single-slope alternative -- every print in the session in one
+    OLS, with standard errors robust to the overlap of consecutive 5-second windows.
+    Returns ``lambda_bps``, ``se_bps``, ``t`` and ``n``.
+    """
+    import statsmodels.api as sm
+
+    df = _impact_frame(day, horizon).dropna()
+    X = sm.add_constant(df["sign"].to_numpy())
+    fit = sm.OLS(df.ret.to_numpy(), X).fit(cov_type="HAC", cov_kwds={"maxlags": maxlags})
+    return pd.Series({"lambda_bps": fit.params[1], "se_bps": fit.bse[1],
+                      "t": fit.tvalues[1], "n": int(fit.nobs)})
 
 
 # --------------------------------------------------------------------------- (h)-(k)
@@ -219,7 +241,9 @@ def log_returns(prices: pd.DataFrame) -> pd.DataFrame:
 
 
 def realized_variance(returns: pd.DataFrame) -> pd.DataFrame:
-    """Part (j): summed squared returns, with the daily and annualised volatility."""
+    """Part (j): summed squared returns, with the session volatility and its
+    annualisation (252 sessions; the 6.5-hour session is treated as the day's whole
+    variance, so read ``annualized_vol`` as a label rather than a forecast)."""
     rv = (returns ** 2).sum()
     return pd.DataFrame({
         "n": returns.count(),
@@ -279,6 +303,7 @@ def headline(day) -> dict:
     msgs = ev.drop(columns="trades").sum(axis=1)
     band = band_depth_per_minute(day)
     imp = price_impact_per_minute(day)
+    pooled = price_impact_pooled(day)
     r1s = log_returns(price_series(day, "1s"))
     r1m = log_returns(price_series(day, MINUTE))
     ohlc = ohlc_daily(day)
@@ -296,6 +321,8 @@ def headline(day) -> dict:
         "(f) share of time band empty (%)": 100 * band.frac_empty.mean(),
         "(g) impact lambda (bps), mean of minutes": imp.lambda_bps.mean(),
         "(g) minutes identified": int(imp.lambda_bps.notna().sum()),
+        "(g) impact lambda (bps), pooled HAC": pooled["lambda_bps"],
+        "(g) pooled t-stat": pooled["t"],
         "(j) RV mid 1s (bps^2)": 1e8 * (r1s["mid"] ** 2).sum(),
         "(j) RV trade 1s (bps^2)": 1e8 * (r1s["trade"] ** 2).sum(),
         "(j) RV mid 1min (bps^2)": 1e8 * (r1m["mid"] ** 2).sum(),

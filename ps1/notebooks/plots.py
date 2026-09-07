@@ -90,8 +90,9 @@ def returns_by_interval(day, freq: str = HALF_HOUR, series: str = "trade") -> pd
 
 def _clock(ax, index):
     """Format an intraday x-axis as HH:MM over the session."""
-    ax.xaxis.set_major_locator(mdates.HourLocator())
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
+    tz = getattr(index, "tz", None)           # tz-aware (ITCH, Eastern) or naive (EBS)
+    ax.xaxis.set_major_locator(mdates.HourLocator(tz=tz))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M", tz=tz))
     ax.set_xlim(index[0], index[-1] + (index[1] - index[0]))
 
 

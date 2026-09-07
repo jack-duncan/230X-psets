@@ -15,9 +15,12 @@ Reconstruction rules specific to Databento's ITCH mapping:
       touch the book -- applying ``F`` as well would remove the liquidity twice.
     * ``T.side`` is the *aggressor*: ``B`` = buy, ``A`` = sell, ``N`` = unspecified
       (non-displayed executions and the opening cross).
-    * The file carries no snapshot record, so the book is rebuilt from empty at
-      09:30.  Nasdaq re-adds the pre-open book right after the opening cross, so
-      only the first fraction of a second is incomplete.
+    * Databento only inserts a book snapshot at UTC midnight, so the request runs
+      from 00:00 UTC (20:00 ET the evening before, when Nasdaq's book is empty) and
+      the whole pre-market is replayed before the first 09:30 snapshot is taken.
+      Only the regular session is recorded; the pre-market just builds the book.
+      ``Day.unknown_cancels`` counts session cancels that reference an order never
+      seen added -- a direct check that nothing resting was missed.
 """
 
 from __future__ import annotations
@@ -37,7 +40,7 @@ import zstandard
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-MBO_FILE = DATA_DIR / "xnas-itch-20260902.mbo.csv.zst"
+MBO_FILE = DATA_DIR / "xnas-itch-20260902-fullday.mbo.csv.zst"
 CACHE_DIR = DATA_DIR / "cache"
 
 DATASET = "XNAS.ITCH"
@@ -45,6 +48,7 @@ SYMBOLS = ("NVDA", "GPRO")
 
 TZ = "America/New_York"
 DATE = "2026-09-02"
+START = pd.Timestamp(DATE, tz="UTC")          # request start: the snapshot point
 OPEN = pd.Timestamp(f"{DATE} 09:30", tz=TZ).tz_convert("UTC")
 CLOSE = pd.Timestamp(f"{DATE} 16:00", tz=TZ).tz_convert("UTC")
 
@@ -92,9 +96,9 @@ def _api_key() -> str:
 def download(*, force: bool = False) -> Path:
     """Fetch the raw MBO file for the session, if it is not already on disk.
 
-    This is a billed request -- every book message both symbols published over the
-    regular session -- so the estimated cost is printed before anything is
-    transferred.  Databento serves DBN; it is converted here to the ``csv.zst`` that
+    This is a billed request -- every book message both symbols published from
+    UTC midnight (the only point Databento snapshots the book) to the close, so the
+    estimated cost is printed before anything is transferred.  Databento serves DBN; it is converted here to the ``csv.zst`` that
     ``_read_raw`` parses, with ``pretty_px`` for decimal prices and ``map_symbols``
     for the ``symbol`` column.  Downloading happens at most once: the file is kept,
     and ``build`` caches the reconstruction on top of it.
@@ -109,7 +113,7 @@ def download(*, force: bool = False) -> Path:
         dataset=DATASET,
         schema="mbo",
         symbols=list(SYMBOLS),
-        start=OPEN.isoformat(),
+        start=START.isoformat(),
         end=CLOSE.isoformat(),
     )
     cost = client.metadata.get_cost(**params)
@@ -166,7 +170,8 @@ def _columns(table: pa.Table, symbol: str) -> dict[str, np.ndarray]:
         "ts": t["ts_recv"].cast(pa.int64()).to_numpy(),
         "act": pc.index_in(t["action"], value_set=pa.array(_ACTIONS)).to_numpy(zero_copy_only=False),
         "side": pc.index_in(t["side"], value_set=pa.array(_SIDES)).to_numpy(zero_copy_only=False),
-        "px": np.rint(t["price"].to_numpy() * SCALE).astype(np.int64),
+        # the daily ``R`` (clear) record carries no price; it is skipped in the replay
+        "px": np.rint(pc.fill_null(t["price"], 0.0).to_numpy() * SCALE).astype(np.int64),
         "sz": t["size"].to_numpy(),
         "oid": t["order_id"].cast(pa.int64()).to_numpy(),
     }
@@ -201,7 +206,10 @@ def _replay(ts, act, side, px, sz, oid):
     prof_a = np.zeros((N_SEC, N_BUCKETS), np.int64)
 
     last = (0, 0, 0, 0)
-    slot, bound = 0, int(OPEN.value) + NS
+    open_ns = int(OPEN.value)
+    slot, bound = 0, open_ns + NS
+    live = False                          # inside the regular session?
+    unknown = 0                           # session cancels of orders never seen added
 
     def snapshot(k):
         """Record the book as it stands into grid slot ``k``."""
@@ -240,9 +248,16 @@ def _replay(ts, act, side, px, sz, oid):
                 slot += 1
                 bound += NS
 
+            if not live and t >= open_ns:         # first session event: log the opening BBO
+                live = True
+                if last != (0, 0, 0, 0):
+                    q_ts.append(open_ns); q_bb.append(last[0]); q_ba.append(last[1])
+                    q_bs.append(last[2]); q_as.append(last[3])
+
             if a == 3:                            # T -- trade, no book effect
-                t_ts.append(t); t_px.append(p); t_sz.append(s)
-                t_sd.append(sd); t_bb.append(bb); t_ba.append(ba)
+                if live:
+                    t_ts.append(t); t_px.append(p); t_sz.append(s)
+                    t_sd.append(sd); t_bb.append(bb); t_ba.append(ba)
                 continue
             if a != 0 and a != 1:                 # F is bookkeeping; M / R never occur here
                 continue
@@ -255,7 +270,8 @@ def _replay(ts, act, side, px, sz, oid):
                 orders[o_id] = [p, s, is_bid]
             else:                                 # C -- cancel or execution removal
                 o = orders.get(o_id)
-                if o is None:                     # order added before 09:30; not in our book
+                if o is None:                     # never saw the add: should not happen
+                    unknown += live
                     continue
                 p = o[0]
                 s = min(o[1], s)
@@ -283,8 +299,9 @@ def _replay(ts, act, side, px, sz, oid):
 
             cur = (bb, ba, bids.get(bb, 0), asks.get(ba, 0))
             if cur != last:
-                q_ts.append(t); q_bb.append(cur[0]); q_ba.append(cur[1])
-                q_bs.append(cur[2]); q_as.append(cur[3])
+                if live:
+                    q_ts.append(t); q_bb.append(cur[0]); q_ba.append(cur[1])
+                    q_bs.append(cur[2]); q_as.append(cur[3])
                 last = cur
 
     while slot < N_SEC:                           # carry the closing book to the last bars
@@ -298,7 +315,7 @@ def _replay(ts, act, side, px, sz, oid):
         {"ts": npq(t_ts), "price": npq(t_px), "size": npq(t_sz),
          "side": npq(t_sd), "bid": npq(t_bb), "ask": npq(t_ba)},
         {"bid": g_bb, "ask": g_ba, "bid_sz": g_bs, "ask_sz": g_as},
-        prof_b, prof_a,
+        prof_b, prof_a, unknown,
     )
 
 
@@ -316,6 +333,8 @@ class Day:
     events: pd.DataFrame        # 1-minute index: counts of adds / cancels / trades
     depth_bid: np.ndarray       # (seconds, 101) resting bid size by half-cent from the mid
     depth_ask: np.ndarray       # (seconds, 101) same on the ask side
+    unknown_cancels: int = 0    # session cancels referencing an order never seen added
+    tick: float = 0.01          # minimum price increment (both names quote in cents)
 
     def __repr__(self) -> str:
         return (f"<Day {self.symbol}: {len(self.trades):,} trades, "
@@ -367,12 +386,14 @@ def build(symbol: str, *, refresh: bool = False, table: pa.Table | None = None) 
         g = {k: z[f"g_{k}"] for k in ("bid", "ask", "bid_sz", "ask_sz")}
         prof_b, prof_a = z["prof_b"], z["prof_a"]
         ev_ts, ev_counts = z["ev_ts"], z["ev_counts"]
+        unknown = int(z["unknown"])
     else:
         cols = _columns(_read_raw() if table is None else table, symbol)
-        q, t, g, prof_b, prof_a = _replay(**cols)
+        q, t, g, prof_b, prof_a, unknown = _replay(**cols)
         ev_ts, ev_counts = _event_counts(cols["ts"], cols["act"])
         CACHE_DIR.mkdir(exist_ok=True)
         np.savez(cache, prof_b=prof_b, prof_a=prof_a, ev_ts=ev_ts, ev_counts=ev_counts,
+                 unknown=unknown,
                  **{f"q_{k}": v for k, v in q.items()},
                  **{f"t_{k}": v for k, v in t.items()},
                  **{f"g_{k}": v for k, v in g.items()})
@@ -398,7 +419,7 @@ def build(symbol: str, *, refresh: bool = False, table: pa.Table | None = None) 
     events = pd.DataFrame(ev_counts, index=_index(ev_ts),
                           columns=["adds", "cancels", "fills", "trades"])
 
-    return Day(symbol, trades, quotes, grid, events, prof_b, prof_a)
+    return Day(symbol, trades, quotes, grid, events, prof_b, prof_a, unknown)
 
 
 def load(*syms: str, refresh: bool = False) -> dict[str, Day]:
@@ -413,12 +434,13 @@ def load(*syms: str, refresh: bool = False) -> dict[str, Day]:
 
 
 def _event_counts(ts, act):
-    """Per-minute counts of adds, cancels, fills and trades, straight off the tape."""
+    """Per-minute counts of adds, cancels, fills and trades over the regular session."""
     minute = (ts - int(OPEN.value)) // (60 * NS)
     n_min = int((CLOSE - OPEN).total_seconds() // 60)
+    session = (minute >= 0) & (minute < n_min)
     counts = np.zeros((n_min, 4), np.int64)
     for code in range(4):
-        m = act == code
+        m = session & (act == code)
         counts[:, code] = np.bincount(minute[m], minlength=n_min)[:n_min]
     return np.arange(int(OPEN.value), int(CLOSE.value), 60 * NS), counts
 
@@ -445,4 +467,5 @@ def _quote_frame(ts, bid, ask, bid_sz, ask_sz) -> pd.DataFrame:
 if __name__ == "__main__":                        # python mbo.py -> warm the cache
     raw = _read_raw()
     for sym in symbols():
-        print(build(sym, refresh=True, table=raw))
+        day = build(sym, refresh=True, table=raw)
+        print(day, f"-- {day.unknown_cancels} session cancels of unseen orders")

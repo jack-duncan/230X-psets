@@ -22,10 +22,16 @@ DATABENTO_API_KEY=db-your-key-here
 `.env` is gitignored — never commit a key. An exported `DATABENTO_API_KEY` in your
 shell also works and takes precedence.
 
-`mbo.py` reads the key from there and downloads `ps1/data/xnas-itch-20260902.mbo.csv.zst`
-on first use, printing the estimated cost before transferring anything. The download is
-billed by volume and only happens once; the file and the derived cache under
+`mbo.py` reads the key from there and downloads
+`ps1/data/xnas-itch-20260902-fullday.mbo.csv.zst` on first use, printing the estimated
+cost before transferring anything (about 0.6 GB billable; it was free on a standard
+account in September 2026). The request runs from UTC midnight -- the only point at
+which Databento snapshots the book -- to the 16:00 close, so the pre-market is
+replayed and the book is complete when the regular session starts; only 09:30-16:00
+is recorded. The download only happens once; the file and the derived cache under
 `ps1/data/cache/` are both gitignored, so each collaborator downloads their own copy.
+If you have an older `xnas-itch-20260902.mbo.csv.zst` (09:30 start) or `NVDA.npz` /
+`GPRO.npz` caches from before 2026-09-07, delete them -- they are superseded.
 
 ## Structure
 
@@ -75,6 +81,6 @@ notebooks run; the report draft is in `ps1/report/`. Both reconstructions cache 
 `ps1/data/cache/`; rebuild either with
 
 ```
-uv run python ps1/notebooks/mbo.py     # ~15s, needs the Databento key
+uv run python ps1/notebooks/mbo.py     # download + full-day replay, needs the Databento key
 uv run python ps1/notebooks/fx.py      # ~2s, reads the CSVs in ps1/data/
 ```

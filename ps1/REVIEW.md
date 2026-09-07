@@ -127,3 +127,48 @@ hand allows.
 | `ps1/figures/` | seven currency figures + `summary_currencies.csv` |
 | `ps1/report/ps1_report.md` | report draft |
 | `README.md` | mentions `plots.py`, figures, report |
+
+---
+
+## Follow-up — 2026-09-07, later the same day (equities run)
+
+With a Databento key in hand the equities pipeline was run end to end. Items 7 and 8
+above are closed; 11 is done; 12 (Datalore) is still open.
+
+- **Download.** 0.60 GB billable, \$0.00 on a standard account. The request was moved
+  to start at **UTC midnight** rather than 09:30: Databento's own warning says the
+  book snapshot exists only at UTC midnight, and on XNAS.ITCH the book is empty then
+  (the daily `R` clear record arrives at 03:07 ET, the first adds at 04:00 ET), so
+  replaying from there rebuilds the complete pre-market book. Only 09:30–16:00 is
+  recorded. The raw file is now `xnas-itch-20260902-fullday.mbo.csv.zst`; anyone with
+  the old 09:30 file or old `NVDA.npz` / `GPRO.npz` caches should delete them.
+- **Item 8 resolved, and the notebook's claim was wrong.** Nasdaq does *not* re-add
+  the pre-open book after the cross. With the full-day replay `Day.unknown_cancels`
+  is 0 for both names; started from an empty book at 09:30 it is 14,706 for NVDA and
+  1,211 for GPRO (0.31% / 0.75% of session cancels — the 0.3% / 0.8% the notebook
+  quoted), and those are deep resting orders that persist. Measured against the
+  full-day book, the 09:30 start understates resting depth within \$0.50 of the mid by
+  7% (NVDA) and 37% (GPRO) at 09:31, 2% and 22% at 10:00, and 0.2% and 8% averaged over
+  the day. NVDA's touch depth and spread are unchanged to three decimals; GPRO's
+  touch depth is 0.7% low. So the group's original numbers for parts (a)–(e), (g)–(k)
+  were fine; part (f) for GPRO was biased down, especially in the first hour.
+- **Item 7.** `equities.ipynb` executed (about three minutes after the cache is warm);
+  seven `eq_*.png` figures and `summary_equities.csv` written; observations written
+  from the numbers and the template removed. The 22% unsigned NVDA prints and the
+  671k / 975k share opening crosses quoted in the notebook reproduce exactly.
+- **Item 11.** `hfstats.price_impact_pooled` — one full-session OLS with Newey–West
+  (20-lag) errors — added, shown in both notebooks after part (g), and carried as two
+  extra rows of `headline`. EUR/USD 0.267 bps (t = 18), NVDA 0.46 bps (t = 28), GPRO
+  26.7 bps (t = 28).
+- **Figures had UTC hours on the x-axis** for the equity panel (tz-aware index;
+  matplotlib formats in UTC unless told the zone). `plots._clock` now formats in the
+  index's own timezone; the currency figures, on a naive index, are unaffected.
+- **Minor items done.** `mbo.Day` has `tick = 0.01`, `bucket_width` no longer needs
+  the `getattr` fallback; `realized_variance`'s docstring says "session", not "daily";
+  the `R` record's null price no longer raises a cast warning.
+- **One thing to know about the day.** GPRO rallied 40% on 2026-09-02 (\$1.22 → \$1.71)
+  in a steady climb from noon to 15:30. Every GPRO statistic quoted in basis points is
+  sitting on a moving price, and its spread and impact series in bps fall through the
+  day for that reason alone (the spread is one cent in 99.6% of seconds). The
+  observations say so.
+- **Still open: Datalore.** Needs someone's account; nothing in the repo addresses it.
