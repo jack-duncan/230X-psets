@@ -55,7 +55,7 @@
 #    cross — and the resting depth within \$0.50 of the mid is understated by 7% (NVDA)
 #    and 37% (GPRO) at 09:31, still 2% and 22% at 10:00, and 0.2% and 8% on average over
 #    the day. Touch depth and spreads are unaffected for NVDA, and GPRO's touch by <1%.
-#    With the full-day replay `Day.unknown_cancels` is zero for both names.
+#    With the full-day replay every session cancel references an order seen added.
 
 # %%
 import numpy as np

@@ -1,9 +1,9 @@
 # MFE 230X — Homework 1: ITCH and EBS descriptive statistics
 
-*Draft for the bCourses submission. Every number below is produced by
-`ps1/notebooks/currencies.ipynb` or `ps1/notebooks/equities.ipynb`, both executed
-in the repo; figures are in `ps1/figures/` and the two summary tables in
-`ps1/figures/summary_*.csv`.*
+*MFE 230X High-Frequency Finance, Fall 2026. Every statistic in this report is
+computed from the reconstructed order books described in Section 1; the two
+executed notebooks that produce them (currencies, equities) accompany this report,
+and all figures are reproduced in the appendix.*
 
 ## 1. Data
 
@@ -14,9 +14,9 @@ in the repo; figures are in `ps1/figures/` and the two summary tables in
 
 The two panels are on different days because the EBS file supplied with the course is
 from 2012 while the ITCH data was downloaded fresh; every statistic is computed by
-the same code (`hfstats.py`, `plots.py`) from the same reconstructed objects — a
-signed trade tape, a BBO series and an end-of-second book grid — so the two panels
-are measured identically even though they are not contemporaneous.
+the same code from the same reconstructed objects — a signed trade tape, a BBO
+series and an end-of-second book grid — so the two panels are measured identically
+even though they are not contemporaneous.
 
 **ITCH.** Every add, cancel, fill and trade message is replayed into a full limit
 order book. Databento snapshots the book only at UTC midnight, so the request runs
@@ -32,7 +32,7 @@ aggressor for lit executions; non-displayed executions and the opening cross arr
 unsigned and are signed with the quote rule. The opening cross is dropped from the
 trade tape (one unsigned print ~30x a normal trade, which would otherwise dominate the
 first minute of every statistic). Order counts in part (b) are displayed add-order
-messages, as the FAQ asks — hidden orders have no add message and are seen only when
+messages, as the course FAQ specifies — hidden orders have no add message and are seen only when
 they execute.
 
 **EBS.** The book feed carries price-level updates, not orders (`SIZE = 0` deletes a
@@ -89,7 +89,7 @@ the relative rows (bps, autocorrelations) compare across panels.
 | (k) AC1 trade 1min | -0.0052 | -0.0034 | -0.1487 | -0.1205 | 0.0309 |
 
 The full per-minute distributions (count, mean, sd, quartiles) of every variable are
-in the notebooks; the currency ones are all in `currencies.ipynb`, section by section.
+in the accompanying notebooks, section by section.
 
 ### Part (l) — triangular arbitrage (one-second series)
 
@@ -122,7 +122,7 @@ All figures are drawn per instrument on a shared clock (the instruments share un
 but differ in level by orders of magnitude). Dotted lines on the currency figures mark
 the FOMC statement (12:30 ET) and the projections release (14:00 ET).
 
-The four most informative, chosen from the full set:
+Four from the currency panel:
 
 1. **`fx_spread_bps_5min.png` — quoted spread per 5-minute interval.** The majors are
    tightest late morning and drift wider through the afternoon; the cross is twice as
@@ -137,7 +137,7 @@ The four most informative, chosen from the full set:
    for both majors; EUR/JPY alone has a lag-1 coefficient of −0.17 (mid) and −0.15
    (trade), five standard errors from zero.
 
-And from the equity panel:
+Four from the equity panel:
 
 5. **`eq_spread_bps_5min.png` — quoted spread per 5-minute interval.** NVDA opens at
    1.8 bps and is below 0.8 within twenty minutes, ending the day at 0.53 with no rise
@@ -154,8 +154,9 @@ And from the equity panel:
    nine of thirteen half hours, −0.51 in 11:30–12:00; positive for GPRO in most of the
    half hours it spent trending.
 
-The rest of the set: `fx_depth_5min.png`, `fx_ac1_30min.png`, `fx_acf_1s.png`,
-`eq_lambda_bps_5min.png`, `eq_acf_1s.png`, `eq_acf_1min.png`.
+The remaining figures — currency depth, currency lag-1 autocorrelation, the
+one-second ACFs for both panels, equity impact and the equity one-minute ACF — are in
+the appendix with the eight above.
 
 ## 4. Observations
 
@@ -286,12 +287,3 @@ EUR/USD shows going into the FOMC release. Set beside the currency day, the cont
 is the one the framework predicts: the market with an opening auction and an
 overnight close has its cost extreme at the open; the 24-hour market has none, and
 both markets have their variance extremes wherever the information arrived.
-
-## 5. Status
-
-| item | state |
-|---|---|
-| currency parts (a)–(l), summary table, figures, observations | done, reproducible from the repo |
-| equity parts (a)–(k), summary table, figures, observations | done, reproducible from the repo given a Databento key (`README.md`); the download was free on a standard account |
-| combined summary table | section 2 above; the two panels' `ps1/figures/summary_*.csv` stack row for row |
-| Datalore share | not done |
