@@ -40,6 +40,9 @@ ps2/
   data/
 ```
 
+`algo2e/` is separate from the problem sets above — it's the team's working folder for
+the third algorithmic trading case, not a graded assignment. See `algo2e/README.md`.
+
 ## Usage
 
 ```
