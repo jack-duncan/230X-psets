@@ -486,8 +486,10 @@ def triangular_summary(tri: pd.DataFrame) -> pd.Series:
     live = tri[ok]
     hit = live[live.open]
 
-    runs = _runs(live.open.to_numpy())
-    step = pd.Timedelta(live.index.freq or (live.index[1] - live.index[0])).total_seconds()
+    # Runs are measured on the full clock, so a second with a blank quote breaks an
+    # episode rather than being skipped over and bridging two of them.
+    runs = _runs((tri.open & ok).to_numpy())
+    step = (tri.index[1] - tri.index[0]).total_seconds()
 
     return pd.Series({
         "seconds observed": len(live),
@@ -502,6 +504,6 @@ def triangular_summary(tri: pd.DataFrame) -> pd.Series:
         "mean quantity (mm EUR)": hit.qty.mean(),
         "median quantity (mm EUR)": hit.qty.median(),
         "total profit (USD mm)": hit.profit_usd.sum(),
-        "cheap-side episodes": int((hit.direction == "cheap").sum()),
-        "rich-side episodes": int((hit.direction == "rich").sum()),
+        "cheap-side seconds": int((hit.direction == "cheap").sum()),
+        "rich-side seconds": int((hit.direction == "rich").sum()),
     })
