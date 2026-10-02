@@ -1,0 +1,68 @@
+mock RIT listening on http://localhost:9999/v1  (pid 27692)  ticks=80 speed=1.00s/tick list_lag=0.30s order_rate=5/s seed=11 vol=0.0040 aggr_rate=4.0/s
+[tick    5] fair=9.954 bid/ask=9.94/9.98 last=9.99 pos=+0 realized=+0.00 unreal=+0.00 nlv=+0.00 fees=0.00 rebates=0.00 bot_open=0 bot_fills=0 bot_vol=0
+[tick   10] fair=10.082 bid/ask=10.06/10.09 last=10.06 pos=+0 realized=+0.00 unreal=+0.00 nlv=+0.00 fees=0.00 rebates=0.00 bot_open=2 bot_fills=0 bot_vol=0
+[tick   15] fair=10.170 bid/ask=10.14/10.20 last=10.20 pos=+0 realized=+0.00 unreal=+0.00 nlv=+0.00 fees=0.00 rebates=0.00 bot_open=2 bot_fills=0 bot_vol=0
+[tick   20] fair=10.246 bid/ask=10.22/10.26 last=10.19 pos=+0 realized=+0.00 unreal=+0.00 nlv=+0.00 fees=0.00 rebates=0.00 bot_open=0 bot_fills=0 bot_vol=0
+[tick   25] fair=10.257 bid/ask=10.24/10.28 last=10.27 pos=+0 realized=+0.00 unreal=+0.00 nlv=+0.00 fees=0.00 rebates=0.00 bot_open=1 bot_fills=0 bot_vol=0
+[tick   30] fair=10.197 bid/ask=10.18/10.22 last=10.23 pos=+2911 realized=+128.58 unreal=-29.11 nlv=+99.48 fees=0.00 rebates=28.59 bot_open=0 bot_fills=6 bot_vol=5717
+[tick   35] fair=10.172 bid/ask=10.16/10.19 last=10.16 pos=+2911 realized=+128.58 unreal=-232.88 nlv=-104.29 fees=0.00 rebates=28.59 bot_open=1 bot_fills=6 bot_vol=5717
+[tick   40] fair=10.111 bid/ask=10.09/10.13 last=10.14 pos=+3159 realized=+129.83 unreal=-278.70 nlv=-148.87 fees=0.00 rebates=29.82 bot_open=1 bot_fills=7 bot_vol=5965
+[tick   45] fair=10.015 bid/ask=10.00/10.03 last=9.99 pos=+3159 realized=+129.83 unreal=-752.55 nlv=-622.72 fees=0.00 rebates=29.82 bot_open=1 bot_fills=7 bot_vol=5965
+[tick   50] fair=9.922 bid/ask=9.90/9.95 last=9.90 pos=+3159 realized=+129.83 unreal=-1036.86 nlv=-907.03 fees=0.00 rebates=29.82 bot_open=1 bot_fills=7 bot_vol=5965
+[tick   55] fair=9.833 bid/ask=9.81/9.85 last=9.88 pos=+1971 realized=-254.17 unreal=-686.35 nlv=-940.51 fees=0.00 rebates=35.77 bot_open=2 bot_fills=8 bot_vol=7153
+[tick   60] fair=9.758 bid/ask=9.75/9.78 last=9.80 pos=+3855 realized=-244.75 unreal=-730.99 nlv=-975.74 fees=0.00 rebates=45.19 bot_open=0 bot_fills=10 bot_vol=9037
+[tick   65] fair=9.773 bid/ask=9.76/9.79 last=9.79 pos=-3834 realized=-1014.39 unreal=+20.96 nlv=-993.43 fees=0.00 rebates=83.63 bot_open=1 bot_fills=20 bot_vol=16726
+[tick   70] fair=9.770 bid/ask=9.74/9.79 last=9.74 pos=+1529 realized=-788.88 unreal=-15.29 nlv=-804.16 fees=0.00 rebates=124.16 bot_open=2 bot_fills=24 bot_vol=24831
+[tick   75] fair=9.770 bid/ask=9.76/9.78 last=9.78 pos=+0 realized=-796.52 unreal=+0.00 nlv=-796.52 fees=0.00 rebates=131.80 bot_open=0 bot_fills=26 bot_vol=26360
+[STOPPED tick   80] fair=9.688 bid/ask=9.67/9.71 last=9.66 pos=+0 realized=-796.52 unreal=+0.00 nlv=-796.52 fees=0.00 rebates=131.80 bot_open=0 bot_fills=26 bot_vol=26360
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52165)
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52169)
+Exception occurred during processing of request from ('127.0.0.1', 52168)
+Traceback (most recent call last):
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\http\server.py", line 401, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+----------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+Traceback (most recent call last):
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\http\server.py", line 401, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+----------------------------------------
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\http\server.py", line 401, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\hmha2\AppData\Local\Programs\Python\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+----------------------------------------
