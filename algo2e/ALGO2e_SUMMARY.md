@@ -44,6 +44,39 @@ the table: 98% of RY fills consumed the whole order (demand exceeded our 2,000
 size), and the bots went flat at tick 290 because the end timer counted ticks, not
 seconds, missing 100 s of RY's widest regime.
 
+## Live test run 2 (v2 bot, ticks 116–181, class competing)
+
+| | RY | CNR | AC |
+|---|---|---|---|
+| Spread median / p95 | 1c / 5c | 1c / 1c | 1c / 1c |
+| Fills / shares | 413 / 794k | 184 / 75k | 231 / 88k |
+| Realized | **+$7,878** | −$363 | −$2,114 |
+| Passive capture / adverse 10 s | +0.96c / +0.50c | +0.45c / −0.31c | +0.36c / −1.82c |
+
+Account NLV about +$5.2k at tick 180, +$6k when paused. RY's spread collapsed from a
+4c median to 1c because the whole class was competing for the same liquidity; the
+graded case should look like this run. The v2 safety changes held: server inventory
+never exceeded the 7,000 cap, no hard-reduce crosses, estimate gaps 0.55 s median.
+CNR and AC lost money again (both runs combined −$4.2k).
+
+Changes after run 2 (`algo2e_mm.py`; the build that ran is kept as
+`legacy/algo2e_mm_run2_proven.py`):
+
+- **Take bug fixed.** The condition required bid ≥ X ≥ ask, impossible in an
+  uncrossed book, so takes never fired. Now: buy the ask when it is `Take edge` below
+  the 5 s EWMA fair value, sell the bid when it is that far above. Backtest at a 3c
+  edge: +7.2c/sh 10 s later in run 1 (n=337), +3.8c/sh in competitive run 2 (n=160).
+  A drift guard against falling prices was tested and rejected: it lowered P&L in
+  both runs because the fastest dips revert most.
+- **Takes never cross our own orders**, including ones whose cancel is in flight (a
+  mock surfaced one such self-trade; zero in two reruns).
+- **Confirmed cancels leave the exposure count** instead of blocking new quotes for
+  up to 15 s.
+- **RY only by default** (`TICKERS = ["RY"]`), scaled to quote 5,000, max inventory
+  10,000, take edge 3c. CNR/AC remain configured; add them back in `TICKERS`.
+
+Logs for this run: `logs/2026-10-01_run2/`.
+
 ## What the v2 bot does
 
 Per ticker, every loop (~60 Hz live): read the book with own orders excluded, update

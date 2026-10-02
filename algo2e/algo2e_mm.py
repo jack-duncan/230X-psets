@@ -85,8 +85,10 @@ PORT = 9999                        # <-- and the port
 API_READS_PER_SEC = 160            # cap on GET calls per second for THIS copy (book, orders, case, limits)
 API_WRITES_PER_SEC = 0             # cap on order commands per second (POST/cancel); 0 = use the server's
                                    # api_orders_per_second (500 on the ALGO2e server). 3 copies => 3x these.
-TICKERS = ["RY", "CNR", "AC"]      # run `python algo2e_mm.py` (no arguments): it starts one
-                                   # copy of itself per ticker, each in its own console
+TICKERS = ["RY"]                   # run `python algo2e_mm.py` (no arguments): it starts one
+                                   # copy of itself per ticker, each in its own console.
+                                   # CNR and AC lost money in both live runs (-$1.8k, -$2.5k);
+                                   # add them back with TICKERS = ["RY", "CNR", "AC"] if wanted
 
 TICKER = TICKERS[0]
 # internal:  python algo2e_mm.py <TICKER> [API_KEY] [PORT]  runs ONE ticker
@@ -139,9 +141,9 @@ DEFAULTS = [
 # per-ticker tuning (from the 2026-10-01 live run: RY wide/volatile = the P&L engine;
 # CNR/AC 1c-locked thin books = join the touch small for the rebate only)
 TICKER_OVERRIDES = {
-    "RY":  {"Quote size": 4000, "Max inv": 7000, "Hard reduce |net|": 10000, "Gross cap": 12000,
+    "RY":  {"Quote size": 5000, "Max inv": 10000, "Hard reduce |net|": 13000, "Gross cap": 15000,
             "Min spread": 0.03, "Vol mult": 1.0, "Requote lag ticks": 8, "Aggressive ticks": 5,
-            "Requote min sec": 1.0, "Take edge": 0.06, "Reduce boost": 0.75},
+            "Requote min sec": 1.0, "Take edge": 0.03, "Reduce boost": 0.75},
     "CNR": {"Quote size": 1000, "Max inv": 2000, "Hard reduce |net|": 3500, "Gross cap": 4000,
             "Min spread": 0.01, "Vol mult": 0.0},
     "AC":  {"Quote size": 1000, "Max inv": 2000, "Hard reduce |net|": 3500, "Gross cap": 4000,
@@ -641,7 +643,15 @@ class Orders(object):
 
     def settling_qty(self, side):
         """Shares still possibly live on a side after we sent a cancel (unconfirmed)."""
-        return sum(max(0, r["qty"] - r["filled"]) for r in list(self.settling.values()) if r["side"] == side)
+        return sum(max(0, r["qty"] - r["filled"]) for r in list(self.settling.values())
+                   if r["side"] == side and not r.get("cancel_ok"))
+
+    def confirm_cancels(self, ids):
+        """The server acknowledged these cancels: their unfilled rest can no longer trade."""
+        for oid in ids or []:
+            rec = self.settling.get(oid)
+            if rec is not None:
+                rec["cancel_ok"] = True
 
     def open_qty(self, side):
         return sum(r["qty"] - r["filled"] for r in list(self.live.values()) if r["side"] == side)
@@ -786,9 +796,9 @@ class Orders(object):
     def cancel_side(self, side, reason):
         recs = [r for r in list(self.live.values()) if r["side"] == side]
         if recs:
-            self.api.cancel_ids([r["id"] for r in recs])
             for r in recs:
                 self.retire(r)
+            self.confirm_cancels(self.api.cancel_ids([r["id"] for r in recs]))
             log("CANCEL %s x%d (%s)" % (side, len(recs), reason), console=False)
 
     def cancel_all_tracked(self, reason):
@@ -943,17 +953,19 @@ class Quoter(object):
                 "tot": {"BUY": buy_tot, "SELL": sell_tot}, "fair_ref": self.fair_ref}
 
     def take(self, p, q, bb, bs, ba, as_, net, now, tick):
-        """Marketable LIMIT against a dislocated far touch (RY: taking liquidity is PAID).
-        BUY when the ask is `Take edge` below fair_ref while the bid is not (an ask outlier);
-        SELL symmetric. One take per side per 0.5 s; adding takes capped by `Take max inv`."""
+        """Marketable LIMIT against a dislocated touch (RY: taking liquidity is PAID).
+        BUY at the ask when it is `Take edge` below fair_ref (5 s EWMA of mid), SELL at the
+        bid when it is `Take edge` above. Backtest on both RY runs: +7.2c/sh (wide regime)
+        and +3.8c/sh (1c regime) vs mid 10 s later at edge 0.03. One take per side per
+        0.5 s; adding takes capped by `Take max inv`."""
         edge = p["Take edge"]
         if edge <= 0 or self.fair_ref is None or len(self.mid_hist) < 5:
             return
         fr = self.fair_ref
         base = int(p["Quote size"])
         tmax = p["Take max inv"] or p["Max inv"]
-        for side, px, sz, ok in (("BUY", ba, as_, ba <= fr - edge and bb >= fr - edge),
-                                 ("SELL", bb, bs, bb >= fr + edge and ba <= fr + edge)):
+        for side, px, sz, ok in (("BUY", ba, as_, ba <= fr - edge),
+                                 ("SELL", bb, bs, bb >= fr + edge)):
             if not ok or now - self.last_take[side] < 0.5:
                 continue
             adding = (side == "BUY" and net >= 0) or (side == "SELL" and net <= 0)
@@ -965,9 +977,16 @@ class Quoter(object):
             qty = int(min(sz, base, room, CASE_MAX_ORDER))
             if qty < 100:
                 continue
-            # never trade through our own resting order on the other side
+            # never trade through our own order on the other side: resting, or with a cancel
+            # still in flight (settling), or with a post/cancel job still running
             opp = "SELL" if side == "BUY" else "BUY"
-            if any((r["price"] <= px if side == "BUY" else r["price"] >= px) for r in self.orders.on_side(opp)):
+            if self.pending[opp] is not None and not self.pending[opp].done():
+                continue
+            crosses = (lambda r: r["price"] <= px) if side == "BUY" else (lambda r: r["price"] >= px)
+            if any(crosses(r) for r in self.orders.on_side(opp)):
+                continue
+            if any(crosses(r) for r in list(self.orders.settling.values())
+                   if r["side"] == opp and not r.get("cancel_ok") and r["qty"] > r["filled"]):
                 continue
             if self.api.order_budget() < 1:
                 continue
@@ -1083,7 +1102,7 @@ class Quoter(object):
         side is skipped until the job is done so nothing is posted twice."""
         def job():
             if cancel_ids:
-                self.api.cancel_ids(cancel_ids)
+                self.orders.confirm_cancels(self.api.cancel_ids(cancel_ids))
             if post:
                 self._post_side(side, post, reason, tick)
         self.pending[side] = self.pool.submit(job)

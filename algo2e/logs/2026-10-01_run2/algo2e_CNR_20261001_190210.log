@@ -1,0 +1,1021 @@
+19:02:10 +   0.06s t=    Connected: Hashim Almodamagha (hashim_almodamagha) | case 'ALGO2e v2' | tick 114/300 | status ACTIVE | fee 0.0027 rebate 0.005 | max order 50000 | orders/s 500 (using 500) | reads/s cap 160
+19:02:10 +   0.06s t=    SECURITY {'ticker': 'CNR', 'type': 'STOCK', 'size': 1, 'position': 0.0, 'vwap': 0.0, 'nlv': 0.0, 'last': 153.83, 'bid': 153.82, 'bid_size': 21412.0, 'ask': 153.83, 'ask_size': 17749.0, 'volume': 5387687.0, 'unrealized': 0.0, 'realized': 0.0, 'currency': '', 'total_volume': 5387687.0, 'limits': [{'name': 'LIMIT-STOCK', 'units': 1.0}], 'interest_rate': 0.0, 'is_tradeable': True, 'is_shortable': True, 'start_period': 1, 'stop_period': 1, 'description': 'Shares of CNR Corp.', 'unit_multiplier': 1, 'display_unit': 'share', 'start_price': 153.0, 'min_price': 1.0, 'max_price': 1000.0, 'quoted_decimals': 2, 'trading_fee': 0.0027, 'limit_order_rebate': 0.005, 'min_trade_size': 0, 'max_trade_size': 50000, 'required_tickers': None, 'underlying_tickers': None, 'bond_coupon': 0.0, 'interest_payments_per_period': 0, 'base_security': '', 'fixing_ticker': None, 'api_orders_per_second': 500, 'execution_delay_ms': 0, 'interest_rate_ticker': None, 'otc_price_range': 0.0}
+19:02:10 +   0.06s t=    LIMITS [{'name': 'LIMIT-STOCK', 'gross': 0.0, 'net': 0.0, 'gross_limit': 25000, 'net_limit': 25000, 'gross_fine': 1.0, 'net_fine': 1.0}]
+19:02:30 +  20.06s t=    Excel cockpit open: c:\users\hashim_almodamagha\desktop\algo2v2\ALGO2e_cockpit_CNR.xlsx
+19:02:30 +  20.06s t=    PARAMS {'Enabled': 1, 'Quote size': 1000, 'Layers': 1, 'Min spread': 0.01, 'Vol mult': 0.0, 'Vol window': 3.0, 'Improve if spread >=': 0.02, 'Micro weight': 0.3, 'Drift window': 2.0, 'Drift lean': 0.3, 'Max inv': 2000, 'Skew $ at max inv': 0.04, 'Skew if spread >=': 0.02, 'Reduce boost': 0.5, 'Hard reduce |net|': 3500, 'Requote lag ticks': 3, 'Aggressive ticks': 1.5, 'Requote min sec': 0.5, 'Gross cap': 4000, 'Account gross stop': 23000, 'Take edge': 0, 'Fair window': 5.0, 'Take max inv': 0, 'Mark secs': 10, 'End flat secs': 12, 'End cross secs': 4, 'Allow market orders': 0, 'Poll seconds': 0.0, 'Book depth': 10, 'Flatten now': 0, 'Panic': 0}
+19:02:30 +  20.10s t=116 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 153.82} -> id=88376 filled=0.0 status=OPEN (11 ms)
+19:02:30 +  20.10s t=116 POST BUY 1000 @ 153.82 (top/top)
+19:02:30 +  20.11s t=116 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 153.83} -> id=88378 filled=0.0 status=OPEN (10 ms)
+19:02:30 +  20.11s t=116 POST SELL 1000 @ 153.83 (top/top)
+19:02:37 +  26.58s t=117 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 153.83} -> id=88907 filled=0.0 status=OPEN (12 ms)
+19:02:37 +  26.58s t=117 POST SELL 500 @ 153.83 (top/refill)
+19:02:37 +  27.12s t=117 FILL BUY 1000 @ 153.82 | fair  mid 153.825 bid 153.82 ask 153.83 | net_est 0 | age 7.0s | top
+19:02:38 +  27.16s t=117 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 153.82} -> id=88932 filled=0.0 status=OPEN (16 ms)
+19:02:38 +  27.16s t=117 POST BUY 500 @ 153.82 (top/top)
+19:02:42 +  31.46s t=117 FILL BUY 500 @ 153.82 | fair  mid 153.825 bid 153.82 ask 153.83 | net_est 1000 | age 4.3s | top
+19:02:42 +  31.49s t=117 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 250, 'action': 'BUY', 'price': 153.82} -> id=89272 filled=0.0 status=OPEN (20 ms)
+19:02:42 +  31.49s t=117 POST BUY 250 @ 153.82 (top/top)
+19:02:44 +  34.06s t=118 FILL BUY 250 @ 153.82 | fair  mid 153.825 bid 153.82 ask 153.83 | net_est 1500 | age 2.6s | top
+19:02:44 +  34.07s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 125, 'action': 'BUY', 'price': 153.82} -> id=89469 filled=0.0 status=OPEN (9 ms)
+19:02:44 +  34.07s t=118 POST BUY 125 @ 153.82 (top/top)
+19:02:45 +  34.17s t=118 CANCEL BUY [(153.82, 125, 'too aggressive')]
+19:02:45 +  34.18s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 750, 'action': 'SELL', 'price': 153.82} -> id=89487 filled=0.0 status=OPEN (10 ms)
+19:02:45 +  34.18s t=118 POST SELL 750 @ 153.82 (top/top)
+19:02:45 +  34.18s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 125, 'action': 'BUY', 'price': 153.78} -> id=89489 filled=0.0 status=OPEN (8 ms)
+19:02:45 +  34.18s t=118 POST BUY 125 @ 153.78 (top/top)
+19:02:45 +  34.42s t=118 FILL SELL 542 @ 153.82 | fair  mid 153.82 bid 153.81 ask 153.83 | net_est 1750 | age 0.2s | top
+19:02:45 +  34.48s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 333, 'action': 'BUY', 'price': 153.79} -> id=89526 filled=0.0 status=OPEN (5 ms)
+19:02:45 +  34.48s t=118 POST BUY 333 @ 153.79 (top/top)
+19:02:45 +  34.72s t=118 FILL BUY 125 @ 153.82 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est 1208 | age 0.7s | top
+19:02:45 +  34.73s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 209, 'action': 'BUY', 'price': 153.81} -> id=89554 filled=0.0 status=OPEN (8 ms)
+19:02:45 +  34.73s t=118 POST BUY 209 @ 153.81 (top/top)
+19:02:46 +  35.82s t=118 FILL SELL 208 @ 153.82 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est 1333 | age 1.6s | top
+19:02:46 +  35.86s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 208, 'action': 'BUY', 'price': 153.81} -> id=89677 filled=0.0 status=OPEN (15 ms)
+19:02:46 +  35.86s t=118 POST BUY 208 @ 153.81 (top/refill)
+19:02:47 +  36.28s t=118 CANCEL BUY [(153.78, 125, 'over size cap'), (153.79, 333, 'over size cap')]
+19:02:47 +  36.30s t=118 CANCEL BUY [(153.81, 208, 'over size cap')]
+19:02:47 +  36.32s t=118 CANCEL BUY [(153.81, 209, 'over size cap')]
+19:02:47 +  36.66s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 332, 'action': 'BUY', 'price': 153.81} -> id=89741 filled=0.0 status=OPEN (5 ms)
+19:02:47 +  36.66s t=118 POST BUY 332 @ 153.81 (top/top)
+19:02:47 +  36.81s t=118 FILL BUY 209 @ 153.81 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est 1125 | age 2.1s | top
+19:02:47 +  37.13s t=118 MARK BUY 1000 @ 153.82 -> mid 153.815: -0.005/sh
+19:02:50 +  39.62s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 666, 'action': 'SELL', 'price': 153.82} -> id=90016 filled=0.0 status=OPEN (12 ms)
+19:02:50 +  39.62s t=118 POST SELL 666 @ 153.82 (top/top)
+19:02:51 +  40.17s t=118 FILL BUY 332 @ 153.81 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est 1334 | age 3.5s | top
+19:02:51 +  40.18s t=118 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 167, 'action': 'BUY', 'price': 153.81} -> id=90079 filled=0.0 status=OPEN (13 ms)
+19:02:51 +  40.18s t=118 POST BUY 167 @ 153.81 (top/top)
+19:02:52 +  41.49s t=118 MARK BUY 500 @ 153.82 -> mid 153.815: -0.005/sh
+19:02:53 +  42.92s t=118 FILL BUY 167 @ 153.81 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est 1666 | age 2.7s | top
+19:02:54 +  44.07s t=119 MARK BUY 250 @ 153.82 -> mid 153.805: -0.015/sh
+19:02:55 +  44.44s t=119 MARK SELL 542 @ 153.82 -> mid 153.805: +0.015/sh
+19:02:55 +  44.78s t=119 MARK BUY 125 @ 153.82 -> mid 153.805: -0.015/sh
+19:02:56 +  45.89s t=119 MARK SELL 208 @ 153.82 -> mid 153.805: +0.015/sh
+19:02:57 +  46.82s t=119 MARK BUY 209 @ 153.81 -> mid 153.805: -0.005/sh
+19:02:59 +  48.47s t=119 CANCEL SELL [(153.83, 1000, '4 ticks behind'), (153.83, 500, '4 ticks behind')]
+19:02:59 +  48.49s t=119 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1667, 'action': 'SELL', 'price': 153.79} -> id=90776 filled=0.0 status=OPEN (9 ms)
+19:02:59 +  48.49s t=119 POST SELL 1667 @ 153.79 (top/top)
+19:02:59 +  48.55s t=119 CANCEL SELL [(153.82, 666, 'over size cap'), (153.79, 1667, 'over size cap')]
+19:02:59 +  48.59s t=119 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 833, 'action': 'SELL', 'price': 153.79} -> id=90788 filled=0.0 status=OPEN (14 ms)
+19:02:59 +  48.59s t=119 POST SELL 833 @ 153.79 (top/top)
+19:02:59 +  48.74s t=119 CANCEL SELL [(153.79, 833, 'over size cap')]
+19:02:59 +  48.81s t=119 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 666, 'action': 'SELL', 'price': 153.79} -> id=90810 filled=0.0 status=OPEN (48 ms)
+19:02:59 +  48.81s t=119 POST SELL 666 @ 153.79 (top/top)
+19:03:00 +  50.09s t=119 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1667, 'action': 'SELL', 'price': 153.76} -> id=90973 filled=0.0 status=OPEN (19 ms)
+19:03:00 +  50.09s t=119 POST SELL 1667 @ 153.76 (top/top)
+19:03:01 +  50.22s t=119 MARK BUY 332 @ 153.81 -> mid 153.755: -0.055/sh
+19:03:01 +  50.26s t=119 CANCEL SELL [(153.79, 666, '5 ticks behind')]
+19:03:01 +  50.28s t=119 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 666, 'action': 'SELL', 'price': 153.74} -> id=90982 filled=0.0 status=OPEN (15 ms)
+19:03:01 +  50.28s t=119 POST SELL 666 @ 153.74 (top/top)
+19:03:01 +  50.54s t=119 CANCEL SELL [(153.76, 1667, '6 ticks behind'), (153.74, 666, '4 ticks behind')]
+19:03:01 +  50.56s t=119 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1916, 'action': 'SELL', 'price': 153.7} -> id=91033 filled=0.0 status=OPEN (7 ms)
+19:03:01 +  50.56s t=119 POST SELL 1916 @ 153.70 (top/top)
+19:03:03 +  52.92s t=119 MARK BUY 167 @ 153.81 -> mid 153.665: -0.145/sh
+19:03:03 +  53.04s t=119 CANCEL SELL [(153.7, 1916, '5 ticks behind')]
+19:03:03 +  53.07s t=119 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1916, 'action': 'SELL', 'price': 153.65} -> id=91252 filled=0.0 status=OPEN (10 ms)
+19:03:03 +  53.07s t=119 POST SELL 1916 @ 153.65 (top/top)
+19:03:04 +  53.50s t=120 [tick 120] NLV=303.5678 real=7.67 unreal=-359.52 | fills=9 vol=3333 edge=-0.0136/sh | net=1833 est=1833 | open=1 repl/min=21 | api/s=95 ord/s=2 429=0 loop=82ms
+19:03:18 +  67.92s t=121 CANCEL SELL [(153.65, 1916, 'too aggressive')]
+19:03:18 +  67.94s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1916, 'action': 'SELL', 'price': 153.73} -> id=92212 filled=0.0 status=OPEN (14 ms)
+19:03:18 +  67.95s t=121 POST SELL 1916 @ 153.73 (top/top)
+19:03:19 +  68.34s t=121 CANCEL SELL [(153.73, 1916, 'over size cap')]
+19:03:19 +  68.47s t=121 FILL SELL 1916 @ 153.65 | fair  mid 153.675 bid 153.63 ask 153.72 | net_est 1833 | age 15.4s | top
+19:03:19 +  68.49s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 583, 'action': 'BUY', 'price': 153.64} -> id=92306 filled=0.0 status=OPEN (5 ms)
+19:03:19 +  68.49s t=121 POST BUY 583 @ 153.64 (top/top)
+19:03:19 +  68.71s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 958, 'action': 'SELL', 'price': 153.67} -> id=92344 filled=0.0 status=OPEN (14 ms)
+19:03:19 +  68.71s t=121 POST SELL 958 @ 153.67 (top/top)
+19:03:19 +  69.03s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.65} -> id=92397 filled=0.0 status=OPEN (18 ms)
+19:03:19 +  69.03s t=121 POST BUY 375 @ 153.65 (top/top)
+19:03:19 +  69.04s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 584, 'action': 'SELL', 'price': 153.68} -> id=92398 filled=0.0 status=OPEN (25 ms)
+19:03:19 +  69.04s t=121 POST SELL 584 @ 153.68 (top/top)
+19:03:20 +  69.36s t=121 FILL BUY 583 @ 153.64 | fair  mid 153.655 bid 153.65 ask 153.66 | net_est -83 | age 0.9s | top
+19:03:20 +  69.49s t=121 CANCEL SELL [(153.68, 584, 'over size cap')]
+19:03:20 +  69.54s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.65} -> id=92458 filled=0.0 status=OPEN (51 ms)
+19:03:20 +  69.54s t=121 POST BUY 375 @ 153.65 (top/refill)
+19:03:20 +  69.56s t=121 CANCEL SELL [(153.67, 958, 'over size cap')]
+19:03:20 +  69.63s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 416, 'action': 'SELL', 'price': 153.67} -> id=92475 filled=0.0 status=OPEN (45 ms)
+19:03:20 +  69.63s t=121 POST SELL 416 @ 153.67 (top/top)
+19:03:20 +  69.63s t=121 FILL SELL 958 @ 153.67 | fair  mid 153.655 bid 153.65 ask 153.66 | net_est 500 | age 0.9s | top
+19:03:20 +  69.82s t=121 FILL BUY 375 @ 153.65 | fair  mid 153.655 bid 153.65 ask 153.66 | net_est -458 | age 0.8s | top
+19:03:20 +  69.87s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 958, 'action': 'SELL', 'price': 153.66} -> id=92501 filled=0.0 status=OPEN (26 ms)
+19:03:20 +  69.87s t=121 POST SELL 958 @ 153.66 (top/top)
+19:03:20 +  69.87s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 208, 'action': 'BUY', 'price': 153.64} -> id=92502 filled=0.0 status=OPEN (30 ms)
+19:03:20 +  69.87s t=121 POST BUY 208 @ 153.64 (top/top)
+19:03:21 +  70.18s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 502, 'action': 'SELL', 'price': 153.65} -> id=92544 filled=0.0 status=OPEN (28 ms)
+19:03:21 +  70.18s t=121 POST SELL 502 @ 153.65 (top/top)
+19:03:21 +  70.22s t=121 FILL BUY 375 @ 153.65 | fair  mid 153.65 bid 153.64 ask 153.66 | net_est -83 | age 0.7s | refill
+19:03:21 +  70.23s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 854, 'action': 'BUY', 'price': 153.63} -> id=92558 filled=0.0 status=OPEN (8 ms)
+19:03:21 +  70.23s t=121 POST BUY 854 @ 153.63 (top/top)
+19:03:21 +  70.53s t=121 FILL SELL 416 @ 153.67 | fair  mid 153.655 bid 153.65 ask 153.66 | net_est 292 | age 0.9s | top
+19:03:21 +  70.53s t=121 FILL BUY 208 @ 153.64 | fair  mid 153.655 bid 153.65 ask 153.66 | net_est 292 | age 0.7s | top
+19:03:21 +  70.56s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 958, 'action': 'BUY', 'price': 153.64} -> id=92600 filled=0.0 status=OPEN (21 ms)
+19:03:21 +  70.56s t=121 POST BUY 958 @ 153.64 (top/top)
+19:03:21 +  70.65s t=121 CANCEL SELL [(153.66, 958, 'over size cap')]
+19:03:21 +  70.67s t=121 CANCEL SELL [(153.65, 502, 'over size cap')]
+19:03:22 +  71.19s t=121 FILL SELL 502 @ 153.65 | fair  mid 153.645 bid 153.64 ask 153.65 | net_est 84 | age 1.0s | top
+19:03:22 +  71.19s t=121 CANCEL BUY [(153.63, 854, 'over size cap'), (153.64, 958, 'over size cap')]
+19:03:22 +  71.20s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 791, 'action': 'SELL', 'price': 153.65} -> id=92695 filled=0.0 status=OPEN (13 ms)
+19:03:22 +  71.20s t=121 POST SELL 791 @ 153.65 (top/top)
+19:03:22 +  71.21s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 918, 'action': 'BUY', 'price': 153.64} -> id=92697 filled=0.0 status=OPEN (7 ms)
+19:03:22 +  71.21s t=121 POST BUY 918 @ 153.64 (top/top)
+19:03:22 +  71.65s t=121 FILL BUY 789 @ 153.64 | fair  mid 153.645 bid 153.64 ask 153.65 | net_est -418 | age 0.4s | top
+19:03:22 +  71.71s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 685, 'action': 'BUY', 'price': 153.64} -> id=92771 filled=0.0 status=OPEN (36 ms)
+19:03:22 +  71.71s t=121 POST BUY 685 @ 153.64 (top/refill)
+19:03:22 +  72.09s t=121 FILL BUY 129 @ 153.64 | fair  mid 153.645 bid 153.64 ask 153.65 | net_est 371 | age 0.9s | top
+19:03:23 +  72.95s t=121 FILL SELL 791 @ 153.65 | fair  mid 153.645 bid 153.64 ask 153.65 | net_est 500 | age 1.7s | top
+19:03:23 +  72.95s t=121 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 854, 'action': 'SELL', 'price': 153.65} -> id=92892 filled=0.0 status=OPEN (7 ms)
+19:03:23 +  72.95s t=121 POST SELL 854 @ 153.65 (top/top)
+19:03:24 +  73.59s t=122 FILL BUY 685 @ 153.64 | fair  mid 153.645 bid 153.64 ask 153.65 | net_est -291 | age 1.9s | refill
+19:03:24 +  73.65s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 802, 'action': 'BUY', 'price': 153.64} -> id=92940 filled=0.0 status=OPEN (56 ms)
+19:03:24 +  73.65s t=122 POST BUY 802 @ 153.64 (top/top)
+19:03:27 +  76.50s t=122 FILL BUY 397 @ 153.64 | fair  mid 153.645 bid 153.64 ask 153.65 | net_est 394 | age 2.9s | top
+19:03:27 +  76.51s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 199, 'action': 'BUY', 'price': 153.64} -> id=93113 filled=0.0 status=OPEN (12 ms)
+19:03:27 +  76.51s t=122 POST BUY 199 @ 153.64 (top/refill)
+19:03:27 +  76.51s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 437, 'action': 'SELL', 'price': 153.65} -> id=93114 filled=0.0 status=OPEN (11 ms)
+19:03:27 +  76.51s t=122 POST SELL 437 @ 153.65 (top/refill)
+19:03:28 +  77.79s t=122 CANCEL BUY [(153.64, 405, 'too aggressive'), (153.64, 199, 'too aggressive')]
+19:03:28 +  77.84s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 405, 'action': 'SELL', 'price': 153.64} -> id=93214 filled=0.0 status=OPEN (53 ms)
+19:03:28 +  77.84s t=122 POST SELL 405 @ 153.64 (top/top)
+19:03:28 +  77.85s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 402, 'action': 'BUY', 'price': 153.61} -> id=93216 filled=0.0 status=OPEN (19 ms)
+19:03:28 +  77.87s t=122 POST BUY 402 @ 153.61 (top/top)
+19:03:28 +  77.92s t=122 FILL BUY 405 @ 153.64 | fair  mid 153.64 bid 153.63 ask 153.65 | net_est 791 | age 4.3s | top
+19:03:29 +  78.59s t=122 MARK SELL 1916 @ 153.65 -> mid 153.635: +0.015/sh
+19:03:29 +  78.66s t=122 FILL BUY 199 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1196 | age 2.2s | refill
+19:03:29 +  78.69s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 203, 'action': 'BUY', 'price': 153.63} -> id=93283 filled=0.0 status=OPEN (24 ms)
+19:03:29 +  78.69s t=122 POST BUY 203 @ 153.63 (top/top)
+19:03:30 +  79.47s t=122 MARK BUY 583 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:30 +  79.73s t=122 MARK SELL 958 @ 153.67 -> mid 153.635: +0.035/sh
+19:03:30 +  79.79s t=122 FILL SELL 405 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1395 | age 1.9s | top
+19:03:30 +  79.80s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 302, 'action': 'BUY', 'price': 153.63} -> id=93385 filled=0.0 status=OPEN (7 ms)
+19:03:30 +  79.80s t=122 POST BUY 302 @ 153.63 (top/refill)
+19:03:30 +  79.82s t=122 MARK BUY 375 @ 153.65 -> mid 153.635: -0.015/sh
+19:03:31 +  80.23s t=122 MARK BUY 375 @ 153.65 -> mid 153.635: -0.015/sh
+19:03:31 +  80.53s t=122 MARK SELL 416 @ 153.67 -> mid 153.635: +0.035/sh
+19:03:31 +  80.53s t=122 MARK BUY 208 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:32 +  81.24s t=122 MARK SELL 502 @ 153.65 -> mid 153.635: +0.015/sh
+19:03:32 +  81.66s t=122 MARK BUY 789 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:32 +  82.10s t=122 MARK BUY 129 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:33 +  82.67s t=122 CANCEL BUY [(153.61, 402, 'over size cap')]
+19:03:33 +  82.69s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 402, 'action': 'SELL', 'price': 153.64} -> id=93524 filled=0.0 status=OPEN (18 ms)
+19:03:33 +  82.69s t=122 POST SELL 402 @ 153.64 (top/top)
+19:03:33 +  82.70s t=122 CANCEL BUY [(153.63, 302, 'over size cap')]
+19:03:33 +  82.73s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 200, 'action': 'BUY', 'price': 153.63} -> id=93528 filled=0.0 status=OPEN (19 ms)
+19:03:33 +  82.73s t=122 POST BUY 200 @ 153.63 (top/refill)
+19:03:33 +  82.73s t=122 CANCEL BUY [(153.63, 200, 'over size cap'), (153.63, 203, 'over size cap')]
+19:03:33 +  82.79s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 103, 'action': 'BUY', 'price': 153.63} -> id=93531 filled=0.0 status=OPEN (13 ms)
+19:03:33 +  82.79s t=122 POST BUY 103 @ 153.63 (top/top)
+19:03:33 +  82.95s t=122 MARK SELL 791 @ 153.65 -> mid 153.635: +0.015/sh
+19:03:34 +  83.26s t=122 FILL BUY 203 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 990 | age 4.6s | top
+19:03:34 +  83.31s t=122 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 300, 'action': 'BUY', 'price': 153.63} -> id=93565 filled=0.0 status=OPEN (45 ms)
+19:03:34 +  83.31s t=122 POST BUY 300 @ 153.63 (top/refill)
+19:03:34 +  83.63s t=123 MARK BUY 685 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:36 +  85.34s t=123 FILL BUY 103 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1193 | age 2.5s | top
+19:03:36 +  85.34s t=123 FILL BUY 300 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1193 | age 2.0s | refill
+19:03:36 +  85.35s t=123 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 201, 'action': 'BUY', 'price': 153.63} -> id=93711 filled=0.0 status=OPEN (6 ms)
+19:03:36 +  85.35s t=123 POST BUY 201 @ 153.63 (top/top)
+19:03:37 +  86.50s t=123 MARK BUY 397 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:38 +  87.93s t=123 MARK BUY 405 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:39 +  88.67s t=123 MARK BUY 199 @ 153.64 -> mid 153.635: -0.005/sh
+19:03:40 +  89.87s t=123 MARK SELL 405 @ 153.64 -> mid 153.635: +0.005/sh
+19:03:44 +  93.27s t=123 MARK BUY 203 @ 153.63 -> mid 153.635: +0.005/sh
+19:03:45 +  94.38s t=124 FILL SELL 400 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1596 | age 11.7s | top
+19:03:45 +  94.47s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 803, 'action': 'SELL', 'price': 153.64} -> id=94174 filled=0.0 status=OPEN (61 ms)
+19:03:45 +  94.47s t=124 POST SELL 803 @ 153.64 (top/refill)
+19:03:45 +  94.51s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 201, 'action': 'BUY', 'price': 153.63} -> id=94181 filled=0.0 status=OPEN (7 ms)
+19:03:45 +  94.51s t=124 POST BUY 201 @ 153.63 (top/refill)
+19:03:45 +  94.87s t=124 CANCEL SELL [(153.65, 437, 'over size cap')]
+19:03:45 +  94.92s t=124 CANCEL SELL [(153.65, 854, 'over size cap')]
+19:03:45 +  94.94s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 454, 'action': 'SELL', 'price': 153.64} -> id=94208 filled=0.0 status=OPEN (7 ms)
+19:03:45 +  94.94s t=124 POST SELL 454 @ 153.64 (top/refill)
+19:03:46 +  95.35s t=124 MARK BUY 103 @ 153.63 -> mid 153.635: +0.005/sh
+19:03:46 +  95.35s t=124 MARK BUY 300 @ 153.63 -> mid 153.635: +0.005/sh
+19:03:46 +  96.05s t=124 FILL SELL 2 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1196 | age 13.4s | top
+19:03:48 +  97.80s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 440, 'action': 'SELL', 'price': 153.64} -> id=94362 filled=0.0 status=OPEN (10 ms)
+19:03:48 +  97.80s t=124 POST SELL 440 @ 153.64 (top/refill)
+19:03:49 +  98.37s t=124 FILL BUY 201 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1194 | age 13.0s | top
+19:03:49 +  98.38s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 101, 'action': 'BUY', 'price': 153.63} -> id=94391 filled=0.0 status=OPEN (13 ms)
+19:03:49 +  98.38s t=124 POST BUY 101 @ 153.63 (top/refill)
+19:03:51 + 100.28s t=124 FILL SELL 210 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1395 | age 5.8s | refill
+19:03:51 + 100.37s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 105, 'action': 'BUY', 'price': 153.63} -> id=94470 filled=0.0 status=OPEN (11 ms)
+19:03:51 + 100.38s t=124 POST BUY 105 @ 153.63 (top/refill)
+19:03:52 + 101.63s t=124 FILL SELL 593 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1185 | age 7.2s | refill
+19:03:52 + 101.63s t=124 FILL SELL 454 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 1185 | age 6.7s | refill
+19:03:52 + 101.70s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 198, 'action': 'SELL', 'price': 153.64} -> id=94546 filled=0.0 status=OPEN (5 ms)
+19:03:52 + 101.70s t=124 POST SELL 198 @ 153.64 (top/refill)
+19:03:52 + 101.71s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 524, 'action': 'BUY', 'price': 153.63} -> id=94547 filled=0.0 status=OPEN (70 ms)
+19:03:52 + 101.71s t=124 POST BUY 524 @ 153.63 (top/refill)
+19:03:54 + 103.22s t=124 FILL SELL 440 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 138 | age 5.4s | refill
+19:03:54 + 103.22s t=124 CANCEL BUY [(153.63, 524, 'over size cap')]
+19:03:54 + 103.24s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 651, 'action': 'SELL', 'price': 153.64} -> id=94622 filled=0.0 status=OPEN (13 ms)
+19:03:54 + 103.29s t=124 POST SELL 651 @ 153.64 (top/refill)
+19:03:54 + 103.30s t=124 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 395, 'action': 'BUY', 'price': 153.63} -> id=94625 filled=0.0 status=OPEN (63 ms)
+19:03:54 + 103.30s t=124 POST BUY 395 @ 153.63 (top/refill)
+19:03:55 + 104.41s t=125 MARK SELL 400 @ 153.64 -> mid 153.635: +0.005/sh
+19:03:56 + 106.08s t=125 MARK SELL 2 @ 153.64 -> mid 153.635: +0.005/sh
+19:03:57 + 107.01s t=125 FILL BUY 201 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -302 | age 12.5s | refill
+19:03:59 + 108.46s t=125 FILL BUY 101 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -101 | age 10.1s | refill
+19:03:59 + 108.47s t=125 FILL BUY 105 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -101 | age 8.1s | refill
+19:03:59 + 108.47s t=125 MARK BUY 201 @ 153.63 -> mid 153.635: +0.005/sh
+19:03:59 + 108.47s t=125 CANCEL SELL [(153.64, 651, 'over size cap')]
+19:03:59 + 108.49s t=125 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 552, 'action': 'BUY', 'price': 153.63} -> id=94972 filled=0.0 status=OPEN (6 ms)
+19:03:59 + 108.49s t=125 POST BUY 552 @ 153.63 (top/refill)
+19:03:59 + 108.50s t=125 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 407, 'action': 'SELL', 'price': 153.64} -> id=94973 filled=0.0 status=OPEN (6 ms)
+19:03:59 + 108.50s t=125 POST SELL 407 @ 153.64 (top/refill)
+19:04:01 + 110.28s t=125 MARK SELL 210 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:01 + 110.55s t=125 FILL SELL 198 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est 105 | age 8.8s | refill
+19:04:01 + 110.55s t=125 CANCEL BUY [(153.63, 552, 'over size cap')]
+19:04:01 + 110.58s t=125 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 546, 'action': 'SELL', 'price': 153.64} -> id=95121 filled=0.0 status=OPEN (17 ms)
+19:04:01 + 110.58s t=125 POST SELL 546 @ 153.64 (top/refill)
+19:04:01 + 110.58s t=125 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 198, 'action': 'BUY', 'price': 153.63} -> id=95122 filled=0.0 status=OPEN (11 ms)
+19:04:01 + 110.58s t=125 POST BUY 198 @ 153.63 (top/refill)
+19:04:02 + 111.66s t=125 MARK SELL 593 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:02 + 111.66s t=125 MARK SELL 454 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:04 + 113.22s t=125 MARK SELL 440 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:04 + 113.89s t=126 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 407, 'action': 'BUY', 'price': 153.63} -> id=95345 filled=0.0 status=OPEN (12 ms)
+19:04:04 + 113.89s t=126 POST BUY 407 @ 153.63 (top/refill)
+19:04:05 + 114.38s t=126 FILL SELL 407 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -93 | age 5.9s | refill
+19:04:05 + 114.51s t=126 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 204, 'action': 'SELL', 'price': 153.64} -> id=95377 filled=0.0 status=OPEN (8 ms)
+19:04:05 + 114.51s t=126 POST SELL 204 @ 153.64 (top/refill)
+19:04:07 + 116.51s t=126 FILL BUY 395 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -500 | age 13.2s | refill
+19:04:07 + 117.02s t=126 MARK BUY 201 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:08 + 117.19s t=126 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 546, 'action': 'BUY', 'price': 153.63} -> id=95553 filled=0.0 status=OPEN (6 ms)
+19:04:08 + 117.19s t=126 POST BUY 546 @ 153.63 (top/refill)
+19:04:08 + 117.70s t=126 FILL SELL 546 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -105 | age 7.1s | refill
+19:04:08 + 117.72s t=126 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 470, 'action': 'SELL', 'price': 153.64} -> id=95595 filled=0.0 status=OPEN (12 ms)
+19:04:08 + 117.72s t=126 POST SELL 470 @ 153.64 (top/refill)
+19:04:09 + 118.49s t=126 MARK BUY 101 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:09 + 118.49s t=126 MARK BUY 105 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:11 + 120.37s t=126 FILL SELL 204 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -651 | age 5.9s | refill
+19:04:11 + 120.56s t=126 MARK SELL 198 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:12 + 121.26s t=126 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 511, 'action': 'BUY', 'price': 153.63} -> id=95768 filled=0.0 status=OPEN (30 ms)
+19:04:12 + 121.26s t=126 POST BUY 511 @ 153.63 (top/refill)
+19:04:12 + 121.86s t=126 FILL SELL 470 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -855 | age 4.1s | refill
+19:04:12 + 121.87s t=126 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 337, 'action': 'SELL', 'price': 153.64} -> id=95793 filled=0.0 status=OPEN (8 ms)
+19:04:12 + 121.87s t=126 POST SELL 337 @ 153.64 (top/top)
+19:04:15 + 124.41s t=127 MARK SELL 407 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:16 + 126.12s t=127 FILL SELL 337 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1325 | age 4.3s | top
+19:04:17 + 126.14s t=127 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 169, 'action': 'SELL', 'price': 153.64} -> id=96077 filled=0.0 status=OPEN (13 ms)
+19:04:17 + 126.14s t=127 POST SELL 169 @ 153.64 (top/top)
+19:04:17 + 126.55s t=127 MARK BUY 395 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:17 + 126.98s t=127 FILL BUY 198 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1662 | age 16.4s | refill
+19:04:18 + 127.72s t=127 MARK SELL 546 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:20 + 129.33s t=127 FILL SELL 169 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1464 | age 3.2s | top
+19:04:20 + 129.34s t=127 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 183, 'action': 'SELL', 'price': 153.64} -> id=96302 filled=0.0 status=OPEN (15 ms)
+19:04:20 + 129.35s t=127 POST SELL 183 @ 153.64 (top/top)
+19:04:21 + 130.38s t=127 MARK SELL 204 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:22 + 131.87s t=127 MARK SELL 470 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:24 + 133.59s t=128 FILL SELL 183 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1633 | age 4.2s | top
+19:04:27 + 136.14s t=128 MARK SELL 337 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:27 + 136.32s t=128 FILL BUY 407 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1816 | age 22.4s | refill
+19:04:27 + 136.34s t=128 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 295, 'action': 'SELL', 'price': 153.64} -> id=96818 filled=0.0 status=OPEN (13 ms)
+19:04:27 + 136.34s t=128 POST SELL 295 @ 153.64 (top/top)
+19:04:27 + 136.35s t=128 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 647, 'action': 'BUY', 'price': 153.63} -> id=96816 filled=0.0 status=OPEN (20 ms)
+19:04:27 + 136.35s t=128 POST BUY 647 @ 153.63 (top/refill)
+19:04:27 + 137.06s t=128 MARK BUY 198 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:28 + 137.39s t=128 FILL BUY 546 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1409 | age 20.2s | refill
+19:04:28 + 137.39s t=128 FILL BUY 511 @ 153.63 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1409 | age 16.1s | refill
+19:04:28 + 137.40s t=128 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 529, 'action': 'SELL', 'price': 153.64} -> id=96853 filled=0.0 status=OPEN (5 ms)
+19:04:28 + 137.40s t=128 POST SELL 529 @ 153.64 (top/refill)
+19:04:30 + 139.35s t=128 MARK SELL 169 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:30 + 139.39s t=128 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 941, 'action': 'BUY', 'price': 153.63} -> id=96980 filled=0.0 status=OPEN (17 ms)
+19:04:30 + 139.40s t=128 POST BUY 941 @ 153.63 (top/refill)
+19:04:30 + 139.95s t=128 FILL SELL 295 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -352 | age 3.6s | top
+19:04:30 + 139.95s t=128 FILL SELL 529 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -352 | age 2.6s | refill
+19:04:30 + 139.97s t=128 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 412, 'action': 'SELL', 'price': 153.64} -> id=97007 filled=0.0 status=OPEN (11 ms)
+19:04:30 + 139.97s t=128 POST SELL 412 @ 153.64 (top/top)
+19:04:34 + 143.59s t=129 MARK SELL 183 @ 153.64 -> mid 153.635: +0.005/sh
+19:04:36 + 145.24s t=129 FILL SELL 412 @ 153.64 | fair  mid 153.635 bid 153.63 ask 153.64 | net_est -1176 | age 5.3s | top
+19:04:36 + 145.27s t=129 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 205, 'action': 'SELL', 'price': 153.64} -> id=97251 filled=0.0 status=OPEN (21 ms)
+19:04:36 + 145.27s t=129 POST SELL 205 @ 153.64 (top/top)
+19:04:37 + 146.33s t=129 MARK BUY 407 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:38 + 147.40s t=129 MARK BUY 546 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:38 + 147.40s t=129 MARK BUY 511 @ 153.63 -> mid 153.635: +0.005/sh
+19:04:38 + 147.80s t=129 CANCEL SELL [(153.64, 205, 'too aggressive')]
+19:04:38 + 147.82s t=129 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 705, 'action': 'BUY', 'price': 153.64} -> id=97381 filled=0.0 status=OPEN (14 ms)
+19:04:38 + 147.82s t=129 POST BUY 705 @ 153.64 (top/top)
+19:04:38 + 147.83s t=129 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 103, 'action': 'SELL', 'price': 153.69} -> id=97385 filled=0.0 status=OPEN (10 ms)
+19:04:38 + 147.83s t=129 POST SELL 103 @ 153.69 (top/top)
+19:04:39 + 148.29s t=129 CANCEL SELL [(153.69, 103, '4 ticks behind')]
+19:04:39 + 148.39s t=129 FILL SELL 205 @ 153.64 | fair  mid 153.645 bid 153.64 ask 153.65 | net_est -1588 | age 3.1s | top
+19:04:39 + 148.41s t=129 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 103, 'action': 'SELL', 'price': 153.65} -> id=97429 filled=0.0 status=OPEN (12 ms)
+19:04:39 + 148.41s t=129 POST SELL 103 @ 153.65 (top/top)
+19:04:40 + 149.97s t=129 MARK SELL 295 @ 153.64 -> mid 153.645: -0.005/sh
+19:04:40 + 149.97s t=129 MARK SELL 529 @ 153.64 -> mid 153.645: -0.005/sh
+19:04:42 + 152.12s t=129 CANCEL SELL [(153.65, 103, 'too aggressive')]
+19:04:43 + 152.14s t=129 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 103, 'action': 'SELL', 'price': 153.7} -> id=97675 filled=0.0 status=OPEN (13 ms)
+19:04:43 + 152.14s t=129 POST SELL 103 @ 153.70 (top/top)
+19:04:43 + 152.56s t=129 CANCEL SELL [(153.7, 103, '4 ticks behind')]
+19:04:43 + 152.74s t=129 FILL SELL 103 @ 153.65 | fair  mid 153.655 bid 153.65 ask 153.66 | net_est -1793 | age 4.3s | top
+19:04:46 + 155.19s t=130 CANCEL BUY [(153.63, 647, '4 ticks behind'), (153.63, 941, '4 ticks behind')]
+19:04:46 + 155.29s t=130 MARK SELL 412 @ 153.64 -> mid 153.670: -0.030/sh
+19:04:46 + 155.31s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1691, 'action': 'BUY', 'price': 153.67} -> id=97921 filled=0.0 status=OPEN (19 ms)
+19:04:46 + 155.32s t=130 POST BUY 1691 @ 153.67 (top/top)
+19:04:46 + 155.46s t=130 CANCEL BUY [(153.64, 705, 'over size cap'), (153.67, 1691, 'over size cap')]
+19:04:46 + 155.48s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 808, 'action': 'BUY', 'price': 153.67} -> id=97940 filled=0.0 status=OPEN (12 ms)
+19:04:46 + 155.48s t=130 POST BUY 808 @ 153.67 (top/top)
+19:04:46 + 155.83s t=130 FILL BUY 1217 @ 153.67 | fair  mid 153.68 bid 153.67 ask 153.69 | net_est -1896 | age 0.5s | top
+19:04:46 + 155.85s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1588, 'action': 'BUY', 'price': 153.68} -> id=97972 filled=0.0 status=OPEN (12 ms)
+19:04:46 + 155.85s t=130 POST BUY 1588 @ 153.68 (top/top)
+19:04:46 + 155.87s t=130 CANCEL BUY [(153.67, 808, 'over size cap'), (153.68, 1588, 'over size cap')]
+19:04:46 + 155.90s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 660, 'action': 'SELL', 'price': 153.7} -> id=97974 filled=0.0 status=OPEN (17 ms)
+19:04:46 + 155.90s t=130 POST SELL 660 @ 153.70 (top/top)
+19:04:46 + 155.91s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1179, 'action': 'BUY', 'price': 153.68} -> id=97975 filled=0.0 status=OPEN (15 ms)
+19:04:46 + 155.91s t=130 POST BUY 1179 @ 153.68 (top/top)
+19:04:47 + 156.19s t=130 CANCEL SELL [(153.7, 660, 'too aggressive')]
+19:04:47 + 156.24s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'SELL', 'price': 153.74} -> id=98004 filled=0.0 status=OPEN (16 ms)
+19:04:47 + 156.24s t=130 POST SELL 330 @ 153.74 (top/top)
+19:04:47 + 156.38s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 660, 'action': 'BUY', 'price': 153.69} -> id=98027 filled=0.0 status=OPEN (53 ms)
+19:04:47 + 156.38s t=130 POST BUY 660 @ 153.69 (top/top)
+19:04:47 + 156.67s t=130 CANCEL SELL [(153.74, 330, 'over size cap')]
+19:04:47 + 156.80s t=130 FILL SELL 660 @ 153.70 | fair  mid 153.705 bid 153.7 ask 153.71 | net_est -679 | age 0.9s | top
+19:04:47 + 156.82s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'SELL', 'price': 153.73} -> id=98067 filled=0.0 status=OPEN (14 ms)
+19:04:47 + 156.82s t=130 POST SELL 330 @ 153.73 (top/top)
+19:04:47 + 156.98s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'SELL', 'price': 153.74} -> id=98080 filled=0.0 status=OPEN (30 ms)
+19:04:47 + 156.98s t=130 POST SELL 330 @ 153.74 (top/top)
+19:04:48 + 157.23s t=130 CANCEL BUY [(153.68, 1179, '4 ticks behind')]
+19:04:48 + 157.23s t=130 CANCEL SELL [(153.73, 330, 'too aggressive'), (153.74, 330, 'too aggressive')]
+19:04:48 + 157.24s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1179, 'action': 'BUY', 'price': 153.72} -> id=98114 filled=0.0 status=OPEN (6 ms)
+19:04:48 + 157.24s t=130 POST BUY 1179 @ 153.72 (top/top)
+19:04:48 + 157.27s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'SELL', 'price': 153.77} -> id=98120 filled=0.0 status=OPEN (10 ms)
+19:04:48 + 157.27s t=130 POST SELL 330 @ 153.77 (top/top)
+19:04:48 + 157.28s t=130 CANCEL BUY [(153.69, 660, 'over size cap'), (153.72, 1179, 'over size cap')]
+19:04:48 + 157.29s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 660, 'action': 'BUY', 'price': 153.72} -> id=98129 filled=0.0 status=OPEN (6 ms)
+19:04:48 + 157.29s t=130 POST BUY 660 @ 153.72 (top/top)
+19:04:48 + 157.48s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'SELL', 'price': 153.75} -> id=98145 filled=0.0 status=OPEN (11 ms)
+19:04:48 + 157.49s t=130 POST SELL 330 @ 153.75 (top/top)
+19:04:48 + 158.02s t=130 FILL BUY 660 @ 153.72 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est -1339 | age 0.7s | top
+19:04:48 + 158.02s t=130 FILL BUY 1179 @ 153.72 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est -1339 | age 0.8s | top
+19:04:48 + 158.03s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 750, 'action': 'BUY', 'price': 153.73} -> id=98192 filled=0.0 status=OPEN (7 ms)
+19:04:48 + 158.03s t=130 POST BUY 750 @ 153.73 (top/top)
+19:04:48 + 158.04s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 340, 'action': 'SELL', 'price': 153.76} -> id=98194 filled=0.0 status=OPEN (7 ms)
+19:04:48 + 158.04s t=130 POST SELL 340 @ 153.76 (top/top)
+19:04:49 + 158.41s t=130 MARK SELL 205 @ 153.64 -> mid 153.735: -0.095/sh
+19:04:51 + 160.32s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 750, 'action': 'SELL', 'price': 153.74} -> id=98354 filled=0.0 status=OPEN (38 ms)
+19:04:51 + 160.32s t=130 POST SELL 750 @ 153.74 (top/top)
+19:04:51 + 160.85s t=130 FILL BUY 750 @ 153.73 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 500 | age 2.8s | top
+19:04:51 + 160.86s t=130 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.73} -> id=98396 filled=0.0 status=OPEN (7 ms)
+19:04:51 + 160.86s t=130 POST BUY 375 @ 153.73 (top/top)
+19:04:53 + 162.78s t=130 MARK SELL 103 @ 153.65 -> mid 153.735: -0.085/sh
+19:04:55 + 164.43s t=131 FILL SELL 750 @ 153.74 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 1250 | age 4.1s | top
+19:04:55 + 164.44s t=131 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.73} -> id=98506 filled=0.0 status=OPEN (5 ms)
+19:04:55 + 164.44s t=131 POST BUY 375 @ 153.73 (top/refill)
+19:04:56 + 165.88s t=131 MARK BUY 1217 @ 153.67 -> mid 153.735: +0.065/sh
+19:04:57 + 166.81s t=131 MARK SELL 660 @ 153.70 -> mid 153.735: -0.035/sh
+19:04:58 + 168.06s t=131 MARK BUY 660 @ 153.72 -> mid 153.735: +0.015/sh
+19:04:58 + 168.06s t=131 MARK BUY 1179 @ 153.72 -> mid 153.735: +0.015/sh
+19:05:01 + 170.29s t=131 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'SELL', 'price': 153.74} -> id=98825 filled=0.0 status=OPEN (14 ms)
+19:05:01 + 170.29s t=131 POST SELL 375 @ 153.74 (top/top)
+19:05:01 + 170.78s t=131 FILL BUY 375 @ 153.73 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 500 | age 9.9s | top
+19:05:01 + 170.79s t=131 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 187, 'action': 'BUY', 'price': 153.73} -> id=98858 filled=0.0 status=OPEN (7 ms)
+19:05:01 + 170.79s t=131 POST BUY 187 @ 153.73 (top/refill)
+19:05:01 + 170.86s t=131 MARK BUY 750 @ 153.73 -> mid 153.735: +0.005/sh
+19:05:05 + 174.48s t=132 MARK SELL 750 @ 153.74 -> mid 153.735: +0.005/sh
+19:05:08 + 177.73s t=132 FILL BUY 375 @ 153.73 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 875 | age 13.3s | refill
+19:05:08 + 177.76s t=132 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 188, 'action': 'BUY', 'price': 153.73} -> id=99243 filled=0.0 status=OPEN (31 ms)
+19:05:08 + 177.76s t=132 POST BUY 188 @ 153.73 (top/refill)
+19:05:10 + 179.24s t=132 FILL SELL 375 @ 153.74 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 1250 | age 9.0s | top
+19:05:10 + 179.25s t=132 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 562, 'action': 'SELL', 'price': 153.74} -> id=99293 filled=0.0 status=OPEN (8 ms)
+19:05:10 + 179.25s t=132 POST SELL 562 @ 153.74 (top/top)
+19:05:10 + 179.74s t=132 FILL BUY 187 @ 153.73 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 875 | age 9.0s | refill
+19:05:10 + 179.77s t=132 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 281, 'action': 'BUY', 'price': 153.73} -> id=99328 filled=0.0 status=OPEN (16 ms)
+19:05:10 + 179.77s t=132 POST BUY 281 @ 153.73 (top/refill)
+19:05:11 + 180.78s t=132 MARK BUY 375 @ 153.73 -> mid 153.735: +0.005/sh
+19:05:15 + 184.35s t=133 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 469, 'action': 'SELL', 'price': 153.74} -> id=99635 filled=0.0 status=OPEN (31 ms)
+19:05:15 + 184.35s t=133 POST SELL 469 @ 153.74 (top/refill)
+19:05:15 + 184.90s t=133 FILL BUY 188 @ 153.73 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 1062 | age 7.1s | refill
+19:05:15 + 184.90s t=133 FILL BUY 281 @ 153.73 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 1062 | age 5.1s | refill
+19:05:15 + 184.94s t=133 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 234, 'action': 'BUY', 'price': 153.73} -> id=99665 filled=0.0 status=OPEN (6 ms)
+19:05:15 + 184.94s t=133 POST BUY 234 @ 153.73 (top/top)
+19:05:17 + 186.71s t=133 FILL SELL 562 @ 153.74 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 1531 | age 7.5s | top
+19:05:17 + 186.72s t=133 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 281, 'action': 'BUY', 'price': 153.73} -> id=99801 filled=0.0 status=OPEN (5 ms)
+19:05:17 + 186.72s t=133 POST BUY 281 @ 153.73 (top/refill)
+19:05:18 + 187.75s t=133 MARK BUY 375 @ 153.73 -> mid 153.735: +0.005/sh
+19:05:20 + 189.25s t=133 MARK SELL 375 @ 153.74 -> mid 153.735: +0.005/sh
+19:05:20 + 189.86s t=133 MARK BUY 187 @ 153.73 -> mid 153.735: +0.005/sh
+19:05:21 + 190.16s t=133 FILL BUY 234 @ 153.73 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 969 | age 5.2s | top
+19:05:21 + 190.17s t=133 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 117, 'action': 'BUY', 'price': 153.73} -> id=100005 filled=0.0 status=OPEN (7 ms)
+19:05:21 + 190.17s t=133 POST BUY 117 @ 153.73 (top/refill)
+19:05:21 + 190.89s t=133 FILL SELL 469 @ 153.74 | fair  mid 153.735 bid 153.73 ask 153.74 | net_est 1203 | age 6.5s | refill
+19:05:21 + 190.91s t=133 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 235, 'action': 'BUY', 'price': 153.73} -> id=100031 filled=0.0 status=OPEN (7 ms)
+19:05:21 + 190.91s t=133 POST BUY 235 @ 153.73 (top/refill)
+19:05:25 + 194.92s t=134 MARK BUY 188 @ 153.73 -> mid 153.735: +0.005/sh
+19:05:25 + 194.92s t=134 MARK BUY 281 @ 153.73 -> mid 153.735: +0.005/sh
+19:05:27 + 196.71s t=134 MARK SELL 562 @ 153.74 -> mid 153.735: +0.005/sh
+19:05:28 + 197.20s t=134 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 633, 'action': 'BUY', 'price': 153.74} -> id=100487 filled=0.0 status=OPEN (7 ms)
+19:05:28 + 197.20s t=134 POST BUY 633 @ 153.74 (top/top)
+19:05:28 + 197.44s t=134 FILL BUY 226 @ 153.74 | fair  mid 153.745 bid 153.74 ask 153.75 | net_est 734 | age 0.2s | top
+19:05:28 + 197.48s t=134 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 460, 'action': 'SELL', 'price': 153.75} -> id=100512 filled=0.0 status=OPEN (35 ms)
+19:05:28 + 197.48s t=134 POST SELL 460 @ 153.75 (top/refill)
+19:05:28 + 198.01s t=134 FILL SELL 330 @ 153.75 | fair  mid 153.745 bid 153.74 ask 153.75 | net_est 960 | age 40.5s | top
+19:05:28 + 198.01s t=134 FILL BUY 407 @ 153.74 | fair  mid 153.745 bid 153.74 ask 153.75 | net_est 960 | age 0.8s | top
+19:05:28 + 198.04s t=134 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'BUY', 'price': 153.74} -> id=100568 filled=0.0 status=OPEN (21 ms)
+19:05:28 + 198.04s t=134 POST BUY 330 @ 153.74 (top/top)
+19:05:28 + 198.05s t=134 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 407, 'action': 'SELL', 'price': 153.75} -> id=100570 filled=0.0 status=OPEN (22 ms)
+19:05:28 + 198.05s t=134 POST SELL 407 @ 153.75 (top/refill)
+19:05:31 + 200.18s t=134 MARK BUY 234 @ 153.73 -> mid 153.745: +0.015/sh
+19:05:31 + 200.72s t=134 FILL SELL 460 @ 153.75 | fair  mid 153.745 bid 153.74 ask 153.75 | net_est 1037 | age 3.2s | refill
+19:05:31 + 200.73s t=134 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 381, 'action': 'BUY', 'price': 153.74} -> id=100718 filled=0.0 status=OPEN (10 ms)
+19:05:31 + 200.73s t=134 POST BUY 381 @ 153.74 (top/refill)
+19:05:31 + 200.86s t=134 FILL SELL 407 @ 153.75 | fair  mid 153.745 bid 153.74 ask 153.75 | net_est 577 | age 2.8s | refill
+19:05:31 + 200.90s t=134 MARK SELL 469 @ 153.74 -> mid 153.745: -0.005/sh
+19:05:34 + 203.59s t=135 [tick 135] NLV=2539.4336 real=-208.61 unreal=0.71 | fills=76 vol=31986 edge=+0.0041/sh | net=170 est=170 | open=7 repl/min=38 | api/s=122 ord/s=0 429=0 loop=50ms
+19:05:36 + 205.93s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 486, 'action': 'BUY', 'price': 153.75} -> id=100998 filled=0.0 status=OPEN (16 ms)
+19:05:36 + 205.93s t=135 POST BUY 486 @ 153.75 (top/top)
+19:05:37 + 206.98s t=135 CANCEL SELL [(153.76, 340, 'too aggressive')]
+19:05:37 + 207.05s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 340, 'action': 'SELL', 'price': 153.78} -> id=101105 filled=0.0 status=OPEN (35 ms)
+19:05:37 + 207.06s t=135 POST SELL 340 @ 153.78 (top/top)
+19:05:38 + 207.32s t=135 FILL SELL 340 @ 153.76 | fair  mid 153.765 bid 153.76 ask 153.77 | net_est 170 | age 49.3s | top
+19:05:38 + 207.33s t=135 CANCEL BUY [(153.73, 235, 'over size cap'), (153.73, 117, 'over size cap'), (153.73, 281, 'over size cap'), (153.74, 381, 'over size cap'), (153.74, 330, 'over size cap')]
+19:05:38 + 207.39s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 184, 'action': 'BUY', 'price': 153.76} -> id=101136 filled=0.0 status=OPEN (50 ms)
+19:05:38 + 207.40s t=135 POST BUY 184 @ 153.76 (top/top)
+19:05:38 + 207.47s t=135 MARK BUY 226 @ 153.74 -> mid 153.765: +0.025/sh
+19:05:38 + 207.56s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 575, 'action': 'SELL', 'price': 153.78} -> id=101151 filled=0.0 status=OPEN (28 ms)
+19:05:38 + 207.56s t=135 POST SELL 575 @ 153.78 (top/refill)
+19:05:38 + 208.02s t=135 MARK SELL 330 @ 153.75 -> mid 153.765: -0.015/sh
+19:05:38 + 208.02s t=135 MARK BUY 407 @ 153.74 -> mid 153.765: +0.025/sh
+19:05:38 + 208.03s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 255, 'action': 'SELL', 'price': 153.77} -> id=101192 filled=0.0 status=OPEN (14 ms)
+19:05:38 + 208.03s t=135 POST SELL 255 @ 153.77 (top/refill)
+19:05:38 + 208.05s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'BUY', 'price': 153.76} -> id=101193 filled=0.0 status=OPEN (32 ms)
+19:05:38 + 208.05s t=135 POST BUY 330 @ 153.76 (top/refill)
+19:05:39 + 208.57s t=135 FILL SELL 330 @ 153.77 | fair  mid 153.765 bid 153.76 ask 153.77 | net_est -170 | age 51.3s | top
+19:05:39 + 208.60s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 330, 'action': 'SELL', 'price': 153.77} -> id=101234 filled=0.0 status=OPEN (15 ms)
+19:05:39 + 208.60s t=135 POST SELL 330 @ 153.77 (top/refill)
+19:05:40 + 209.51s t=135 FILL SELL 23 @ 153.77 | fair  mid 153.77 bid 153.76 ask 153.78 | net_est -500 | age 1.5s | refill
+19:05:40 + 209.51s t=135 CANCEL SELL [(153.77, 232, 'too aggressive'), (153.77, 330, 'too aggressive')]
+19:05:40 + 209.56s t=135 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 562, 'action': 'SELL', 'price': 153.79} -> id=101293 filled=0.0 status=OPEN (37 ms)
+19:05:40 + 209.56s t=135 POST SELL 562 @ 153.79 (top/top)
+19:05:41 + 210.73s t=135 MARK SELL 460 @ 153.75 -> mid 153.765: -0.015/sh
+19:05:41 + 210.87s t=135 MARK SELL 407 @ 153.75 -> mid 153.765: -0.015/sh
+19:05:45 + 214.38s t=136 CANCEL SELL [(153.79, 562, 'over size cap'), (153.78, 575, 'over size cap')]
+19:05:45 + 214.41s t=136 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 938, 'action': 'BUY', 'price': 153.77} -> id=101737 filled=0.0 status=OPEN (32 ms)
+19:05:45 + 214.41s t=136 POST BUY 938 @ 153.77 (top/top)
+19:05:45 + 214.55s t=136 CANCEL SELL [(153.78, 340, 'over size cap')]
+19:05:45 + 214.90s t=136 FILL SELL 575 @ 153.78 | fair  mid 153.785 bid 153.78 ask 153.79 | net_est -523 | age 7.3s | refill
+19:05:45 + 214.91s t=136 FILL SELL 340 @ 153.78 | fair  mid 153.785 bid 153.78 ask 153.79 | net_est -523 | age 7.8s | top
+19:05:45 + 214.93s t=136 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 281, 'action': 'SELL', 'price': 153.8} -> id=101794 filled=0.0 status=OPEN (14 ms)
+19:05:45 + 214.93s t=136 POST SELL 281 @ 153.80 (top/top)
+19:05:46 + 215.58s t=136 CANCEL BUY [(153.75, 486, '4 ticks behind')]
+19:05:46 + 215.59s t=136 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 281, 'action': 'SELL', 'price': 153.81} -> id=101860 filled=0.0 status=OPEN (9 ms)
+19:05:46 + 215.59s t=136 POST SELL 281 @ 153.81 (top/top)
+19:05:46 + 215.60s t=136 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 486, 'action': 'BUY', 'price': 153.79} -> id=101861 filled=0.0 status=OPEN (15 ms)
+19:05:46 + 215.60s t=136 POST BUY 486 @ 153.79 (top/top)
+19:05:46 + 216.09s t=136 CANCEL BUY [(153.76, 184, '4 ticks behind'), (153.76, 330, '4 ticks behind')]
+19:05:46 + 216.09s t=136 CANCEL SELL [(153.8, 281, 'too aggressive'), (153.81, 281, 'too aggressive')]
+19:05:46 + 216.11s t=136 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 514, 'action': 'BUY', 'price': 153.8} -> id=101893 filled=0.0 status=OPEN (5 ms)
+19:05:46 + 216.11s t=136 POST BUY 514 @ 153.80 (top/top)
+19:05:46 + 216.11s t=136 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 281, 'action': 'SELL', 'price': 153.84} -> id=101894 filled=0.0 status=OPEN (7 ms)
+19:05:46 + 216.11s t=136 POST SELL 281 @ 153.84 (top/top)
+19:05:47 + 216.42s t=136 FILL SELL 200 @ 153.80 | fair  mid 153.8 bid 153.79 ask 153.81 | net_est -1438 | age 1.5s | top
+19:05:48 + 217.33s t=136 MARK SELL 340 @ 153.76 -> mid 153.805: -0.045/sh
+19:05:49 + 218.51s t=136 FILL BUY 514 @ 153.80 | fair  mid 153.805 bid 153.8 ask 153.81 | net_est -1638 | age 2.4s | top
+19:05:49 + 218.52s t=136 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 437, 'action': 'SELL', 'price': 153.81} -> id=102040 filled=0.0 status=OPEN (12 ms)
+19:05:49 + 218.52s t=136 POST SELL 437 @ 153.81 (top/top)
+19:05:49 + 218.58s t=136 MARK SELL 330 @ 153.77 -> mid 153.805: -0.035/sh
+19:05:50 + 219.52s t=136 MARK SELL 23 @ 153.77 -> mid 153.805: -0.035/sh
+19:05:55 + 224.18s t=137 CANCEL SELL [(153.84, 281, 'over size cap')]
+19:05:55 + 224.18s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 637, 'action': 'BUY', 'price': 153.8} -> id=102280 filled=0.0 status=OPEN (3 ms)
+19:05:55 + 224.18s t=137 POST BUY 637 @ 153.80 (top/top)
+19:05:55 + 224.70s t=137 FILL SELL 437 @ 153.81 | fair  mid 153.805 bid 153.8 ask 153.81 | net_est -1124 | age 6.2s | top
+19:05:55 + 224.78s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 219, 'action': 'SELL', 'price': 153.81} -> id=102326 filled=0.0 status=OPEN (33 ms)
+19:05:55 + 224.79s t=137 POST SELL 219 @ 153.81 (top/top)
+19:05:55 + 224.93s t=137 MARK SELL 575 @ 153.78 -> mid 153.805: -0.025/sh
+19:05:55 + 224.93s t=137 MARK SELL 340 @ 153.78 -> mid 153.805: -0.025/sh
+19:05:56 + 225.90s t=137 CANCEL BUY [(153.77, 938, '4 ticks behind')]
+19:05:56 + 225.90s t=137 CANCEL SELL [(153.81, 219, 'too aggressive')]
+19:05:56 + 225.95s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 109, 'action': 'SELL', 'price': 153.85} -> id=102422 filled=0.0 status=OPEN (17 ms)
+19:05:56 + 225.95s t=137 POST SELL 109 @ 153.85 (top/top)
+19:05:56 + 225.95s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1157, 'action': 'BUY', 'price': 153.81} -> id=102423 filled=0.0 status=OPEN (19 ms)
+19:05:56 + 225.95s t=137 POST BUY 1157 @ 153.81 (top/top)
+19:05:57 + 226.37s t=137 CANCEL SELL [(153.85, 109, 'over size cap')]
+19:05:57 + 226.48s t=137 FILL SELL 219 @ 153.81 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -1561 | age 1.7s | top
+19:05:57 + 226.48s t=137 MARK SELL 200 @ 153.80 -> mid 153.815: -0.015/sh
+19:05:57 + 226.49s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 109, 'action': 'SELL', 'price': 153.82} -> id=102466 filled=0.0 status=OPEN (8 ms)
+19:05:57 + 226.49s t=137 POST SELL 109 @ 153.82 (top/top)
+19:05:58 + 227.62s t=137 FILL BUY 1157 @ 153.81 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -1780 | age 1.7s | top
+19:05:58 + 227.63s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 579, 'action': 'SELL', 'price': 153.82} -> id=102511 filled=0.0 status=OPEN (8 ms)
+19:05:58 + 227.63s t=137 POST SELL 579 @ 153.82 (top/refill)
+19:05:58 + 227.86s t=137 CANCEL SELL [(153.82, 109, 'too aggressive'), (153.82, 579, 'too aggressive')]
+19:05:58 + 227.88s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 634, 'action': 'SELL', 'price': 153.84} -> id=102519 filled=0.0 status=OPEN (12 ms)
+19:05:58 + 227.88s t=137 POST SELL 634 @ 153.84 (top/top)
+19:05:58 + 227.92s t=137 CANCEL SELL [(153.84, 634, 'over size cap')]
+19:05:58 + 227.93s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 580, 'action': 'SELL', 'price': 153.84} -> id=102526 filled=0.0 status=OPEN (7 ms)
+19:05:58 + 227.94s t=137 POST SELL 580 @ 153.84 (top/top)
+19:05:59 + 228.16s t=137 CANCEL SELL [(153.84, 580, 'over size cap')]
+19:05:59 + 228.19s t=137 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 525, 'action': 'SELL', 'price': 153.82} -> id=102538 filled=0.0 status=OPEN (9 ms)
+19:05:59 + 228.19s t=137 POST SELL 525 @ 153.82 (top/top)
+19:05:59 + 228.42s t=137 FILL SELL 109 @ 153.82 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -623 | age 1.9s | top
+19:05:59 + 228.61s t=137 MARK BUY 514 @ 153.80 -> mid 153.815: +0.015/sh
+19:06:05 + 234.76s t=138 MARK SELL 437 @ 153.81 -> mid 153.815: -0.005/sh
+19:06:05 + 235.12s t=138 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 634, 'action': 'BUY', 'price': 153.81} -> id=102986 filled=0.0 status=OPEN (7 ms)
+19:06:05 + 235.12s t=138 POST BUY 634 @ 153.81 (top/top)
+19:06:06 + 235.64s t=138 FILL SELL 525 @ 153.82 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -732 | age 7.4s | top
+19:06:06 + 235.65s t=138 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 371, 'action': 'SELL', 'price': 153.82} -> id=103021 filled=0.0 status=OPEN (7 ms)
+19:06:06 + 235.65s t=138 POST SELL 371 @ 153.82 (top/top)
+19:06:07 + 236.50s t=138 MARK SELL 219 @ 153.81 -> mid 153.815: -0.005/sh
+19:06:08 + 237.63s t=138 MARK BUY 1157 @ 153.81 -> mid 153.815: +0.005/sh
+19:06:09 + 238.43s t=138 MARK SELL 109 @ 153.82 -> mid 153.815: +0.005/sh
+19:06:14 + 244.02s t=139 FILL BUY 634 @ 153.81 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -1257 | age 8.9s | top
+19:06:14 + 244.03s t=139 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 317, 'action': 'SELL', 'price': 153.82} -> id=103571 filled=0.0 status=OPEN (8 ms)
+19:06:14 + 244.03s t=139 POST SELL 317 @ 153.82 (top/refill)
+19:06:15 + 245.12s t=139 FILL SELL 371 @ 153.82 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -623 | age 9.5s | top
+19:06:16 + 245.14s t=139 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 186, 'action': 'SELL', 'price': 153.82} -> id=103683 filled=0.0 status=OPEN (14 ms)
+19:06:16 + 245.14s t=139 POST SELL 186 @ 153.82 (top/refill)
+19:06:16 + 245.67s t=139 MARK SELL 525 @ 153.82 -> mid 153.815: +0.005/sh
+19:06:22 + 251.99s t=139 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 688, 'action': 'BUY', 'price': 153.81} -> id=104182 filled=0.0 status=OPEN (9 ms)
+19:06:22 + 251.99s t=139 POST BUY 688 @ 153.81 (top/top)
+19:06:23 + 252.70s t=139 FILL SELL 317 @ 153.82 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -994 | age 8.7s | refill
+19:06:23 + 252.71s t=139 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 158, 'action': 'SELL', 'price': 153.82} -> id=104221 filled=0.0 status=OPEN (8 ms)
+19:06:23 + 252.71s t=139 POST SELL 158 @ 153.82 (top/refill)
+19:06:24 + 254.03s t=140 MARK BUY 634 @ 153.81 -> mid 153.815: +0.005/sh
+19:06:25 + 254.31s t=140 FILL SELL 186 @ 153.82 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -1311 | age 9.2s | refill
+19:06:26 + 255.21s t=140 FILL BUY 688 @ 153.81 | fair  mid 153.815 bid 153.81 ask 153.82 | net_est -1497 | age 3.2s | top
+19:06:26 + 255.22s t=140 MARK SELL 371 @ 153.82 -> mid 153.815: +0.005/sh
+19:06:26 + 255.24s t=140 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 437, 'action': 'SELL', 'price': 153.82} -> id=104373 filled=0.0 status=OPEN (19 ms)
+19:06:26 + 255.24s t=140 POST SELL 437 @ 153.82 (top/refill)
+19:06:28 + 258.02s t=140 FILL BUY 480 @ 153.80 | fair  mid 153.81 bid 153.8 ask 153.82 | net_est -809 | age 33.8s | top
+19:06:28 + 258.06s t=140 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 240, 'action': 'SELL', 'price': 153.82} -> id=104564 filled=0.0 status=OPEN (24 ms)
+19:06:28 + 258.06s t=140 POST SELL 240 @ 153.82 (top/refill)
+19:06:29 + 258.25s t=140 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 835, 'action': 'SELL', 'price': 153.81} -> id=104600 filled=0.0 status=OPEN (8 ms)
+19:06:29 + 258.25s t=140 POST SELL 835 @ 153.81 (top/top)
+19:06:29 + 258.89s t=140 FILL BUY 157 @ 153.80 | fair  mid 153.805 bid 153.8 ask 153.81 | net_est -329 | age 34.7s | top
+19:06:29 + 258.91s t=140 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 186, 'action': 'BUY', 'price': 153.8} -> id=104657 filled=0.0 status=OPEN (8 ms)
+19:06:29 + 258.91s t=140 POST BUY 186 @ 153.80 (top/top)
+19:06:31 + 261.12s t=140 FILL BUY 186 @ 153.80 | fair  mid 153.805 bid 153.8 ask 153.81 | net_est -172 | age 2.2s | top
+19:06:32 + 261.15s t=140 CANCEL SELL [(153.82, 240, 'over size cap'), (153.82, 437, 'over size cap'), (153.82, 158, 'over size cap'), (153.81, 835, 'over size cap')]
+19:06:32 + 261.17s t=140 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 993, 'action': 'BUY', 'price': 153.8} -> id=104831 filled=0.0 status=OPEN (21 ms)
+19:06:32 + 261.17s t=140 POST BUY 993 @ 153.80 (top/top)
+19:06:32 + 261.38s t=140 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 514, 'action': 'SELL', 'price': 153.81} -> id=104849 filled=0.0 status=OPEN (12 ms)
+19:06:32 + 261.38s t=140 POST SELL 514 @ 153.81 (top/top)
+19:06:33 + 262.72s t=140 MARK SELL 317 @ 153.82 -> mid 153.805: +0.015/sh
+19:06:35 + 264.15s t=141 CANCEL BUY [(153.79, 486, 'over size cap')]
+19:06:35 + 264.18s t=141 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 989, 'action': 'SELL', 'price': 153.81} -> id=105013 filled=0.0 status=OPEN (23 ms)
+19:06:35 + 264.18s t=141 POST SELL 989 @ 153.81 (top/refill)
+19:06:35 + 264.29s t=141 CANCEL BUY [(153.8, 993, 'over size cap')]
+19:06:35 + 264.31s t=141 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 496, 'action': 'BUY', 'price': 153.8} -> id=105031 filled=0.0 status=OPEN (6 ms)
+19:06:35 + 264.31s t=141 POST BUY 496 @ 153.80 (top/top)
+19:06:35 + 264.71s t=141 MARK SELL 186 @ 153.82 -> mid 153.805: +0.015/sh
+19:06:35 + 264.76s t=141 FILL BUY 993 @ 153.80 | fair  mid 153.805 bid 153.8 ask 153.81 | net_est 14 | age 3.6s | top
+19:06:36 + 265.27s t=141 MARK BUY 688 @ 153.81 -> mid 153.805: -0.005/sh
+19:06:38 + 268.05s t=141 MARK BUY 480 @ 153.80 -> mid 153.805: +0.005/sh
+19:06:39 + 268.90s t=141 MARK BUY 157 @ 153.80 -> mid 153.805: +0.005/sh
+19:06:41 + 271.11s t=141 FILL BUY 496 @ 153.80 | fair  mid 153.805 bid 153.8 ask 153.81 | net_est 1007 | age 6.8s | top
+19:06:41 + 271.13s t=141 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 248, 'action': 'BUY', 'price': 153.8} -> id=105513 filled=0.0 status=OPEN (15 ms)
+19:06:41 + 271.13s t=141 POST BUY 248 @ 153.80 (top/top)
+19:06:42 + 271.14s t=141 MARK BUY 186 @ 153.80 -> mid 153.805: +0.005/sh
+19:06:45 + 274.42s t=142 FILL BUY 248 @ 153.80 | fair  mid 153.805 bid 153.8 ask 153.81 | net_est 1503 | age 3.3s | top
+19:06:45 + 274.43s t=142 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 124, 'action': 'BUY', 'price': 153.8} -> id=105734 filled=0.0 status=OPEN (6 ms)
+19:06:45 + 274.43s t=142 POST BUY 124 @ 153.80 (top/top)
+19:06:45 + 274.80s t=142 MARK BUY 993 @ 153.80 -> mid 153.805: +0.005/sh
+19:06:47 + 276.61s t=142 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 872, 'action': 'SELL', 'price': 153.8} -> id=105889 filled=0.0 status=OPEN (71 ms)
+19:06:47 + 276.61s t=142 POST SELL 872 @ 153.80 (top/top)
+19:06:47 + 276.61s t=142 FILL BUY 124 @ 153.80 | fair  mid 153.795 bid 153.79 ask 153.8 | net_est 1751 | age 2.2s | top
+19:06:50 + 280.03s t=142 FILL SELL 872 @ 153.80 | fair  mid 153.795 bid 153.79 ask 153.8 | net_est 1875 | age 3.4s | top
+19:06:50 + 280.08s t=142 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 498, 'action': 'BUY', 'price': 153.79} -> id=106177 filled=0.0 status=OPEN (42 ms)
+19:06:50 + 280.08s t=142 POST BUY 498 @ 153.79 (top/top)
+19:06:51 + 281.11s t=142 MARK BUY 496 @ 153.80 -> mid 153.795: -0.005/sh
+19:06:54 + 284.07s t=143 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 498, 'action': 'SELL', 'price': 153.8} -> id=106432 filled=0.0 status=OPEN (7 ms)
+19:06:54 + 284.07s t=143 POST SELL 498 @ 153.80 (top/top)
+19:06:55 + 284.53s t=143 MARK BUY 248 @ 153.80 -> mid 153.795: -0.005/sh
+19:06:55 + 284.61s t=143 FILL BUY 498 @ 153.79 | fair  mid 153.795 bid 153.79 ask 153.8 | net_est 1003 | age 4.5s | top
+19:06:55 + 284.61s t=143 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 249, 'action': 'BUY', 'price': 153.79} -> id=106459 filled=0.0 status=OPEN (5 ms)
+19:06:55 + 284.65s t=143 POST BUY 249 @ 153.79 (top/top)
+19:06:57 + 286.64s t=143 MARK BUY 124 @ 153.80 -> mid 153.795: -0.005/sh
+19:06:57 + 287.03s t=143 CANCEL BUY [(153.79, 249, 'too aggressive')]
+19:06:57 + 287.11s t=143 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 125, 'action': 'BUY', 'price': 153.75} -> id=106634 filled=0.0 status=OPEN (33 ms)
+19:06:57 + 287.11s t=143 POST BUY 125 @ 153.75 (top/top)
+19:06:58 + 287.56s t=143 CANCEL BUY [(153.75, 125, 'over size cap')]
+19:06:58 + 287.78s t=143 FILL BUY 249 @ 153.79 | fair  mid 153.785 bid 153.78 ask 153.79 | net_est 1501 | age 3.1s | top
+19:06:58 + 287.81s t=143 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 125, 'action': 'BUY', 'price': 153.78} -> id=106680 filled=0.0 status=OPEN (27 ms)
+19:06:58 + 287.81s t=143 POST BUY 125 @ 153.78 (top/top)
+19:07:00 + 290.06s t=143 MARK SELL 872 @ 153.80 -> mid 153.785: +0.015/sh
+19:07:04 + 293.16s t=143 FILL BUY 125 @ 153.78 | fair  mid 153.785 bid 153.78 ask 153.79 | net_est 1750 | age 5.4s | top
+19:07:05 + 294.61s t=144 MARK BUY 498 @ 153.79 -> mid 153.785: -0.005/sh
+19:07:08 + 297.78s t=144 MARK BUY 249 @ 153.79 -> mid 153.785: -0.005/sh
+19:07:14 + 303.23s t=144 MARK BUY 125 @ 153.78 -> mid 153.785: +0.005/sh
+19:08:04 + 353.70s t=150 [tick 150] NLV=3119.0363 real=-202.06 unreal=-27.53 | fills=104 vol=43379 edge=+0.0024/sh | net=1875 est=1875 | open=3 repl/min=0 | api/s=96 ord/s=0 429=0 loop=22ms
+19:08:58 + 407.23s t=155 CANCEL SELL [(153.81, 514, '4 ticks behind'), (153.81, 989, '4 ticks behind')]
+19:08:58 + 407.25s t=155 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1877, 'action': 'SELL', 'price': 153.77} -> id=113731 filled=0.0 status=OPEN (4 ms)
+19:08:58 + 407.25s t=155 POST SELL 1877 @ 153.77 (top/top)
+19:08:58 + 407.33s t=155 CANCEL SELL [(153.8, 498, 'over size cap'), (153.77, 1877, 'over size cap')]
+19:08:58 + 407.36s t=155 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 872, 'action': 'SELL', 'price': 153.77} -> id=113749 filled=0.0 status=OPEN (14 ms)
+19:08:58 + 407.36s t=155 POST SELL 872 @ 153.77 (top/top)
+19:08:58 + 407.58s t=155 CANCEL SELL [(153.77, 872, 'over size cap')]
+19:08:58 + 407.62s t=155 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 498, 'action': 'SELL', 'price': 153.77} -> id=113768 filled=0.0 status=OPEN (9 ms)
+19:08:58 + 407.62s t=155 POST SELL 498 @ 153.77 (top/top)
+19:08:59 + 408.70s t=155 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1439, 'action': 'SELL', 'price': 153.77} -> id=113862 filled=0.0 status=OPEN (8 ms)
+19:08:59 + 408.70s t=155 POST SELL 1439 @ 153.77 (top/refill)
+19:09:07 + 416.27s t=156 FILL SELL 498 @ 153.77 | fair  mid 153.765 bid 153.76 ask 153.77 | net_est 1875 | age 8.7s | top
+19:09:07 + 416.29s t=156 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 311, 'action': 'BUY', 'price': 153.76} -> id=114316 filled=0.0 status=OPEN (12 ms)
+19:09:07 + 416.29s t=156 POST BUY 311 @ 153.76 (top/top)
+19:09:11 + 420.15s t=156 FILL BUY 311 @ 153.76 | fair  mid 153.765 bid 153.76 ask 153.77 | net_est 1377 | age 3.9s | top
+19:09:11 + 420.16s t=156 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 156, 'action': 'BUY', 'price': 153.76} -> id=114466 filled=0.0 status=OPEN (7 ms)
+19:09:11 + 420.16s t=156 POST BUY 156 @ 153.76 (top/top)
+19:09:12 + 421.53s t=156 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 156, 'action': 'BUY', 'price': 153.75} -> id=114586 filled=0.0 status=OPEN (10 ms)
+19:09:12 + 421.53s t=156 POST BUY 156 @ 153.75 (top/top)
+19:09:12 + 421.53s t=156 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 749, 'action': 'SELL', 'price': 153.76} -> id=114588 filled=0.0 status=OPEN (15 ms)
+19:09:12 + 421.53s t=156 POST SELL 749 @ 153.76 (top/top)
+19:09:12 + 421.97s t=156 CANCEL BUY [(153.75, 156, 'over size cap')]
+19:09:12 + 422.03s t=156 CANCEL BUY [(153.76, 156, 'over size cap')]
+19:09:12 + 422.11s t=156 FILL BUY 156 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1688 | age 2.0s | top
+19:09:14 + 423.66s t=156 FILL SELL 749 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1844 | age 2.1s | top
+19:09:14 + 423.68s t=156 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 452, 'action': 'BUY', 'price': 153.75} -> id=114798 filled=0.0 status=OPEN (12 ms)
+19:09:14 + 423.68s t=156 POST BUY 452 @ 153.75 (top/top)
+19:09:17 + 426.33s t=157 MARK SELL 498 @ 153.77 -> mid 153.755: +0.015/sh
+19:09:18 + 427.40s t=157 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 608, 'action': 'SELL', 'price': 153.76} -> id=115135 filled=0.0 status=OPEN (9 ms)
+19:09:18 + 427.40s t=157 POST SELL 608 @ 153.76 (top/top)
+19:09:18 + 427.65s t=157 FILL BUY 452 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1095 | age 4.0s | top
+19:09:18 + 427.66s t=157 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 226, 'action': 'BUY', 'price': 153.75} -> id=115155 filled=0.0 status=OPEN (5 ms)
+19:09:18 + 427.66s t=157 POST BUY 226 @ 153.75 (top/top)
+19:09:21 + 430.35s t=157 MARK BUY 311 @ 153.76 -> mid 153.755: -0.005/sh
+19:09:22 + 432.12s t=157 MARK BUY 156 @ 153.76 -> mid 153.755: -0.005/sh
+19:09:24 + 433.66s t=157 MARK SELL 749 @ 153.76 -> mid 153.755: +0.005/sh
+19:09:26 + 435.23s t=158 FILL BUY 226 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1547 | age 7.6s | top
+19:09:26 + 435.28s t=158 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 113, 'action': 'BUY', 'price': 153.75} -> id=115598 filled=0.0 status=OPEN (41 ms)
+19:09:26 + 435.28s t=158 POST BUY 113 @ 153.75 (top/top)
+19:09:28 + 437.68s t=158 MARK BUY 452 @ 153.75 -> mid 153.755: +0.005/sh
+19:09:33 + 442.95s t=158 FILL SELL 303 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1773 | age 15.5s | top
+19:09:33 + 442.97s t=158 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 529, 'action': 'SELL', 'price': 153.76} -> id=115937 filled=0.0 status=OPEN (9 ms)
+19:09:33 + 442.97s t=158 POST SELL 529 @ 153.76 (top/refill)
+19:09:33 + 442.99s t=158 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 152, 'action': 'BUY', 'price': 153.75} -> id=115939 filled=0.0 status=OPEN (7 ms)
+19:09:33 + 442.99s t=158 POST BUY 152 @ 153.75 (top/refill)
+19:09:34 + 443.38s t=158 CANCEL SELL [(153.77, 1439, 'over size cap')]
+19:09:34 + 443.44s t=158 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 901, 'action': 'SELL', 'price': 153.76} -> id=115969 filled=0.0 status=OPEN (40 ms)
+19:09:34 + 443.44s t=158 POST SELL 901 @ 153.76 (top/refill)
+19:09:36 + 445.28s t=159 MARK BUY 226 @ 153.75 -> mid 153.755: +0.005/sh
+19:09:36 + 445.74s t=159 FILL SELL 305 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1470 | age 18.3s | top
+19:09:36 + 445.76s t=159 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 152, 'action': 'BUY', 'price': 153.75} -> id=116164 filled=0.0 status=OPEN (7 ms)
+19:09:36 + 445.76s t=159 POST BUY 152 @ 153.75 (top/refill)
+19:09:38 + 447.57s t=159 FILL BUY 113 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1165 | age 12.3s | top
+19:09:43 + 452.96s t=159 MARK SELL 303 @ 153.76 -> mid 153.755: +0.005/sh
+19:09:44 + 454.04s t=160 FILL BUY 152 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1278 | age 11.1s | refill
+19:09:44 + 454.07s t=160 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 133, 'action': 'BUY', 'price': 153.75} -> id=116764 filled=0.0 status=OPEN (19 ms)
+19:09:44 + 454.07s t=160 POST BUY 133 @ 153.75 (top/refill)
+19:09:46 + 455.77s t=160 MARK SELL 305 @ 153.76 -> mid 153.755: +0.005/sh
+19:09:47 + 456.31s t=160 FILL BUY 152 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1430 | age 10.5s | refill
+19:09:48 + 457.60s t=160 MARK BUY 113 @ 153.75 -> mid 153.755: +0.005/sh
+19:09:50 + 459.54s t=160 FILL SELL 871 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1582 | age 16.1s | refill
+19:09:50 + 459.56s t=160 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1232, 'action': 'SELL', 'price': 153.76} -> id=117146 filled=0.0 status=OPEN (26 ms)
+19:09:50 + 459.56s t=160 POST SELL 1232 @ 153.76 (top/refill)
+19:09:50 + 459.60s t=160 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 511, 'action': 'BUY', 'price': 153.75} -> id=117148 filled=0.0 status=OPEN (16 ms)
+19:09:50 + 459.60s t=160 POST BUY 511 @ 153.75 (top/refill)
+19:09:50 + 459.94s t=160 CANCEL SELL [(153.76, 1232, 'over size cap')]
+19:09:50 + 459.98s t=160 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 652, 'action': 'SELL', 'price': 153.76} -> id=117187 filled=0.0 status=OPEN (18 ms)
+19:09:50 + 459.98s t=160 POST SELL 652 @ 153.76 (top/refill)
+19:09:50 + 460.08s t=160 FILL SELL 529 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 711 | age 17.1s | refill
+19:09:50 + 460.11s t=160 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 265, 'action': 'BUY', 'price': 153.75} -> id=117201 filled=0.0 status=OPEN (9 ms)
+19:09:50 + 460.11s t=160 POST BUY 265 @ 153.75 (top/refill)
+19:09:52 + 461.95s t=160 FILL BUY 133 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 182 | age 7.9s | refill
+19:09:53 + 462.91s t=160 FILL SELL 30 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 315 | age 19.5s | refill
+19:09:54 + 464.05s t=161 MARK BUY 152 @ 153.75 -> mid 153.755: +0.005/sh
+19:09:57 + 466.35s t=161 MARK BUY 152 @ 153.75 -> mid 153.755: +0.005/sh
+19:09:58 + 467.50s t=161 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 644, 'action': 'SELL', 'price': 153.76} -> id=117787 filled=0.0 status=OPEN (25 ms)
+19:09:58 + 467.50s t=161 POST SELL 644 @ 153.76 (top/refill)
+19:09:58 + 468.03s t=161 FILL BUY 511 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 285 | age 8.4s | refill
+19:09:58 + 468.04s t=161 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 337, 'action': 'BUY', 'price': 153.75} -> id=117822 filled=0.0 status=OPEN (6 ms)
+19:09:58 + 468.04s t=161 POST BUY 337 @ 153.75 (top/refill)
+19:10:00 + 469.54s t=161 MARK SELL 871 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:00 + 470.10s t=161 MARK SELL 529 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:02 + 471.96s t=161 MARK BUY 133 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:03 + 472.92s t=161 MARK SELL 30 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:04 + 473.84s t=162 FILL BUY 265 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 796 | age 13.7s | refill
+19:10:04 + 473.86s t=162 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 132, 'action': 'BUY', 'price': 153.75} -> id=118119 filled=0.0 status=OPEN (7 ms)
+19:10:04 + 473.86s t=162 POST BUY 132 @ 153.75 (top/refill)
+19:10:05 + 474.41s t=162 FILL SELL 652 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1061 | age 14.4s | refill
+19:10:05 + 474.42s t=162 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 326, 'action': 'BUY', 'price': 153.75} -> id=118149 filled=0.0 status=OPEN (9 ms)
+19:10:05 + 474.42s t=162 POST BUY 326 @ 153.75 (top/refill)
+19:10:05 + 474.42s t=162 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 265, 'action': 'SELL', 'price': 153.76} -> id=118150 filled=0.0 status=OPEN (13 ms)
+19:10:05 + 474.42s t=162 POST SELL 265 @ 153.76 (top/refill)
+19:10:08 + 478.04s t=162 MARK BUY 511 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:13 + 482.83s t=162 FILL SELL 644 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 409 | age 15.3s | refill
+19:10:13 + 482.83s t=162 CANCEL BUY [(153.75, 326, 'over size cap')]
+19:10:13 + 482.85s t=162 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 617, 'action': 'SELL', 'price': 153.76} -> id=118747 filled=0.0 status=OPEN (13 ms)
+19:10:13 + 482.85s t=162 POST SELL 617 @ 153.76 (top/refill)
+19:10:13 + 482.85s t=162 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 266, 'action': 'BUY', 'price': 153.75} -> id=118748 filled=0.0 status=OPEN (9 ms)
+19:10:13 + 482.85s t=162 POST BUY 266 @ 153.75 (top/refill)
+19:10:14 + 483.45s t=162 FILL SELL 58 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est -235 | age 9.0s | refill
+19:10:14 + 483.86s t=163 MARK BUY 265 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:15 + 484.41s t=163 MARK SELL 652 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:15 + 484.74s t=163 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 265, 'action': 'BUY', 'price': 153.75} -> id=118899 filled=0.0 status=OPEN (12 ms)
+19:10:15 + 484.74s t=163 POST BUY 265 @ 153.75 (top/refill)
+19:10:15 + 485.10s t=163 FILL SELL 207 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est -293 | age 10.7s | refill
+19:10:16 + 485.69s t=163 FILL BUY 337 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est -500 | age 17.7s | refill
+19:10:16 + 485.72s t=163 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 301, 'action': 'SELL', 'price': 153.76} -> id=118951 filled=0.0 status=OPEN (11 ms)
+19:10:16 + 485.72s t=163 POST SELL 301 @ 153.76 (top/refill)
+19:10:19 + 488.40s t=163 FILL BUY 132 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est -163 | age 14.5s | refill
+19:10:23 + 492.83s t=163 MARK SELL 644 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:24 + 493.47s t=163 MARK SELL 58 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:26 + 495.15s t=164 MARK SELL 207 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:26 + 495.37s t=164 FILL BUY 266 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est -31 | age 12.5s | refill
+19:10:26 + 495.38s t=164 CANCEL SELL [(153.76, 301, 'over size cap')]
+19:10:26 + 495.41s t=164 CANCEL SELL [(153.76, 617, 'over size cap')]
+19:10:26 + 495.42s t=164 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 617, 'action': 'BUY', 'price': 153.75} -> id=119656 filled=0.0 status=OPEN (42 ms)
+19:10:26 + 495.44s t=164 POST BUY 617 @ 153.75 (top/refill)
+19:10:26 + 495.49s t=164 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 434, 'action': 'SELL', 'price': 153.76} -> id=119658 filled=0.0 status=OPEN (27 ms)
+19:10:26 + 495.49s t=164 POST SELL 434 @ 153.76 (top/top)
+19:10:26 + 495.70s t=164 MARK BUY 337 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:26 + 495.78s t=164 CANCEL SELL [(153.76, 434, 'over size cap')]
+19:10:26 + 495.80s t=164 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 383, 'action': 'SELL', 'price': 153.76} -> id=119683 filled=0.0 status=OPEN (10 ms)
+19:10:26 + 495.80s t=164 POST SELL 383 @ 153.76 (top/top)
+19:10:27 + 496.29s t=164 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 617, 'action': 'SELL', 'price': 153.76} -> id=119728 filled=0.0 status=OPEN (12 ms)
+19:10:27 + 496.29s t=164 POST SELL 617 @ 153.76 (top/refill)
+19:10:27 + 496.34s t=164 FILL BUY 265 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 235 | age 11.6s | refill
+19:10:29 + 498.42s t=164 MARK BUY 132 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:31 + 500.44s t=164 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 558, 'action': 'SELL', 'price': 153.76} -> id=120014 filled=0.0 status=OPEN (6 ms)
+19:10:31 + 500.44s t=164 POST SELL 558 @ 153.76 (top/refill)
+19:10:31 + 501.03s t=164 FILL BUY 617 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 500 | age 5.6s | refill
+19:10:31 + 501.04s t=164 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 441, 'action': 'BUY', 'price': 153.75} -> id=120073 filled=0.0 status=OPEN (7 ms)
+19:10:31 + 501.04s t=164 POST BUY 441 @ 153.75 (top/top)
+19:10:34 + 503.80s t=165 [tick 165] NLV=3529.791 real=-216.52 unreal=0.00 | fills=130 vol=52313 edge=+0.0028/sh | net=1117 est=1117 | open=4 repl/min=21 | api/s=92 ord/s=0 429=0 loop=42ms
+19:10:36 + 505.45s t=165 MARK BUY 266 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:37 + 506.38s t=165 MARK BUY 265 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:41 + 511.13s t=165 MARK BUY 617 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:43 + 512.58s t=165 FILL BUY 441 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1117 | age 11.5s | top
+19:10:43 + 512.61s t=165 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 220, 'action': 'BUY', 'price': 153.75} -> id=120717 filled=0.0 status=OPEN (12 ms)
+19:10:43 + 512.61s t=165 POST BUY 220 @ 153.75 (top/top)
+19:10:45 + 514.29s t=166 FILL BUY 220 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1558 | age 1.7s | top
+19:10:45 + 514.30s t=166 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 110, 'action': 'BUY', 'price': 153.75} -> id=120819 filled=0.0 status=OPEN (11 ms)
+19:10:45 + 514.30s t=166 POST BUY 110 @ 153.75 (top/top)
+19:10:46 + 515.25s t=166 FILL BUY 71 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1778 | age 0.9s | top
+19:10:46 + 515.87s t=166 FILL BUY 39 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1849 | age 1.6s | top
+19:10:47 + 517.10s t=166 FILL SELL 383 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1888 | age 21.3s | top
+19:10:47 + 517.10s t=166 FILL SELL 617 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1888 | age 20.8s | refill
+19:10:47 + 517.11s t=166 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 556, 'action': 'BUY', 'price': 153.75} -> id=121040 filled=0.0 status=OPEN (10 ms)
+19:10:47 + 517.11s t=166 POST BUY 556 @ 153.75 (top/top)
+19:10:47 + 517.11s t=166 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 830, 'action': 'SELL', 'price': 153.76} -> id=121042 filled=0.0 status=OPEN (12 ms)
+19:10:47 + 517.11s t=166 POST SELL 830 @ 153.76 (top/refill)
+19:10:52 + 522.03s t=166 FILL BUY 556 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 888 | age 4.9s | top
+19:10:52 + 522.04s t=166 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 278, 'action': 'BUY', 'price': 153.75} -> id=121364 filled=0.0 status=OPEN (6 ms)
+19:10:52 + 522.04s t=166 POST BUY 278 @ 153.75 (top/top)
+19:10:53 + 522.66s t=166 MARK BUY 441 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:54 + 523.69s t=166 FILL BUY 202 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1444 | age 1.6s | top
+19:10:54 + 523.72s t=166 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 101, 'action': 'BUY', 'price': 153.75} -> id=121463 filled=0.0 status=OPEN (9 ms)
+19:10:54 + 523.72s t=166 POST BUY 101 @ 153.75 (top/refill)
+19:10:55 + 524.29s t=167 MARK BUY 220 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:55 + 524.54s t=167 FILL SELL 558 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1646 | age 24.1s | refill
+19:10:55 + 524.56s t=167 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 241, 'action': 'BUY', 'price': 153.75} -> id=121526 filled=0.0 status=OPEN (16 ms)
+19:10:55 + 524.56s t=167 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 752, 'action': 'SELL', 'price': 153.76} -> id=121527 filled=0.0 status=OPEN (12 ms)
+19:10:55 + 524.56s t=167 POST SELL 752 @ 153.76 (top/refill)
+19:10:55 + 524.56s t=167 POST BUY 241 @ 153.75 (top/refill)
+19:10:56 + 525.16s t=167 FILL BUY 76 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1088 | age 3.1s | top
+19:10:56 + 525.31s t=167 MARK BUY 71 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:56 + 525.97s t=167 MARK BUY 39 @ 153.75 -> mid 153.755: +0.005/sh
+19:10:57 + 526.27s t=167 FILL BUY 101 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1164 | age 2.5s | refill
+19:10:57 + 526.32s t=167 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 126, 'action': 'BUY', 'price': 153.75} -> id=121641 filled=0.0 status=OPEN (38 ms)
+19:10:57 + 526.32s t=167 POST BUY 126 @ 153.75 (top/refill)
+19:10:57 + 527.12s t=167 MARK SELL 383 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:57 + 527.12s t=167 MARK SELL 617 @ 153.76 -> mid 153.755: +0.005/sh
+19:10:59 + 528.99s t=167 FILL BUY 241 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1265 | age 4.4s | refill
+19:10:59 + 529.03s t=167 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 121, 'action': 'BUY', 'price': 153.75} -> id=121834 filled=0.0 status=OPEN (38 ms)
+19:10:59 + 529.03s t=167 POST BUY 121 @ 153.75 (top/refill)
+19:11:02 + 532.04s t=167 MARK BUY 556 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:04 + 533.73s t=167 MARK BUY 202 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:05 + 534.32s t=168 FILL BUY 126 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1506 | age 8.0s | refill
+19:11:05 + 534.32s t=168 FILL BUY 121 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1506 | age 5.3s | refill
+19:11:05 + 534.33s t=168 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 123, 'action': 'BUY', 'price': 153.75} -> id=122247 filled=0.0 status=OPEN (7 ms)
+19:11:05 + 534.33s t=168 POST BUY 123 @ 153.75 (top/top)
+19:11:05 + 534.59s t=168 MARK SELL 558 @ 153.76 -> mid 153.755: +0.005/sh
+19:11:06 + 535.20s t=168 MARK BUY 76 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:07 + 536.28s t=168 MARK BUY 101 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:09 + 538.42s t=168 FILL BUY 123 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1753 | age 4.1s | top
+19:11:09 + 539.00s t=168 MARK BUY 241 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:14 + 543.29s t=168 FILL SELL 830 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1876 | age 26.2s | refill
+19:11:14 + 543.34s t=168 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 771, 'action': 'SELL', 'price': 153.76} -> id=122913 filled=0.0 status=OPEN (29 ms)
+19:11:14 + 543.34s t=168 POST SELL 771 @ 153.76 (top/refill)
+19:11:14 + 543.37s t=168 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 477, 'action': 'BUY', 'price': 153.75} -> id=122914 filled=0.0 status=OPEN (82 ms)
+19:11:14 + 543.37s t=168 POST BUY 477 @ 153.75 (top/top)
+19:11:15 + 544.33s t=169 MARK BUY 126 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:15 + 544.33s t=169 MARK BUY 121 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:16 + 545.62s t=169 FILL SELL 752 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1046 | age 21.1s | refill
+19:11:16 + 545.63s t=169 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 376, 'action': 'BUY', 'price': 153.75} -> id=123042 filled=0.0 status=OPEN (5 ms)
+19:11:16 + 545.63s t=169 POST BUY 376 @ 153.75 (top/refill)
+19:11:19 + 548.29s t=169 FILL BUY 200 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 294 | age 4.9s | top
+19:11:19 + 548.53s t=169 MARK BUY 123 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:21 + 550.47s t=169 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 153.76} -> id=123360 filled=0.0 status=OPEN (8 ms)
+19:11:21 + 550.47s t=169 POST SELL 500 @ 153.76 (top/refill)
+19:11:22 + 551.19s t=169 FILL BUY 277 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 494 | age 7.8s | top
+19:11:22 + 551.58s t=169 FILL BUY 376 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 771 | age 5.9s | refill
+19:11:22 + 551.60s t=169 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 426, 'action': 'BUY', 'price': 153.75} -> id=123431 filled=0.0 status=OPEN (17 ms)
+19:11:22 + 551.60s t=169 POST BUY 426 @ 153.75 (top/top)
+19:11:24 + 553.29s t=169 MARK SELL 830 @ 153.76 -> mid 153.755: +0.005/sh
+19:11:26 + 555.70s t=170 MARK SELL 752 @ 153.76 -> mid 153.755: +0.005/sh
+19:11:27 + 556.67s t=170 FILL SELL 771 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1147 | age 13.3s | refill
+19:11:27 + 556.74s t=170 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 386, 'action': 'BUY', 'price': 153.75} -> id=123678 filled=0.0 status=OPEN (32 ms)
+19:11:27 + 556.74s t=170 POST BUY 386 @ 153.75 (top/refill)
+19:11:27 + 556.75s t=170 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 376, 'action': 'SELL', 'price': 153.76} -> id=123679 filled=0.0 status=OPEN (35 ms)
+19:11:27 + 556.75s t=170 POST SELL 376 @ 153.76 (top/refill)
+19:11:29 + 558.31s t=170 MARK BUY 200 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:30 + 559.37s t=170 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 426, 'action': 'SELL', 'price': 153.76} -> id=123812 filled=0.0 status=OPEN (15 ms)
+19:11:30 + 559.37s t=170 POST SELL 426 @ 153.76 (top/refill)
+19:11:30 + 559.93s t=170 FILL BUY 426 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 376 | age 8.3s | top
+19:11:30 + 559.95s t=170 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 213, 'action': 'BUY', 'price': 153.75} -> id=123850 filled=0.0 status=OPEN (13 ms)
+19:11:30 + 559.95s t=170 POST BUY 213 @ 153.75 (top/refill)
+19:11:32 + 561.20s t=170 MARK BUY 277 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:32 + 561.61s t=170 MARK BUY 376 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:32 + 561.97s t=170 FILL SELL 500 @ 153.76 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 802 | age 11.5s | refill
+19:11:32 + 561.99s t=170 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 250, 'action': 'BUY', 'price': 153.75} -> id=123930 filled=0.0 status=OPEN (10 ms)
+19:11:32 + 561.99s t=170 POST BUY 250 @ 153.75 (top/refill)
+19:11:36 + 565.50s t=171 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 386, 'action': 'SELL', 'price': 153.76} -> id=124103 filled=0.0 status=OPEN (22 ms)
+19:11:36 + 565.50s t=171 POST SELL 386 @ 153.76 (top/refill)
+19:11:37 + 566.18s t=171 FILL BUY 386 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 302 | age 9.4s | refill
+19:11:37 + 566.19s t=171 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 193, 'action': 'BUY', 'price': 153.75} -> id=124116 filled=0.0 status=OPEN (7 ms)
+19:11:37 + 566.19s t=171 POST BUY 193 @ 153.75 (top/refill)
+19:11:37 + 566.81s t=171 MARK SELL 771 @ 153.76 -> mid 153.755: +0.005/sh
+19:11:38 + 567.49s t=171 FILL BUY 213 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 688 | age 7.5s | refill
+19:11:39 + 568.32s t=171 FILL BUY 250 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 901 | age 6.3s | refill
+19:11:39 + 568.33s t=171 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 231, 'action': 'BUY', 'price': 153.75} -> id=124316 filled=0.0 status=OPEN (5 ms)
+19:11:39 + 568.33s t=171 POST BUY 231 @ 153.75 (top/refill)
+19:11:40 + 569.96s t=171 MARK BUY 426 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:42 + 571.98s t=171 MARK SELL 500 @ 153.76 -> mid 153.755: +0.005/sh
+19:11:43 + 572.73s t=171 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 484, 'action': 'SELL', 'price': 153.76} -> id=124571 filled=0.0 status=OPEN (10 ms)
+19:11:43 + 572.73s t=171 POST SELL 484 @ 153.76 (top/refill)
+19:11:44 + 573.22s t=171 FILL BUY 193 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1151 | age 7.0s | refill
+19:11:44 + 573.85s t=172 FILL BUY 231 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1344 | age 5.5s | refill
+19:11:44 + 573.86s t=172 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 212, 'action': 'BUY', 'price': 153.75} -> id=124645 filled=0.0 status=OPEN (8 ms)
+19:11:44 + 573.86s t=172 POST BUY 212 @ 153.75 (top/top)
+19:11:47 + 576.31s t=172 MARK BUY 386 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:47 + 576.47s t=172 FILL BUY 212 @ 153.75 | fair  mid 153.755 bid 153.75 ask 153.76 | net_est 1575 | age 2.6s | top
+19:11:47 + 576.48s t=172 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 106, 'action': 'BUY', 'price': 153.75} -> id=124861 filled=0.0 status=OPEN (7 ms)
+19:11:47 + 576.48s t=172 POST BUY 106 @ 153.75 (top/top)
+19:11:48 + 577.50s t=172 MARK BUY 213 @ 153.75 -> mid 153.755: +0.005/sh
+19:11:48 + 577.88s t=172 CANCEL BUY [(153.75, 106, 'too aggressive')]
+19:11:48 + 577.95s t=172 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 721, 'action': 'SELL', 'price': 153.75} -> id=124925 filled=0.0 status=OPEN (46 ms)
+19:11:48 + 577.95s t=172 POST SELL 721 @ 153.75 (top/top)
+19:11:48 + 578.09s t=172 FILL BUY 106 @ 153.75 | fair  mid 153.75 bid 153.74 ask 153.76 | net_est 1787 | age 1.6s | top
+19:11:49 + 578.33s t=172 MARK BUY 250 @ 153.75 -> mid 153.745: -0.005/sh
+19:11:54 + 583.23s t=172 MARK BUY 193 @ 153.75 -> mid 153.730: -0.020/sh
+19:11:54 + 583.85s t=173 MARK BUY 231 @ 153.75 -> mid 153.725: -0.025/sh
+19:11:56 + 585.51s t=173 CANCEL SELL [(153.76, 376, '4 ticks behind'), (153.76, 426, '4 ticks behind'), (153.76, 386, '4 ticks behind'), (153.76, 484, '4 ticks behind')]
+19:11:56 + 585.62s t=173 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1672, 'action': 'SELL', 'price': 153.72} -> id=125558 filled=0.0 status=OPEN (5 ms)
+19:11:56 + 585.62s t=173 POST SELL 1672 @ 153.72 (top/top)
+19:11:56 + 585.66s t=173 CANCEL SELL [(153.75, 721, 'over size cap'), (153.72, 1672, 'over size cap')]
+19:11:56 + 585.69s t=173 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 721, 'action': 'SELL', 'price': 153.72} -> id=125570 filled=0.0 status=OPEN (10 ms)
+19:11:56 + 585.69s t=173 POST SELL 721 @ 153.72 (top/top)
+19:11:57 + 586.51s t=173 MARK BUY 212 @ 153.75 -> mid 153.695: -0.055/sh
+19:11:57 + 587.13s t=173 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1672, 'action': 'SELL', 'price': 153.7} -> id=125723 filled=0.0 status=OPEN (8 ms)
+19:11:57 + 587.13s t=173 POST SELL 1672 @ 153.70 (top/top)
+19:11:58 + 588.10s t=173 MARK BUY 106 @ 153.75 -> mid 153.695: -0.055/sh
+19:12:18 + 607.91s t=175 CANCEL SELL [(153.72, 721, '4 ticks behind')]
+19:12:18 + 607.94s t=175 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 721, 'action': 'SELL', 'price': 153.68} -> id=126971 filled=0.0 status=OPEN (5 ms)
+19:12:18 + 607.94s t=175 POST SELL 721 @ 153.68 (top/top)
+19:12:20 + 609.57s t=175 FILL SELL 721 @ 153.68 | fair  mid 153.675 bid 153.67 ask 153.68 | net_est 1893 | age 1.6s | top
+19:12:20 + 609.65s t=175 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 414, 'action': 'BUY', 'price': 153.67} -> id=127088 filled=0.0 status=OPEN (24 ms)
+19:12:20 + 609.65s t=175 POST BUY 414 @ 153.67 (top/top)
+19:12:25 + 614.16s t=176 FILL BUY 414 @ 153.67 | fair  mid 153.665 bid 153.66 ask 153.67 | net_est 1172 | age 4.5s | top
+19:12:25 + 614.20s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 206, 'action': 'BUY', 'price': 153.66} -> id=127401 filled=0.0 status=OPEN (28 ms)
+19:12:25 + 614.20s t=176 POST BUY 206 @ 153.66 (top/top)
+19:12:27 + 616.70s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 620, 'action': 'SELL', 'price': 153.67} -> id=127549 filled=0.0 status=OPEN (7 ms)
+19:12:27 + 616.70s t=176 POST SELL 620 @ 153.67 (top/top)
+19:12:28 + 617.14s t=176 CANCEL BUY [(153.66, 206, 'too aggressive')]
+19:12:28 + 617.14s t=176 CANCEL SELL [(153.7, 1672, '4 ticks behind')]
+19:12:28 + 617.17s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1672, 'action': 'SELL', 'price': 153.66} -> id=127570 filled=0.0 status=OPEN (11 ms)
+19:12:28 + 617.17s t=176 POST SELL 1672 @ 153.66 (top/top)
+19:12:28 + 617.17s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 103, 'action': 'BUY', 'price': 153.62} -> id=127572 filled=0.0 status=OPEN (12 ms)
+19:12:28 + 617.18s t=176 POST BUY 103 @ 153.62 (top/top)
+19:12:28 + 617.18s t=176 CANCEL SELL [(153.67, 620, 'over size cap'), (153.66, 1672, 'over size cap')]
+19:12:28 + 617.21s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 620, 'action': 'SELL', 'price': 153.66} -> id=127579 filled=0.0 status=OPEN (13 ms)
+19:12:28 + 617.22s t=176 POST SELL 620 @ 153.66 (top/top)
+19:12:28 + 617.31s t=176 FILL BUY 206 @ 153.66 | fair  mid 153.66 bid 153.65 ask 153.67 | net_est 1586 | age 3.1s | top
+19:12:28 + 617.39s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 103, 'action': 'BUY', 'price': 153.65} -> id=127597 filled=0.0 status=OPEN (7 ms)
+19:12:28 + 617.39s t=176 POST BUY 103 @ 153.65 (top/top)
+19:12:28 + 617.68s t=176 CANCEL BUY [(153.62, 103, 'too aggressive'), (153.65, 103, 'too aggressive')]
+19:12:28 + 617.73s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 103, 'action': 'BUY', 'price': 153.6} -> id=127622 filled=0.0 status=OPEN (11 ms)
+19:12:28 + 617.73s t=176 POST BUY 103 @ 153.60 (top/top)
+19:12:29 + 618.24s t=176 CANCEL BUY [(153.6, 103, '5 ticks behind')]
+19:12:29 + 618.50s t=176 FILL BUY 103 @ 153.65 | fair  mid 153.655 bid 153.65 ask 153.66 | net_est 1792 | age 1.1s | top
+19:12:29 + 618.81s t=176 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1327, 'action': 'SELL', 'price': 153.66} -> id=127662 filled=0.0 status=OPEN (79 ms)
+19:12:29 + 618.81s t=176 POST SELL 1327 @ 153.66 (top/refill)
+19:12:30 + 619.59s t=176 MARK SELL 721 @ 153.68 -> mid 153.655: +0.025/sh
+19:12:35 + 624.19s t=177 MARK BUY 414 @ 153.67 -> mid 153.645: -0.025/sh
+19:12:37 + 626.43s t=177 CANCEL SELL [(153.66, 620, '4 ticks behind'), (153.66, 1327, '4 ticks behind')]
+19:12:37 + 626.45s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1947, 'action': 'SELL', 'price': 153.62} -> id=128073 filled=0.0 status=OPEN (9 ms)
+19:12:37 + 626.45s t=177 POST SELL 1947 @ 153.62 (top/top)
+19:12:38 + 627.36s t=177 MARK BUY 206 @ 153.66 -> mid 153.615: -0.045/sh
+19:12:39 + 628.37s t=177 FILL SELL 600 @ 153.62 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est 1895 | age 1.9s | top
+19:12:39 + 628.39s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 153.62} -> id=128198 filled=0.0 status=OPEN (13 ms)
+19:12:39 + 628.39s t=177 POST SELL 600 @ 153.62 (top/refill)
+19:12:39 + 628.50s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 352, 'action': 'BUY', 'price': 153.61} -> id=128210 filled=0.0 status=OPEN (22 ms)
+19:12:39 + 628.50s t=177 POST BUY 352 @ 153.61 (top/top)
+19:12:39 + 628.68s t=177 MARK BUY 103 @ 153.65 -> mid 153.615: -0.035/sh
+19:12:39 + 628.79s t=177 CANCEL SELL [(153.62, 600, 'over size cap')]
+19:12:39 + 629.09s t=177 FILL SELL 1347 @ 153.62 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est 1295 | age 2.6s | top
+19:12:39 + 629.11s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 200, 'action': 'BUY', 'price': 153.61} -> id=128239 filled=0.0 status=OPEN (16 ms)
+19:12:39 + 629.11s t=177 POST BUY 200 @ 153.61 (top/refill)
+19:12:39 + 629.11s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 974, 'action': 'SELL', 'price': 153.62} -> id=128240 filled=0.0 status=OPEN (14 ms)
+19:12:39 + 629.11s t=177 POST SELL 974 @ 153.62 (top/top)
+19:12:42 + 631.31s t=177 FILL BUY 352 @ 153.61 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est -52 | age 2.8s | top
+19:12:42 + 631.31s t=177 FILL BUY 200 @ 153.61 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est -52 | age 2.2s | refill
+19:12:42 + 631.32s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 750, 'action': 'BUY', 'price': 153.61} -> id=128299 filled=0.0 status=OPEN (7 ms)
+19:12:42 + 631.32s t=177 POST BUY 750 @ 153.61 (top/top)
+19:12:43 + 633.04s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 651, 'action': 'SELL', 'price': 153.62} -> id=128377 filled=0.0 status=OPEN (9 ms)
+19:12:43 + 633.04s t=177 POST SELL 651 @ 153.62 (top/refill)
+19:12:44 + 633.53s t=177 FILL BUY 750 @ 153.61 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est 500 | age 2.2s | top
+19:12:44 + 633.54s t=177 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.61} -> id=128403 filled=0.0 status=OPEN (10 ms)
+19:12:44 + 633.54s t=177 POST BUY 375 @ 153.61 (top/top)
+19:12:47 + 636.93s t=178 FILL SELL 974 @ 153.62 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est 1250 | age 7.8s | top
+19:12:47 + 636.95s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 299, 'action': 'BUY', 'price': 153.61} -> id=128579 filled=0.0 status=OPEN (13 ms)
+19:12:47 + 636.95s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 153.62} -> id=128580 filled=0.0 status=OPEN (7 ms)
+19:12:47 + 636.95s t=178 POST BUY 299 @ 153.61 (top/refill)
+19:12:47 + 636.95s t=178 POST SELL 500 @ 153.62 (top/refill)
+19:12:48 + 637.35s t=178 FILL BUY 375 @ 153.61 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est 276 | age 3.8s | top
+19:12:48 + 637.39s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.61} -> id=128602 filled=0.0 status=OPEN (6 ms)
+19:12:48 + 637.39s t=178 POST BUY 375 @ 153.61 (top/refill)
+19:12:49 + 638.39s t=178 MARK SELL 600 @ 153.62 -> mid 153.615: +0.005/sh
+19:12:49 + 639.10s t=178 MARK SELL 1347 @ 153.62 -> mid 153.615: +0.005/sh
+19:12:50 + 639.20s t=178 FILL SELL 651 @ 153.62 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est 651 | age 6.2s | refill
+19:12:50 + 639.22s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 299, 'action': 'SELL', 'price': 153.62} -> id=128708 filled=0.0 status=OPEN (18 ms)
+19:12:50 + 639.22s t=178 POST SELL 299 @ 153.62 (top/refill)
+19:12:50 + 639.69s t=178 FILL BUY 299 @ 153.61 | fair  mid 153.615 bid 153.61 ask 153.62 | net_est 0 | age 2.7s | refill
+19:12:50 + 639.71s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 475, 'action': 'BUY', 'price': 153.61} -> id=128755 filled=0.0 status=OPEN (5 ms)
+19:12:50 + 639.71s t=178 POST BUY 475 @ 153.61 (top/refill)
+19:12:51 + 640.14s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'SELL', 'price': 153.62} -> id=128778 filled=0.0 status=OPEN (7 ms)
+19:12:51 + 640.14s t=178 POST SELL 375 @ 153.62 (top/refill)
+19:12:51 + 640.56s t=178 CANCEL BUY [(153.61, 375, 'too aggressive'), (153.61, 475, 'too aggressive')]
+19:12:51 + 640.59s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 475, 'action': 'SELL', 'price': 153.61} -> id=128798 filled=0.0 status=OPEN (32 ms)
+19:12:51 + 640.59s t=178 POST SELL 475 @ 153.61 (top/top)
+19:12:51 + 640.60s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 425, 'action': 'BUY', 'price': 153.58} -> id=128801 filled=0.0 status=OPEN (7 ms)
+19:12:51 + 640.60s t=178 POST BUY 425 @ 153.58 (top/top)
+19:12:51 + 640.65s t=178 FILL BUY 375 @ 153.61 | fair  mid 153.61 bid 153.6 ask 153.62 | net_est 299 | age 3.3s | refill
+19:12:51 + 640.65s t=178 CANCEL BUY [(153.58, 425, 'over size cap')]
+19:12:51 + 640.69s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 376, 'action': 'BUY', 'price': 153.58} -> id=128832 filled=0.0 status=OPEN (8 ms)
+19:12:51 + 640.69s t=178 POST BUY 376 @ 153.58 (top/top)
+19:12:52 + 641.14s t=178 FILL BUY 475 @ 153.61 | fair  mid 153.605 bid 153.6 ask 153.61 | net_est 674 | age 1.4s | refill
+19:12:52 + 641.32s t=178 MARK BUY 352 @ 153.61 -> mid 153.605: -0.005/sh
+19:12:52 + 641.32s t=178 MARK BUY 200 @ 153.61 -> mid 153.605: -0.005/sh
+19:12:52 + 641.97s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 425, 'action': 'BUY', 'price': 153.6} -> id=128954 filled=0.0 status=OPEN (16 ms)
+19:12:52 + 641.97s t=178 POST BUY 425 @ 153.60 (top/top)
+19:12:53 + 642.15s t=178 CANCEL BUY [(153.6, 425, 'too aggressive')]
+19:12:53 + 642.24s t=178 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 425, 'action': 'BUY', 'price': 153.57} -> id=128970 filled=0.0 status=OPEN (57 ms)
+19:12:53 + 642.24s t=178 POST BUY 425 @ 153.57 (top/top)
+19:12:54 + 643.53s t=178 MARK BUY 750 @ 153.61 -> mid 153.595: -0.015/sh
+19:12:55 + 644.15s t=179 CANCEL BUY [(153.58, 376, 'too aggressive'), (153.57, 425, 'too aggressive')]
+19:12:55 + 644.17s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 237, 'action': 'BUY', 'price': 153.55} -> id=129146 filled=0.0 status=OPEN (7 ms)
+19:12:55 + 644.17s t=179 POST BUY 237 @ 153.55 (top/top)
+19:12:55 + 644.67s t=179 CANCEL BUY [(153.55, 237, 'over size cap')]
+19:12:55 + 644.81s t=179 FILL BUY 376 @ 153.58 | fair  mid 153.585 bid 153.58 ask 153.59 | net_est 1149 | age 4.1s | top
+19:12:55 + 644.88s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 237, 'action': 'BUY', 'price': 153.58} -> id=129235 filled=237.0 status=OPEN (64 ms)
+19:12:55 + 644.88s t=179 FILL BUY 237 @ 153.58 | fair  mid 153.575 bid 153.57 ask 153.58 | net_est 1525 | age 0.0s | top
+19:12:55 + 644.88s t=179 POST BUY 237 @ 153.58 (top/top)
+19:12:55 + 644.88s t=179 CANCEL SELL [(153.62, 500, '4 ticks behind'), (153.62, 299, '4 ticks behind'), (153.62, 375, '4 ticks behind')]
+19:12:55 + 644.92s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1787, 'action': 'SELL', 'price': 153.58} -> id=129239 filled=0.0 status=OPEN (27 ms)
+19:12:55 + 644.92s t=179 POST SELL 1787 @ 153.58 (top/top)
+19:12:55 + 644.95s t=179 CANCEL SELL [(153.61, 475, 'over size cap'), (153.58, 1787, 'over size cap')]
+19:12:55 + 644.99s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 1088, 'action': 'SELL', 'price': 153.58} -> id=129250 filled=0.0 status=OPEN (5 ms)
+19:12:55 + 644.99s t=179 POST SELL 1088 @ 153.58 (top/top)
+19:12:55 + 645.05s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 119, 'action': 'BUY', 'price': 153.57} -> id=129263 filled=0.0 status=OPEN (18 ms)
+19:12:55 + 645.06s t=179 POST BUY 119 @ 153.57 (top/top)
+19:12:56 + 645.23s t=179 CANCEL SELL [(153.58, 1088, 'over size cap')]
+19:12:56 + 645.27s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 475, 'action': 'SELL', 'price': 153.58} -> id=129285 filled=0.0 status=OPEN (15 ms)
+19:12:56 + 645.27s t=179 POST SELL 475 @ 153.58 (top/top)
+19:12:56 + 645.72s t=179 FILL SELL 585 @ 153.58 | fair  mid 153.575 bid 153.57 ask 153.58 | net_est 1762 | age 0.7s | top
+19:12:56 + 645.74s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 411, 'action': 'BUY', 'price': 153.56} -> id=129320 filled=0.0 status=OPEN (9 ms)
+19:12:56 + 645.74s t=179 POST BUY 411 @ 153.56 (top/top)
+19:12:56 + 645.80s t=179 FILL SELL 1787 @ 153.58 | fair  mid 153.575 bid 153.57 ask 153.58 | net_est 1177 | age 0.9s | top
+19:12:56 + 645.84s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 220, 'action': 'SELL', 'price': 153.58} -> id=129324 filled=0.0 status=OPEN (38 ms)
+19:12:56 + 645.84s t=179 POST SELL 220 @ 153.58 (top/refill)
+19:12:56 + 645.95s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 580, 'action': 'BUY', 'price': 153.56} -> id=129333 filled=0.0 status=OPEN (9 ms)
+19:12:56 + 645.95s t=179 POST BUY 580 @ 153.56 (top/refill)
+19:12:57 + 646.94s t=179 MARK SELL 974 @ 153.62 -> mid 153.575: +0.045/sh
+19:12:58 + 647.36s t=179 MARK BUY 375 @ 153.61 -> mid 153.575: -0.035/sh
+19:13:00 + 649.21s t=179 MARK SELL 651 @ 153.62 -> mid 153.575: +0.045/sh
+19:13:00 + 649.76s t=179 MARK BUY 299 @ 153.61 -> mid 153.575: -0.035/sh
+19:13:01 + 650.23s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 695, 'action': 'SELL', 'price': 153.57} -> id=129577 filled=0.0 status=OPEN (11 ms)
+19:13:01 + 650.23s t=179 POST SELL 695 @ 153.57 (top/top)
+19:13:01 + 650.37s t=179 FILL BUY 119 @ 153.57 | fair  mid 153.565 bid 153.56 ask 153.57 | net_est -610 | age 5.3s | top
+19:13:01 + 650.67s t=179 MARK BUY 375 @ 153.61 -> mid 153.565: -0.045/sh
+19:13:02 + 651.15s t=179 MARK BUY 475 @ 153.61 -> mid 153.565: -0.045/sh
+19:13:04 + 653.45s t=179 FILL BUY 411 @ 153.56 | fair  mid 153.565 bid 153.56 ask 153.57 | net_est -491 | age 7.7s | top
+19:13:04 + 653.45s t=179 FILL BUY 580 @ 153.56 | fair  mid 153.565 bid 153.56 ask 153.57 | net_est -491 | age 7.5s | refill
+19:13:04 + 653.45s t=179 CANCEL SELL [(153.58, 220, 'over size cap'), (153.58, 475, 'over size cap')]
+19:13:04 + 653.47s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 750, 'action': 'BUY', 'price': 153.56} -> id=129784 filled=0.0 status=OPEN (20 ms)
+19:13:04 + 653.47s t=179 POST BUY 750 @ 153.56 (top/top)
+19:13:04 + 653.48s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 305, 'action': 'SELL', 'price': 153.57} -> id=129785 filled=0.0 status=OPEN (10 ms)
+19:13:04 + 653.49s t=179 POST SELL 305 @ 153.57 (top/refill)
+19:13:04 + 653.51s t=179 CANCEL SELL [(153.57, 305, 'over size cap'), (153.57, 695, 'over size cap')]
+19:13:04 + 653.57s t=179 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 305, 'action': 'SELL', 'price': 153.57} -> id=129788 filled=0.0 status=OPEN (19 ms)
+19:13:04 + 653.57s t=179 POST SELL 305 @ 153.57 (top/top)
+19:13:04 + 653.86s t=180 [tick 180] NLV=5185.0376 real=-365.61 unreal=0.00 | fills=182 vol=73848 edge=+0.0024/sh | net=500 est=500 | open=2 repl/min=42 | api/s=96 ord/s=5 429=0 loop=42ms
+19:13:04 + 654.06s t=180 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 695, 'action': 'SELL', 'price': 153.57} -> id=129824 filled=0.0 status=OPEN (9 ms)
+19:13:04 + 654.06s t=180 POST SELL 695 @ 153.57 (top/refill)
+19:13:05 + 654.83s t=180 MARK BUY 376 @ 153.58 -> mid 153.565: -0.015/sh
+19:13:05 + 654.90s t=180 MARK BUY 237 @ 153.58 -> mid 153.565: -0.015/sh
+19:13:06 + 655.79s t=180 MARK SELL 585 @ 153.58 -> mid 153.565: +0.015/sh
+19:13:06 + 655.85s t=180 MARK SELL 1787 @ 153.58 -> mid 153.565: +0.015/sh
+19:13:08 + 657.20s t=180 CANCEL BUY [(153.56, 750, 'too aggressive')]
+19:13:08 + 657.21s t=180 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 750, 'action': 'SELL', 'price': 153.56} -> id=130048 filled=0.0 status=OPEN (9 ms)
+19:13:08 + 657.22s t=180 POST SELL 750 @ 153.56 (top/top)
+19:13:08 + 657.22s t=180 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.53} -> id=130049 filled=0.0 status=OPEN (6 ms)
+19:13:08 + 657.22s t=180 POST BUY 375 @ 153.53 (top/top)
+19:13:08 + 657.77s t=180 FILL BUY 750 @ 153.56 | fair  mid 153.555 bid 153.55 ask 153.56 | net_est 500 | age 4.3s | top
+19:13:08 + 657.80s t=180 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 375, 'action': 'BUY', 'price': 153.55} -> id=130110 filled=0.0 status=OPEN (15 ms)
+19:13:08 + 657.80s t=180 POST BUY 375 @ 153.55 (top/top)
+19:13:09 + 658.32s t=180 CANCEL BUY [(153.53, 375, 'too aggressive'), (153.55, 375, 'too aggressive')]
+19:13:09 + 658.34s t=180 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 187, 'action': 'BUY', 'price': 153.51} -> id=130154 filled=0.0 status=OPEN (10 ms)
+19:13:09 + 658.34s t=180 POST BUY 187 @ 153.51 (top/top)
+19:13:09 + 658.49s t=180 FILL BUY 375 @ 153.55 | fair  mid 153.545 bid 153.54 ask 153.55 | net_est 1250 | age 0.7s | top
+19:13:09 + 658.50s t=180 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 187, 'action': 'BUY', 'price': 153.53} -> id=130167 filled=0.0 status=OPEN (9 ms)
+19:13:09 + 658.50s t=180 POST BUY 187 @ 153.53 (top/top)
+19:13:11 + 660.37s t=180 MARK BUY 119 @ 153.57 -> mid 153.545: -0.025/sh
+19:13:13 + 662.45s t=180 CANCEL BUY [(153.53, 187, 'too aggressive')]
+19:13:13 + 662.46s t=180 ORDER ok {'ticker': 'CNR', 'type': 'LIMIT', 'quantity': 187, 'action': 'BUY', 'price': 153.5} -> id=130393 filled=0.0 status=OPEN (5 ms)
+19:13:13 + 662.46s t=180 POST BUY 187 @ 153.50 (top/top)
+19:13:14 + 663.51s t=180 MARK BUY 411 @ 153.56 -> mid 153.535: -0.025/sh
+19:13:14 + 663.51s t=180 MARK BUY 580 @ 153.56 -> mid 153.535: -0.025/sh
