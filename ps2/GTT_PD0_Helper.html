@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTT price ladder</title>
+<style>
+  :root {
+    --bg: #EEF0F3;
+    --panel: #FFFFFF;
+    --ink: #16202A;
+    --muted: #6B7683;
+    --rule: #D3D8DE;
+    --buy: #0B6E4F;
+    --buy-soft: #DDF1E8;
+    --sell: #B3261E;
+    --sell-soft: #F8E1DF;
+    --free: #C98A00;
+    --free-soft: #FFF1CC;
+    --out: #9AA3AD;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", "Segoe UI", -apple-system, Helvetica, Arial, sans-serif;
+    font-variant-numeric: tabular-nums; }
+  body { padding: 20px; }
+  h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 13px; margin: 0 0 18px; }
+  .wrap { display: grid; grid-template-columns: 340px 1fr; gap: 20px; max-width: 980px; }
+  @media (max-width: 760px) { .wrap { grid-template-columns: 1fr; } }
+
+  /* ---------- ladder ---------- */
+  .ladder { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 14px; position: relative; }
+  .scale { position: relative; height: 470px; margin-left: 72px; border-left: 2px solid var(--ink); }
+  .rung { position: absolute; left: -2px; transform: translateY(-50%); display: flex; align-items: center; gap: 10px; width: calc(100% + 2px); }
+  .rung button.px {
+    width: 108px; height: 56px; border-radius: 6px; border: 2px solid var(--ink); background: var(--panel); color: var(--ink);
+    font: inherit; font-size: 24px; font-weight: 600; cursor: pointer; letter-spacing: -0.01em; position: relative; z-index: 2;
+  }
+  .rung button.px:focus-visible, .tape:focus-visible, .ctl input:focus-visible, .reset:focus-visible { outline: 3px solid #4C8DFF; outline-offset: 2px; }
+  .rung .co { font-size: 12px; color: var(--muted); width: 22px; }
+  .rung .tape { font: inherit; font-size: 11px; padding: 4px 8px; border-radius: 12px; border: 1px dashed var(--muted); background: transparent; color: var(--muted); cursor: pointer; }
+  .rung.out button.px { border-color: var(--out); color: var(--out); background: #F6F7F8; text-decoration: line-through; text-decoration-thickness: 3px; }
+  .rung.out .tape { visibility: hidden; }
+  .rung.tape-out button.px { border-style: dashed; border-color: var(--muted); color: var(--muted); }
+  .rung.tape-out .tape { border-style: solid; background: var(--ink); color: #fff; }
+  .rung .tick { position: absolute; left: -14px; width: 12px; height: 2px; background: var(--ink); }
+  .rung.out .tick { background: var(--out); }
+
+  .line { position: absolute; left: 0; right: 0; height: 0; border-top: 2px solid; transform: translateY(-1px); z-index: 1; pointer-events: none; }
+  .line .tag { position: absolute; right: 0; top: -9px; font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 3px; color: #fff; background: currentColor; }
+  .line .tag span { color: #fff; }
+  .line.ev { border-color: var(--ink); color: var(--ink); border-top-style: solid; }
+  .line.buy { border-color: var(--buy); color: var(--buy); border-top-style: dashed; }
+  .line.sell { border-color: var(--sell); color: var(--sell); border-top-style: dashed; }
+  .line.mkt { border-color: #4C8DFF; color: #4C8DFF; border-top-style: dotted; }
+  .line.hidden { display: none; }
+  .band { position: absolute; left: 0; right: 0; background: rgba(22,32,42,0.04); z-index: 0; pointer-events: none; }
+  .legend { margin-top: 10px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+  kbd { font: inherit; font-size: 11px; border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 3px; padding: 0 4px; background: #fff; }
+
+  /* ---------- right column ---------- */
+  .col { display: flex; flex-direction: column; gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; }
+  .card h2 { font-size: 13px; font-weight: 600; margin: 0 0 10px; color: var(--muted); }
+  .thresh { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 420px) { .thresh { grid-template-columns: 1fr; } }
+  .t { border-radius: 6px; padding: 12px 14px; border-left: 5px solid; }
+  .t.buy { border-color: var(--buy); background: var(--buy-soft); }
+  .t.sell { border-color: var(--sell); background: var(--sell-soft); }
+  .t.free { background: var(--free-soft); border-color: var(--free); }
+  .t .lab { font-size: 13px; }
+  .t .val { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-top: 2px; }
+  .t .why { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .stats { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14px; }
+  .stats b { font-size: 20px; font-weight: 600; display: block; letter-spacing: -0.01em; }
+  .stats span { color: var(--muted); font-size: 12px; }
+
+  .ctl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: end; }
+  .ctl label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 4px; }
+  .ctl input[type=number] { width: 100%; font: inherit; font-size: 18px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: #FAFBFC; color: var(--ink); }
+  .ctl .switch { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink); padding-bottom: 8px; }
+  .signal { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .signal .word { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+  .signal.buy .word, .signal.freebuy .word { color: var(--buy); }
+  .signal.sell .word, .signal.freesell .word { color: var(--sell); }
+  .signal.hold .word { color: var(--muted); }
+  .signal .edge { font-size: 14px; }
+  .read { font-size: 13px; margin-top: 8px; line-height: 1.5; }
+  .read.warn { color: var(--sell); font-weight: 600; }
+  .reset { font: inherit; font-size: 13px; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer; }
+  .foot { font-size: 12px; color: var(--muted); line-height: 1.5; }
+</style>
+</head>
+<body>
+<h1>GTT price ladder</h1>
+<p class="sub">Click a price when your analysts rule it out. Click again to restore. Keys <kbd>0</kbd> <kbd>2</kbd> <kbd>4</kbd> <kbd>6</kbd> <kbd>8</kbd> toggle 20 / 22 / 24 / 26 / 28.</p>
+
+<div class="wrap">
+  <div class="ladder">
+    <div class="scale" id="scale"></div>
+    <div class="legend">
+      Solid strike = ruled out by your news (certain). Dashed = "tape says out": your read of the market, only counted when the switch is on.
+      Dashed green and red lines are your buy and sell thresholds; the solid black line is your expected value.
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <h2>Act on these</h2>
+      <div class="thresh">
+        <div class="t buy">
+          <div class="lab">Buy if the ask is at or below</div>
+          <div class="val" id="buyAt">–</div>
+          <div class="why" id="buyWhy"></div>
+        </div>
+        <div class="t sell">
+          <div class="lab">Sell if the bid is at or above</div>
+          <div class="val" id="sellAt">–</div>
+          <div class="why" id="sellWhy"></div>
+        </div>
+        <div class="t free">
+          <div class="lab">Risk-free buy below</div>
+          <div class="val" id="freeBuy">–</div>
+          <div class="why">Lowest alive value minus fee. Buy every share offered.</div>
+        </div>
+        <div class="t free">
+          <div class="lab">Risk-free short above</div>
+          <div class="val" id="freeSell">–</div>
+          <div class="why">Highest alive value plus fee. Hit every bid.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Where you stand</h2>
+      <div class="stats">
+        <div><b id="ev">24.00</b><span>expected value</span></div>
+        <div><b id="alive">5</b><span>outcomes alive</span></div>
+        <div><b id="range">20 to 28</b><span>alive range</span></div>
+        <div><b id="sd">2.83</b><span>std dev</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Check a market price</h2>
+      <div class="ctl">
+        <div><label for="mkt">Current mid, bid or ask</label><input id="mkt" type="number" step="0.01" placeholder="e.g. 25.30"></div>
+        <div><label for="edge">Minimum edge to act ($/share)</label><input id="edge" type="number" step="0.05" value="0.15"></div>
+        <div><label for="fee">Fee per share</label><input id="fee" type="number" step="0.01" value="0.02"></div>
+        <div class="switch"><input type="checkbox" id="useTape"><label for="useTape" style="margin:0;color:var(--ink)">Count "tape says out" in EV</label></div>
+      </div>
+      <div class="signal hold" id="sig" style="margin-top:12px">
+        <span class="word">Enter a price</span><span class="edge"></span>
+      </div>
+      <div class="read" id="read"></div>
+    </div>
+
+    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div class="foot">Buy threshold = EV minus fee minus minimum edge. Sell threshold = EV plus fee plus minimum edge. Everything here is uniform over the values you still have alive.</div>
+      <button class="reset" id="reset">Reset all</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const VALUES = [28, 26, 24, 22, 20];
+  const CO = {20:'A', 22:'B', 24:'C', 26:'D', 28:'E'};
+  const state = {}; // value -> 'alive' | 'out' | 'tape'
+  VALUES.forEach(v => state[v] = 'alive');
+
+  const scale = document.getElementById('scale');
+  const TOP = 29.6, BOT = 18.4; // price range shown on the ladder
+  const pct = p => ((TOP - p) / (TOP - BOT) * 100);
+
+  // band + lines first (behind rungs)
+  const band = document.createElement('div'); band.className = 'band'; scale.appendChild(band);
+  const lines = {};
+  [['buy','buy'],['sell','sell'],['ev','EV'],['mkt','mkt']].forEach(([k,label]) => {
+    const l = document.createElement('div'); l.className = 'line ' + k;
+    l.innerHTML = '<div class="tag"><span>' + label + '</span></div>';
+    scale.appendChild(l); lines[k] = l;
+  });
+
+  VALUES.forEach(v => {
+    const r = document.createElement('div');
+    r.className = 'rung'; r.style.top = pct(v) + '%'; r.dataset.v = v;
+    r.innerHTML = '<span class="tick"></span>'
+      + '<button class="px" aria-pressed="false" title="Toggle: ruled out by my news">' + v.toFixed(0) + '</button>'
+      + '<span class="co">' + CO[v] + '</span>'
+      + '<button class="tape" title="Toggle: the tape suggests this is out">tape says out</button>';
+    r.querySelector('.px').addEventListener('click', () => toggle(v, 'out'));
+    r.querySelector('.tape').addEventListener('click', () => toggle(v, 'tape'));
+    scale.appendChild(r);
+  });
+
+  function toggle(v, kind) {
+    state[v] = (state[v] === kind) ? 'alive' : kind;
+    render();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    const map = {'0':20,'2':22,'4':24,'6':26,'8':28};
+    if (map[e.key]) { toggle(map[e.key], 'out'); e.preventDefault(); }
+  });
+
+  const $ = id => document.getElementById(id);
+  ['mkt','edge','fee','useTape'].forEach(id => $(id).addEventListener('input', render));
+  $('reset').addEventListener('click', () => { VALUES.forEach(v => state[v] = 'alive'); $('mkt').value = ''; render(); });
+
+  const f2 = x => x.toFixed(2);
+
+  function render() {
+    const useTape = $('useTape').checked;
+    const fee = parseFloat($('fee').value) || 0;
+    const edge = parseFloat($('edge').value) || 0;
+    const mkt = parseFloat($('mkt').value);
+
+    const myAlive = VALUES.filter(v => state[v] !== 'out');
+    const alive = VALUES.filter(v => state[v] === 'alive' || (state[v] === 'tape' && !useTape));
+    const n = alive.length;
+    const ev = n ? alive.reduce((a,b) => a+b, 0) / n : 0;
+    const sd = n ? Math.sqrt(alive.reduce((a,b) => a + (b-ev)*(b-ev), 0) / n) : 0;
+    const lo = n ? Math.min(...alive) : 0, hi = n ? Math.max(...alive) : 0;
+
+    // rung styling
+    document.querySelectorAll('.rung').forEach(r => {
+      const v = +r.dataset.v;
+      r.classList.toggle('out', state[v] === 'out');
+      r.classList.toggle('tape-out', state[v] === 'tape');
+      r.querySelector('.px').setAttribute('aria-pressed', state[v] === 'out');
+    });
+
+    // numbers
+    const buyAt = ev - fee - edge, sellAt = ev + fee + edge;
+    const freeBuy = lo - fee, freeSell = hi + fee;
+    $('ev').textContent = n ? f2(ev) : '–';
+    $('alive').textContent = n;
+    $('range').textContent = n ? (lo === hi ? lo.toFixed(0) : lo.toFixed(0) + ' to ' + hi.toFixed(0)) : '–';
+    $('sd').textContent = n ? f2(sd) : '–';
+
+    if (!n) {
+      ['buyAt','sellAt','freeBuy','freeSell'].forEach(id => $(id).textContent = '–');
+      $('buyWhy').textContent = $('sellWhy').textContent = 'Nothing alive: restore a value.';
+    } else if (n === 1) {
+      $('buyAt').textContent = f2(lo - fee); $('sellAt').textContent = f2(lo + fee);
+      $('buyWhy').textContent = 'Only one outcome left: this is the risk-free line.';
+      $('sellWhy').textContent = 'Only one outcome left: this is the risk-free line.';
+      $('freeBuy').textContent = f2(freeBuy); $('freeSell').textContent = f2(freeSell);
+    } else {
+      $('buyAt').textContent = f2(buyAt); $('sellAt').textContent = f2(sellAt);
+      $('buyWhy').textContent = 'Worst case if you buy here: settles at ' + lo.toFixed(0) + ' (' + f2(lo - buyAt - fee) + '/share).';
+      $('sellWhy').textContent = 'Worst case if you sell here: settles at ' + hi.toFixed(0) + ' (' + f2(sellAt - hi - fee) + '/share).';
+      $('freeBuy').textContent = f2(freeBuy); $('freeSell').textContent = f2(freeSell);
+    }
+
+    // ladder lines
+    const place = (k, p, show) => { lines[k].classList.toggle('hidden', !show); if (show) lines[k].style.top = pct(p) + '%'; };
+    place('ev', ev, n > 0);
+    place('buy', n === 1 ? lo - fee : buyAt, n > 0);
+    place('sell', n === 1 ? lo + fee : sellAt, n > 0);
+    place('mkt', mkt, !isNaN(mkt));
+    if (n) { band.style.top = pct(hi + 0.7) + '%'; band.style.height = (pct(lo - 0.7) - pct(hi + 0.7)) + '%'; band.style.display = ''; }
+    else band.style.display = 'none';
+
+    // signal
+    const sig = $('sig'), word = sig.querySelector('.word'), ed = sig.querySelector('.edge'), read = $('read');
+    sig.className = 'signal hold'; read.className = 'read'; ed.textContent = ''; read.textContent = '';
+    if (isNaN(mkt) || !n) { word.textContent = isNaN(mkt) ? 'Enter a price' : 'No outcomes alive'; return; }
+    const eBuy = ev - mkt - fee, eSell = mkt - ev - fee;
+    if (mkt < freeBuy)       { sig.className = 'signal freebuy'; word.textContent = 'Risk-free buy'; ed.textContent = 'at least ' + f2(lo - mkt - fee) + '/share locked in'; }
+    else if (mkt > freeSell) { sig.className = 'signal freesell'; word.textContent = 'Risk-free short'; ed.textContent = 'at least ' + f2(mkt - hi - fee) + '/share locked in'; }
+    else if (eBuy >= edge)   { sig.className = 'signal buy'; word.textContent = 'Buy'; ed.textContent = '+' + f2(eBuy) + '/share expected after fee'; }
+    else if (eSell >= edge)  { sig.className = 'signal sell'; word.textContent = 'Sell'; ed.textContent = '+' + f2(eSell) + '/share expected after fee'; }
+    else { word.textContent = 'Hold'; ed.textContent = 'edge ' + f2(Math.max(eBuy, eSell)) + '/share, below your minimum'; }
+
+    // market read
+    const onEliminated = VALUES.some(v => state[v] === 'out' && Math.abs(v - mkt) <= 0.5);
+    const outsideMine = mkt < Math.min(...myAlive) - fee || mkt > Math.max(...myAlive) + fee;
+    if (outsideMine) { read.className = 'read warn'; read.textContent = 'Price is outside every value your news left alive. The crowd cannot be right here. Trade it with size.'; }
+    else if (onEliminated) { read.className = 'read warn'; read.textContent = 'Price is sitting on a value your analysts eliminated. Your news is not in the price yet, but direction still depends on the rest of your alive set.'; }
+    else if (Math.abs(mkt - ev) < 0.25) read.textContent = 'Market agrees with your expected value. No information edge either way.';
+    else if (mkt > ev) read.textContent = 'Market is above your EV. Other traders have probably ruled out low values you still hold. Before shorting, ask which of your low values they could have killed.';
+    else read.textContent = 'Market is below your EV. Other traders have probably ruled out high values you still hold. Before buying, ask which of your high values they could have killed.';
+  }
+  render();
+})();
+</script>
+</body>
+</html>

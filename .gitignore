@@ -13,3 +13,5 @@ ps1/data/cache/
 
 # PDFs
 .pdf
+# Windows download metadata (alternate data streams copied via WSL)
+*:Zone.Identifier

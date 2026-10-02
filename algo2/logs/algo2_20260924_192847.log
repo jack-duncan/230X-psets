@@ -1,0 +1,152 @@
+19:28:47 +   0.35s t=    Connected: Hashim Almodamagha (almodamagha_hashim) | case 'Algo 2 Trading Case' | tick 176/300 | status ACTIVE | fee 0.01 rebate 0.015 | max order 5000 | orders/s 5 (using 4)
+19:28:47 +   0.35s t=    SECURITY {'ticker': 'ALGO', 'type': 'STOCK', 'size': 1, 'position': 0.0, 'vwap': 0.0, 'nlv': 0.0, 'last': 20.0, 'bid': 20.0, 'bid_size': 221683.0, 'ask': 20.01, 'ask_size': 87389.0, 'volume': 16933981.0, 'unrealized': 0.0, 'realized': 0.0, 'currency': '', 'total_volume': 16933981.0, 'limits': [{'name': 'LIMIT-STOCK', 'units': 1.0}], 'interest_rate': 0.0, 'is_tradeable': True, 'is_shortable': True, 'start_period': 1, 'stop_period': 1, 'description': 'Shares of ALGO Corp.', 'unit_multiplier': 1, 'display_unit': 'share', 'start_price': 20.0, 'min_price': 0.0, 'max_price': 30.0, 'quoted_decimals': 2, 'trading_fee': 0.01, 'limit_order_rebate': 0.015, 'min_trade_size': 0, 'max_trade_size': 5000, 'required_tickers': None, 'underlying_tickers': None, 'bond_coupon': 0.0, 'interest_payments_per_period': 0, 'base_security': '', 'fixing_ticker': None, 'api_orders_per_second': 5, 'execution_delay_ms': 0, 'interest_rate_ticker': None, 'otc_price_range': 0.0}
+19:28:47 +   0.36s t=    LIMITS [{'name': 'LIMIT-STOCK', 'gross': 0.0, 'net': 0.0, 'gross_limit': 25000, 'net_limit': 25000, 'gross_fine': 0.0, 'net_fine': 0.1}]
+19:28:58 +  11.36s t=    Excel cockpit open: c:\users\hashim_almodamagha\desktop\algo2\ALGO2_cockpit.xlsx
+19:28:58 +  11.36s t=    PARAMS {'Enabled': 1, 'Quote size': 2500, 'Layers': 2, 'Min spread': 0.02, 'Vol mult': 0.5, 'Vol window': 3.0, 'Improve if spread >=': 0.03, 'Micro weight': 0.5, 'Drift window': 2.0, 'Drift lean': 0.5, 'Max inv': 8000, 'Skew $ at max inv': 0.04, 'Reduce boost': 0.5, 'Hard reduce |net|': 14000, 'Requote lag ticks': 2, 'Requote min sec': 0.15, 'Gross cap': 22000, 'End flat secs': 8, 'Allow market orders': 0, 'Poll seconds': 0.0, 'Book depth': 10, 'Flatten now': 0, 'Panic': 0}
+19:28:58 +  11.42s t=179 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 20.0} -> id=28631 filled=0.0 status=OPEN (21 ms)
+19:28:58 +  11.42s t=179 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'SELL', 'price': 20.02} -> id=28632 filled=0.0 status=OPEN (21 ms)
+19:28:58 +  11.43s t=179 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 19.99} -> id=28633 filled=0.0 status=OPEN (6 ms)
+19:28:58 +  11.43s t=179 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'SELL', 'price': 20.03} -> id=28634 filled=0.0 status=OPEN (5 ms)
+19:28:59 +  12.41s t=180 [tick 180] NLV=0.0 real=0.00 unreal=0.00 | fills=0 vol=0 edge=+0.0000/sh | net=0 est=0 | open=4 repl/min=2 | api/s=84 ord/s=2 429=0 loop=31ms
+19:29:00 +  13.61s t=180 CANCEL BUY x2 (bid above fair-half)
+19:29:00 +  13.62s t=180 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 19.99} -> id=28683 filled=0.0 status=OPEN (9 ms)
+19:29:00 +  13.63s t=180 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 19.98} -> id=28684 filled=0.0 status=OPEN (7 ms)
+19:29:07 +  20.02s t=181 CANCEL BUY x2 (bid 2 ticks behind)
+19:29:07 +  20.40s t=181 CANCEL SELL x2 (ask below fair+half)
+19:29:07 +  20.41s t=181 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 20.01} -> id=29010 filled=0.0 status=OPEN (11 ms)
+19:29:07 +  20.42s t=181 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 20.0} -> id=29013 filled=0.0 status=OPEN (5 ms)
+19:29:08 +  21.12s t=181 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'SELL', 'price': 20.03} -> id=29064 filled=0.0 status=OPEN (718 ms)
+19:29:08 +  21.40s t=181 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'SELL', 'price': 20.04} -> id=29074 filled=0.0 status=OPEN (284 ms)
+19:29:13 +  26.65s t=183 CANCEL BUY x2 (bid above fair-half)
+19:29:14 +  26.65s t=183 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 20.0} -> id=29233 filled=0.0 status=OPEN (6 ms)
+19:29:14 +  26.67s t=183 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 19.99} -> id=29234 filled=0.0 status=OPEN (14 ms)
+19:29:53 +  66.00s t=193 CANCEL BUY x2 (bid 2 ticks behind)
+19:29:53 +  66.01s t=193 CANCEL SELL x2 (ask below fair+half)
+19:29:53 +  66.02s t=193 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'SELL', 'price': 20.04} -> id=31449 filled=0.0 status=OPEN (8 ms)
+19:29:53 +  66.02s t=193 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 20.02} -> id=31451 filled=547.0 status=OPEN (10 ms)
+19:29:54 +  67.00s t=193 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'BUY', 'price': 20.01} -> id=31575 filled=0.0 status=OPEN (983 ms)
+19:29:54 +  67.02s t=193 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2500, 'action': 'SELL', 'price': 20.05} -> id=31576 filled=0.0 status=OPEN (997 ms)
+19:29:54 +  67.06s t=193 FILL BUY 2500 @ 20.02 | fair  mid 20.025 bid 20.02 ask 20.03 | net_est 2500 | age 1.0s | bid 2 ticks behind
+19:29:54 +  67.07s t=193 CANCEL BUY x1 (bid above fair-half)
+19:29:54 +  67.07s t=193 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 937, 'action': 'BUY', 'price': 19.99} -> id=31581 filled=0.0 status=OPEN (5 ms)
+19:29:55 +  68.00s t=193 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 937, 'action': 'BUY', 'price': 19.98} -> id=31620 filled=0.0 status=OPEN (926 ms)
+19:29:57 +  70.07s t=194 MARK BUY 2500 @ 20.02 -> mid 20.025: +0.005/sh
+19:30:00 +  73.06s t=195 [tick 195] NLV=4.295 real=4.29 unreal=0.00 | fills=1 vol=2500 edge=+0.0050/sh | net=2500 est=2500 | open=4 repl/min=7 | api/s=85 ord/s=0 429=0 loop=22ms
+19:30:14 +  87.25s t=198 CANCEL SELL x2 (ask 2 ticks behind)
+19:30:14 +  87.25s t=198 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3750, 'action': 'SELL', 'price': 20.02} -> id=32483 filled=0.0 status=OPEN (5 ms)
+19:30:14 +  87.26s t=198 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1250, 'action': 'SELL', 'price': 20.03} -> id=32485 filled=0.0 status=OPEN (5 ms)
+19:30:15 +  88.44s t=199 CANCEL BUY x2 (bid 2 ticks behind)
+19:30:15 +  88.46s t=199 CANCEL SELL x2 (ask below fair+half)
+19:30:15 +  88.47s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3125, 'action': 'BUY', 'price': 20.01} -> id=32620 filled=0.0 status=OPEN (8 ms)
+19:30:15 +  88.47s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.03} -> id=32623 filled=0.0 status=OPEN (9 ms)
+19:30:16 +  89.44s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 625, 'action': 'BUY', 'price': 20.0} -> id=32669 filled=0.0 status=OPEN (974 ms)
+19:30:16 +  89.45s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.04} -> id=32670 filled=0.0 status=OPEN (982 ms)
+19:30:16 +  89.47s t=199 FILL SELL 3750 @ 20.02 | fair  mid 20.015 bid 20.01 ask 20.02 | net_est -1250 | age 2.2s | ask 2 ticks behind
+19:30:16 +  89.47s t=199 CANCEL SELL x2 (ask below fair+half)
+19:30:16 +  89.48s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 937, 'action': 'SELL', 'price': 20.05} -> id=32678 filled=0.0 status=OPEN (5 ms)
+19:30:17 +  90.44s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 937, 'action': 'SELL', 'price': 20.06} -> id=32737 filled=0.0 status=OPEN (966 ms)
+19:30:17 +  90.46s t=199 CANCEL SELL x2 (ask 2 ticks behind)
+19:30:17 +  90.48s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.03} -> id=32741 filled=0.0 status=OPEN (12 ms)
+19:30:17 +  90.48s t=199 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.04} -> id=32743 filled=0.0 status=OPEN (4 ms)
+19:30:19 +  92.48s t=200 MARK SELL 3750 @ 20.02 -> mid 20.015: +0.005/sh
+19:30:26 +  99.01s t=201 FILL BUY 1330 @ 20.01 | fair  mid 20.015 bid 20.01 ask 20.02 | net_est -1250 | age 10.5s | bid 2 ticks behind
+19:30:26 +  99.02s t=201 CANCEL BUY x2 (bid above fair-half)
+19:30:26 +  99.03s t=201 CANCEL SELL x2 (size 4218 vs 2580)
+19:30:26 +  99.04s t=201 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2540, 'action': 'SELL', 'price': 20.02} -> id=33215 filled=0.0 status=OPEN (8 ms)
+19:30:26 +  99.04s t=201 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2475, 'action': 'BUY', 'price': 20.0} -> id=33216 filled=0.0 status=OPEN (9 ms)
+19:30:27 + 100.01s t=201 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 40, 'action': 'SELL', 'price': 20.03} -> id=33239 filled=0.0 status=OPEN (972 ms)
+19:30:27 + 100.03s t=201 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2475, 'action': 'BUY', 'price': 19.99} -> id=33240 filled=0.0 status=OPEN (984 ms)
+19:30:28 + 101.29s t=202 FILL SELL 779 @ 20.02 | fair  mid 20.015 bid 20.01 ask 20.02 | net_est 80 | age 2.3s | size 4218 vs 2580
+19:30:28 + 101.30s t=202 CANCEL SELL x2 (ask below fair+half)
+19:30:28 + 101.32s t=202 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2281, 'action': 'SELL', 'price': 20.03} -> id=33259 filled=0.0 status=OPEN (13 ms)
+19:30:28 + 101.32s t=202 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2281, 'action': 'SELL', 'price': 20.04} -> id=33262 filled=0.0 status=OPEN (5 ms)
+19:30:29 + 102.03s t=202 MARK BUY 1330 @ 20.01 -> mid 20.015: +0.005/sh
+19:30:31 + 104.30s t=202 MARK SELL 779 @ 20.02 -> mid 20.015: +0.005/sh
+19:30:59 + 132.50s t=210 [tick 210] NLV=46.89 real=46.89 unreal=0.00 | fills=4 vol=8359 edge=+0.0050/sh | net=-699 est=-699 | open=4 repl/min=8 | api/s=83 ord/s=0 429=0 loop=39ms
+19:31:40 + 172.84s t=220 PARAMS {'Min spread': 0.01}
+19:31:49 + 181.91s t=222 CANCEL SELL x2 (ask 2 ticks behind)
+19:31:49 + 181.96s t=222 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2281, 'action': 'SELL', 'price': 20.01} -> id=36336 filled=0.0 status=OPEN (49 ms)
+19:31:49 + 181.96s t=222 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2281, 'action': 'SELL', 'price': 20.02} -> id=36337 filled=0.0 status=OPEN (5 ms)
+19:31:53 + 185.77s t=223 ! order 33216 never listed in 6s - forgetting
+19:31:53 + 185.78s t=223 CANCEL BUY x1 (missing layer)
+19:31:53 + 185.78s t=223 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1945, 'action': 'BUY', 'price': 19.99} -> id=36385 filled=0.0 status=OPEN (4 ms)
+19:31:53 + 185.79s t=223 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1945, 'action': 'BUY', 'price': 19.98} -> id=36386 filled=0.0 status=OPEN (4 ms)
+19:32:00 + 192.80s t=225 [tick 225] NLV=73.245 real=73.25 unreal=0.00 | fills=4 vol=8359 edge=+0.0050/sh | net=1776 est=1776 | open=4 repl/min=2 | api/s=85 ord/s=0 429=0 loop=67ms
+19:32:09 + 202.46s t=227 ! order 36336 never listed in 6s - forgetting
+19:32:09 + 202.47s t=227 CANCEL SELL x1 (missing layer)
+19:32:09 + 202.48s t=227 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3388, 'action': 'SELL', 'price': 20.01} -> id=36829 filled=0.0 status=OPEN (5 ms)
+19:32:09 + 202.48s t=227 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 888, 'action': 'SELL', 'price': 20.02} -> id=36831 filled=0.0 status=OPEN (5 ms)
+19:32:26 + 218.78s t=231 ! order 36829 never listed in 6s - forgetting
+19:32:26 + 218.79s t=231 CANCEL SELL x1 (size 888 vs 4684)
+19:32:26 + 218.79s t=231 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2342, 'action': 'SELL', 'price': 20.01} -> id=37270 filled=0.0 status=OPEN (5 ms)
+19:32:26 + 218.80s t=231 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2342, 'action': 'SELL', 'price': 20.02} -> id=37274 filled=0.0 status=OPEN (5 ms)
+19:32:26 + 218.82s t=231 CANCEL SELL x2 (ask below fair+half)
+19:32:27 + 219.79s t=231 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.03} -> id=37329 filled=0.0 status=OPEN (972 ms)
+19:32:27 + 219.79s t=231 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.04} -> id=37331 filled=0.0 status=OPEN (5 ms)
+19:32:32 + 224.84s t=233 CANCEL SELL x2 (ask 2 ticks behind)
+19:32:32 + 224.84s t=233 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.01} -> id=37582 filled=0.0 status=OPEN (5 ms)
+19:32:32 + 224.85s t=233 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.02} -> id=37584 filled=0.0 status=OPEN (5 ms)
+19:32:33 + 226.20s t=233 CANCEL SELL x2 (ask below fair+half)
+19:32:33 + 226.20s t=233 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.02} -> id=37654 filled=0.0 status=OPEN (4 ms)
+19:32:33 + 226.21s t=233 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.03} -> id=37656 filled=0.0 status=OPEN (3 ms)
+19:32:56 + 248.93s t=239 CANCEL SELL x2 (ask below fair+half)
+19:32:56 + 248.93s t=239 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.03} -> id=38240 filled=0.0 status=OPEN (5 ms)
+19:32:56 + 248.95s t=239 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.04} -> id=38247 filled=0.0 status=OPEN (22 ms)
+19:33:00 + 252.94s t=240 [tick 240] NLV=119.35 real=119.35 unreal=0.00 | fills=4 vol=8359 edge=+0.0050/sh | net=-3893 est=-3893 | open=4 repl/min=6 | api/s=84 ord/s=0 429=0 loop=35ms
+19:33:21 + 274.61s t=245 CANCEL SELL x2 (ask 2 ticks behind)
+19:33:21 + 274.61s t=245 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.01} -> id=39244 filled=0.0 status=OPEN (5 ms)
+19:33:21 + 274.62s t=245 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.02} -> id=39245 filled=0.0 status=OPEN (6 ms)
+19:33:23 + 276.64s t=245 CANCEL SELL x2 (ask below fair+half)
+19:33:23 + 276.65s t=245 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.02} -> id=39394 filled=0.0 status=OPEN (14 ms)
+19:33:24 + 276.66s t=245 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1283, 'action': 'SELL', 'price': 20.03} -> id=39395 filled=0.0 status=OPEN (13 ms)
+19:33:39 + 292.05s t=249 ! order 36385 never listed in 6s - forgetting
+19:33:39 + 292.05s t=249 CANCEL BUY x1 (size 1945 vs 6393)
+19:33:39 + 292.06s t=249 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 4446, 'action': 'BUY', 'price': 19.99} -> id=39834 filled=0.0 status=OPEN (6 ms)
+19:33:39 + 292.06s t=249 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1947, 'action': 'BUY', 'price': 19.98} -> id=39835 filled=0.0 status=OPEN (5 ms)
+19:34:00 + 312.82s t=255 [tick 255] NLV=187.455 real=167.97 unreal=19.48 | fills=4 vol=8359 edge=+0.0050/sh | net=-1948 est=-1948 | open=4 repl/min=3 | api/s=84 ord/s=0 429=0 loop=16ms
+19:34:30 + 343.61s t=262 ! order 39834 never listed in 6s - forgetting
+19:34:30 + 343.63s t=262 CANCEL BUY x1 (size 1947 vs 4448)
+19:34:30 + 343.64s t=262 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3474, 'action': 'BUY', 'price': 19.99} -> id=40885 filled=0.0 status=OPEN (7 ms)
+19:34:30 + 343.64s t=262 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 974, 'action': 'BUY', 'price': 19.98} -> id=40886 filled=0.0 status=OPEN (5 ms)
+19:34:31 + 343.67s t=262 CANCEL BUY x2 (bid above fair-half)
+19:34:31 + 344.62s t=262 CANCEL SELL x2 (ask 2 ticks behind)
+19:34:31 + 344.65s t=262 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3749, 'action': 'SELL', 'price': 20.0} -> id=40912 filled=0.0 status=OPEN (27 ms)
+19:34:31 + 344.65s t=262 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1719, 'action': 'BUY', 'price': 19.98} -> id=40913 filled=0.0 status=OPEN (28 ms)
+19:34:32 + 344.68s t=262 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1249, 'action': 'SELL', 'price': 20.01} -> id=40914 filled=0.0 status=OPEN (32 ms)
+19:34:32 + 345.62s t=262 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1719, 'action': 'BUY', 'price': 19.97} -> id=40944 filled=0.0 status=OPEN (975 ms)
+19:34:46 + 358.68s t=266 FILL SELL 748 @ 20.00 | fair  mid 19.995 bid 19.99 ask 20.0 | net_est 2498 | age 14.0s | ask 2 ticks behind
+19:34:47 + 359.73s t=266 FILL SELL 1200 @ 20.00 | fair  mid 19.995 bid 19.99 ask 20.0 | net_est 550 | age 15.1s | ask 2 ticks behind
+19:34:48 + 360.73s t=266 FILL SELL 1801 @ 20.00 | fair  mid 19.995 bid 19.99 ask 20.0 | net_est 550 | age 16.1s | ask 2 ticks behind
+19:34:48 + 360.74s t=266 CANCEL SELL x1 (size 1249 vs 4218)
+19:34:48 + 360.75s t=266 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.01} -> id=41337 filled=0.0 status=OPEN (8 ms)
+19:34:48 + 360.76s t=266 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.02} -> id=41338 filled=0.0 status=OPEN (6 ms)
+19:34:49 + 361.70s t=267 MARK SELL 748 @ 20.00 -> mid 19.995: +0.005/sh
+19:34:50 + 362.74s t=267 MARK SELL 1200 @ 20.00 -> mid 19.995: +0.005/sh
+19:34:51 + 363.80s t=267 MARK SELL 1801 @ 20.00 -> mid 19.995: +0.005/sh
+19:35:00 + 372.82s t=270 [tick 270] NLV=272.89 real=272.89 unreal=0.00 | fills=7 vol=12108 edge=+0.0050/sh | net=-1251 est=-1251 | open=4 repl/min=4 | api/s=85 ord/s=0 429=0 loop=105ms
+19:35:06 + 379.08s t=271 CANCEL SELL x2 (ask below fair+half)
+19:35:06 + 379.08s t=271 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.02} -> id=42094 filled=0.0 status=OPEN (6 ms)
+19:35:06 + 379.09s t=271 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2109, 'action': 'SELL', 'price': 20.03} -> id=42096 filled=0.0 status=OPEN (6 ms)
+19:35:06 + 379.35s t=271 CANCEL BUY x2 (bid 2 ticks behind)
+19:35:07 + 380.08s t=271 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3125, 'action': 'BUY', 'price': 20.0} -> id=42207 filled=0.0 status=OPEN (728 ms)
+19:35:07 + 380.09s t=271 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 626, 'action': 'BUY', 'price': 19.99} -> id=42208 filled=0.0 status=OPEN (4 ms)
+19:35:17 + 390.63s t=274 ! order 42207 never listed in 6s - forgetting
+19:35:17 + 390.64s t=274 CANCEL BUY x1 (size 626 vs 3751)
+19:35:17 + 390.64s t=274 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3125, 'action': 'BUY', 'price': 20.0} -> id=42615 filled=0.0 status=OPEN (5 ms)
+19:35:18 + 390.65s t=274 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 626, 'action': 'BUY', 'price': 19.99} -> id=42616 filled=0.0 status=OPEN (4 ms)
+19:35:18 + 391.16s t=274 CANCEL BUY x2 (bid above fair-half)
+19:35:18 + 391.64s t=274 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1914, 'action': 'BUY', 'price': 19.99} -> id=42664 filled=0.0 status=OPEN (479 ms)
+19:35:18 + 391.65s t=274 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1914, 'action': 'BUY', 'price': 19.98} -> id=42666 filled=0.0 status=OPEN (10 ms)
+19:35:35 + 407.73s t=278 CANCEL BUY x2 (bid above fair-half)
+19:35:35 + 407.74s t=278 CANCEL SELL x2 (ask 2 ticks behind)
+19:35:35 + 407.75s t=278 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3437, 'action': 'SELL', 'price': 20.0} -> id=43148 filled=0.0 status=OPEN (7 ms)
+19:35:35 + 407.75s t=278 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1914, 'action': 'BUY', 'price': 19.98} -> id=43149 filled=0.0 status=OPEN (7 ms)
+19:35:36 + 408.73s t=278 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 937, 'action': 'SELL', 'price': 20.01} -> id=43226 filled=0.0 status=OPEN (984 ms)
+19:35:36 + 408.75s t=278 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1914, 'action': 'BUY', 'price': 19.97} -> id=43228 filled=0.0 status=OPEN (996 ms)
+19:35:44 + 416.77s t=280 ! order 43148 never listed in 6s - forgetting
+19:35:44 + 416.80s t=280 CANCEL SELL x1 (size 937 vs 4374)
+19:35:44 + 416.81s t=280 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3437, 'action': 'SELL', 'price': 20.0} -> id=43515 filled=0.0 status=OPEN (7 ms)
+19:35:44 + 416.83s t=280 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 937, 'action': 'SELL', 'price': 20.01} -> id=43516 filled=0.0 status=OPEN (17 ms)
+19:35:44 + 416.88s t=281 CANCEL SELL x2 (ask below fair+half)
+19:35:45 + 417.78s t=281 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2011, 'action': 'SELL', 'price': 20.01} -> id=43541 filled=0.0 status=OPEN (903 ms)
+19:35:45 + 417.81s t=281 ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2011, 'action': 'SELL', 'price': 20.02} -> id=43543 filled=0.0 status=OPEN (22 ms)

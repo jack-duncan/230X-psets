@@ -1,0 +1,1146 @@
+20:04:32 +  0.01s t=    Connected: Hashim Almodamagha (almodamagha_hashim) | case 'Algo 1 Trading Case' | tick 0/300 | status ACTIVE | limits enforced True
+20:04:32 +  0.02s t=    SECURITY {'ticker': 'CRZY_M', 'type': 'STOCK', 'size': 1, 'position': 0.0, 'vwap': 0.0, 'nlv': None, 'last': 0.0, 'bid': 9.98, 'bid_size': 3125.0, 'ask': 10.0, 'ask_size': 186400.0, 'volume': 0.0, 'unrealized': None, 'realized': 0.0, 'currency': '', 'total_volume': 0.0, 'limits': [{'name': 'LIMIT-STOCK', 'units': 1.0}], 'interest_rate': 0.0, 'is_tradeable': True, 'is_shortable': True, 'start_period': 1, 'stop_period': 1, 'description': 'Crazy Inc - Traded on Main Exchange', 'unit_multiplier': 1, 'display_unit': 'share', 'start_price': 10.0, 'min_price': 0.0, 'max_price': 25.0, 'quoted_decimals': 2, 'trading_fee': 0.0, 'limit_order_rebate': 0.0, 'min_trade_size': 0, 'max_trade_size': 10000, 'required_tickers': None, 'underlying_tickers': None, 'bond_coupon': 0.0, 'interest_payments_per_period': 0, 'base_security': 'CRZY_M', 'fixing_ticker': None, 'api_orders_per_second': 500, 'execution_delay_ms': 0, 'interest_rate_ticker': None, 'otc_price_range': 0.0}
+20:04:32 +  0.02s t=    SECURITY {'ticker': 'CRZY_A', 'type': 'STOCK', 'size': 1, 'position': 0.0, 'vwap': 0.0, 'nlv': None, 'last': 10.01, 'bid': 9.99, 'bid_size': 214900.0, 'ask': 10.01, 'ask_size': 328925.0, 'volume': 0.0, 'unrealized': None, 'realized': 0.0, 'currency': '', 'total_volume': 0.0, 'limits': [{'name': 'LIMIT-STOCK', 'units': 1.0}], 'interest_rate': 0.0, 'is_tradeable': True, 'is_shortable': True, 'start_period': 1, 'stop_period': 1, 'description': 'Crazy Inc - Traded on Alternate Exchange', 'unit_multiplier': 1, 'display_unit': 'share', 'start_price': 10.0, 'min_price': 0.0, 'max_price': 25.0, 'quoted_decimals': 2, 'trading_fee': 0.0, 'limit_order_rebate': 0.0, 'min_trade_size': 0, 'max_trade_size': 10000, 'required_tickers': None, 'underlying_tickers': None, 'bond_coupon': 0.0, 'interest_payments_per_period': 0, 'base_security': 'CRZY_M', 'fixing_ticker': None, 'api_orders_per_second': 500, 'execution_delay_ms': 0, 'interest_rate_ticker': None, 'otc_price_range': 0.0}
+20:04:32 +  0.02s t=    LIMITS [{'name': 'LIMIT-STOCK', 'gross': 0.0, 'net': 0.0, 'gross_limit': 25000, 'net_limit': 25000, 'gross_fine': 0.0, 'net_fine': 0.0}]
+20:04:33 +  1.56s t=    Excel cockpit open: c:\users\hashim_almodamagha\desktop\ALGO1_cockpit.xlsx
+20:04:33 +  1.60s t=1   PARAMS {'Enabled': 1.0, 'ARB enabled': 1.0, 'Cost/share': 0.0, 'Min edge': 0.01, 'ARB max qty': 2000.0, 'ARB pause sec': 2.0, 'Max order': 10000.0, 'Gross cap': 15000.0, 'Poll seconds': 0.05, 'Book depth': 20.0, 'MM enabled': 0.0, 'MM on Main': 1.0, 'MM on Alt': 1.0, 'MM size': 500.0, 'MM min spread': 0.0, 'MM half spread': 0.04, 'MM vol mult': 1.0, 'MM vol window': 3.0, 'MM skew per 1k': 0.03, 'MM max inv': 2000.0, 'MM requote sec': 1.0, 'Hard flat |net|': 5000.0, 'Flatten now': 0.0, 'Panic': 0.0}
+20:04:37 +  5.64s t=2   PARAMS {'MM enabled': 1.0}
+20:04:37 +  5.66s t=2   ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.96} -> id=288 filled=0.0 vwap=None status=OPEN
+20:04:37 +  5.66s t=2   ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.04} -> id=289 filled=0.0 vwap=None status=OPEN
+20:04:37 +  5.67s t=2   ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.96} -> id=290 filled=0.0 vwap=None status=OPEN
+20:04:37 +  5.69s t=2   ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.04} -> id=291 filled=0.0 vwap=None status=OPEN
+20:04:37 +  5.69s t=2   MM requote mid=9.995 bb=9.99 ba=10.00 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=['M/B@9.96', 'M/S@10.04', 'A/B@9.96', 'A/S@10.04'] resting=4
+20:04:39 +  6.82s t=2   MM requote mid=9.995 bb=9.99 ba=10.00 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:40 +  7.87s t=2   MM requote mid=10.000 bb=9.99 ba=10.01 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:41 +  8.96s t=3   MM requote mid=10.000 bb=9.99 ba=10.01 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:42 + 10.13s t=3   MM requote mid=10.000 bb=9.99 ba=10.01 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:43 + 11.14s t=3   MM requote mid=10.000 bb=9.99 ba=10.01 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:44 + 12.18s t=3   MM requote mid=10.000 bb=9.99 ba=10.01 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:45 + 13.26s t=4   MM requote mid=10.000 bb=9.99 ba=10.01 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:46 + 14.28s t=4   MM requote mid=10.000 bb=9.99 ba=10.01 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.96 ask 10.04 (raw 9.96/10.04) cancel=0 post=[] resting=4
+20:04:47 + 15.30s t=4   ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.97} -> id=374 filled=0.0 vwap=None status=OPEN
+20:04:47 + 15.30s t=4   ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.05} -> id=377 filled=0.0 vwap=None status=OPEN
+20:04:47 + 15.31s t=4   ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.97} -> id=379 filled=0.0 vwap=None status=OPEN
+20:04:47 + 15.31s t=4   ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.05} -> id=381 filled=0.0 vwap=None status=OPEN
+20:04:47 + 15.31s t=4   MM requote mid=10.010 bb=10.01 ba=10.01 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.97 ask 10.05 (raw 9.97/10.05) cancel=4 post=['M/B@9.97', 'M/S@10.05', 'A/B@9.97', 'A/S@10.05'] resting=4
+20:04:48 + 16.30s t=4   ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.98} -> id=408 filled=0.0 vwap=None status=OPEN
+20:04:48 + 16.31s t=4   ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.06} -> id=409 filled=0.0 vwap=None status=OPEN
+20:04:48 + 16.31s t=4   ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.98} -> id=410 filled=0.0 vwap=None status=OPEN
+20:04:48 + 16.32s t=4   ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.06} -> id=411 filled=0.0 vwap=None status=OPEN
+20:04:48 + 16.32s t=4   MM requote mid=10.015 bb=10.01 ba=10.02 vol=0.015 half=0.040 (base 0.040 vol 0.015 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=4 post=['M/B@9.98', 'M/S@10.06', 'A/B@9.98', 'A/S@10.06'] resting=4
+20:04:49 + 17.51s t=5   MM requote mid=10.020 bb=10.02 ba=10.02 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:50 + 18.63s t=5   MM requote mid=10.020 bb=10.02 ba=10.02 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:52 + 19.75s t=5   MM requote mid=10.020 bb=10.02 ba=10.02 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:53 + 20.93s t=5   MM requote mid=10.020 bb=10.02 ba=10.02 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:54 + 22.05s t=6   MM requote mid=10.015 bb=10.01 ba=10.02 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:55 + 23.14s t=6   MM requote mid=10.015 bb=10.01 ba=10.02 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:56 + 24.19s t=6   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:57 + 25.30s t=7   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:58 + 26.31s t=7   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:04:59 + 27.38s t=7   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:00 + 28.40s t=7   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:01 + 29.47s t=8   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:02 + 30.54s t=8   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:03 + 31.69s t=8   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:05 + 32.77s t=8   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:06 + 33.88s t=9   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:07 + 34.93s t=9   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:08 + 35.94s t=9   MM requote mid=10.025 bb=10.02 ba=10.03 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:09 + 37.05s t=10  MM requote mid=10.020 bb=10.01 ba=10.03 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:10 + 38.11s t=10  MM requote mid=10.025 bb=10.01 ba=10.04 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:11 + 39.13s t=10  MM requote mid=10.025 bb=10.01 ba=10.04 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:12 + 40.15s t=10  MM requote mid=10.025 bb=10.01 ba=10.04 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:13 + 41.21s t=11  MM requote mid=10.025 bb=10.01 ba=10.04 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:14 + 42.25s t=11  MM requote mid=10.025 bb=10.01 ba=10.04 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:15 + 43.29s t=11  MM requote mid=10.025 bb=10.01 ba=10.04 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 9.98 ask 10.06 (raw 9.98/10.06) cancel=0 post=[] resting=4
+20:05:16 + 44.33s t=11  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.97} -> id=561 filled=0.0 vwap=None status=OPEN
+20:05:16 + 44.34s t=11  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.05} -> id=562 filled=0.0 vwap=None status=OPEN
+20:05:16 + 44.34s t=11  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.97} -> id=563 filled=0.0 vwap=None status=OPEN
+20:05:16 + 44.34s t=11  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.05} -> id=564 filled=0.0 vwap=None status=OPEN
+20:05:16 + 44.35s t=11  MM requote mid=10.010 bb=10.01 ba=10.01 vol=0.015 half=0.040 (base 0.040 vol 0.015 user-min 0.000) skew=+0.000 net=0 -> bid 9.97 ask 10.05 (raw 9.97/10.05) cancel=4 post=['M/B@9.97', 'M/S@10.05', 'A/B@9.97', 'A/S@10.05'] resting=4
+20:05:17 + 45.51s t=12  MM requote mid=10.010 bb=10.01 ba=10.01 vol=0.015 half=0.040 (base 0.040 vol 0.015 user-min 0.000) skew=+0.000 net=0 -> bid 9.97 ask 10.05 (raw 9.97/10.05) cancel=0 post=[] resting=4
+20:05:18 + 46.61s t=12  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.99} -> id=612 filled=0.0 vwap=None status=OPEN
+20:05:18 + 46.62s t=12  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.07} -> id=613 filled=0.0 vwap=None status=OPEN
+20:05:18 + 46.62s t=12  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 9.99} -> id=614 filled=0.0 vwap=None status=OPEN
+20:05:18 + 46.62s t=12  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.07} -> id=615 filled=0.0 vwap=None status=OPEN
+20:05:18 + 46.63s t=12  MM requote mid=10.030 bb=10.01 ba=10.05 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=+0.000 net=0 -> bid 9.99 ask 10.07 (raw 9.99/10.07) cancel=4 post=['M/B@9.99', 'M/S@10.07', 'A/B@9.99', 'A/S@10.07'] resting=4
+20:05:19 + 47.61s t=12  MM requote mid=10.030 bb=10.01 ba=10.05 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=+0.000 net=0 -> bid 9.99 ask 10.07 (raw 9.99/10.07) cancel=0 post=[] resting=4
+20:05:20 + 48.72s t=12  MM requote mid=10.030 bb=10.01 ba=10.05 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=+0.000 net=0 -> bid 9.99 ask 10.07 (raw 9.99/10.07) cancel=0 post=[] resting=4
+20:05:22 + 49.80s t=13  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.0} -> id=644 filled=0.0 vwap=None status=OPEN
+20:05:22 + 49.81s t=13  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.08} -> id=645 filled=0.0 vwap=None status=OPEN
+20:05:22 + 49.81s t=13  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.0} -> id=646 filled=0.0 vwap=None status=OPEN
+20:05:22 + 49.82s t=13  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.08} -> id=647 filled=0.0 vwap=None status=OPEN
+20:05:22 + 49.82s t=13  MM requote mid=10.040 bb=10.03 ba=10.05 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 10.00 ask 10.08 (raw 10.00/10.08) cancel=4 post=['M/B@10.00', 'M/S@10.08', 'A/B@10.00', 'A/S@10.08'] resting=4
+20:05:23 + 50.89s t=13  MM requote mid=10.040 bb=10.03 ba=10.05 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 10.00 ask 10.08 (raw 10.00/10.08) cancel=0 post=[] resting=4
+20:05:24 + 51.92s t=13  MM requote mid=10.040 bb=10.03 ba=10.05 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.00 ask 10.08 (raw 10.00/10.08) cancel=0 post=[] resting=4
+20:05:25 + 53.04s t=14  MM requote mid=10.040 bb=10.03 ba=10.05 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.00 ask 10.08 (raw 10.00/10.08) cancel=0 post=[] resting=4
+20:05:26 + 54.04s t=14  MM requote mid=10.040 bb=10.03 ba=10.05 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.00 ask 10.08 (raw 10.00/10.08) cancel=0 post=[] resting=4
+20:05:27 + 55.06s t=14  MM requote mid=10.040 bb=10.03 ba=10.05 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.00 ask 10.08 (raw 10.00/10.08) cancel=0 post=[] resting=4
+20:05:28 + 56.12s t=14  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.01} -> id=683 filled=0.0 vwap=None status=OPEN
+20:05:28 + 56.13s t=14  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.01} -> id=684 filled=0.0 vwap=None status=OPEN
+20:05:28 + 56.13s t=14  MM requote mid=10.045 bb=10.03 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.08 (raw 10.01/10.08) cancel=2 post=['M/B@10.01', 'A/B@10.01'] resting=4
+20:05:29 + 57.07s t=15  [tick  15] NLV=0.00 real=0.00 unreal=0.00 | arb=0 miss=0 pnl=+0.00 slip=+0.00 | mm fills=0 vol=0 adverse=+0.0000/sh | net=0 room=15000 | api/s=42 429=0
+20:05:29 + 57.13s t=15  MM requote mid=10.045 bb=10.03 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.08 (raw 10.01/10.08) cancel=0 post=[] resting=4
+20:05:30 + 58.23s t=15  MM requote mid=10.045 bb=10.03 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.08 (raw 10.01/10.08) cancel=0 post=[] resting=4
+20:05:31 + 59.41s t=15  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.09} -> id=710 filled=0.0 vwap=None status=OPEN
+20:05:31 + 59.41s t=15  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.09} -> id=711 filled=0.0 vwap=None status=OPEN
+20:05:31 + 59.41s t=15  MM requote mid=10.050 bb=10.04 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.09 (raw 10.01/10.09) cancel=2 post=['M/S@10.09', 'A/S@10.09'] resting=4
+20:05:32 + 60.40s t=15  MM requote mid=10.050 bb=10.04 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.09 (raw 10.01/10.09) cancel=0 post=[] resting=4
+20:05:33 + 61.48s t=16  MM requote mid=10.050 bb=10.04 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.09 (raw 10.01/10.09) cancel=0 post=[] resting=4
+20:05:34 + 62.53s t=16  MM requote mid=10.050 bb=10.04 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.09 (raw 10.01/10.09) cancel=0 post=[] resting=4
+20:05:35 + 63.57s t=16  MM requote mid=10.050 bb=10.04 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.09 (raw 10.01/10.09) cancel=0 post=[] resting=4
+20:05:36 + 64.58s t=16  MM requote mid=10.050 bb=10.04 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.01 ask 10.09 (raw 10.01/10.09) cancel=0 post=[] resting=4
+20:05:37 + 65.61s t=17  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.02} -> id=773 filled=0.0 vwap=None status=OPEN
+20:05:37 + 65.61s t=17  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.02} -> id=774 filled=0.0 vwap=None status=OPEN
+20:05:37 + 65.61s t=17  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=2 post=['M/B@10.02', 'A/B@10.02'] resting=4
+20:05:38 + 66.63s t=17  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=0 post=[] resting=4
+20:05:39 + 67.67s t=17  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=0 post=[] resting=4
+20:05:40 + 68.69s t=17  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=0 post=[] resting=4
+20:05:41 + 69.72s t=18  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=0 post=[] resting=4
+20:05:43 + 70.81s t=18  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=0 post=[] resting=4
+20:05:44 + 71.91s t=18  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=0 post=[] resting=4
+20:05:45 + 73.02s t=19  MM requote mid=10.055 bb=10.05 ba=10.06 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.02 ask 10.09 (raw 10.02/10.09) cancel=0 post=[] resting=4
+20:05:46 + 74.07s t=19  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.03} -> id=829 filled=0.0 vwap=None status=OPEN
+20:05:46 + 74.08s t=19  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.1} -> id=833 filled=0.0 vwap=None status=OPEN
+20:05:46 + 74.09s t=19  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'BUY', 'price': 10.03} -> id=834 filled=0.0 vwap=None status=OPEN
+20:05:46 + 74.09s t=19  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.1} -> id=835 filled=0.0 vwap=None status=OPEN
+20:05:46 + 74.09s t=19  MM requote mid=10.065 bb=10.06 ba=10.07 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.10 (raw 10.03/10.10) cancel=4 post=['M/B@10.03', 'M/S@10.10', 'A/B@10.03', 'A/S@10.10'] resting=4
+20:05:47 + 75.12s t=19  MM requote mid=10.065 bb=10.06 ba=10.07 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.10 (raw 10.03/10.10) cancel=0 post=[] resting=4
+20:05:48 + 76.21s t=19  MM requote mid=10.065 bb=10.06 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.10 (raw 10.03/10.10) cancel=0 post=[] resting=4
+20:05:49 + 77.26s t=20  MM requote mid=10.065 bb=10.06 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.10 (raw 10.03/10.10) cancel=0 post=[] resting=4
+20:05:50 + 78.28s t=20  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.11} -> id=893 filled=0.0 vwap=None status=OPEN
+20:05:50 + 78.29s t=20  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 10.11} -> id=894 filled=0.0 vwap=None status=OPEN
+20:05:50 + 78.29s t=20  MM requote mid=10.070 bb=10.06 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=2 post=['M/S@10.11', 'A/S@10.11'] resting=4
+20:05:51 + 79.28s t=20  MM requote mid=10.070 bb=10.06 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:05:52 + 80.42s t=20  MM requote mid=10.070 bb=10.06 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:05:53 + 81.45s t=21  MM requote mid=10.070 bb=10.06 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:05:54 + 82.59s t=21  PARAMS {'MM size': 1000.0}
+20:05:54 + 82.62s t=21  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:05:55 + 83.67s t=21  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:05:57 + 84.77s t=21  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:05:58 + 85.79s t=22  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:05:59 + 86.88s t=22  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:06:00 + 87.94s t=22  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:06:01 + 88.96s t=22  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:06:02 + 89.99s t=23  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:06:03 + 91.09s t=23  MM requote mid=10.070 bb=10.07 ba=10.07 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.03 ask 10.11 (raw 10.03/10.11) cancel=0 post=[] resting=4
+20:06:04 + 92.28s t=23  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.04} -> id=998 filled=0.0 vwap=None status=OPEN
+20:06:04 + 92.29s t=23  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.04} -> id=999 filled=0.0 vwap=None status=OPEN
+20:06:04 + 92.29s t=23  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.04 ask 10.11 (raw 10.04/10.11) cancel=2 post=['M/B@10.04', 'A/B@10.04'] resting=4
+20:06:05 + 93.58s t=24  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.04 ask 10.11 (raw 10.04/10.11) cancel=0 post=[] resting=4
+20:06:06 + 94.59s t=24  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=+0.000 net=0 -> bid 10.04 ask 10.11 (raw 10.04/10.11) cancel=0 post=[] resting=4
+20:06:07 + 95.70s t=24  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.04 ask 10.11 (raw 10.04/10.11) cancel=0 post=[] resting=4
+20:06:09 + 96.77s t=24  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.04 ask 10.11 (raw 10.04/10.11) cancel=0 post=[] resting=4
+20:06:10 + 97.85s t=25  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.04 ask 10.11 (raw 10.04/10.11) cancel=0 post=[] resting=4
+20:06:11 + 98.94s t=25  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=+0.000 net=0 -> bid 10.04 ask 10.11 (raw 10.04/10.11) cancel=0 post=[] resting=4
+20:06:11 + 99.48s t=25  ! MM quote ('CRZY_M', 'SELL') id=893 never listed by server in 6s - forgetting it
+20:06:12 +100.03s t=25  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.06} -> id=1045 filled=0.0 vwap=None status=OPEN
+20:06:12 +100.04s t=25  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1046 filled=0.0 vwap=None status=OPEN
+20:06:12 +100.04s t=25  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.06} -> id=1047 filled=0.0 vwap=None status=OPEN
+20:06:12 +100.04s t=25  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1048 filled=0.0 vwap=None status=OPEN
+20:06:12 +100.04s t=25  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.06 ask 10.14 (raw 10.06/10.14) cancel=3 post=['M/B@10.06', 'M/S@10.14', 'A/B@10.06', 'A/S@10.14'] resting=4
+20:06:13 +101.13s t=26  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.06 ask 10.14 (raw 10.06/10.14) cancel=0 post=[] resting=4
+20:06:14 +102.20s t=26  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.06 ask 10.14 (raw 10.06/10.14) cancel=0 post=[] resting=4
+20:06:15 +103.21s t=26  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.06 ask 10.14 (raw 10.06/10.14) cancel=0 post=[] resting=4
+20:06:16 +104.27s t=26  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.06 ask 10.14 (raw 10.06/10.14) cancel=0 post=[] resting=4
+20:06:17 +105.42s t=27  MM requote mid=10.075 bb=10.07 ba=10.08 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.06 ask 10.14 (raw 10.06/10.14) cancel=0 post=[] resting=4
+20:06:18 +106.48s t=27  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.07} -> id=1125 filled=0.0 vwap=None status=OPEN
+20:06:18 +106.48s t=27  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1127 filled=0.0 vwap=None status=OPEN
+20:06:18 +106.49s t=27  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.07} -> id=1128 filled=0.0 vwap=None status=OPEN
+20:06:18 +106.49s t=27  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1129 filled=0.0 vwap=None status=OPEN
+20:06:18 +106.49s t=27  MM requote mid=10.080 bb=10.08 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.07 ask 10.15 (raw 10.07/10.15) cancel=4 post=['M/B@10.07', 'M/S@10.15', 'A/B@10.07', 'A/S@10.15'] resting=4
+20:06:19 +107.53s t=27  MM requote mid=10.080 bb=10.08 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.07 ask 10.15 (raw 10.07/10.15) cancel=0 post=[] resting=4
+20:06:20 +108.58s t=27  MM requote mid=10.080 bb=10.08 ba=10.08 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.07 ask 10.15 (raw 10.07/10.15) cancel=0 post=[] resting=4
+20:06:21 +109.45s t=28  PARAMS {'MM half spread': 0.03}
+20:06:21 +109.65s t=28  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1160 filled=0.0 vwap=None status=OPEN
+20:06:21 +109.65s t=28  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1161 filled=0.0 vwap=None status=OPEN
+20:06:21 +109.65s t=28  MM requote mid=10.080 bb=10.08 ba=10.08 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.07 ask 10.14 (raw 10.08/10.14) cancel=2 post=['M/S@10.14', 'A/S@10.14'] resting=4
+20:06:22 +110.66s t=28  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.08} -> id=1168 filled=0.0 vwap=None status=OPEN
+20:06:22 +110.66s t=28  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.08} -> id=1169 filled=0.0 vwap=None status=OPEN
+20:06:22 +110.67s t=28  MM requote mid=10.085 bb=10.08 ba=10.09 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.08 ask 10.14 (raw 10.09/10.14) cancel=2 post=['M/B@10.08', 'A/B@10.08'] resting=4
+20:06:23 +111.67s t=28  MM requote mid=10.085 bb=10.08 ba=10.09 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.08 ask 10.14 (raw 10.09/10.14) cancel=0 post=[] resting=4
+20:06:24 +112.70s t=28  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1191 filled=0.0 vwap=None status=OPEN
+20:06:24 +112.70s t=28  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1192 filled=0.0 vwap=None status=OPEN
+20:06:24 +112.70s t=28  MM requote mid=10.090 bb=10.09 ba=10.09 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.08 ask 10.15 (raw 10.09/10.15) cancel=2 post=['M/S@10.15', 'A/S@10.15'] resting=4
+20:06:25 +113.75s t=29  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1217 filled=0.0 vwap=None status=OPEN
+20:06:26 +113.76s t=29  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1218 filled=0.0 vwap=None status=OPEN
+20:06:26 +113.76s t=29  MM requote mid=10.085 bb=10.08 ba=10.09 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.08 ask 10.14 (raw 10.09/10.14) cancel=2 post=['M/S@10.14', 'A/S@10.14'] resting=4
+20:06:27 +114.76s t=29  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1235 filled=0.0 vwap=None status=OPEN
+20:06:27 +114.77s t=29  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1236 filled=0.0 vwap=None status=OPEN
+20:06:27 +114.77s t=29  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1237 filled=0.0 vwap=None status=OPEN
+20:06:27 +114.78s t=29  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1238 filled=0.0 vwap=None status=OPEN
+20:06:27 +114.78s t=29  MM requote mid=10.090 bb=10.08 ba=10.10 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.09 ask 10.15 (raw 10.09/10.15) cancel=4 post=['M/B@10.09', 'M/S@10.15', 'A/B@10.09', 'A/S@10.15'] resting=4
+20:06:27 +115.74s t=29  MM FILL CRZY_A BUY 1000 @ 10.09 | mid 10.09 | net_before 1000
+20:06:28 +115.84s t=29  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.03} -> id=1255 filled=0.0 vwap=None status=OPEN
+20:06:28 +115.85s t=29  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.09} -> id=1256 filled=0.0 vwap=None status=OPEN
+20:06:28 +115.85s t=29  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.03} -> id=1257 filled=0.0 vwap=None status=OPEN
+20:06:28 +115.86s t=29  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.09} -> id=1258 filled=1000.0 vwap=10.09 status=OPEN
+20:06:28 +115.86s t=29  MM requote mid=10.090 bb=10.08 ba=10.10 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=+0.030 net=1000 -> bid 10.03 ask 10.09 (raw 10.03/10.09) cancel=3 post=['M/B@10.03', 'M/S@10.09', 'A/B@10.03', 'A/S@10.09'] resting=4
+20:06:28 +116.07s t=29  MM FILL CRZY_A SELL 1000 @ 10.09 | mid 10.094999999999999 | net_before -1000
+20:06:29 +117.08s t=30  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1276 filled=0.0 vwap=None status=OPEN
+20:06:29 +117.08s t=30  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1277 filled=0.0 vwap=None status=OPEN
+20:06:29 +117.09s t=30  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1278 filled=0.0 vwap=None status=OPEN
+20:06:29 +117.09s t=30  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1279 filled=0.0 vwap=None status=OPEN
+20:06:29 +117.09s t=30  MM requote mid=10.090 bb=10.08 ba=10.10 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.09 ask 10.15 (raw 10.09/10.15) cancel=3 post=['M/B@10.09', 'M/S@10.15', 'A/B@10.09', 'A/S@10.15'] resting=4
+20:06:29 +117.16s t=30  [tick  30] NLV=10.00 real=20.00 unreal=-5.00 | arb=0 miss=0 pnl=+0.00 slip=+0.00 | mm fills=2 vol=2000 adverse=+0.0000/sh | net=-1000 room=14500 | api/s=28 429=0
+20:06:30 +118.11s t=30  MM requote mid=10.095 bb=10.09 ba=10.10 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.09 ask 10.15 (raw 10.09/10.15) cancel=0 post=[] resting=4
+20:06:31 +118.92s t=30  MM FILL CRZY_M BUY 1000 @ 10.09 | mid 10.1 | net_before 1000
+20:06:31 +119.01s t=30  MM MARK CRZY_A BUY 1000 @ 10.09 -> mid 10.100 after 3s: +0.010/share (+10)
+20:06:31 +119.19s t=30  MM MARK CRZY_A SELL 1000 @ 10.09 -> mid 10.095 after 3s: -0.005/share (-5)
+20:06:31 +119.20s t=30  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.04} -> id=1324 filled=0.0 vwap=None status=OPEN
+20:06:31 +119.20s t=30  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.1} -> id=1325 filled=0.0 vwap=None status=OPEN
+20:06:31 +119.21s t=30  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.04} -> id=1326 filled=0.0 vwap=None status=OPEN
+20:06:31 +119.21s t=30  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.1} -> id=1327 filled=0.0 vwap=None status=OPEN
+20:06:31 +119.21s t=30  MM requote mid=10.095 bb=10.09 ba=10.10 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=+0.030 net=1000 -> bid 10.04 ask 10.10 (raw 10.04/10.09) cancel=3 post=['M/B@10.04', 'M/S@10.10', 'A/B@10.04', 'A/S@10.10'] resting=4
+20:06:32 +120.00s t=30  MM FILL CRZY_M SELL 1000 @ 10.10 | mid 10.094999999999999 | net_before -1000
+20:06:32 +120.36s t=30  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1353 filled=0.0 vwap=None status=OPEN
+20:06:32 +120.38s t=30  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1354 filled=0.0 vwap=None status=OPEN
+20:06:32 +120.38s t=30  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1355 filled=0.0 vwap=None status=OPEN
+20:06:32 +120.39s t=30  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.15} -> id=1356 filled=0.0 vwap=None status=OPEN
+20:06:32 +120.39s t=30  MM requote mid=10.095 bb=10.09 ba=10.10 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.09 ask 10.15 (raw 10.09/10.15) cancel=3 post=['M/B@10.09', 'M/S@10.15', 'A/B@10.09', 'A/S@10.15'] resting=4
+20:06:33 +121.37s t=31  MM requote mid=10.090 bb=10.08 ba=10.10 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.030 net=-1000 -> bid 10.09 ask 10.15 (raw 10.09/10.15) cancel=0 post=[] resting=4
+20:06:33 +121.63s t=31  MM FILL CRZY_M BUY 200 @ 10.09 | mid 10.09 | net_before -600
+20:06:34 +122.17s t=31  MM MARK CRZY_M BUY 1000 @ 10.09 -> mid 10.090 after 3s: +0.000/share (+0)
+20:06:34 +122.39s t=31  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.08} -> id=1402 filled=0.0 vwap=None status=OPEN
+20:06:34 +122.40s t=31  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1403 filled=0.0 vwap=None status=OPEN
+20:06:34 +122.40s t=31  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.08} -> id=1404 filled=0.0 vwap=None status=OPEN
+20:06:34 +122.41s t=31  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.14} -> id=1405 filled=0.0 vwap=None status=OPEN
+20:06:34 +122.41s t=31  MM requote mid=10.090 bb=10.08 ba=10.10 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.018 net=-600 -> bid 10.08 ask 10.14 (raw 10.08/10.14) cancel=4 post=['M/B@10.08', 'M/S@10.14', 'A/B@10.08', 'A/S@10.14'] resting=4
+20:06:35 +123.18s t=31  MM MARK CRZY_M SELL 1000 @ 10.10 -> mid 10.090 after 3s: +0.010/share (+10)
+20:06:35 +123.44s t=31  MM requote mid=10.090 bb=10.08 ba=10.10 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.018 net=-600 -> bid 10.08 ask 10.14 (raw 10.08/10.14) cancel=0 post=[] resting=4
+20:06:36 +124.47s t=31  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1423 filled=0.0 vwap=None status=OPEN
+20:06:36 +124.48s t=31  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.09} -> id=1424 filled=0.0 vwap=None status=OPEN
+20:06:36 +124.48s t=31  MM requote mid=10.100 bb=10.10 ba=10.10 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.078 net=-2600 -> bid 10.09 ask 10.21 (raw 10.15/10.21) cancel=4 post=['M/B@10.09', 'A/B@10.09'] resting=2
+20:06:36 +124.70s t=31  MM FILL CRZY_M SELL 1000 @ 10.14 | mid 10.1 | net_before -2600
+20:06:37 +124.80s t=31  MM MARK CRZY_M BUY 200 @ 10.09 -> mid 10.100 after 3s: +0.010/share (+2)
+20:06:37 +125.56s t=32  MM requote mid=10.100 bb=10.10 ba=10.10 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.078 net=-2600 -> bid 10.09 ask 10.21 (raw 10.15/10.21) cancel=0 post=[] resting=2
+20:06:39 +126.76s t=32  MM FILL CRZY_M BUY 1000 @ 10.09 | mid 10.115 | net_before -600
+20:06:39 +127.06s t=32  ARB OPP buy 2000 CRZY_A lim 10.10 (exp 10.100) sell CRZY_M lim 10.13 (exp 10.130) edge 0.030 | books M 10.13/10.14 A 10.09/10.1 | room 14700
+20:06:39 +127.09s t=32  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.1} -> id=1663 filled=0.0 vwap=None status=OPEN
+20:06:39 +127.10s t=32  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.13} -> id=1664 filled=0.0 vwap=None status=OPEN
+20:06:39 +127.75s t=32  ! ARB accounting: orders say bought 0 sold 0, position moved +2000 ({'CRZY_M': -300, 'CRZY_A': -300} -> {'CRZY_M': 700, 'CRZY_A': 700}) - using position
+20:06:39 +127.75s t=32  ARB MISS bought 0 sold 0 (cross gone) -> pause 2s
+20:06:40 +127.76s t=32  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.13} -> id=1690 filled=0.0 vwap=None status=OPEN
+20:06:40 +128.26s t=32  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 2000, 'action': 'SELL'} -> id=1693 filled=2000.0 vwap=10.08 status=TRANSACTED
+20:06:40 +128.26s t=32  RESIDUAL +2000: limit CRZY_M 2000 @10.13 filled 0, market 2000 @ 10.08
+20:06:40 +128.38s t=32  MM FILL CRZY_A BUY 1000 @ 10.09 | mid 10.09 | net_before 1400
+20:06:40 +128.53s t=32  MM MARK CRZY_M SELL 1000 @ 10.14 -> mid 10.090 after 3s: +0.050/share (+50)
+20:06:40 +128.54s t=32  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.02} -> id=1702 filled=0.0 vwap=None status=OPEN
+20:06:40 +128.54s t=32  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.09} -> id=1703 filled=0.0 vwap=None status=OPEN
+20:06:40 +128.55s t=32  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.02} -> id=1704 filled=0.0 vwap=None status=OPEN
+20:06:40 +128.56s t=32  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.09} -> id=1705 filled=0.0 vwap=None status=OPEN
+20:06:40 +128.56s t=32  MM requote mid=10.090 bb=10.08 ba=10.10 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=+0.042 net=1400 -> bid 10.02 ask 10.09 (raw 10.02/10.08) cancel=0 post=['M/B@10.02', 'M/S@10.09', 'A/B@10.02', 'A/S@10.09'] resting=4
+20:06:41 +129.07s t=33  !! HARD FLAT: |net|=6600 >= 5000 -> pulling quotes, flattening
+20:06:41 +129.09s t=33  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 6600, 'action': 'BUY'} -> id=1724 filled=6600.0 vwap=10.106401515151514 status=TRANSACTED
+20:06:41 +129.09s t=33  Flattened -6600 on CRZY_A (best ask 10.1)
+20:06:41 +129.31s t=33  MM FILL CRZY_M SELL 1000 @ 10.09 | mid 10.1 | net_before 6600
+20:06:41 +129.43s t=33  MM FILL CRZY_A SELL 1000 @ 10.09 | mid 10.1 | net_before 6600
+20:06:41 +129.58s t=33  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.1} -> id=1732 filled=0.0 vwap=None status=OPEN
+20:06:41 +129.58s t=33  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.1} -> id=1733 filled=0.0 vwap=None status=OPEN
+20:06:41 +129.58s t=33  MM requote mid=10.100 bb=10.09 ba=10.11 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=+0.198 net=6600 -> bid 9.87 ask 10.10 (raw 9.87/9.93) cancel=0 post=['M/S@10.10', 'A/S@10.10'] resting=2
+20:06:42 +129.77s t=33  MM MARK CRZY_M BUY 1000 @ 10.09 -> mid 10.100 after 3s: +0.010/share (+10)
+20:06:42 +130.33s t=33  MM FILL CRZY_M SELL 1000 @ 10.10 | mid 10.1 | net_before 4600
+20:06:42 +130.69s t=33  MM FILL CRZY_A SELL 200 @ 10.10 | mid 10.1 | net_before 4600
+20:06:43 +130.81s t=33  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.1} -> id=1766 filled=1000.0 vwap=10.17 status=OPEN
+20:06:43 +130.81s t=33  MM requote mid=10.100 bb=10.09 ba=10.11 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=+0.138 net=4600 -> bid 9.93 ask 10.10 (raw 9.93/9.99) cancel=0 post=['M/S@10.10'] resting=2
+20:06:43 +131.02s t=33  MM FILL CRZY_M SELL 1000 @ 10.17 | mid 10.1 | net_before 600
+20:06:43 +131.30s t=33  MM FILL CRZY_A SELL 800 @ 10.10 | mid 10.11 | net_before 600
+20:06:43 +131.41s t=33  MM MARK CRZY_A BUY 1000 @ 10.09 -> mid 10.110 after 3s: +0.020/share (+20)
+20:06:44 +131.87s t=33  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.05} -> id=1799 filled=0.0 vwap=None status=OPEN
+20:06:44 +131.87s t=33  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.11} -> id=1800 filled=1000.0 vwap=10.11 status=OPEN
+20:06:44 +131.88s t=33  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.05} -> id=1801 filled=0.0 vwap=None status=OPEN
+20:06:44 +131.88s t=33  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.11} -> id=1802 filled=0.0 vwap=None status=OPEN
+20:06:44 +131.88s t=33  MM requote mid=10.100 bb=10.09 ba=10.11 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=+0.018 net=600 -> bid 10.05 ask 10.11 (raw 10.05/10.11) cancel=0 post=['M/B@10.05', 'M/S@10.11', 'A/B@10.05', 'A/S@10.11'] resting=4
+20:06:44 +132.17s t=33  MM FILL CRZY_M SELL 1000 @ 10.11 | mid 10.11 | net_before -1400
+20:06:44 +132.44s t=33  MM MARK CRZY_M SELL 1000 @ 10.09 -> mid 10.110 after 3s: -0.020/share (-20)
+20:06:44 +132.44s t=33  MM MARK CRZY_A SELL 1000 @ 10.09 -> mid 10.110 after 3s: -0.020/share (-20)
+20:06:45 +132.88s t=33  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.1} -> id=1811 filled=0.0 vwap=None status=OPEN
+20:06:45 +132.89s t=33  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.18} -> id=1812 filled=0.0 vwap=None status=OPEN
+20:06:45 +132.90s t=33  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.1} -> id=1813 filled=0.0 vwap=None status=OPEN
+20:06:45 +132.90s t=33  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.18} -> id=1814 filled=0.0 vwap=None status=OPEN
+20:06:45 +132.90s t=33  MM requote mid=10.110 bb=10.11 ba=10.11 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.042 net=-1400 -> bid 10.10 ask 10.18 (raw 10.12/10.18) cancel=3 post=['M/B@10.10', 'M/S@10.18', 'A/B@10.10', 'A/S@10.18'] resting=4
+20:06:45 +133.33s t=34  ARB OPP buy 2000 CRZY_A lim 10.11 (exp 10.110) sell CRZY_M lim 10.14 (exp 10.140) edge 0.030 | books M 10.14/10.17 A 10.1/10.11 | room 14300
+20:06:45 +133.34s t=34  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.11} -> id=1903 filled=2000.0 vwap=10.11 status=OPEN
+20:06:45 +133.36s t=34  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.14} -> id=1905 filled=0.0 vwap=None status=OPEN
+20:06:46 +133.85s t=34  ! ARB accounting: orders say bought 2000 sold 0, position moved +8000 ({'CRZY_M': -700, 'CRZY_A': -700} -> {'CRZY_M': 3300, 'CRZY_A': 3300}) - using position
+20:06:46 +133.85s t=34  ARB MISS bought 2000 sold 0 (cross gone) -> pause 2s
+20:06:46 +133.86s t=34  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 8000, 'action': 'SELL', 'price': 10.14} -> id=2003 filled=0.0 vwap=None status=OPEN
+20:06:46 +134.34s t=34  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 8000, 'action': 'SELL'} -> id=2015 filled=8000.0 vwap=10.0892875 status=TRANSACTED
+20:06:46 +134.34s t=34  RESIDUAL +8000: limit CRZY_M 8000 @10.14 filled 0, market 8000 @ 10.0892875
+20:06:46 +134.58s t=34  MM FILL CRZY_M BUY 1000 @ 10.10 | mid 10.105 | net_before -9400
+20:06:47 +134.83s t=34  MM FILL CRZY_A BUY 1000 @ 10.10 | mid 10.105 | net_before -9400
+20:06:47 +134.93s t=34  MM MARK CRZY_M SELL 1000 @ 10.10 -> mid 10.105 after 3s: -0.005/share (-5)
+20:06:47 +134.93s t=34  MM MARK CRZY_A SELL 200 @ 10.10 -> mid 10.105 after 3s: -0.005/share (-1)
+20:06:47 +134.93s t=34  MM MARK CRZY_M SELL 1000 @ 10.17 -> mid 10.105 after 3s: +0.065/share (+65)
+20:06:47 +134.93s t=34  MM MARK CRZY_A SELL 800 @ 10.10 -> mid 10.105 after 3s: -0.005/share (-4)
+20:06:47 +134.93s t=34  !! HARD FLAT: |net|=9400 >= 5000 -> pulling quotes, flattening
+20:06:47 +134.94s t=34  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 9400, 'action': 'BUY'} -> id=2029 filled=9400.0 vwap=10.131063829787234 status=TRANSACTED
+20:06:47 +134.94s t=34  Flattened -9400 on CRZY_M (best ask 10.12)
+20:06:47 +134.95s t=34  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.11} -> id=2030 filled=0.0 vwap=None status=OPEN
+20:06:47 +134.95s t=34  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.11} -> id=2031 filled=0.0 vwap=None status=OPEN
+20:06:47 +134.95s t=34  MM requote mid=10.105 bb=10.09 ba=10.12 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=-0.282 net=-9400 -> bid 10.11 ask 10.42 (raw 10.36/10.42) cancel=0 post=['M/B@10.11', 'A/B@10.11'] resting=2
+20:06:47 +135.20s t=34  MM MARK CRZY_M SELL 1000 @ 10.11 -> mid 10.110 after 3s: -0.000/share (-0)
+20:06:47 +135.69s t=34  MM FILL CRZY_A BUY 1000 @ 10.11 | mid 10.11 | net_before 11400
+20:06:48 +136.13s t=34  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.11} -> id=2058 filled=0.0 vwap=None status=OPEN
+20:06:48 +136.13s t=34  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.11} -> id=2059 filled=0.0 vwap=None status=OPEN
+20:06:48 +136.13s t=34  MM requote mid=10.110 bb=10.10 ba=10.12 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=+0.342 net=11400 -> bid 9.74 ask 10.11 (raw 9.74/9.80) cancel=1 post=['M/S@10.11', 'A/S@10.11'] resting=2
+20:06:49 +136.84s t=34  !! HARD FLAT: |net|=9400 >= 5000 -> pulling quotes, flattening
+20:06:49 +136.89s t=34  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 9400, 'action': 'SELL'} -> id=2077 filled=9400.0 vwap=10.1 status=TRANSACTED
+20:06:49 +136.89s t=34  Flattened 9400 on CRZY_M (best bid 10.1)
+20:06:49 +137.31s t=35  MM FILL CRZY_M SELL 1000 @ 10.11 | mid 10.12 | net_before -9400
+20:06:49 +137.55s t=35  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.11} -> id=2093 filled=0.0 vwap=None status=OPEN
+20:06:49 +137.56s t=35  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.11} -> id=2094 filled=0.0 vwap=None status=OPEN
+20:06:49 +137.56s t=35  MM requote mid=10.120 bb=10.12 ba=10.12 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.282 net=-9400 -> bid 10.11 ask 10.43 (raw 10.37/10.43) cancel=0 post=['M/B@10.11', 'A/B@10.11'] resting=2
+20:06:50 +137.83s t=35  MM MARK CRZY_M BUY 1000 @ 10.10 -> mid 10.120 after 3s: +0.020/share (+20)
+20:06:50 +138.08s t=35  MM MARK CRZY_A BUY 1000 @ 10.10 -> mid 10.120 after 3s: +0.020/share (+20)
+20:06:50 +138.60s t=35  MM requote mid=10.120 bb=10.12 ba=10.12 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.282 net=-9400 -> bid 10.11 ask 10.43 (raw 10.37/10.43) cancel=0 post=[] resting=2
+20:06:51 +138.89s t=35  MM MARK CRZY_A BUY 1000 @ 10.11 -> mid 10.120 after 3s: +0.010/share (+10)
+20:06:51 +138.89s t=35  !! HARD FLAT: |net|=9400 >= 5000 -> pulling quotes, flattening
+20:06:51 +138.91s t=35  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 9400, 'action': 'BUY'} -> id=2102 filled=9400.0 vwap=10.12 status=TRANSACTED
+20:06:51 +138.91s t=35  Flattened -9400 on CRZY_A (best ask 10.12)
+20:06:51 +139.73s t=35  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2118 filled=0.0 vwap=None status=OPEN
+20:06:51 +139.74s t=35  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2119 filled=0.0 vwap=None status=OPEN
+20:06:51 +139.74s t=35  MM requote mid=10.125 bb=10.12 ba=10.13 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=+0.282 net=9400 -> bid 9.81 ask 10.13 (raw 9.81/9.87) cancel=0 post=['M/S@10.13', 'A/S@10.13'] resting=2
+20:06:52 +140.44s t=35  MM FILL CRZY_M SELL 1000 @ 10.13 | mid 10.125 | net_before 7400
+20:06:52 +140.57s t=35  MM MARK CRZY_M SELL 1000 @ 10.11 -> mid 10.125 after 3s: -0.015/share (-15)
+20:06:52 +140.74s t=35  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2127 filled=0.0 vwap=None status=OPEN
+20:06:52 +140.74s t=35  MM requote mid=10.125 bb=10.12 ba=10.13 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=+0.222 net=7400 -> bid 9.87 ask 10.13 (raw 9.87/9.93) cancel=0 post=['M/S@10.13'] resting=2
+20:06:53 +141.04s t=36  !! HARD FLAT: |net|=7400 >= 5000 -> pulling quotes, flattening
+20:06:53 +141.06s t=36  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 7400, 'action': 'SELL'} -> id=2135 filled=7400.0 vwap=10.12 status=TRANSACTED
+20:06:53 +141.06s t=36  Flattened 7400 on CRZY_M (best bid 10.12)
+20:06:54 +141.80s t=36  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.12} -> id=2141 filled=0.0 vwap=None status=OPEN
+20:06:54 +141.80s t=36  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.12} -> id=2142 filled=0.0 vwap=None status=OPEN
+20:06:54 +141.80s t=36  MM requote mid=10.125 bb=10.12 ba=10.13 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.222 net=-7400 -> bid 10.12 ask 10.38 (raw 10.32/10.38) cancel=0 post=['M/B@10.12', 'A/B@10.12'] resting=2
+20:06:55 +142.81s t=36  MM requote mid=10.125 bb=10.12 ba=10.13 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.222 net=-7400 -> bid 10.12 ask 10.38 (raw 10.32/10.38) cancel=0 post=[] resting=2
+20:06:55 +143.08s t=36  !! HARD FLAT: |net|=7400 >= 5000 -> pulling quotes, flattening
+20:06:55 +143.09s t=36  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 7400, 'action': 'BUY'} -> id=2147 filled=7400.0 vwap=10.13 status=TRANSACTED
+20:06:55 +143.09s t=36  Flattened -7400 on CRZY_A (best ask 10.13)
+20:06:55 +143.61s t=36  MM MARK CRZY_M SELL 1000 @ 10.13 -> mid 10.125 after 3s: +0.005/share (+5)
+20:06:56 +143.83s t=36  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2155 filled=0.0 vwap=None status=OPEN
+20:06:56 +143.83s t=36  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2156 filled=0.0 vwap=None status=OPEN
+20:06:56 +143.83s t=36  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=+0.222 net=7400 -> bid 9.88 ask 10.13 (raw 9.88/9.94) cancel=0 post=['M/S@10.13', 'A/S@10.13'] resting=2
+20:06:57 +144.96s t=36  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=+0.222 net=7400 -> bid 9.88 ask 10.13 (raw 9.88/9.94) cancel=0 post=[] resting=2
+20:06:57 +145.20s t=37  !! HARD FLAT: |net|=7400 >= 5000 -> pulling quotes, flattening
+20:06:57 +145.24s t=37  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 7400, 'action': 'SELL'} -> id=2170 filled=7400.0 vwap=10.12 status=TRANSACTED
+20:06:57 +145.24s t=37  Flattened 7400 on CRZY_M (best bid 10.12)
+20:06:58 +146.02s t=37  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.13} -> id=2186 filled=0.0 vwap=None status=OPEN
+20:06:58 +146.02s t=37  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.13} -> id=2187 filled=0.0 vwap=None status=OPEN
+20:06:58 +146.02s t=37  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.222 net=-7400 -> bid 10.13 ask 10.38 (raw 10.32/10.38) cancel=0 post=['M/B@10.13', 'A/B@10.13'] resting=2
+20:06:59 +147.02s t=37  MM FILL CRZY_M BUY 1000 @ 10.13 | mid 10.129999999999999 | net_before -5400
+20:06:59 +147.08s t=37  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.13} -> id=2206 filled=0.0 vwap=None status=OPEN
+20:06:59 +147.08s t=37  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.162 net=-5400 -> bid 10.13 ask 10.32 (raw 10.26/10.32) cancel=0 post=['M/B@10.13'] resting=2
+20:06:59 +147.31s t=37  !! HARD FLAT: |net|=5400 >= 5000 -> pulling quotes, flattening
+20:06:59 +147.32s t=37  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 5400, 'action': 'BUY'} -> id=2208 filled=5400.0 vwap=10.14 status=TRANSACTED
+20:06:59 +147.32s t=37  Flattened -5400 on CRZY_M (best ask 10.14)
+20:07:00 +148.09s t=37  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2228 filled=0.0 vwap=None status=OPEN
+20:07:00 +148.09s t=37  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2230 filled=0.0 vwap=None status=OPEN
+20:07:00 +148.09s t=37  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=+0.162 net=5400 -> bid 9.94 ask 10.13 (raw 9.94/10.00) cancel=0 post=['M/S@10.13', 'A/S@10.13'] resting=2
+20:07:01 +149.16s t=38  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=+0.162 net=5400 -> bid 9.94 ask 10.13 (raw 9.94/10.00) cancel=0 post=[] resting=2
+20:07:02 +150.10s t=38  MM FILL CRZY_A SELL 1000 @ 10.13 | mid 10.129999999999999 | net_before 3400
+20:07:02 +150.19s t=38  MM MARK CRZY_M BUY 1000 @ 10.13 -> mid 10.130 after 3s: -0.000/share (-0)
+20:07:02 +150.20s t=38  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2248 filled=0.0 vwap=None status=OPEN
+20:07:02 +150.20s t=38  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=+0.102 net=3400 -> bid 10.00 ask 10.13 (raw 10.00/10.06) cancel=0 post=['A/S@10.13'] resting=2
+20:07:03 +151.15s t=38  MM FILL CRZY_A SELL 1000 @ 10.13 | mid 10.129999999999999 | net_before 1400
+20:07:03 +151.23s t=38  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.06} -> id=2279 filled=0.0 vwap=None status=OPEN
+20:07:03 +151.24s t=38  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.06} -> id=2280 filled=0.0 vwap=None status=OPEN
+20:07:03 +151.24s t=38  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.13} -> id=2281 filled=0.0 vwap=None status=OPEN
+20:07:03 +151.24s t=38  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=+0.042 net=1400 -> bid 10.06 ask 10.13 (raw 10.06/10.12) cancel=0 post=['M/B@10.06', 'A/B@10.06', 'A/S@10.13'] resting=4
+20:07:04 +152.25s t=38  MM FILL CRZY_A SELL 1000 @ 10.13 | mid 10.129999999999999 | net_before -600
+20:07:04 +152.35s t=38  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.12} -> id=2315 filled=0.0 vwap=None status=OPEN
+20:07:04 +152.35s t=38  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.18} -> id=2316 filled=0.0 vwap=None status=OPEN
+20:07:04 +152.36s t=38  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'BUY', 'price': 10.12} -> id=2317 filled=0.0 vwap=None status=OPEN
+20:07:04 +152.42s t=38  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 1000, 'action': 'SELL', 'price': 10.18} -> id=2319 filled=0.0 vwap=None status=OPEN
+20:07:04 +152.42s t=38  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.018 net=-600 -> bid 10.12 ask 10.18 (raw 10.12/10.18) cancel=3 post=['M/B@10.12', 'M/S@10.18', 'A/B@10.12', 'A/S@10.18'] resting=4
+20:07:05 +153.44s t=39  MM MARK CRZY_A SELL 1000 @ 10.13 -> mid 10.130 after 3s: +0.000/share (+0)
+20:07:05 +153.44s t=39  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.018 net=-600 -> bid 10.12 ask 10.18 (raw 10.12/10.18) cancel=0 post=[] resting=4
+20:07:06 +154.71s t=39  PARAMS {'MM size': 600.0}
+20:07:06 +154.73s t=39  MM MARK CRZY_A SELL 1000 @ 10.13 -> mid 10.130 after 3s: +0.000/share (+0)
+20:07:06 +154.73s t=39  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.018 net=-600 -> bid 10.12 ask 10.18 (raw 10.12/10.18) cancel=0 post=[] resting=4
+20:07:07 +155.37s t=39  MM MARK CRZY_A SELL 1000 @ 10.13 -> mid 10.130 after 3s: +0.000/share (+0)
+20:07:08 +155.77s t=39  MM requote mid=10.130 bb=10.12 ba=10.14 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.018 net=-600 -> bid 10.12 ask 10.18 (raw 10.12/10.18) cancel=0 post=[] resting=4
+20:07:09 +156.83s t=39  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.16} -> id=2346 filled=0.0 vwap=None status=OPEN
+20:07:09 +156.83s t=39  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.16} -> id=2347 filled=0.0 vwap=None status=OPEN
+20:07:09 +156.83s t=39  MM requote mid=10.155 bb=10.14 ba=10.17 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=-0.078 net=-2600 -> bid 10.16 ask 10.26 (raw 10.20/10.26) cancel=4 post=['M/B@10.16', 'A/B@10.16'] resting=2
+20:07:09 +157.13s t=40  MM FILL CRZY_M SELL 1000 @ 10.18 | mid 10.145 | net_before -2600
+20:07:09 +157.70s t=40  MM FILL CRZY_A BUY 600 @ 10.16 | mid 10.155000000000001 | net_before -1400
+20:07:10 +157.86s t=40  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.23} -> id=2373 filled=0.0 vwap=None status=OPEN
+20:07:10 +157.87s t=40  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.16} -> id=2374 filled=0.0 vwap=None status=OPEN
+20:07:10 +157.88s t=40  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.23} -> id=2375 filled=0.0 vwap=None status=OPEN
+20:07:10 +157.88s t=40  MM requote mid=10.155 bb=10.14 ba=10.17 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=-0.042 net=-1400 -> bid 10.16 ask 10.23 (raw 10.17/10.23) cancel=0 post=['M/S@10.23', 'A/B@10.16', 'A/S@10.23'] resting=4
+20:07:10 +158.29s t=40  ARB OPP buy 2000 CRZY_A lim 10.17 (exp 10.170) sell CRZY_M lim 10.20 (exp 10.200) edge 0.030 | books M 10.2/10.21 A 10.14/10.17 | room 14900
+20:07:10 +158.32s t=40  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.17} -> id=2436 filled=2000.0 vwap=10.17 status=OPEN
+20:07:10 +158.33s t=40  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.2} -> id=2445 filled=0.0 vwap=None status=OPEN
+20:07:11 +158.91s t=40  ! ARB accounting: orders say bought 2000 sold 0, position moved +4000 ({'CRZY_M': -100, 'CRZY_A': -100} -> {'CRZY_M': 1900, 'CRZY_A': 1900}) - using position
+20:07:11 +158.91s t=40  ARB MISS bought 2000 sold 0 (cross gone) -> pause 2s
+20:07:11 +158.93s t=40  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 4000, 'action': 'SELL', 'price': 10.2} -> id=2547 filled=0.0 vwap=None status=OPEN
+20:07:11 +159.35s t=40  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 5200, 'action': 'SELL'} -> id=2570 filled=5200.0 vwap=10.12988076923077 status=TRANSACTED
+20:07:11 +159.35s t=40  RESIDUAL +4000: limit CRZY_M 4000 @10.20 filled 0, market 5200 @ 10.12988076923077
+20:07:11 +159.48s t=40  MM FILL CRZY_M BUY 600 @ 10.16 | mid 10.165 | net_before 5000
+20:07:11 +159.65s t=40  !! HARD FLAT: |net|=5000 >= 5000 -> pulling quotes, flattening
+20:07:11 +159.69s t=40  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 5400, 'action': 'BUY'} -> id=2588 filled=5400.0 vwap=10.18 status=TRANSACTED
+20:07:11 +159.69s t=40  Flattened -5400 on CRZY_A (best ask 10.17)
+20:07:11 +159.69s t=40  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.17} -> id=2589 filled=0.0 vwap=None status=OPEN
+20:07:11 +159.70s t=40  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.17} -> id=2590 filled=0.0 vwap=None status=OPEN
+20:07:11 +159.70s t=40  MM requote mid=10.165 bb=10.16 ba=10.17 vol=0.040 half=0.040 (base 0.030 vol 0.040 user-min 0.000) skew=+0.150 net=5000 -> bid 9.98 ask 10.17 (raw 9.98/10.05) cancel=0 post=['M/S@10.17', 'A/S@10.17'] resting=2
+20:07:12 +159.94s t=40  MM FILL CRZY_A BUY 600 @ 10.16 | mid 10.125 | net_before 5400
+20:07:12 +160.21s t=40  MM MARK CRZY_M SELL 1000 @ 10.18 -> mid 10.135 after 3s: +0.045/share (+45)
+20:07:12 +160.50s t=40  MM FILL CRZY_M SELL 600 @ 10.17 | mid 10.145 | net_before 4200
+20:07:13 +160.94s t=40  MM MARK CRZY_A BUY 600 @ 10.16 -> mid 10.135 after 3s: -0.025/share (-15)
+20:07:13 +160.97s t=40  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.13} -> id=2638 filled=0.0 vwap=None status=OPEN
+20:07:13 +160.98s t=40  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.13} -> id=2639 filled=0.0 vwap=None status=OPEN
+20:07:13 +160.98s t=40  MM requote mid=10.135 bb=10.12 ba=10.15 vol=0.060 half=0.060 (base 0.030 vol 0.060 user-min 0.000) skew=+0.090 net=3000 -> bid 9.99 ask 10.13 (raw 9.99/10.10) cancel=1 post=['M/S@10.13', 'A/S@10.13'] resting=2
+20:07:13 +161.27s t=41  MM FILL CRZY_A SELL 600 @ 10.17 | mid 10.135 | net_before 3000
+20:07:13 +161.71s t=41  MM FILL CRZY_M SELL 600 @ 10.13 | mid 10.129999999999999 | net_before 1800
+20:07:14 +162.16s t=41  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.1} -> id=2679 filled=0.0 vwap=None status=OPEN
+20:07:14 +162.17s t=41  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.18} -> id=2680 filled=0.0 vwap=None status=OPEN
+20:07:14 +162.17s t=41  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.1} -> id=2681 filled=0.0 vwap=None status=OPEN
+20:07:14 +162.18s t=41  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.18} -> id=2682 filled=0.0 vwap=None status=OPEN
+20:07:14 +162.18s t=41  MM requote mid=10.160 bb=10.14 ba=10.18 vol=0.040 half=0.040 (base 0.030 vol 0.040 user-min 0.000) skew=+0.018 net=600 -> bid 10.10 ask 10.18 (raw 10.10/10.18) cancel=1 post=['M/B@10.10', 'M/S@10.18', 'A/B@10.10', 'A/S@10.18'] resting=4
+20:07:14 +162.71s t=41  MM FILL CRZY_A SELL 600 @ 10.13 | mid 10.16 | net_before -600
+20:07:15 +162.81s t=41  MM MARK CRZY_M BUY 600 @ 10.16 -> mid 10.160 after 3s: +0.000/share (+0)
+20:07:15 +163.09s t=41  MM FILL CRZY_M SELL 600 @ 10.18 | mid 10.17 | net_before -600
+20:07:15 +163.26s t=41  MM MARK CRZY_A BUY 600 @ 10.16 -> mid 10.170 after 3s: +0.010/share (+6)
+20:07:15 +163.27s t=41  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=2710 filled=0.0 vwap=None status=OPEN
+20:07:15 +163.28s t=41  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.23} -> id=2711 filled=0.0 vwap=None status=OPEN
+20:07:15 +163.28s t=41  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=2712 filled=0.0 vwap=None status=OPEN
+20:07:15 +163.29s t=41  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.23} -> id=2713 filled=0.0 vwap=None status=OPEN
+20:07:15 +163.29s t=41  MM requote mid=10.170 bb=10.16 ba=10.18 vol=0.040 half=0.040 (base 0.030 vol 0.040 user-min 0.000) skew=-0.018 net=-600 -> bid 10.15 ask 10.23 (raw 10.15/10.23) cancel=3 post=['M/B@10.15', 'M/S@10.23', 'A/B@10.15', 'A/S@10.23'] resting=4
+20:07:15 +163.58s t=41  MM FILL CRZY_A BUY 200 @ 10.15 | mid 10.165 | net_before -200
+20:07:16 +163.78s t=41  MM MARK CRZY_M SELL 600 @ 10.17 -> mid 10.165 after 3s: +0.005/share (+3)
+20:07:16 +164.04s t=41  MM FILL CRZY_A BUY 400 @ 10.15 | mid 10.175 | net_before 600
+20:07:16 +164.33s t=41  MM MARK CRZY_A SELL 600 @ 10.17 -> mid 10.170 after 3s: -0.000/share (-0)
+20:07:16 +164.34s t=41  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.11} -> id=2742 filled=0.0 vwap=None status=OPEN
+20:07:16 +164.36s t=41  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.2} -> id=2743 filled=0.0 vwap=None status=OPEN
+20:07:16 +164.39s t=41  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.11} -> id=2745 filled=0.0 vwap=None status=OPEN
+20:07:16 +164.39s t=41  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.2} -> id=2746 filled=0.0 vwap=None status=OPEN
+20:07:16 +164.39s t=41  MM requote mid=10.170 bb=10.16 ba=10.18 vol=0.045 half=0.045 (base 0.030 vol 0.045 user-min 0.000) skew=+0.018 net=600 -> bid 10.11 ask 10.20 (raw 10.11/10.20) cancel=3 post=['M/B@10.11', 'M/S@10.20', 'A/B@10.11', 'A/S@10.20'] resting=4
+20:07:17 +164.84s t=41  MM MARK CRZY_M SELL 600 @ 10.13 -> mid 10.175 after 3s: -0.045/share (-27)
+20:07:17 +165.44s t=42  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.12} -> id=2784 filled=0.0 vwap=None status=OPEN
+20:07:17 +165.44s t=42  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.18} -> id=2786 filled=0.0 vwap=None status=OPEN
+20:07:17 +165.45s t=42  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.12} -> id=2788 filled=0.0 vwap=None status=OPEN
+20:07:17 +165.46s t=42  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.18} -> id=2789 filled=0.0 vwap=None status=OPEN
+20:07:17 +165.46s t=42  MM requote mid=10.170 bb=10.15 ba=10.19 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=+0.018 net=600 -> bid 10.12 ask 10.18 (raw 10.12/10.18) cancel=4 post=['M/B@10.12', 'M/S@10.18', 'A/B@10.12', 'A/S@10.18'] resting=4
+20:07:18 +165.78s t=42  MM MARK CRZY_A SELL 600 @ 10.13 -> mid 10.170 after 3s: -0.040/share (-24)
+20:07:18 +166.28s t=42  MM MARK CRZY_M SELL 600 @ 10.18 -> mid 10.150 after 3s: +0.030/share (+18)
+20:07:18 +166.59s t=42  MM MARK CRZY_A BUY 200 @ 10.15 -> mid 10.150 after 3s: +0.000/share (+0)
+20:07:18 +166.60s t=42  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.1} -> id=2853 filled=0.0 vwap=None status=OPEN
+20:07:18 +166.61s t=42  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.16} -> id=2854 filled=0.0 vwap=None status=OPEN
+20:07:18 +166.62s t=42  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.1} -> id=2855 filled=0.0 vwap=None status=OPEN
+20:07:18 +166.62s t=42  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.16} -> id=2858 filled=0.0 vwap=None status=OPEN
+20:07:18 +166.62s t=42  MM requote mid=10.150 bb=10.15 ba=10.15 vol=0.030 half=0.030 (base 0.030 vol 0.030 user-min 0.000) skew=+0.018 net=600 -> bid 10.10 ask 10.16 (raw 10.10/10.16) cancel=4 post=['M/B@10.10', 'M/S@10.16', 'A/B@10.10', 'A/S@10.16'] resting=4
+20:07:19 +167.14s t=42  MM MARK CRZY_A BUY 400 @ 10.15 -> mid 10.150 after 3s: +0.000/share (+0)
+20:07:19 +167.60s t=42  MM requote mid=10.150 bb=10.15 ba=10.15 vol=0.030 half=0.030 (base 0.030 vol 0.030 user-min 0.000) skew=+0.018 net=600 -> bid 10.10 ask 10.16 (raw 10.10/10.16) cancel=0 post=[] resting=4
+20:07:20 +168.30s t=42  MM FILL CRZY_M SELL 600 @ 10.16 | mid 10.16 | net_before -600
+20:07:20 +168.67s t=42  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=2920 filled=5.0 vwap=10.15 status=OPEN
+20:07:20 +168.67s t=42  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.21} -> id=2921 filled=0.0 vwap=None status=OPEN
+20:07:20 +168.68s t=42  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=2922 filled=0.0 vwap=None status=OPEN
+20:07:20 +168.68s t=42  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.21} -> id=2923 filled=0.0 vwap=None status=OPEN
+20:07:20 +168.68s t=42  MM requote mid=10.160 bb=10.15 ba=10.17 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=-0.018 net=-600 -> bid 10.15 ask 10.21 (raw 10.15/10.21) cancel=3 post=['M/B@10.15', 'M/S@10.21', 'A/B@10.15', 'A/S@10.21'] resting=4
+20:07:21 +169.01s t=43  MM FILL CRZY_M BUY 5 @ 10.15 | mid 10.16 | net_before -590
+20:07:21 +169.69s t=43  MM requote mid=10.160 bb=10.15 ba=10.17 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.018 net=-590 -> bid 10.15 ask 10.21 (raw 10.15/10.21) cancel=0 post=[] resting=4
+20:07:22 +170.10s t=43  MM FILL CRZY_M BUY 200 @ 10.15 | mid 10.16 | net_before -1390
+20:07:22 +170.61s t=43  MM FILL CRZY_M BUY 395 @ 10.15 | mid 10.184999999999999 | net_before -600
+20:07:22 +170.75s t=43  MM FILL CRZY_M SELL 600 @ 10.21 | mid 10.184999999999999 | net_before -600
+20:07:23 +170.95s t=43  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.17} -> id=3003 filled=0.0 vwap=None status=OPEN
+20:07:23 +170.95s t=43  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.24} -> id=3004 filled=0.0 vwap=None status=OPEN
+20:07:23 +170.96s t=43  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.17} -> id=3005 filled=0.0 vwap=None status=OPEN
+20:07:23 +170.96s t=43  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.24} -> id=3006 filled=0.0 vwap=None status=OPEN
+20:07:23 +170.96s t=43  MM requote mid=10.185 bb=10.18 ba=10.19 vol=0.035 half=0.035 (base 0.030 vol 0.035 user-min 0.000) skew=-0.018 net=-600 -> bid 10.17 ask 10.24 (raw 10.17/10.24) cancel=2 post=['M/B@10.17', 'M/S@10.24', 'A/B@10.17', 'A/S@10.24'] resting=4
+20:07:23 +171.45s t=43  MM MARK CRZY_M SELL 600 @ 10.16 -> mid 10.185 after 3s: -0.025/share (-15)
+20:07:24 +171.80s t=43  MM FILL CRZY_M BUY 600 @ 10.17 | mid 10.184999999999999 | net_before 600
+20:07:24 +172.07s t=43  MM MARK CRZY_M BUY 5 @ 10.15 -> mid 10.185 after 3s: +0.035/share (+0)
+20:07:24 +172.09s t=43  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.14} -> id=3046 filled=0.0 vwap=None status=OPEN
+20:07:24 +172.10s t=43  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.2} -> id=3047 filled=0.0 vwap=None status=OPEN
+20:07:24 +172.10s t=43  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.14} -> id=3048 filled=0.0 vwap=None status=OPEN
+20:07:24 +172.11s t=43  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.2} -> id=3049 filled=0.0 vwap=None status=OPEN
+20:07:24 +172.11s t=43  MM requote mid=10.185 bb=10.18 ba=10.19 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=+0.018 net=600 -> bid 10.14 ask 10.20 (raw 10.14/10.20) cancel=3 post=['M/B@10.14', 'M/S@10.20', 'A/B@10.14', 'A/S@10.20'] resting=4
+20:07:25 +173.17s t=44  MM MARK CRZY_M BUY 200 @ 10.15 -> mid 10.195 after 3s: +0.045/share (+9)
+20:07:25 +173.18s t=44  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=3105 filled=0.0 vwap=None status=OPEN
+20:07:25 +173.19s t=44  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.21} -> id=3106 filled=0.0 vwap=None status=OPEN
+20:07:25 +173.20s t=44  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=3107 filled=0.0 vwap=None status=OPEN
+20:07:25 +173.20s t=44  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.21} -> id=3108 filled=0.0 vwap=None status=OPEN
+20:07:25 +173.20s t=44  MM requote mid=10.195 bb=10.19 ba=10.20 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=+0.018 net=600 -> bid 10.15 ask 10.21 (raw 10.15/10.21) cancel=4 post=['M/B@10.15', 'M/S@10.21', 'A/B@10.15', 'A/S@10.21'] resting=4
+20:07:25 +173.75s t=44  MM MARK CRZY_M BUY 395 @ 10.15 -> mid 10.215 after 3s: +0.065/share (+26)
+20:07:26 +174.09s t=44  MM FILL CRZY_M SELL 600 @ 10.21 | mid 10.215 | net_before -3000
+20:07:26 +174.24s t=44  MM FILL CRZY_A SELL 600 @ 10.21 | mid 10.215 | net_before -3000
+20:07:26 +174.41s t=44  MM FILL CRZY_M SELL 600 @ 10.20 | mid 10.215 | net_before -3000
+20:07:26 +174.53s t=44  MM MARK CRZY_M SELL 600 @ 10.21 -> mid 10.215 after 3s: -0.005/share (-3)
+20:07:26 +174.54s t=44  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.21} -> id=3153 filled=0.0 vwap=None status=OPEN
+20:07:26 +174.56s t=44  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.21} -> id=3154 filled=0.0 vwap=None status=OPEN
+20:07:26 +174.56s t=44  MM requote mid=10.215 bb=10.21 ba=10.22 vol=0.030 half=0.030 (base 0.030 vol 0.030 user-min 0.000) skew=-0.090 net=-3000 -> bid 10.21 ask 10.34 (raw 10.27/10.34) cancel=2 post=['M/B@10.21', 'A/B@10.21'] resting=2
+20:07:27 +175.05s t=44  MM MARK CRZY_M BUY 600 @ 10.17 -> mid 10.215 after 3s: +0.045/share (+27)
+20:07:27 +175.31s t=44  MM FILL CRZY_M BUY 200 @ 10.21 | mid 10.21 | net_before -2600
+20:07:28 +175.77s t=44  MM FILL CRZY_M BUY 400 @ 10.21 | mid 10.215 | net_before -1800
+20:07:28 +175.86s t=44  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.21} -> id=3193 filled=0.0 vwap=None status=OPEN
+20:07:28 +175.87s t=44  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.3} -> id=3194 filled=0.0 vwap=None status=OPEN
+20:07:28 +175.88s t=44  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.3} -> id=3195 filled=0.0 vwap=None status=OPEN
+20:07:28 +175.88s t=44  MM requote mid=10.215 bb=10.21 ba=10.22 vol=0.030 half=0.030 (base 0.030 vol 0.030 user-min 0.000) skew=-0.054 net=-1800 -> bid 10.21 ask 10.30 (raw 10.24/10.30) cancel=0 post=['M/B@10.21', 'M/S@10.30', 'A/S@10.30'] resting=4
+20:07:28 +176.45s t=44  MM FILL CRZY_A BUY 200 @ 10.21 | mid 10.22 | net_before -1400
+20:07:29 +176.95s t=44  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.29} -> id=3216 filled=0.0 vwap=None status=OPEN
+20:07:29 +176.96s t=44  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.29} -> id=3217 filled=0.0 vwap=None status=OPEN
+20:07:29 +176.96s t=44  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.042 net=-1400 -> bid 10.21 ask 10.29 (raw 10.23/10.29) cancel=2 post=['M/S@10.29', 'A/S@10.29'] resting=4
+20:07:29 +177.21s t=45  [tick  45] NLV=-853.57 real=-1662.34 unreal=-30.80 | arb=0 miss=3 pnl=+0.00 slip=+0.00 | mm fills=47 vol=33600 adverse=+0.0065/sh | net=-1400 room=14300 | api/s=28 429=0
+20:07:30 +178.07s t=45  PARAMS {'MM half spread': 0.04}
+20:07:30 +178.13s t=45  MM MARK CRZY_M SELL 600 @ 10.21 -> mid 10.220 after 3s: -0.010/share (-6)
+20:07:30 +178.13s t=45  MM MARK CRZY_A SELL 600 @ 10.21 -> mid 10.220 after 3s: -0.010/share (-6)
+20:07:30 +178.13s t=45  MM MARK CRZY_M SELL 600 @ 10.20 -> mid 10.220 after 3s: -0.020/share (-12)
+20:07:30 +178.15s t=45  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.3} -> id=3238 filled=0.0 vwap=None status=OPEN
+20:07:30 +178.16s t=45  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.3} -> id=3239 filled=0.0 vwap=None status=OPEN
+20:07:30 +178.16s t=45  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.042 net=-1400 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=2 post=['M/S@10.30', 'A/S@10.30'] resting=4
+20:07:30 +178.50s t=45  MM MARK CRZY_M BUY 200 @ 10.21 -> mid 10.220 after 3s: +0.010/share (+2)
+20:07:31 +178.80s t=45  MM MARK CRZY_M BUY 400 @ 10.21 -> mid 10.220 after 3s: +0.010/share (+4)
+20:07:31 +179.26s t=45  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.042 net=-1400 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=0 post=[] resting=4
+20:07:31 +179.65s t=45  MM MARK CRZY_A BUY 200 @ 10.21 -> mid 10.220 after 3s: +0.010/share (+2)
+20:07:32 +180.39s t=45  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.042 net=-1400 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=0 post=[] resting=4
+20:07:33 +181.40s t=46  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.042 net=-1400 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=0 post=[] resting=4
+20:07:34 +181.78s t=46  MM FILL CRZY_A BUY 30 @ 10.21 | mid 10.22 | net_before -1340
+20:07:34 +182.52s t=46  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=0 post=[] resting=4
+20:07:35 +183.63s t=46  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=0 post=[] resting=4
+20:07:37 +184.97s t=47  MM MARK CRZY_A BUY 30 @ 10.21 -> mid 10.220 after 3s: +0.010/share (+0)
+20:07:37 +184.97s t=47  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=0 post=[] resting=4
+20:07:38 +186.06s t=47  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.21 ask 10.30 (raw 10.22/10.30) cancel=0 post=[] resting=4
+20:07:38 +186.26s t=47  ARB OPP buy 2000 CRZY_A lim 10.22 (exp 10.220) sell CRZY_M lim 10.26 (exp 10.260) edge 0.040 | books M 10.26/10.27 A 10.21/10.22 | room 14330
+20:07:38 +186.30s t=47  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.22} -> id=3546 filled=0.0 vwap=None status=OPEN
+20:07:38 +186.30s t=47  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.26} -> id=3549 filled=0.0 vwap=None status=OPEN
+20:07:39 +187.11s t=47  ARB MISS bought 0 sold 0 (cross gone) -> pause 2s
+20:07:39 +187.37s t=47  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.22} -> id=3682 filled=0.0 vwap=None status=OPEN
+20:07:39 +187.38s t=47  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=3683 filled=0.0 vwap=None status=OPEN
+20:07:39 +187.39s t=47  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.22} -> id=3684 filled=0.0 vwap=None status=OPEN
+20:07:39 +187.39s t=47  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=3685 filled=0.0 vwap=None status=OPEN
+20:07:39 +187.39s t=47  MM requote mid=10.225 bb=10.22 ba=10.23 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.22 ask 10.31 (raw 10.23/10.31) cancel=4 post=['M/B@10.22', 'M/S@10.31', 'A/B@10.22', 'A/S@10.31'] resting=4
+20:07:40 +188.24s t=47  MM FILL CRZY_M BUY 600 @ 10.22 | mid 10.22 | net_before -140
+20:07:40 +188.51s t=47  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.18} -> id=3724 filled=0.0 vwap=None status=OPEN
+20:07:40 +188.52s t=47  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.26} -> id=3725 filled=0.0 vwap=None status=OPEN
+20:07:40 +188.52s t=47  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.18} -> id=3726 filled=0.0 vwap=None status=OPEN
+20:07:40 +188.54s t=47  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.26} -> id=3727 filled=0.0 vwap=None status=OPEN
+20:07:40 +188.54s t=47  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=-0.004 net=-140 -> bid 10.18 ask 10.26 (raw 10.18/10.26) cancel=3 post=['M/B@10.18', 'M/S@10.26', 'A/B@10.18', 'A/S@10.26'] resting=4
+20:07:41 +189.67s t=48  MM requote mid=10.220 bb=10.22 ba=10.22 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=-0.004 net=-140 -> bid 10.18 ask 10.26 (raw 10.18/10.26) cancel=0 post=[] resting=4
+20:07:42 +190.72s t=48  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.19} -> id=3809 filled=0.0 vwap=None status=OPEN
+20:07:42 +190.72s t=48  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.27} -> id=3810 filled=0.0 vwap=None status=OPEN
+20:07:42 +190.73s t=48  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.19} -> id=3811 filled=0.0 vwap=None status=OPEN
+20:07:42 +190.74s t=48  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.27} -> id=3812 filled=0.0 vwap=None status=OPEN
+20:07:42 +190.74s t=48  MM requote mid=10.225 bb=10.22 ba=10.23 vol=0.025 half=0.040 (base 0.040 vol 0.025 user-min 0.000) skew=-0.004 net=-140 -> bid 10.19 ask 10.27 (raw 10.19/10.27) cancel=4 post=['M/B@10.19', 'M/S@10.27', 'A/B@10.19', 'A/S@10.27'] resting=4
+20:07:43 +191.29s t=48  MM MARK CRZY_M BUY 600 @ 10.22 -> mid 10.245 after 3s: +0.025/share (+15)
+20:07:43 +191.67s t=48  MM FILL CRZY_A SELL 600 @ 10.26 | mid 10.225000000000001 | net_before -1340
+20:07:44 +191.81s t=48  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.22} -> id=3855 filled=0.0 vwap=None status=OPEN
+20:07:44 +191.81s t=48  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=3856 filled=0.0 vwap=None status=OPEN
+20:07:44 +191.82s t=48  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.22} -> id=3857 filled=0.0 vwap=None status=OPEN
+20:07:44 +191.82s t=48  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=3859 filled=0.0 vwap=None status=OPEN
+20:07:44 +191.82s t=48  MM requote mid=10.225 bb=10.22 ba=10.23 vol=0.025 half=0.040 (base 0.040 vol 0.025 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.22 ask 10.31 (raw 10.23/10.31) cancel=4 post=['M/B@10.22', 'M/S@10.31', 'A/B@10.22', 'A/S@10.31'] resting=4
+20:07:45 +192.75s t=48  MM FILL CRZY_M BUY 600 @ 10.22 | mid 10.215 | net_before 1060
+20:07:45 +192.97s t=48  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.14} -> id=3901 filled=0.0 vwap=None status=OPEN
+20:07:45 +192.98s t=48  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.22} -> id=3904 filled=600.0 vwap=10.24 status=OPEN
+20:07:45 +192.99s t=48  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.14} -> id=3905 filled=0.0 vwap=None status=OPEN
+20:07:45 +193.00s t=48  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.22} -> id=3907 filled=600.0 vwap=10.22 status=OPEN
+20:07:45 +193.00s t=48  MM requote mid=10.215 bb=10.21 ba=10.22 vol=0.030 half=0.040 (base 0.040 vol 0.030 user-min 0.000) skew=+0.032 net=1060 -> bid 10.14 ask 10.22 (raw 10.14/10.22) cancel=3 post=['M/B@10.14', 'M/S@10.22', 'A/B@10.14', 'A/S@10.22'] resting=4
+20:07:45 +193.34s t=49  MM FILL CRZY_M SELL 600 @ 10.24 | mid 10.23 | net_before -1340
+20:07:46 +193.76s t=49  MM FILL CRZY_A SELL 600 @ 10.22 | mid 10.23 | net_before -1340
+20:07:46 +193.85s t=49  MM FILL CRZY_A BUY 600 @ 10.22 | mid 10.23 | net_before -1340
+20:07:46 +194.04s t=49  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.23} -> id=3957 filled=0.0 vwap=None status=OPEN
+20:07:46 +194.04s t=49  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=3958 filled=0.0 vwap=None status=OPEN
+20:07:46 +194.05s t=49  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.23} -> id=3959 filled=600.0 vwap=10.22 status=OPEN
+20:07:46 +194.06s t=49  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=3960 filled=0.0 vwap=None status=OPEN
+20:07:46 +194.06s t=49  MM requote mid=10.230 bb=10.22 ba=10.24 vol=0.030 half=0.040 (base 0.040 vol 0.030 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.23 ask 10.31 (raw 10.23/10.31) cancel=2 post=['M/B@10.23', 'M/S@10.31', 'A/B@10.23', 'A/S@10.31'] resting=4
+20:07:46 +194.35s t=49  MM FILL CRZY_M BUY 42 @ 10.23 | mid 10.215 | net_before -56
+20:07:46 +194.58s t=49  MM FILL CRZY_A BUY 600 @ 10.22 | mid 10.215 | net_before -56
+20:07:47 +194.81s t=49  MM MARK CRZY_A SELL 600 @ 10.26 -> mid 10.215 after 3s: +0.045/share (+27)
+20:07:47 +195.12s t=49  MM FILL CRZY_M BUY 558 @ 10.23 | mid 10.225000000000001 | net_before 1060
+20:07:47 +195.31s t=49  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=4108 filled=0.0 vwap=None status=OPEN
+20:07:47 +195.32s t=49  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.23} -> id=4109 filled=0.0 vwap=None status=OPEN
+20:07:47 +195.33s t=49  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.15} -> id=4110 filled=0.0 vwap=None status=OPEN
+20:07:47 +195.33s t=49  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.23} -> id=4111 filled=600.0 vwap=10.23 status=OPEN
+20:07:47 +195.33s t=49  MM requote mid=10.225 bb=10.22 ba=10.23 vol=0.025 half=0.040 (base 0.040 vol 0.025 user-min 0.000) skew=+0.032 net=1060 -> bid 10.15 ask 10.23 (raw 10.15/10.23) cancel=2 post=['M/B@10.15', 'M/S@10.23', 'A/B@10.15', 'A/S@10.23'] resting=4
+20:07:47 +195.65s t=49  MM FILL CRZY_A SELL 600 @ 10.23 | mid 10.24 | net_before -140
+20:07:48 +195.85s t=49  MM MARK CRZY_M BUY 600 @ 10.22 -> mid 10.240 after 3s: +0.020/share (+12)
+20:07:48 +196.08s t=49  MM FILL CRZY_M SELL 600 @ 10.23 | mid 10.25 | net_before -1340
+20:07:48 +196.54s t=49  MM MARK CRZY_M SELL 600 @ 10.24 -> mid 10.265 after 3s: -0.025/share (-15)
+20:07:48 +196.56s t=49  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.26} -> id=4169 filled=600.0 vwap=10.26 status=OPEN
+20:07:48 +196.57s t=49  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=4170 filled=0.0 vwap=None status=OPEN
+20:07:48 +196.57s t=49  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.26} -> id=4171 filled=0.0 vwap=None status=OPEN
+20:07:48 +196.58s t=49  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=4172 filled=0.0 vwap=None status=OPEN
+20:07:48 +196.58s t=49  MM requote mid=10.265 bb=10.26 ba=10.27 vol=0.050 half=0.050 (base 0.040 vol 0.050 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.26 ask 10.36 (raw 10.26/10.36) cancel=2 post=['M/B@10.26', 'M/S@10.36', 'A/B@10.26', 'A/S@10.36'] resting=4
+20:07:49 +196.84s t=49  MM FILL CRZY_M BUY 600 @ 10.26 | mid 10.25 | net_before -140
+20:07:49 +197.07s t=49  MM MARK CRZY_A SELL 600 @ 10.22 -> mid 10.250 after 3s: -0.030/share (-18)
+20:07:49 +197.07s t=49  MM MARK CRZY_A BUY 600 @ 10.22 -> mid 10.250 after 3s: +0.030/share (+18)
+20:07:49 +197.46s t=50  MM FILL CRZY_A BUY 600 @ 10.26 | mid 10.25 | net_before 1060
+20:07:50 +197.82s t=50  MM MARK CRZY_M BUY 42 @ 10.23 -> mid 10.250 after 3s: +0.020/share (+1)
+20:07:50 +197.82s t=50  MM MARK CRZY_A BUY 600 @ 10.22 -> mid 10.250 after 3s: +0.030/share (+18)
+20:07:50 +197.83s t=50  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.18} -> id=4237 filled=0.0 vwap=None status=OPEN
+20:07:50 +197.84s t=50  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.26} -> id=4238 filled=0.0 vwap=None status=OPEN
+20:07:50 +197.84s t=50  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.18} -> id=4239 filled=0.0 vwap=None status=OPEN
+20:07:50 +197.85s t=50  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.26} -> id=4241 filled=0.0 vwap=None status=OPEN
+20:07:50 +197.85s t=50  MM requote mid=10.250 bb=10.24 ba=10.26 vol=0.040 half=0.040 (base 0.040 vol 0.040 user-min 0.000) skew=+0.032 net=1060 -> bid 10.18 ask 10.26 (raw 10.18/10.26) cancel=2 post=['M/B@10.18', 'M/S@10.26', 'A/B@10.18', 'A/S@10.26'] resting=4
+20:07:50 +198.46s t=50  MM MARK CRZY_M BUY 558 @ 10.23 -> mid 10.260 after 3s: +0.030/share (+17)
+20:07:51 +198.80s t=50  MM FILL CRZY_M SELL 600 @ 10.26 | mid 10.235 | net_before -140
+20:07:51 +199.05s t=50  MM MARK CRZY_A SELL 600 @ 10.23 -> mid 10.235 after 3s: -0.005/share (-3)
+20:07:51 +199.07s t=50  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.2} -> id=4282 filled=0.0 vwap=None status=OPEN
+20:07:51 +199.09s t=50  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.28} -> id=4283 filled=0.0 vwap=None status=OPEN
+20:07:51 +199.10s t=50  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.2} -> id=4284 filled=0.0 vwap=None status=OPEN
+20:07:51 +199.10s t=50  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.28} -> id=4285 filled=0.0 vwap=None status=OPEN
+20:07:51 +199.10s t=50  MM requote mid=10.235 bb=10.23 ba=10.24 vol=0.030 half=0.040 (base 0.040 vol 0.030 user-min 0.000) skew=-0.004 net=-140 -> bid 10.20 ask 10.28 (raw 10.20/10.28) cancel=3 post=['M/B@10.20', 'M/S@10.28', 'A/B@10.20', 'A/S@10.28'] resting=4
+20:07:51 +199.34s t=50  MM MARK CRZY_M SELL 600 @ 10.23 -> mid 10.245 after 3s: -0.015/share (-9)
+20:07:52 +199.93s t=50  MM FILL CRZY_M SELL 600 @ 10.28 | mid 10.274999999999999 | net_before -1340
+20:07:52 +200.14s t=50  MM MARK CRZY_M BUY 600 @ 10.26 -> mid 10.275 after 3s: +0.015/share (+9)
+20:07:52 +200.16s t=50  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.27} -> id=4326 filled=600.0 vwap=10.26 status=OPEN
+20:07:52 +200.16s t=50  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=4327 filled=0.0 vwap=None status=OPEN
+20:07:52 +200.17s t=50  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.27} -> id=4328 filled=0.0 vwap=None status=OPEN
+20:07:52 +200.17s t=50  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=4329 filled=0.0 vwap=None status=OPEN
+20:07:52 +200.17s t=50  MM requote mid=10.275 bb=10.27 ba=10.28 vol=0.040 half=0.040 (base 0.040 vol 0.040 user-min 0.000) skew=-0.040 net=-1340 -> bid 10.27 ask 10.36 (raw 10.28/10.36) cancel=3 post=['M/B@10.27', 'M/S@10.36', 'A/B@10.27', 'A/S@10.36'] resting=4
+20:07:52 +200.50s t=50  MM FILL CRZY_M BUY 600 @ 10.26 | mid 10.254999999999999 | net_before -140
+20:07:53 +200.79s t=50  MM MARK CRZY_A BUY 600 @ 10.26 -> mid 10.255 after 3s: -0.005/share (-3)
+20:07:53 +201.22s t=51  MM FILL CRZY_A BUY 600 @ 10.27 | mid 10.27 | net_before 1060
+20:07:53 +201.53s t=51  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.2} -> id=4423 filled=0.0 vwap=None status=OPEN
+20:07:53 +201.54s t=51  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.28} -> id=4424 filled=0.0 vwap=None status=OPEN
+20:07:53 +201.55s t=51  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.2} -> id=4425 filled=0.0 vwap=None status=OPEN
+20:07:53 +201.59s t=51  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.28} -> id=4426 filled=0.0 vwap=None status=OPEN
+20:07:53 +201.59s t=51  MM requote mid=10.270 bb=10.26 ba=10.28 vol=0.040 half=0.040 (base 0.040 vol 0.040 user-min 0.000) skew=+0.032 net=1060 -> bid 10.20 ask 10.28 (raw 10.20/10.28) cancel=2 post=['M/B@10.20', 'M/S@10.28', 'A/B@10.20', 'A/S@10.28'] resting=4
+20:07:54 +201.82s t=51  MM MARK CRZY_M SELL 600 @ 10.26 -> mid 10.255 after 3s: +0.005/share (+3)
+20:07:55 +202.86s t=51  MM FILL CRZY_M SELL 600 @ 10.28 | mid 10.274999999999999 | net_before -140
+20:07:55 +203.02s t=51  MM MARK CRZY_M SELL 600 @ 10.28 -> mid 10.275 after 3s: +0.005/share (+3)
+20:07:55 +203.03s t=51  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.24} -> id=4469 filled=0.0 vwap=None status=OPEN
+20:07:55 +203.04s t=51  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.32} -> id=4470 filled=0.0 vwap=None status=OPEN
+20:07:55 +203.04s t=51  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.24} -> id=4471 filled=0.0 vwap=None status=OPEN
+20:07:55 +203.11s t=51  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.32} -> id=4472 filled=0.0 vwap=None status=OPEN
+20:07:55 +203.11s t=51  MM requote mid=10.275 bb=10.27 ba=10.28 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=-0.004 net=-140 -> bid 10.24 ask 10.32 (raw 10.24/10.32) cancel=3 post=['M/B@10.24', 'M/S@10.32', 'A/B@10.24', 'A/S@10.32'] resting=4
+20:07:55 +203.72s t=51  MM MARK CRZY_M BUY 600 @ 10.26 -> mid 10.275 after 3s: +0.015/share (+9)
+20:07:56 +204.15s t=51  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.22} -> id=4506 filled=0.0 vwap=None status=OPEN
+20:07:56 +204.16s t=51  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.3} -> id=4507 filled=0.0 vwap=None status=OPEN
+20:07:56 +204.17s t=51  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.22} -> id=4508 filled=0.0 vwap=None status=OPEN
+20:07:56 +204.17s t=51  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.3} -> id=4509 filled=0.0 vwap=None status=OPEN
+20:07:56 +204.17s t=51  MM requote mid=10.260 bb=10.25 ba=10.27 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=-0.004 net=-140 -> bid 10.22 ask 10.30 (raw 10.22/10.30) cancel=4 post=['M/B@10.22', 'M/S@10.30', 'A/B@10.22', 'A/S@10.30'] resting=4
+20:07:56 +204.49s t=51  MM MARK CRZY_A BUY 600 @ 10.27 -> mid 10.270 after 3s: +0.000/share (+0)
+20:07:57 +205.31s t=52  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.25} -> id=4548 filled=0.0 vwap=None status=OPEN
+20:07:57 +205.32s t=52  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.33} -> id=4549 filled=0.0 vwap=None status=OPEN
+20:07:57 +205.32s t=52  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.25} -> id=4550 filled=0.0 vwap=None status=OPEN
+20:07:57 +205.33s t=52  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.33} -> id=4551 filled=0.0 vwap=None status=OPEN
+20:07:57 +205.33s t=52  MM requote mid=10.285 bb=10.28 ba=10.29 vol=0.030 half=0.040 (base 0.040 vol 0.030 user-min 0.000) skew=-0.004 net=-140 -> bid 10.25 ask 10.33 (raw 10.25/10.33) cancel=4 post=['M/B@10.25', 'M/S@10.33', 'A/B@10.25', 'A/S@10.33'] resting=4
+20:07:58 +206.03s t=52  MM MARK CRZY_M SELL 600 @ 10.28 -> mid 10.285 after 3s: -0.005/share (-3)
+20:07:58 +206.47s t=52  MM requote mid=10.285 bb=10.28 ba=10.29 vol=0.030 half=0.040 (base 0.040 vol 0.030 user-min 0.000) skew=-0.004 net=-140 -> bid 10.25 ask 10.33 (raw 10.25/10.33) cancel=0 post=[] resting=4
+20:07:59 +207.56s t=52  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.26} -> id=4607 filled=0.0 vwap=None status=OPEN
+20:07:59 +207.56s t=52  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.34} -> id=4608 filled=0.0 vwap=None status=OPEN
+20:07:59 +207.57s t=52  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.26} -> id=4609 filled=0.0 vwap=None status=OPEN
+20:07:59 +207.58s t=52  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.34} -> id=4610 filled=0.0 vwap=None status=OPEN
+20:07:59 +207.58s t=52  MM requote mid=10.295 bb=10.29 ba=10.30 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.004 net=-140 -> bid 10.26 ask 10.34 (raw 10.26/10.34) cancel=4 post=['M/B@10.26', 'M/S@10.34', 'A/B@10.26', 'A/S@10.34'] resting=4
+20:08:01 +208.80s t=52  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.25} -> id=4652 filled=0.0 vwap=None status=OPEN
+20:08:01 +208.80s t=52  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.33} -> id=4653 filled=0.0 vwap=None status=OPEN
+20:08:01 +208.81s t=52  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.25} -> id=4654 filled=0.0 vwap=None status=OPEN
+20:08:01 +208.82s t=52  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.33} -> id=4656 filled=0.0 vwap=None status=OPEN
+20:08:01 +208.82s t=52  MM requote mid=10.290 bb=10.28 ba=10.30 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.004 net=-140 -> bid 10.25 ask 10.33 (raw 10.25/10.33) cancel=4 post=['M/B@10.25', 'M/S@10.33', 'A/B@10.25', 'A/S@10.33'] resting=4
+20:08:02 +209.92s t=53  MM requote mid=10.290 bb=10.28 ba=10.30 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.004 net=-140 -> bid 10.25 ask 10.33 (raw 10.25/10.33) cancel=0 post=[] resting=4
+20:08:03 +211.05s t=53  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.23} -> id=4700 filled=0.0 vwap=None status=OPEN
+20:08:03 +211.06s t=53  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=4702 filled=0.0 vwap=None status=OPEN
+20:08:03 +211.07s t=53  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.23} -> id=4703 filled=0.0 vwap=None status=OPEN
+20:08:03 +211.08s t=53  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.31} -> id=4704 filled=0.0 vwap=None status=OPEN
+20:08:03 +211.08s t=53  MM requote mid=10.270 bb=10.26 ba=10.28 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=-0.004 net=-140 -> bid 10.23 ask 10.31 (raw 10.23/10.31) cancel=4 post=['M/B@10.23', 'M/S@10.31', 'A/B@10.23', 'A/S@10.31'] resting=4
+20:08:04 +212.09s t=53  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.24} -> id=4747 filled=0.0 vwap=None status=OPEN
+20:08:04 +212.09s t=53  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.32} -> id=4748 filled=0.0 vwap=None status=OPEN
+20:08:04 +212.10s t=53  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.24} -> id=4749 filled=0.0 vwap=None status=OPEN
+20:08:04 +212.10s t=53  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.32} -> id=4752 filled=0.0 vwap=None status=OPEN
+20:08:04 +212.10s t=53  MM requote mid=10.280 bb=10.26 ba=10.30 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=-0.004 net=-140 -> bid 10.24 ask 10.32 (raw 10.24/10.32) cancel=4 post=['M/B@10.24', 'M/S@10.32', 'A/B@10.24', 'A/S@10.32'] resting=4
+20:08:05 +213.39s t=54  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.27} -> id=4791 filled=0.0 vwap=None status=OPEN
+20:08:05 +213.40s t=54  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.35} -> id=4793 filled=0.0 vwap=None status=OPEN
+20:08:05 +213.41s t=54  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.27} -> id=4796 filled=0.0 vwap=None status=OPEN
+20:08:05 +213.42s t=54  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.35} -> id=4797 filled=0.0 vwap=None status=OPEN
+20:08:05 +213.42s t=54  MM requote mid=10.305 bb=10.29 ba=10.32 vol=0.035 half=0.040 (base 0.040 vol 0.035 user-min 0.000) skew=-0.004 net=-140 -> bid 10.27 ask 10.35 (raw 10.27/10.35) cancel=4 post=['M/B@10.27', 'M/S@10.35', 'A/B@10.27', 'A/S@10.35'] resting=4
+20:08:06 +213.93s t=54  MM FILL CRZY_M BUY 200 @ 10.27 | mid 10.28 | net_before 260
+20:08:06 +214.46s t=54  MM FILL CRZY_M BUY 400 @ 10.27 | mid 10.28 | net_before 1060
+20:08:06 +214.63s t=54  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.21} -> id=4837 filled=0.0 vwap=None status=OPEN
+20:08:06 +214.64s t=54  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.29} -> id=4838 filled=0.0 vwap=None status=OPEN
+20:08:06 +214.65s t=54  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.21} -> id=4839 filled=0.0 vwap=None status=OPEN
+20:08:06 +214.66s t=54  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.29} -> id=4842 filled=0.0 vwap=None status=OPEN
+20:08:06 +214.66s t=54  MM requote mid=10.280 bb=10.27 ba=10.29 vol=0.025 half=0.040 (base 0.040 vol 0.025 user-min 0.000) skew=+0.032 net=1060 -> bid 10.21 ask 10.29 (raw 10.21/10.29) cancel=3 post=['M/B@10.21', 'M/S@10.29', 'A/B@10.21', 'A/S@10.29'] resting=4
+20:08:07 +215.00s t=54  MM FILL CRZY_A SELL 226 @ 10.29 | mid 10.29 | net_before 608
+20:08:07 +215.47s t=54  MM FILL CRZY_M SELL 600 @ 10.29 | mid 10.295 | net_before -592
+20:08:07 +215.69s t=54  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.27} -> id=4871 filled=0.0 vwap=None status=OPEN
+20:08:07 +215.70s t=54  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.35} -> id=4872 filled=0.0 vwap=None status=OPEN
+20:08:07 +215.70s t=54  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.27} -> id=4873 filled=0.0 vwap=None status=OPEN
+20:08:07 +215.71s t=54  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.35} -> id=4874 filled=0.0 vwap=None status=OPEN
+20:08:07 +215.71s t=54  MM requote mid=10.295 bb=10.29 ba=10.30 vol=0.025 half=0.040 (base 0.040 vol 0.025 user-min 0.000) skew=-0.018 net=-592 -> bid 10.27 ask 10.35 (raw 10.27/10.35) cancel=3 post=['M/B@10.27', 'M/S@10.35', 'A/B@10.27', 'A/S@10.35'] resting=4
+20:08:08 +215.94s t=54  MM FILL CRZY_A SELL 200 @ 10.29 | mid 10.28 | net_before -992
+20:08:08 +216.68s t=54  MM requote mid=10.280 bb=10.27 ba=10.29 vol=0.015 half=0.040 (base 0.040 vol 0.015 user-min 0.000) skew=-0.030 net=-992 -> bid 10.27 ask 10.35 (raw 10.27/10.35) cancel=0 post=[] resting=4
+20:08:09 +216.97s t=54  MM MARK CRZY_M BUY 200 @ 10.27 -> mid 10.280 after 3s: +0.010/share (+2)
+20:08:09 +217.66s t=55  MM MARK CRZY_M BUY 400 @ 10.27 -> mid 10.280 after 3s: +0.010/share (+4)
+20:08:10 +217.79s t=55  MM requote mid=10.280 bb=10.27 ba=10.29 vol=0.015 half=0.040 (base 0.040 vol 0.015 user-min 0.000) skew=-0.030 net=-992 -> bid 10.27 ask 10.35 (raw 10.27/10.35) cancel=0 post=[] resting=4
+20:08:10 +217.86s t=55  ARB OPP buy 330 CRZY_M lim 10.29 (exp 10.290) sell CRZY_A lim 10.30 (exp 10.300) edge 0.010 | books M 10.27/10.29 A 10.3/10.31 | room 14504
+20:08:10 +217.87s t=55  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 330, 'action': 'BUY', 'price': 10.29} -> id=4908 filled=0.0 vwap=None status=OPEN
+20:08:10 +217.88s t=55  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 330, 'action': 'SELL', 'price': 10.3} -> id=4918 filled=330.0 vwap=10.3 status=OPEN
+20:08:10 +218.53s t=55  ! ARB accounting: orders say bought 0 sold 330, position moved -660 ({'CRZY_M': -496, 'CRZY_A': -496} -> {'CRZY_M': -826, 'CRZY_A': -826}) - using position
+20:08:10 +218.53s t=55  ARB MISS bought 0 sold 330 (cross gone) -> pause 2s
+20:08:10 +218.54s t=55  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 660, 'action': 'BUY', 'price': 10.29} -> id=5028 filled=0.0 vwap=None status=OPEN
+20:08:11 +218.98s t=55  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 540, 'action': 'BUY'} -> id=5045 filled=540.0 vwap=10.32 status=TRANSACTED
+20:08:11 +218.98s t=55  RESIDUAL -660: limit CRZY_M 660 @10.29 filled 0, market 540 @ 10.32
+20:08:11 +219.10s t=55  MM MARK CRZY_A SELL 226 @ 10.29 -> mid 10.310 after 3s: -0.020/share (-5)
+20:08:11 +219.10s t=55  MM MARK CRZY_M SELL 600 @ 10.29 -> mid 10.310 after 3s: -0.020/share (-12)
+20:08:11 +219.10s t=55  MM MARK CRZY_A SELL 200 @ 10.29 -> mid 10.310 after 3s: -0.020/share (-4)
+20:08:11 +219.11s t=55  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.28} -> id=5046 filled=0.0 vwap=None status=OPEN
+20:08:11 +219.14s t=55  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=5047 filled=0.0 vwap=None status=OPEN
+20:08:11 +219.16s t=55  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.28} -> id=5048 filled=0.0 vwap=None status=OPEN
+20:08:11 +219.17s t=55  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=5049 filled=0.0 vwap=None status=OPEN
+20:08:11 +219.17s t=55  MM requote mid=10.310 bb=10.30 ba=10.32 vol=0.030 half=0.040 (base 0.040 vol 0.030 user-min 0.000) skew=-0.014 net=-452 -> bid 10.28 ask 10.36 (raw 10.28/10.36) cancel=4 post=['M/B@10.28', 'M/S@10.36', 'A/B@10.28', 'A/S@10.36'] resting=4
+20:08:11 +219.49s t=55  MM FILL CRZY_M BUY 200 @ 10.28 | mid 10.31 | net_before 1028
+20:08:11 +219.69s t=55  MM FILL CRZY_M BUY 600 @ 10.27 | mid 10.31 | net_before 1028
+20:08:12 +220.27s t=55  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.24} -> id=5080 filled=0.0 vwap=None status=OPEN
+20:08:12 +220.28s t=55  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.32} -> id=5081 filled=0.0 vwap=None status=OPEN
+20:08:12 +220.28s t=55  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.24} -> id=5082 filled=0.0 vwap=None status=OPEN
+20:08:12 +220.29s t=55  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.32} -> id=5083 filled=0.0 vwap=None status=OPEN
+20:08:12 +220.29s t=55  MM requote mid=10.310 bb=10.30 ba=10.32 vol=0.030 half=0.040 (base 0.040 vol 0.030 user-min 0.000) skew=+0.031 net=1028 -> bid 10.24 ask 10.32 (raw 10.24/10.32) cancel=4 post=['M/B@10.24', 'M/S@10.32', 'A/B@10.24', 'A/S@10.32'] resting=4
+20:08:13 +221.26s t=56  MM FILL CRZY_M SELL 600 @ 10.32 | mid 10.31 | net_before -172
+20:08:13 +221.38s t=56  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.28} -> id=5115 filled=0.0 vwap=None status=OPEN
+20:08:13 +221.39s t=56  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=5117 filled=0.0 vwap=None status=OPEN
+20:08:13 +221.39s t=56  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.28} -> id=5121 filled=0.0 vwap=None status=OPEN
+20:08:13 +221.40s t=56  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.36} -> id=5123 filled=0.0 vwap=None status=OPEN
+20:08:13 +221.40s t=56  MM requote mid=10.310 bb=10.30 ba=10.32 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.28 ask 10.36 (raw 10.28/10.36) cancel=3 post=['M/B@10.28', 'M/S@10.36', 'A/B@10.28', 'A/S@10.36'] resting=4
+20:08:14 +222.47s t=56  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.3} -> id=5146 filled=0.0 vwap=None status=OPEN
+20:08:14 +222.48s t=56  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.38} -> id=5147 filled=0.0 vwap=None status=OPEN
+20:08:14 +222.49s t=56  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.3} -> id=5148 filled=0.0 vwap=None status=OPEN
+20:08:14 +222.50s t=56  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.38} -> id=5149 filled=0.0 vwap=None status=OPEN
+20:08:14 +222.50s t=56  MM requote mid=10.335 bb=10.33 ba=10.34 vol=0.025 half=0.040 (base 0.040 vol 0.025 user-min 0.000) skew=-0.005 net=-172 -> bid 10.30 ask 10.38 (raw 10.30/10.38) cancel=4 post=['M/B@10.30', 'M/S@10.38', 'A/B@10.30', 'A/S@10.38'] resting=4
+20:08:14 +222.61s t=56  MM MARK CRZY_M BUY 200 @ 10.28 -> mid 10.335 after 3s: +0.055/share (+11)
+20:08:15 +222.89s t=56  MM MARK CRZY_M BUY 600 @ 10.27 -> mid 10.335 after 3s: +0.065/share (+39)
+20:08:15 +223.51s t=56  MM requote mid=10.335 bb=10.33 ba=10.34 vol=0.025 half=0.040 (base 0.040 vol 0.025 user-min 0.000) skew=-0.005 net=-172 -> bid 10.30 ask 10.38 (raw 10.30/10.38) cancel=0 post=[] resting=4
+20:08:16 +224.41s t=56  MM MARK CRZY_M SELL 600 @ 10.32 -> mid 10.335 after 3s: -0.015/share (-9)
+20:08:16 +224.53s t=56  MM requote mid=10.335 bb=10.33 ba=10.34 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.30 ask 10.38 (raw 10.30/10.38) cancel=0 post=[] resting=4
+20:08:17 +225.60s t=57  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.31} -> id=5165 filled=0.0 vwap=None status=OPEN
+20:08:17 +225.60s t=57  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.39} -> id=5166 filled=0.0 vwap=None status=OPEN
+20:08:17 +225.61s t=57  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.31} -> id=5167 filled=0.0 vwap=None status=OPEN
+20:08:17 +225.61s t=57  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.39} -> id=5168 filled=0.0 vwap=None status=OPEN
+20:08:17 +225.61s t=57  MM requote mid=10.340 bb=10.33 ba=10.35 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=-0.005 net=-172 -> bid 10.31 ask 10.39 (raw 10.31/10.39) cancel=4 post=['M/B@10.31', 'M/S@10.39', 'A/B@10.31', 'A/S@10.39'] resting=4
+20:08:18 +226.66s t=57  MM requote mid=10.340 bb=10.33 ba=10.35 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=-0.005 net=-172 -> bid 10.31 ask 10.39 (raw 10.31/10.39) cancel=0 post=[] resting=4
+20:08:19 +227.74s t=57  MM requote mid=10.340 bb=10.33 ba=10.35 vol=0.005 half=0.040 (base 0.040 vol 0.005 user-min 0.000) skew=-0.005 net=-172 -> bid 10.31 ask 10.39 (raw 10.31/10.39) cancel=0 post=[] resting=4
+20:08:21 +228.78s t=57  MM requote mid=10.340 bb=10.33 ba=10.35 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.31 ask 10.39 (raw 10.31/10.39) cancel=0 post=[] resting=4
+20:08:22 +229.99s t=58  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.32} -> id=5241 filled=0.0 vwap=None status=OPEN
+20:08:22 +229.99s t=58  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.4} -> id=5242 filled=0.0 vwap=None status=OPEN
+20:08:22 +230.00s t=58  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.32} -> id=5243 filled=0.0 vwap=None status=OPEN
+20:08:22 +230.00s t=58  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.4} -> id=5244 filled=0.0 vwap=None status=OPEN
+20:08:22 +230.00s t=58  MM requote mid=10.350 bb=10.35 ba=10.35 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.005 net=-172 -> bid 10.32 ask 10.40 (raw 10.32/10.40) cancel=4 post=['M/B@10.32', 'M/S@10.40', 'A/B@10.32', 'A/S@10.40'] resting=4
+20:08:23 +231.05s t=58  MM requote mid=10.350 bb=10.35 ba=10.35 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.005 net=-172 -> bid 10.32 ask 10.40 (raw 10.32/10.40) cancel=0 post=[] resting=4
+20:08:24 +232.27s t=58  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.33} -> id=5267 filled=0.0 vwap=None status=OPEN
+20:08:24 +232.27s t=58  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5268 filled=0.0 vwap=None status=OPEN
+20:08:24 +232.28s t=58  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.33} -> id=5269 filled=0.0 vwap=None status=OPEN
+20:08:24 +232.28s t=58  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5270 filled=0.0 vwap=None status=OPEN
+20:08:24 +232.28s t=58  MM requote mid=10.360 bb=10.35 ba=10.37 vol=0.020 half=0.040 (base 0.040 vol 0.020 user-min 0.000) skew=-0.005 net=-172 -> bid 10.33 ask 10.41 (raw 10.33/10.41) cancel=4 post=['M/B@10.33', 'M/S@10.41', 'A/B@10.33', 'A/S@10.41'] resting=4
+20:08:25 +233.30s t=59  MM requote mid=10.360 bb=10.35 ba=10.37 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.005 net=-172 -> bid 10.33 ask 10.41 (raw 10.33/10.41) cancel=0 post=[] resting=4
+20:08:26 +234.33s t=59  MM requote mid=10.360 bb=10.35 ba=10.37 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.33 ask 10.41 (raw 10.33/10.41) cancel=0 post=[] resting=4
+20:08:27 +235.34s t=59  MM requote mid=10.360 bb=10.35 ba=10.37 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.33 ask 10.41 (raw 10.33/10.41) cancel=0 post=[] resting=4
+20:08:28 +236.39s t=59  MM requote mid=10.360 bb=10.35 ba=10.37 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.33 ask 10.41 (raw 10.33/10.41) cancel=0 post=[] resting=4
+20:08:29 +237.13s t=60  [tick  60] NLV=-784.81 real=-1559.30 unreal=-9.46 | arb=0 miss=5 pnl=+0.00 slip=+0.00 | mm fills=74 vol=46856 adverse=+0.0063/sh | net=-172 room=14914 | api/s=39 429=0
+20:08:29 +237.42s t=60  MM requote mid=10.360 bb=10.35 ba=10.37 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.33 ask 10.41 (raw 10.33/10.41) cancel=0 post=[] resting=4
+20:08:30 +238.45s t=60  MM requote mid=10.360 bb=10.35 ba=10.37 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.33 ask 10.41 (raw 10.33/10.41) cancel=0 post=[] resting=4
+20:08:31 +239.48s t=60  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.34} -> id=5296 filled=0.0 vwap=None status=OPEN
+20:08:31 +239.49s t=60  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.42} -> id=5297 filled=0.0 vwap=None status=OPEN
+20:08:31 +239.51s t=60  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.34} -> id=5298 filled=0.0 vwap=None status=OPEN
+20:08:31 +239.52s t=60  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.42} -> id=5299 filled=0.0 vwap=None status=OPEN
+20:08:31 +239.52s t=60  MM requote mid=10.370 bb=10.37 ba=10.37 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.005 net=-172 -> bid 10.34 ask 10.42 (raw 10.34/10.42) cancel=4 post=['M/B@10.34', 'M/S@10.42', 'A/B@10.34', 'A/S@10.42'] resting=4
+20:08:32 +240.53s t=60  MM requote mid=10.370 bb=10.37 ba=10.37 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.005 net=-172 -> bid 10.34 ask 10.42 (raw 10.34/10.42) cancel=0 post=[] resting=4
+20:08:33 +241.56s t=61  MM requote mid=10.370 bb=10.37 ba=10.37 vol=0.010 half=0.040 (base 0.040 vol 0.010 user-min 0.000) skew=-0.005 net=-172 -> bid 10.34 ask 10.42 (raw 10.34/10.42) cancel=0 post=[] resting=4
+20:08:34 +242.57s t=61  MM requote mid=10.370 bb=10.37 ba=10.37 vol=0.000 half=0.040 (base 0.040 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.34 ask 10.42 (raw 10.34/10.42) cancel=0 post=[] resting=4
+20:08:36 +244.25s t=61  PARAMS {'MM half spread': 0.03}
+20:08:36 +244.28s t=61  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.35} -> id=5336 filled=0.0 vwap=None status=OPEN
+20:08:36 +244.29s t=61  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5337 filled=0.0 vwap=None status=OPEN
+20:08:36 +244.29s t=61  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.35} -> id=5338 filled=0.0 vwap=None status=OPEN
+20:08:36 +244.30s t=61  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5339 filled=0.0 vwap=None status=OPEN
+20:08:36 +244.30s t=61  MM requote mid=10.370 bb=10.37 ba=10.37 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=-0.005 net=-172 -> bid 10.35 ask 10.41 (raw 10.35/10.41) cancel=4 post=['M/B@10.35', 'M/S@10.41', 'A/B@10.35', 'A/S@10.41'] resting=4
+20:08:37 +245.30s t=62  MM FILL CRZY_A SELL 600 @ 10.41 | mid 10.375 | net_before -1372
+20:08:37 +245.53s t=62  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5361 filled=0.0 vwap=None status=OPEN
+20:08:37 +245.53s t=62  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.45} -> id=5362 filled=0.0 vwap=None status=OPEN
+20:08:37 +245.54s t=62  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5363 filled=0.0 vwap=None status=OPEN
+20:08:37 +245.54s t=62  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.45} -> id=5364 filled=0.0 vwap=None status=OPEN
+20:08:37 +245.54s t=62  MM requote mid=10.375 bb=10.37 ba=10.38 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.041 net=-1372 -> bid 10.37 ask 10.45 (raw 10.39/10.45) cancel=3 post=['M/B@10.37', 'M/S@10.45', 'A/B@10.37', 'A/S@10.45'] resting=4
+20:08:38 +246.12s t=62  MM FILL CRZY_A BUY 200 @ 10.37 | mid 10.375 | net_before -972
+20:08:38 +246.69s t=62  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.44} -> id=5383 filled=0.0 vwap=None status=OPEN
+20:08:38 +246.70s t=62  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.44} -> id=5384 filled=0.0 vwap=None status=OPEN
+20:08:38 +246.70s t=62  MM requote mid=10.380 bb=10.38 ba=10.38 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.029 net=-972 -> bid 10.37 ask 10.44 (raw 10.38/10.44) cancel=2 post=['M/S@10.44', 'A/S@10.44'] resting=4
+20:08:40 +247.78s t=62  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.35} -> id=5480 filled=0.0 vwap=None status=OPEN
+20:08:40 +247.78s t=62  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5481 filled=0.0 vwap=None status=OPEN
+20:08:40 +247.79s t=62  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.35} -> id=5482 filled=0.0 vwap=None status=OPEN
+20:08:40 +247.79s t=62  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5483 filled=0.0 vwap=None status=OPEN
+20:08:40 +247.79s t=62  MM requote mid=10.370 bb=10.37 ba=10.37 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.005 net=-172 -> bid 10.35 ask 10.41 (raw 10.35/10.41) cancel=4 post=['M/B@10.35', 'M/S@10.41', 'A/B@10.35', 'A/S@10.41'] resting=4
+20:08:40 +248.02s t=62  MM FILL CRZY_A BUY 400 @ 10.37 | mid 10.37 | net_before -172
+20:08:40 +248.33s t=62  MM MARK CRZY_A SELL 600 @ 10.41 -> mid 10.380 after 3s: +0.030/share (+18)
+20:08:40 +248.63s t=62  MM FILL CRZY_A SELL 600 @ 10.41 | mid 10.385 | net_before -1372
+20:08:41 +248.85s t=62  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.39} -> id=5500 filled=0.0 vwap=None status=OPEN
+20:08:41 +248.86s t=62  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.46} -> id=5501 filled=0.0 vwap=None status=OPEN
+20:08:41 +248.86s t=62  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.39} -> id=5502 filled=0.0 vwap=None status=OPEN
+20:08:41 +248.87s t=62  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.46} -> id=5503 filled=0.0 vwap=None status=OPEN
+20:08:41 +248.87s t=62  MM requote mid=10.385 bb=10.37 ba=10.40 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.041 net=-1372 -> bid 10.39 ask 10.46 (raw 10.40/10.46) cancel=3 post=['M/B@10.39', 'M/S@10.46', 'A/B@10.39', 'A/S@10.46'] resting=4
+20:08:41 +249.20s t=63  MM MARK CRZY_A BUY 200 @ 10.37 -> mid 10.385 after 3s: +0.015/share (+3)
+20:08:41 +249.48s t=63  MM FILL CRZY_M BUY 600 @ 10.39 | mid 10.385 | net_before -172
+20:08:42 +250.01s t=63  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.33} -> id=5543 filled=0.0 vwap=None status=OPEN
+20:08:42 +250.02s t=63  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.4} -> id=5545 filled=0.0 vwap=None status=OPEN
+20:08:42 +250.02s t=63  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.33} -> id=5546 filled=0.0 vwap=None status=OPEN
+20:08:42 +250.03s t=63  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.4} -> id=5547 filled=600.0 vwap=10.4 status=OPEN
+20:08:42 +250.03s t=63  MM requote mid=10.395 bb=10.39 ba=10.40 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=+0.031 net=1028 -> bid 10.33 ask 10.40 (raw 10.33/10.39) cancel=3 post=['M/B@10.33', 'M/S@10.40', 'A/B@10.33', 'A/S@10.40'] resting=4
+20:08:42 +250.33s t=63  MM FILL CRZY_A SELL 600 @ 10.40 | mid 10.4 | net_before -172
+20:08:42 +250.50s t=63  MM FILL CRZY_A BUY 600 @ 10.39 | mid 10.4 | net_before -172
+20:08:43 +251.05s t=63  MM MARK CRZY_A BUY 400 @ 10.37 -> mid 10.390 after 3s: +0.020/share (+8)
+20:08:43 +251.06s t=63  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5564 filled=0.0 vwap=None status=OPEN
+20:08:43 +251.06s t=63  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5565 filled=0.0 vwap=None status=OPEN
+20:08:43 +251.07s t=63  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5566 filled=0.0 vwap=None status=OPEN
+20:08:43 +251.08s t=63  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5567 filled=0.0 vwap=None status=OPEN
+20:08:43 +251.08s t=63  MM requote mid=10.390 bb=10.38 ba=10.40 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=-0.005 net=-172 -> bid 10.37 ask 10.43 (raw 10.37/10.43) cancel=3 post=['M/B@10.37', 'M/S@10.43', 'A/B@10.37', 'A/S@10.43'] resting=4
+20:08:44 +252.04s t=63  MM MARK CRZY_A SELL 600 @ 10.41 -> mid 10.390 after 3s: +0.020/share (+12)
+20:08:44 +252.18s t=63  MM requote mid=10.390 bb=10.38 ba=10.40 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.005 net=-172 -> bid 10.37 ask 10.43 (raw 10.37/10.43) cancel=0 post=[] resting=4
+20:08:44 +252.58s t=63  MM FILL CRZY_A BUY 200 @ 10.37 | mid 10.385 | net_before 228
+20:08:44 +252.64s t=63  MM MARK CRZY_M BUY 600 @ 10.39 -> mid 10.385 after 3s: -0.005/share (-3)
+20:08:45 +253.33s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.35} -> id=5625 filled=0.0 vwap=None status=OPEN
+20:08:45 +253.34s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5626 filled=0.0 vwap=None status=OPEN
+20:08:45 +253.35s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.35} -> id=5627 filled=0.0 vwap=None status=OPEN
+20:08:45 +253.36s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.41} -> id=5628 filled=0.0 vwap=None status=OPEN
+20:08:45 +253.36s t=64  MM requote mid=10.385 bb=10.37 ba=10.40 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=+0.007 net=228 -> bid 10.35 ask 10.41 (raw 10.35/10.41) cancel=4 post=['M/B@10.35', 'M/S@10.41', 'A/B@10.35', 'A/S@10.41'] resting=4
+20:08:45 +253.69s t=64  MM FILL CRZY_A BUY 200 @ 10.37 | mid 10.385 | net_before 628
+20:08:46 +253.80s t=64  MM MARK CRZY_A SELL 600 @ 10.40 -> mid 10.385 after 3s: +0.015/share (+9)
+20:08:46 +253.80s t=64  MM MARK CRZY_A BUY 600 @ 10.39 -> mid 10.385 after 3s: -0.005/share (-3)
+20:08:46 +254.46s t=64  MM FILL CRZY_A SELL 600 @ 10.41 | mid 10.385 | net_before -572
+20:08:46 +254.63s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5666 filled=0.0 vwap=None status=OPEN
+20:08:46 +254.64s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5667 filled=0.0 vwap=None status=OPEN
+20:08:46 +254.64s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5669 filled=0.0 vwap=None status=OPEN
+20:08:46 +254.65s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5671 filled=0.0 vwap=None status=OPEN
+20:08:46 +254.65s t=64  MM requote mid=10.385 bb=10.37 ba=10.40 vol=0.005 half=0.030 (base 0.030 vol 0.005 user-min 0.000) skew=-0.017 net=-572 -> bid 10.37 ask 10.43 (raw 10.37/10.43) cancel=3 post=['M/B@10.37', 'M/S@10.43', 'A/B@10.37', 'A/S@10.43'] resting=4
+20:08:47 +255.64s t=64  MM MARK CRZY_A BUY 200 @ 10.37 -> mid 10.390 after 3s: +0.020/share (+4)
+20:08:47 +255.66s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.38} -> id=5688 filled=0.0 vwap=None status=OPEN
+20:08:47 +255.66s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.44} -> id=5689 filled=0.0 vwap=None status=OPEN
+20:08:47 +255.67s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.38} -> id=5690 filled=0.0 vwap=None status=OPEN
+20:08:47 +255.69s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.44} -> id=5692 filled=0.0 vwap=None status=OPEN
+20:08:47 +255.69s t=64  MM requote mid=10.390 bb=10.38 ba=10.40 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.017 net=-572 -> bid 10.38 ask 10.44 (raw 10.38/10.44) cancel=4 post=['M/B@10.38', 'M/S@10.44', 'A/B@10.38', 'A/S@10.44'] resting=4
+20:08:48 +256.73s t=64  MM FILL CRZY_A BUY 600 @ 10.38 | mid 10.405000000000001 | net_before 628
+20:08:49 +256.80s t=64  MM MARK CRZY_A BUY 200 @ 10.37 -> mid 10.405 after 3s: +0.035/share (+7)
+20:08:49 +256.83s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.36} -> id=5839 filled=0.0 vwap=None status=OPEN
+20:08:49 +256.85s t=64  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.42} -> id=5842 filled=0.0 vwap=None status=OPEN
+20:08:49 +256.88s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.36} -> id=5843 filled=0.0 vwap=None status=OPEN
+20:08:49 +256.90s t=64  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.42} -> id=5848 filled=0.0 vwap=None status=OPEN
+20:08:49 +256.90s t=64  MM requote mid=10.405 bb=10.41 ba=10.40 vol=0.030 half=0.030 (base 0.030 vol 0.030 user-min 0.000) skew=+0.019 net=628 -> bid 10.36 ask 10.42 (raw 10.36/10.42) cancel=3 post=['M/B@10.36', 'M/S@10.42', 'A/B@10.36', 'A/S@10.42'] resting=4
+20:08:50 +257.90s t=65  MM FILL CRZY_M SELL 600 @ 10.42 | mid 10.37 | net_before -572
+20:08:50 +258.04s t=65  MM MARK CRZY_A SELL 600 @ 10.41 -> mid 10.370 after 3s: +0.040/share (+24)
+20:08:50 +258.05s t=65  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.34} -> id=5902 filled=0.0 vwap=None status=OPEN
+20:08:50 +258.06s t=65  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5904 filled=0.0 vwap=None status=OPEN
+20:08:50 +258.06s t=65  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.34} -> id=5905 filled=0.0 vwap=None status=OPEN
+20:08:50 +258.07s t=65  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5906 filled=0.0 vwap=None status=OPEN
+20:08:50 +258.07s t=65  MM requote mid=10.370 bb=10.37 ba=10.37 vol=0.045 half=0.045 (base 0.030 vol 0.045 user-min 0.000) skew=-0.017 net=-572 -> bid 10.34 ask 10.43 (raw 10.34/10.43) cancel=3 post=['M/B@10.34', 'M/S@10.43', 'A/B@10.34', 'A/S@10.43'] resting=4
+20:08:51 +259.24s t=65  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.39} -> id=5932 filled=0.0 vwap=None status=OPEN
+20:08:51 +259.25s t=65  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.48} -> id=5933 filled=0.0 vwap=None status=OPEN
+20:08:51 +259.25s t=65  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.39} -> id=5934 filled=0.0 vwap=None status=OPEN
+20:08:51 +259.26s t=65  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.48} -> id=5935 filled=0.0 vwap=None status=OPEN
+20:08:51 +259.26s t=65  MM requote mid=10.415 bb=10.41 ba=10.42 vol=0.045 half=0.045 (base 0.030 vol 0.045 user-min 0.000) skew=-0.017 net=-572 -> bid 10.39 ask 10.48 (raw 10.39/10.48) cancel=4 post=['M/B@10.39', 'M/S@10.48', 'A/B@10.39', 'A/S@10.48'] resting=4
+20:08:52 +259.92s t=65  MM MARK CRZY_A BUY 600 @ 10.38 -> mid 10.415 after 3s: +0.035/share (+21)
+20:08:52 +260.39s t=65  MM requote mid=10.415 bb=10.41 ba=10.42 vol=0.045 half=0.045 (base 0.030 vol 0.045 user-min 0.000) skew=-0.017 net=-572 -> bid 10.39 ask 10.48 (raw 10.39/10.48) cancel=0 post=[] resting=4
+20:08:53 +260.95s t=65  MM MARK CRZY_M SELL 600 @ 10.42 -> mid 10.415 after 3s: +0.005/share (+3)
+20:08:53 +261.29s t=66  MM FILL CRZY_M BUY 600 @ 10.39 | mid 10.415 | net_before 628
+20:08:53 +261.65s t=66  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5974 filled=0.0 vwap=None status=OPEN
+20:08:53 +261.66s t=66  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5975 filled=0.0 vwap=None status=OPEN
+20:08:53 +261.66s t=66  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.37} -> id=5976 filled=0.0 vwap=None status=OPEN
+20:08:53 +261.67s t=66  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.43} -> id=5977 filled=0.0 vwap=None status=OPEN
+20:08:53 +261.67s t=66  MM requote mid=10.415 bb=10.41 ba=10.42 vol=0.000 half=0.030 (base 0.030 vol 0.000 user-min 0.000) skew=+0.019 net=628 -> bid 10.37 ask 10.43 (raw 10.37/10.43) cancel=3 post=['M/B@10.37', 'M/S@10.43', 'A/B@10.37', 'A/S@10.43'] resting=4
+20:08:54 +262.41s t=66  MM FILL CRZY_A SELL 600 @ 10.43 | mid 10.43 | net_before -572
+20:08:54 +262.68s t=66  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.42} -> id=5997 filled=0.0 vwap=None status=OPEN
+20:08:54 +262.68s t=66  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.48} -> id=5999 filled=0.0 vwap=None status=OPEN
+20:08:54 +262.69s t=66  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.42} -> id=6001 filled=0.0 vwap=None status=OPEN
+20:08:54 +262.69s t=66  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.48} -> id=6003 filled=0.0 vwap=None status=OPEN
+20:08:54 +262.69s t=66  MM requote mid=10.430 bb=10.41 ba=10.45 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.017 net=-572 -> bid 10.42 ask 10.48 (raw 10.42/10.48) cancel=3 post=['M/B@10.42', 'M/S@10.48', 'A/B@10.42', 'A/S@10.48'] resting=4
+20:08:57 +264.95s t=66  PARAMS {'MM size': 2000.0}
+20:08:57 +264.98s t=66  MM FILL CRZY_A BUY 600 @ 10.42 | mid 10.44 | net_before -572
+20:08:57 +265.14s t=66  MM FILL CRZY_A SELL 600 @ 10.48 | mid 10.44 | net_before -572
+20:08:57 +265.39s t=66  MM MARK CRZY_M BUY 600 @ 10.39 -> mid 10.440 after 3s: +0.050/share (+30)
+20:08:57 +265.42s t=66  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.43} -> id=6050 filled=0.0 vwap=None status=OPEN
+20:08:57 +265.43s t=66  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.49} -> id=6051 filled=0.0 vwap=None status=OPEN
+20:08:57 +265.43s t=66  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.43} -> id=6052 filled=0.0 vwap=None status=OPEN
+20:08:57 +265.44s t=66  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.49} -> id=6053 filled=0.0 vwap=None status=OPEN
+20:08:57 +265.44s t=66  MM requote mid=10.440 bb=10.43 ba=10.45 vol=0.010 half=0.030 (base 0.030 vol 0.010 user-min 0.000) skew=-0.017 net=-572 -> bid 10.43 ask 10.49 (raw 10.43/10.49) cancel=2 post=['M/B@10.43', 'M/S@10.49', 'A/B@10.43', 'A/S@10.49'] resting=4
+20:08:58 +265.81s t=67  MM MARK CRZY_A SELL 600 @ 10.43 -> mid 10.440 after 3s: -0.010/share (-6)
+20:08:58 +265.99s t=67  ARB OPP buy 2000 CRZY_M lim 10.45 (exp 10.450) sell CRZY_A lim 10.46 (exp 10.460) edge 0.010 | books M 10.43/10.45 A 10.46/10.47 | room 14714
+20:08:58 +266.00s t=67  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.45} -> id=6146 filled=2000.0 vwap=10.45 status=OPEN
+20:08:58 +266.01s t=67  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.46} -> id=6147 filled=0.0 vwap=None status=OPEN
+20:08:58 +266.43s t=67  ! ARB accounting: orders say bought 2000 sold 0, position moved +8000 ({'CRZY_M': -286, 'CRZY_A': -286} -> {'CRZY_M': 3714, 'CRZY_A': 3714}) - using position
+20:08:58 +266.43s t=67  ARB MISS bought 2000 sold 0 (cross gone) -> pause 2s
+20:08:58 +266.44s t=67  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 8000, 'action': 'SELL', 'price': 10.46} -> id=6194 filled=0.0 vwap=None status=OPEN
+20:08:59 +266.95s t=67  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 8000, 'action': 'SELL'} -> id=6211 filled=8000.0 vwap=10.41 status=TRANSACTED
+20:08:59 +266.95s t=67  RESIDUAL +8000: limit CRZY_A 8000 @10.46 filled 0, market 8000 @ 10.41
+20:08:59 +267.26s t=67  MM FILL CRZY_A BUY 2000 @ 10.43 | mid 10.445 | net_before -8572
+20:08:59 +267.54s t=67  !! HARD FLAT: |net|=8572 >= 5000 -> pulling quotes, flattening
+20:08:59 +267.60s t=67  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 8572, 'action': 'BUY'} -> id=6236 filled=8572.0 vwap=10.46 status=TRANSACTED
+20:08:59 +267.60s t=67  Flattened -8572 on CRZY_M (best ask 10.45)
+20:08:59 +267.62s t=67  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.44} -> id=6246 filled=0.0 vwap=None status=OPEN
+20:08:59 +267.64s t=67  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.44} -> id=6249 filled=0.0 vwap=None status=OPEN
+20:08:59 +267.64s t=67  MM requote mid=10.445 bb=10.44 ba=10.45 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.257 net=-8572 -> bid 10.44 ask 10.73 (raw 10.67/10.73) cancel=0 post=['M/B@10.44', 'A/B@10.44'] resting=2
+20:09:00 +268.21s t=67  MM MARK CRZY_A BUY 600 @ 10.42 -> mid 10.455 after 3s: +0.035/share (+21)
+20:09:00 +268.21s t=67  MM MARK CRZY_A SELL 600 @ 10.48 -> mid 10.455 after 3s: +0.025/share (+15)
+20:09:01 +268.79s t=67  MM FILL CRZY_M BUY 2000 @ 10.44 | mid 10.45 | net_before 16572
+20:09:01 +269.04s t=67  MM FILL CRZY_A BUY 2000 @ 10.44 | mid 10.45 | net_before 16572
+20:09:01 +269.30s t=67  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.44} -> id=6408 filled=0.0 vwap=None status=OPEN
+20:09:01 +269.30s t=67  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.44} -> id=6409 filled=0.0 vwap=None status=OPEN
+20:09:01 +269.30s t=67  MM requote mid=10.450 bb=10.43 ba=10.47 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=+0.497 net=16572 -> bid 9.92 ask 10.44 (raw 9.92/9.98) cancel=0 post=['M/S@10.44', 'A/S@10.44'] resting=2
+20:09:02 +269.98s t=68  MM FILL CRZY_M SELL 2000 @ 10.44 | mid 10.435 | net_before 8572
+20:09:02 +270.19s t=68  MM FILL CRZY_A SELL 2000 @ 10.44 | mid 10.435 | net_before 8572
+20:09:02 +270.44s t=68  MM MARK CRZY_A BUY 2000 @ 10.43 -> mid 10.435 after 3s: +0.005/share (+10)
+20:09:02 +270.44s t=68  !! HARD FLAT: |net|=8572 >= 5000 -> pulling quotes, flattening
+20:09:02 +270.48s t=68  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 8572, 'action': 'SELL'} -> id=6471 filled=8572.0 vwap=10.415832944470369 status=TRANSACTED
+20:09:02 +270.48s t=68  Flattened 8572 on CRZY_A (best bid 10.41)
+20:09:02 +270.49s t=68  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.42} -> id=6472 filled=0.0 vwap=None status=OPEN
+20:09:02 +270.50s t=68  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.42} -> id=6474 filled=0.0 vwap=None status=OPEN
+20:09:02 +270.50s t=68  MM requote mid=10.435 bb=10.41 ba=10.46 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=+0.257 net=8572 -> bid 10.15 ask 10.42 (raw 10.15/10.21) cancel=0 post=['M/S@10.42', 'A/S@10.42'] resting=2
+20:09:03 +271.26s t=68  MM FILL CRZY_M SELL 2000 @ 10.42 | mid 10.415 | net_before -16572
+20:09:03 +271.53s t=68  MM FILL CRZY_A SELL 2000 @ 10.42 | mid 10.415 | net_before -16572
+20:09:03 +271.69s t=68  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.41} -> id=6548 filled=0.0 vwap=None status=OPEN
+20:09:03 +271.70s t=68  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.41} -> id=6550 filled=0.0 vwap=None status=OPEN
+20:09:03 +271.70s t=68  MM requote mid=10.415 bb=10.41 ba=10.42 vol=0.035 half=0.035 (base 0.030 vol 0.035 user-min 0.000) skew=-0.497 net=-16572 -> bid 10.41 ask 10.95 (raw 10.88/10.95) cancel=0 post=['M/B@10.41', 'A/B@10.41'] resting=2
+20:09:04 +272.08s t=68  MM FILL CRZY_M BUY 1000 @ 10.41 | mid 10.425 | net_before -10572
+20:09:04 +272.27s t=68  MM MARK CRZY_M BUY 2000 @ 10.44 -> mid 10.425 after 3s: -0.015/share (-30)
+20:09:04 +272.27s t=68  MM MARK CRZY_A BUY 2000 @ 10.44 -> mid 10.425 after 3s: -0.015/share (-30)
+20:09:04 +272.27s t=68  !! HARD FLAT: |net|=10572 >= 5000 -> pulling quotes, flattening
+20:09:04 +272.29s t=68  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 10000, 'action': 'BUY'} -> id=6594 filled=10000.0 vwap=10.58 status=TRANSACTED
+20:09:04 +272.30s t=68  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 572, 'action': 'BUY'} -> id=6595 filled=572.0 vwap=10.58 status=TRANSACTED
+20:09:04 +272.30s t=68  Flattened -10572 on CRZY_M (best ask 10.44)
+20:09:05 +272.82s t=68  MM FILL CRZY_A BUY 2000 @ 10.41 | mid 10.465 | net_before 10572
+20:09:05 +273.00s t=68  MM MARK CRZY_M SELL 2000 @ 10.44 -> mid 10.465 after 3s: -0.025/share (-50)
+20:09:05 +273.03s t=68  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.44} -> id=6640 filled=0.0 vwap=None status=OPEN
+20:09:05 +273.04s t=68  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.44} -> id=6642 filled=0.0 vwap=None status=OPEN
+20:09:05 +273.04s t=68  MM requote mid=10.465 bb=10.43 ba=10.50 vol=0.050 half=0.050 (base 0.030 vol 0.050 user-min 0.000) skew=+0.317 net=10572 -> bid 10.10 ask 10.44 (raw 10.10/10.20) cancel=0 post=['M/S@10.44', 'A/S@10.44'] resting=2
+20:09:05 +273.57s t=69  MM MARK CRZY_A SELL 2000 @ 10.44 -> mid 10.420 after 3s: +0.020/share (+40)
+20:09:06 +273.91s t=69  MM FILL CRZY_M SELL 2000 @ 10.44 | mid 10.445 | net_before 2572
+20:09:06 +274.02s t=69  MM FILL CRZY_A SELL 2000 @ 10.44 | mid 10.445 | net_before 2572
+20:09:06 +274.15s t=69  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.42} -> id=6704 filled=0.0 vwap=None status=OPEN
+20:09:06 +274.16s t=69  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.42} -> id=6705 filled=2000.0 vwap=10.43 status=OPEN
+20:09:06 +274.16s t=69  MM requote mid=10.445 bb=10.41 ba=10.48 vol=0.050 half=0.050 (base 0.030 vol 0.050 user-min 0.000) skew=+0.077 net=2572 -> bid 10.32 ask 10.42 (raw 10.32/10.42) cancel=0 post=['M/S@10.42', 'A/S@10.42'] resting=2
+20:09:06 +274.59s t=69  MM FILL CRZY_A SELL 2000 @ 10.43 | mid 10.445 | net_before -5428
+20:09:06 +274.72s t=69  MM MARK CRZY_M SELL 2000 @ 10.42 -> mid 10.445 after 3s: -0.025/share (-50)
+20:09:06 +274.72s t=69  MM MARK CRZY_A SELL 2000 @ 10.42 -> mid 10.445 after 3s: -0.025/share (-50)
+20:09:06 +274.72s t=69  !! HARD FLAT: |net|=5428 >= 5000 -> pulling quotes, flattening
+20:09:07 +274.76s t=69  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 5428, 'action': 'BUY'} -> id=6750 filled=5428.0 vwap=10.48 status=TRANSACTED
+20:09:07 +274.76s t=69  Flattened -5428 on CRZY_A (best ask 10.48)
+20:09:07 +275.10s t=69  MM FILL CRZY_M SELL 2000 @ 10.42 | mid 10.455 | net_before 5428
+20:09:07 +275.19s t=69  MM MARK CRZY_M BUY 1000 @ 10.41 -> mid 10.455 after 3s: +0.045/share (+45)
+20:09:07 +275.19s t=69  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.43} -> id=6781 filled=2000.0 vwap=10.4305 status=OPEN
+20:09:07 +275.20s t=69  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.43} -> id=6782 filled=0.0 vwap=None status=OPEN
+20:09:07 +275.20s t=69  MM requote mid=10.455 bb=10.42 ba=10.49 vol=0.045 half=0.045 (base 0.030 vol 0.045 user-min 0.000) skew=+0.163 net=5428 -> bid 10.25 ask 10.43 (raw 10.25/10.34) cancel=0 post=['M/S@10.43', 'A/S@10.43'] resting=2
+20:09:07 +275.59s t=69  MM FILL CRZY_M SELL 2000 @ 10.43 | mid 10.425 | net_before -2572
+20:09:08 +275.94s t=69  MM FILL CRZY_A SELL 2000 @ 10.43 | mid 10.469999999999999 | net_before -2572
+20:09:08 +276.17s t=69  MM MARK CRZY_A BUY 2000 @ 10.41 -> mid 10.470 after 3s: +0.060/share (+120)
+20:09:08 +276.48s t=69  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.43} -> id=7010 filled=0.0 vwap=None status=OPEN
+20:09:08 +276.49s t=69  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.43} -> id=7013 filled=2000.0 vwap=10.43 status=OPEN
+20:09:08 +276.49s t=69  MM requote mid=10.435 bb=10.43 ba=10.44 vol=0.050 half=0.050 (base 0.030 vol 0.050 user-min 0.000) skew=-0.077 net=-2572 -> bid 10.43 ask 10.56 (raw 10.46/10.56) cancel=0 post=['M/B@10.43', 'A/B@10.43'] resting=2
+20:09:09 +276.98s t=69  MM FILL CRZY_A BUY 2000 @ 10.43 | mid 10.48 | net_before 5428
+20:09:09 +277.56s t=69  MM MARK CRZY_M SELL 2000 @ 10.44 -> mid 10.480 after 3s: -0.040/share (-80)
+20:09:09 +277.56s t=69  MM MARK CRZY_A SELL 2000 @ 10.44 -> mid 10.480 after 3s: -0.040/share (-80)
+20:09:09 +277.56s t=69  !! HARD FLAT: |net|=5428 >= 5000 -> pulling quotes, flattening
+20:09:09 +277.61s t=69  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 5428, 'action': 'SELL'} -> id=7296 filled=5428.0 vwap=10.42497420781135 status=TRANSACTED
+20:09:09 +277.61s t=69  Flattened 5428 on CRZY_A (best bid 10.52)
+20:09:09 +277.62s t=69  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.53} -> id=7301 filled=0.0 vwap=None status=OPEN
+20:09:09 +277.63s t=69  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.53} -> id=7304 filled=0.0 vwap=None status=OPEN
+20:09:09 +277.63s t=69  MM requote mid=10.480 bb=10.52 ba=10.44 vol=0.055 half=0.055 (base 0.030 vol 0.055 user-min 0.000) skew=+0.163 net=5428 -> bid 10.26 ask 10.53 (raw 10.26/10.37) cancel=0 post=['M/S@10.53', 'A/S@10.53'] resting=2
+20:09:10 +277.99s t=70  MM FILL CRZY_M SELL 1000 @ 10.53 | mid 10.53 | net_before -11428
+20:09:10 +278.20s t=70  MM FILL CRZY_M BUY 2000 @ 10.43 | mid 10.53 | net_before -11428
+20:09:10 +278.63s t=70  MM MARK CRZY_A SELL 2000 @ 10.43 -> mid 10.530 after 3s: -0.100/share (-200)
+20:09:10 +278.63s t=70  MM MARK CRZY_M SELL 2000 @ 10.42 -> mid 10.530 after 3s: -0.110/share (-220)
+20:09:10 +278.63s t=70  MM MARK CRZY_M SELL 2000 @ 10.43 -> mid 10.530 after 3s: -0.099/share (-199)
+20:09:10 +278.65s t=70  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.51} -> id=7451 filled=0.0 vwap=None status=OPEN
+20:09:10 +278.66s t=70  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.51} -> id=7453 filled=0.0 vwap=None status=OPEN
+20:09:10 +278.66s t=70  MM requote mid=10.530 bb=10.54 ba=10.52 vol=0.105 half=0.105 (base 0.030 vol 0.105 user-min 0.000) skew=-0.343 net=-11428 -> bid 10.51 ask 10.98 (raw 10.77/10.98) cancel=2 post=['M/B@10.51', 'A/B@10.51'] resting=2
+20:09:11 +278.99s t=70  MM FILL CRZY_M SELL 1000 @ 10.53 | mid 10.504999999999999 | net_before -9428
+20:09:11 +279.26s t=70  MM FILL CRZY_A SELL 2000 @ 10.53 | mid 10.504999999999999 | net_before -9428
+20:09:11 +279.47s t=70  MM MARK CRZY_A SELL 2000 @ 10.43 -> mid 10.505 after 3s: -0.075/share (-150)
+20:09:11 +279.47s t=70  !! HARD FLAT: |net|=9428 >= 5000 -> pulling quotes, flattening
+20:09:11 +279.51s t=70  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 5428, 'action': 'BUY'} -> id=7616 filled=5428.0 vwap=10.57 status=TRANSACTED
+20:09:11 +279.51s t=70  Flattened -5428 on CRZY_A (best ask 10.52)
+20:09:12 +279.87s t=70  MM FILL CRZY_M BUY 2000 @ 10.51 | mid 10.555 | net_before 5428
+20:09:12 +279.99s t=70  MM FILL CRZY_A BUY 2000 @ 10.51 | mid 10.555 | net_before 5428
+20:09:12 +280.08s t=70  MM MARK CRZY_A BUY 2000 @ 10.43 -> mid 10.555 after 3s: +0.125/share (+250)
+20:09:12 +280.08s t=70  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.55} -> id=7667 filled=0.0 vwap=None status=OPEN
+20:09:12 +280.09s t=70  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.55} -> id=7668 filled=0.0 vwap=None status=OPEN
+20:09:12 +280.09s t=70  MM requote mid=10.555 bb=10.54 ba=10.57 vol=0.075 half=0.075 (base 0.030 vol 0.075 user-min 0.000) skew=+0.163 net=5428 -> bid 10.32 ask 10.55 (raw 10.32/10.47) cancel=0 post=['M/S@10.55', 'A/S@10.55'] resting=2
+20:09:13 +281.13s t=70  MM FILL CRZY_M SELL 2000 @ 10.55 | mid 10.575 | net_before -2572
+20:09:13 +281.71s t=70  MM FILL CRZY_A SELL 2000 @ 10.55 | mid 10.575 | net_before -2572
+20:09:14 +281.86s t=70  MM MARK CRZY_M SELL 1000 @ 10.53 -> mid 10.575 after 3s: -0.045/share (-45)
+20:09:14 +281.86s t=70  MM MARK CRZY_M BUY 2000 @ 10.43 -> mid 10.575 after 3s: +0.145/share (+290)
+20:09:14 +281.86s t=70  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.58} -> id=7772 filled=0.0 vwap=None status=OPEN
+20:09:14 +281.87s t=70  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.58} -> id=7774 filled=0.0 vwap=None status=OPEN
+20:09:14 +281.87s t=70  MM requote mid=10.575 bb=10.56 ba=10.59 vol=0.070 half=0.070 (base 0.030 vol 0.070 user-min 0.000) skew=-0.077 net=-2572 -> bid 10.58 ask 10.72 (raw 10.58/10.72) cancel=0 post=['M/B@10.58', 'A/B@10.58'] resting=2
+20:09:14 +282.19s t=71  PARAMS {'MM size': 60.0}
+20:09:14 +282.27s t=71  MM FILL CRZY_A BUY 1600 @ 10.58 | mid 10.6 | net_before 4628
+20:09:14 +282.38s t=71  MM MARK CRZY_M SELL 1000 @ 10.53 -> mid 10.600 after 3s: -0.070/share (-70)
+20:09:14 +282.38s t=71  MM MARK CRZY_A SELL 2000 @ 10.53 -> mid 10.600 after 3s: -0.070/share (-140)
+20:09:15 +282.80s t=71  MM FILL CRZY_M BUY 2000 @ 10.58 | mid 10.605 | net_before 4628
+20:09:15 +282.89s t=71  MM MARK CRZY_M BUY 2000 @ 10.51 -> mid 10.605 after 3s: +0.095/share (+190)
+20:09:15 +282.90s t=71  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 60, 'action': 'SELL', 'price': 10.61} -> id=7838 filled=0.0 vwap=None status=OPEN
+20:09:15 +282.91s t=71  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 60, 'action': 'SELL', 'price': 10.61} -> id=7839 filled=0.0 vwap=None status=OPEN
+20:09:15 +282.91s t=71  MM requote mid=10.605 bb=10.60 ba=10.61 vol=0.065 half=0.065 (base 0.030 vol 0.065 user-min 0.000) skew=+0.139 net=4628 -> bid 10.40 ask 10.61 (raw 10.40/10.53) cancel=1 post=['M/S@10.61', 'A/S@10.61'] resting=2
+20:09:15 +283.19s t=71  MM MARK CRZY_A BUY 2000 @ 10.51 -> mid 10.605 after 3s: +0.095/share (+190)
+20:09:15 +283.62s t=71  MM FILL CRZY_M SELL 60 @ 10.61 | mid 10.605 | net_before 4508
+20:09:16 +284.11s t=71  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 60, 'action': 'SELL', 'price': 10.59} -> id=7902 filled=0.0 vwap=None status=OPEN
+20:09:16 +284.12s t=71  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 60, 'action': 'SELL', 'price': 10.59} -> id=7903 filled=0.0 vwap=None status=OPEN
+20:09:16 +284.12s t=71  MM requote mid=10.590 bb=10.58 ba=10.60 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=+0.132 net=4388 -> bid 10.43 ask 10.59 (raw 10.43/10.49) cancel=1 post=['M/S@10.59', 'A/S@10.59'] resting=2
+20:09:17 +285.20s t=72  PARAMS {'MM size': 600.0}
+20:09:17 +285.26s t=72  MM FILL CRZY_M SELL 60 @ 10.59 | mid 10.629999999999999 | net_before 4148
+20:09:17 +285.32s t=72  MM FILL CRZY_A SELL 60 @ 10.59 | mid 10.629999999999999 | net_before 4148
+20:09:17 +285.51s t=72  MM FILL CRZY_A SELL 60 @ 10.61 | mid 10.629999999999999 | net_before 4148
+20:09:17 +285.65s t=72  MM MARK CRZY_M SELL 2000 @ 10.55 -> mid 10.630 after 3s: -0.080/share (-160)
+20:09:17 +285.65s t=72  MM MARK CRZY_A SELL 2000 @ 10.55 -> mid 10.630 after 3s: -0.080/share (-160)
+20:09:17 +285.65s t=72  MM MARK CRZY_A BUY 1600 @ 10.58 -> mid 10.630 after 3s: +0.050/share (+80)
+20:09:17 +285.66s t=72  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.63} -> id=8003 filled=0.0 vwap=None status=OPEN
+20:09:17 +285.66s t=72  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.63} -> id=8004 filled=0.0 vwap=None status=OPEN
+20:09:17 +285.66s t=72  MM requote mid=10.630 bb=10.62 ba=10.64 vol=0.040 half=0.040 (base 0.030 vol 0.040 user-min 0.000) skew=+0.124 net=4148 -> bid 10.47 ask 10.63 (raw 10.47/10.55) cancel=0 post=['M/S@10.63', 'A/S@10.63'] resting=2
+20:09:18 +286.03s t=72  MM MARK CRZY_M BUY 2000 @ 10.58 -> mid 10.600 after 3s: +0.020/share (+40)
+20:09:18 +286.36s t=72  MM FILL CRZY_M SELL 600 @ 10.63 | mid 10.615 | net_before 2834
+20:09:18 +286.52s t=72  MM FILL CRZY_A SELL 57 @ 10.63 | mid 10.615 | net_before 2834
+20:09:18 +286.67s t=72  MM MARK CRZY_M SELL 60 @ 10.61 -> mid 10.615 after 3s: -0.005/share (-0)
+20:09:18 +286.68s t=72  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.6} -> id=8074 filled=0.0 vwap=None status=OPEN
+20:09:18 +286.69s t=72  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.6} -> id=8075 filled=0.0 vwap=None status=OPEN
+20:09:18 +286.69s t=72  MM requote mid=10.615 bb=10.59 ba=10.64 vol=0.040 half=0.040 (base 0.030 vol 0.040 user-min 0.000) skew=+0.085 net=2834 -> bid 10.49 ask 10.60 (raw 10.49/10.57) cancel=1 post=['M/S@10.60', 'A/S@10.60'] resting=2
+20:09:19 +286.96s t=72  MM FILL CRZY_A SELL 543 @ 10.63 | mid 10.61 | net_before 1748
+20:09:19 +287.40s t=72  MM FILL CRZY_M SELL 600 @ 10.60 | mid 10.665 | net_before -652
+20:09:19 +287.57s t=72  MM FILL CRZY_A SELL 600 @ 10.60 | mid 10.665 | net_before -652
+20:09:19 +287.68s t=72  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.62} -> id=8255 filled=0.0 vwap=None status=OPEN
+20:09:19 +287.69s t=72  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.75} -> id=8257 filled=0.0 vwap=None status=OPEN
+20:09:19 +287.70s t=72  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.62} -> id=8259 filled=250.0 vwap=10.59 status=OPEN
+20:09:19 +287.70s t=72  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.75} -> id=8260 filled=0.0 vwap=None status=OPEN
+20:09:19 +287.70s t=72  MM requote mid=10.665 bb=10.67 ba=10.66 vol=0.065 half=0.065 (base 0.030 vol 0.065 user-min 0.000) skew=-0.020 net=-652 -> bid 10.62 ask 10.75 (raw 10.62/10.75) cancel=0 post=['M/B@10.62', 'M/S@10.75', 'A/B@10.62', 'A/S@10.75'] resting=4
+20:09:20 +287.98s t=72  MM FILL CRZY_A BUY 250 @ 10.59 | mid 10.635000000000002 | net_before -152
+20:09:20 +288.41s t=72  MM FILL CRZY_M BUY 600 @ 10.62 | mid 10.65 | net_before 1748
+20:09:20 +288.67s t=72  MM FILL CRZY_A BUY 350 @ 10.62 | mid 10.65 | net_before 1748
+20:09:21 +288.83s t=72  MM MARK CRZY_M SELL 60 @ 10.59 -> mid 10.650 after 3s: -0.060/share (-4)
+20:09:21 +288.83s t=72  MM MARK CRZY_A SELL 60 @ 10.59 -> mid 10.650 after 3s: -0.060/share (-4)
+20:09:21 +288.83s t=72  MM MARK CRZY_A SELL 60 @ 10.61 -> mid 10.650 after 3s: -0.040/share (-2)
+20:09:21 +288.84s t=72  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.53} -> id=8343 filled=0.0 vwap=None status=OPEN
+20:09:21 +288.85s t=72  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.66} -> id=8345 filled=0.0 vwap=None status=OPEN
+20:09:21 +288.86s t=72  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.53} -> id=8346 filled=0.0 vwap=None status=OPEN
+20:09:21 +288.88s t=72  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.66} -> id=8347 filled=0.0 vwap=None status=OPEN
+20:09:21 +288.88s t=72  MM requote mid=10.650 bb=10.63 ba=10.67 vol=0.065 half=0.065 (base 0.030 vol 0.065 user-min 0.000) skew=+0.052 net=1748 -> bid 10.53 ask 10.66 (raw 10.53/10.66) cancel=2 post=['M/B@10.53', 'M/S@10.66', 'A/B@10.53', 'A/S@10.66'] resting=4
+20:09:21 +289.61s t=73  MM MARK CRZY_M SELL 600 @ 10.63 -> mid 10.645 after 3s: -0.015/share (-9)
+20:09:21 +289.61s t=73  MM MARK CRZY_A SELL 57 @ 10.63 -> mid 10.645 after 3s: -0.015/share (-1)
+20:09:22 +289.92s t=73  MM FILL CRZY_M SELL 600 @ 10.66 | mid 10.645 | net_before -652
+20:09:22 +290.02s t=73  MM FILL CRZY_A SELL 600 @ 10.66 | mid 10.645 | net_before -652
+20:09:22 +290.18s t=73  MM MARK CRZY_A SELL 543 @ 10.63 -> mid 10.645 after 3s: -0.015/share (-8)
+20:09:22 +290.20s t=73  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.61} -> id=8438 filled=0.0 vwap=None status=OPEN
+20:09:22 +290.20s t=73  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.72} -> id=8440 filled=0.0 vwap=None status=OPEN
+20:09:22 +290.21s t=73  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.61} -> id=8441 filled=0.0 vwap=None status=OPEN
+20:09:22 +290.21s t=73  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.72} -> id=8442 filled=0.0 vwap=None status=OPEN
+20:09:22 +290.21s t=73  MM requote mid=10.645 bb=10.63 ba=10.66 vol=0.055 half=0.055 (base 0.030 vol 0.055 user-min 0.000) skew=-0.020 net=-652 -> bid 10.61 ask 10.72 (raw 10.61/10.72) cancel=2 post=['M/B@10.61', 'M/S@10.72', 'A/B@10.61', 'A/S@10.72'] resting=4
+20:09:22 +290.64s t=73  MM MARK CRZY_M SELL 600 @ 10.60 -> mid 10.660 after 3s: -0.060/share (-36)
+20:09:22 +290.64s t=73  MM MARK CRZY_A SELL 600 @ 10.60 -> mid 10.660 after 3s: -0.060/share (-36)
+20:09:23 +290.98s t=73  MM FILL CRZY_M BUY 600 @ 10.61 | mid 10.665 | net_before 1748
+20:09:23 +291.22s t=73  MM FILL CRZY_M BUY 600 @ 10.53 | mid 10.665 | net_before 1748
+20:09:23 +291.71s t=73  MM MARK CRZY_A BUY 250 @ 10.59 -> mid 10.665 after 3s: +0.075/share (+19)
+20:09:23 +291.72s t=73  MM MARK CRZY_M BUY 600 @ 10.62 -> mid 10.665 after 3s: +0.045/share (+27)
+20:09:23 +291.72s t=73  MM MARK CRZY_A BUY 350 @ 10.62 -> mid 10.665 after 3s: +0.045/share (+16)
+20:09:23 +291.74s t=73  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.58} -> id=8565 filled=0.0 vwap=None status=OPEN
+20:09:23 +291.75s t=73  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.66} -> id=8568 filled=0.0 vwap=None status=OPEN
+20:09:24 +291.75s t=73  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.58} -> id=8570 filled=0.0 vwap=None status=OPEN
+20:09:24 +291.76s t=73  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.66} -> id=8572 filled=0.0 vwap=None status=OPEN
+20:09:24 +291.76s t=73  MM requote mid=10.665 bb=10.65 ba=10.68 vol=0.030 half=0.030 (base 0.030 vol 0.030 user-min 0.000) skew=+0.052 net=1748 -> bid 10.58 ask 10.66 (raw 10.58/10.64) cancel=3 post=['M/B@10.58', 'M/S@10.66', 'A/B@10.58', 'A/S@10.66'] resting=4
+20:09:24 +292.53s t=73  MM FILL CRZY_M SELL 600 @ 10.66 | mid 10.655000000000001 | net_before 548
+20:09:25 +292.81s t=73  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.61} -> id=8634 filled=0.0 vwap=None status=OPEN
+20:09:25 +292.81s t=73  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.67} -> id=8636 filled=0.0 vwap=None status=OPEN
+20:09:25 +292.82s t=73  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.61} -> id=8637 filled=0.0 vwap=None status=OPEN
+20:09:25 +292.82s t=73  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.67} -> id=8640 filled=600.0 vwap=10.68 status=OPEN
+20:09:25 +292.82s t=73  MM requote mid=10.655 bb=10.64 ba=10.67 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=+0.016 net=548 -> bid 10.61 ask 10.67 (raw 10.61/10.67) cancel=3 post=['M/B@10.61', 'M/S@10.67', 'A/B@10.61', 'A/S@10.67'] resting=4
+20:09:25 +293.20s t=74  MM FILL CRZY_A SELL 600 @ 10.68 | mid 10.695 | net_before -3052
+20:09:25 +293.39s t=74  MM MARK CRZY_M SELL 600 @ 10.66 -> mid 10.695 after 3s: -0.035/share (-21)
+20:09:25 +293.39s t=74  MM MARK CRZY_A SELL 600 @ 10.66 -> mid 10.695 after 3s: -0.035/share (-21)
+20:09:26 +293.78s t=74  MM FILL CRZY_M SELL 600 @ 10.67 | mid 10.68 | net_before -1852
+20:09:26 +293.93s t=74  MM FILL CRZY_A SELL 600 @ 10.66 | mid 10.68 | net_before -1852
+20:09:26 +294.18s t=74  MM MARK CRZY_M BUY 600 @ 10.61 -> mid 10.680 after 3s: +0.070/share (+42)
+20:09:26 +294.20s t=74  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.67} -> id=8762 filled=0.0 vwap=None status=OPEN
+20:09:26 +294.20s t=74  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.78} -> id=8764 filled=0.0 vwap=None status=OPEN
+20:09:26 +294.20s t=74  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.67} -> id=8767 filled=0.0 vwap=None status=OPEN
+20:09:26 +294.21s t=74  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.78} -> id=8769 filled=0.0 vwap=None status=OPEN
+20:09:26 +294.21s t=74  MM requote mid=10.680 bb=10.68 ba=10.68 vol=0.040 half=0.040 (base 0.030 vol 0.040 user-min 0.000) skew=-0.056 net=-1852 -> bid 10.67 ask 10.78 (raw 10.70/10.78) cancel=2 post=['M/B@10.67', 'M/S@10.78', 'A/B@10.67', 'A/S@10.78'] resting=4
+20:09:26 +294.54s t=74  MM FILL CRZY_A BUY 100 @ 10.67 | mid 10.695 | net_before -1652
+20:09:27 +294.79s t=74  MM FILL CRZY_M BUY 600 @ 10.61 | mid 10.695 | net_before -1652
+20:09:27 +294.88s t=74  MM MARK CRZY_M BUY 600 @ 10.53 -> mid 10.695 after 3s: +0.165/share (+99)
+20:09:27 +295.17s t=74  MM FILL CRZY_A BUY 500 @ 10.67 | mid 10.690000000000001 | net_before -652
+20:09:27 +295.48s t=74  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.75} -> id=8849 filled=0.0 vwap=None status=OPEN
+20:09:27 +295.49s t=74  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.67} -> id=8850 filled=0.0 vwap=None status=OPEN
+20:09:27 +295.50s t=74  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.75} -> id=8851 filled=0.0 vwap=None status=OPEN
+20:09:27 +295.50s t=74  MM requote mid=10.690 bb=10.67 ba=10.71 vol=0.040 half=0.040 (base 0.030 vol 0.040 user-min 0.000) skew=-0.020 net=-652 -> bid 10.67 ask 10.75 (raw 10.67/10.75) cancel=2 post=['M/S@10.75', 'A/B@10.67', 'A/S@10.75'] resting=4
+20:09:28 +295.91s t=74  MM FILL CRZY_M BUY 600 @ 10.67 | mid 10.625 | net_before 1748
+20:09:28 +296.03s t=74  MM MARK CRZY_M SELL 600 @ 10.66 -> mid 10.625 after 3s: +0.035/share (+21)
+20:09:28 +296.38s t=74  MM FILL CRZY_A BUY 600 @ 10.67 | mid 10.735 | net_before 548
+20:09:28 +296.59s t=74  MM FILL CRZY_A SELL 600 @ 10.75 | mid 10.735 | net_before 548
+20:09:29 +297.16s t=74  MM MARK CRZY_A SELL 600 @ 10.68 -> mid 10.735 after 3s: -0.055/share (-33)
+20:09:29 +297.16s t=74  MM MARK CRZY_M SELL 600 @ 10.67 -> mid 10.735 after 3s: -0.065/share (-39)
+20:09:29 +297.16s t=74  MM MARK CRZY_A SELL 600 @ 10.66 -> mid 10.735 after 3s: -0.075/share (-45)
+20:09:29 +297.18s t=74  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.61} -> id=8951 filled=0.0 vwap=None status=OPEN
+20:09:29 +297.19s t=74  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.83} -> id=8952 filled=0.0 vwap=None status=OPEN
+20:09:29 +297.20s t=74  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.61} -> id=8953 filled=0.0 vwap=None status=OPEN
+20:09:29 +297.22s t=74  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.83} -> id=8954 filled=0.0 vwap=None status=OPEN
+20:09:29 +297.22s t=74  MM requote mid=10.735 bb=10.73 ba=10.74 vol=0.110 half=0.110 (base 0.030 vol 0.110 user-min 0.000) skew=+0.016 net=548 -> bid 10.61 ask 10.83 (raw 10.61/10.83) cancel=1 post=['M/B@10.61', 'M/S@10.83', 'A/B@10.61', 'A/S@10.83'] resting=4
+20:09:30 +297.85s t=75  MM FILL CRZY_M BUY 600 @ 10.61 | mid 10.71 | net_before 548
+20:09:30 +298.09s t=75  MM FILL CRZY_M SELL 600 @ 10.75 | mid 10.71 | net_before 548
+20:09:30 +298.43s t=75  MM MARK CRZY_A BUY 100 @ 10.67 -> mid 10.710 after 3s: +0.040/share (+4)
+20:09:30 +298.43s t=75  MM MARK CRZY_M BUY 600 @ 10.61 -> mid 10.710 after 3s: +0.100/share (+60)
+20:09:30 +298.43s t=75  MM MARK CRZY_A BUY 500 @ 10.67 -> mid 10.710 after 3s: +0.040/share (+20)
+20:09:30 +298.43s t=75  ARB OPP buy 2000 CRZY_M lim 10.69 (exp 10.690) sell CRZY_A lim 10.73 (exp 10.730) edge 0.040 | books M 10.63/10.69 A 10.73/10.78 | room 14726
+20:09:30 +298.44s t=75  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 2000, 'action': 'BUY', 'price': 10.69} -> id=9252 filled=0.0 vwap=None status=OPEN
+20:09:30 +298.45s t=75  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 2000, 'action': 'SELL', 'price': 10.73} -> id=9256 filled=2000.0 vwap=10.75 status=OPEN
+20:09:31 +298.86s t=75  ! ARB accounting: orders say bought 0 sold 2000, position moved -4000 ({'CRZY_M': 874, 'CRZY_A': 874} -> {'CRZY_M': -1126, 'CRZY_A': -1126}) - using position
+20:09:31 +298.86s t=75  ARB MISS bought 0 sold 2000 (cross gone) -> pause 2s
+20:09:31 +298.89s t=75  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 4000, 'action': 'BUY', 'price': 10.69} -> id=9308 filled=0.0 vwap=None status=OPEN
+20:09:31 +299.35s t=75  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 4000, 'action': 'BUY'} -> id=9330 filled=4000.0 vwap=10.79 status=TRANSACTED
+20:09:31 +299.35s t=75  RESIDUAL -4000: limit CRZY_M 4000 @10.69 filled 0, market 4000 @ 10.79
+20:09:31 +299.54s t=75  [tick  75] NLV=-3137.65 real=-6170.98 unreal=-28.96 | arb=0 miss=7 pnl=+0.00 slip=+0.00 | mm fills=144 vol=116496 adverse=+0.0004/sh | net=548 room=14726 | api/s=33 429=0
+20:09:31 +299.66s t=75  MM FILL CRZY_A BUY 600 @ 10.61 | mid 10.774999999999999 | net_before 5748
+20:09:32 +299.88s t=75  MM MARK CRZY_M BUY 600 @ 10.67 -> mid 10.775 after 3s: +0.105/share (+63)
+20:09:32 +299.88s t=75  MM MARK CRZY_A BUY 600 @ 10.67 -> mid 10.775 after 3s: +0.105/share (+63)
+20:09:32 +299.88s t=75  MM MARK CRZY_A SELL 600 @ 10.75 -> mid 10.775 after 3s: -0.025/share (-15)
+20:09:32 +299.88s t=75  !! HARD FLAT: |net|=5748 >= 5000 -> pulling quotes, flattening
+20:09:32 +299.93s t=75  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 5748, 'action': 'SELL'} -> id=9366 filled=5748.0 vwap=10.735045233124564 status=TRANSACTED
+20:09:32 +299.93s t=75  Flattened 5748 on CRZY_A (best bid 10.77)
+20:09:32 +299.93s t=75  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.78} -> id=9367 filled=0.0 vwap=None status=OPEN
+20:09:32 +299.94s t=75  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.78} -> id=9368 filled=0.0 vwap=None status=OPEN
+20:09:32 +299.94s t=75  MM requote mid=10.775 bb=10.77 ba=10.78 vol=0.065 half=0.065 (base 0.030 vol 0.065 user-min 0.000) skew=+0.172 net=5748 -> bid 10.54 ask 10.78 (raw 10.54/10.67) cancel=0 post=['M/S@10.78', 'A/S@10.78'] resting=2
+20:09:33 +300.98s t=75  MM MARK CRZY_M BUY 600 @ 10.61 -> mid 10.775 after 3s: +0.165/share (+99)
+20:09:33 +300.99s t=75  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9405 filled=0.0 vwap=None status=OPEN
+20:09:33 +301.00s t=75  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9406 filled=0.0 vwap=None status=OPEN
+20:09:33 +301.00s t=75  MM requote mid=10.775 bb=10.77 ba=10.78 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=-0.208 net=-6948 -> bid 10.77 ask 11.01 (raw 10.95/11.01) cancel=2 post=['M/B@10.77', 'A/B@10.77'] resting=2
+20:09:33 +301.40s t=76  MM MARK CRZY_M SELL 600 @ 10.75 -> mid 10.775 after 3s: -0.025/share (-15)
+20:09:34 +301.79s t=76  MM FILL CRZY_A BUY 600 @ 10.77 | mid 10.76 | net_before -5748
+20:09:34 +301.91s t=76  MM FILL CRZY_M SELL 600 @ 10.78 | mid 10.76 | net_before -5748
+20:09:34 +301.99s t=76  !! HARD FLAT: |net|=5748 >= 5000 -> pulling quotes, flattening
+20:09:34 +302.00s t=76  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 4548, 'action': 'BUY'} -> id=9437 filled=4548.0 vwap=10.78 status=TRANSACTED
+20:09:34 +302.00s t=76  Flattened -4548 on CRZY_A (best ask 10.78)
+20:09:34 +302.01s t=76  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9438 filled=0.0 vwap=None status=OPEN
+20:09:34 +302.02s t=76  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9439 filled=0.0 vwap=None status=OPEN
+20:09:34 +302.02s t=76  MM requote mid=10.760 bb=10.74 ba=10.78 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=-0.172 net=-5748 -> bid 10.77 ask 10.96 (raw 10.90/10.96) cancel=0 post=['M/B@10.77', 'A/B@10.77'] resting=2
+20:09:34 +302.50s t=76  MM FILL CRZY_M BUY 600 @ 10.77 | mid 10.765 | net_before 5748
+20:09:35 +302.80s t=76  MM FILL CRZY_M BUY 600 @ 10.77 | mid 10.765 | net_before 5748
+20:09:35 +302.90s t=76  MM MARK CRZY_A BUY 600 @ 10.61 -> mid 10.765 after 3s: +0.155/share (+93)
+20:09:35 +303.28s t=76  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.77} -> id=9475 filled=0.0 vwap=None status=OPEN
+20:09:35 +303.29s t=76  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.77} -> id=9476 filled=0.0 vwap=None status=OPEN
+20:09:35 +303.29s t=76  MM requote mid=10.765 bb=10.76 ba=10.77 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=+0.208 net=6948 -> bid 10.53 ask 10.77 (raw 10.53/10.59) cancel=1 post=['M/S@10.77', 'A/S@10.77'] resting=2
+20:09:36 +303.80s t=76  MM FILL CRZY_A BUY 600 @ 10.77 | mid 10.765 | net_before 5748
+20:09:36 +303.87s t=76  !! HARD FLAT: |net|=5748 >= 5000 -> pulling quotes, flattening
+20:09:36 +303.89s t=76  ORDER ok   {'ticker': 'CRZY_A', 'type': 'MARKET', 'quantity': 5748, 'action': 'SELL'} -> id=9489 filled=5748.0 vwap=10.734523312456506 status=TRANSACTED
+20:09:36 +303.89s t=76  Flattened 5748 on CRZY_A (best bid 10.75)
+20:09:36 +304.06s t=76  MM FILL CRZY_M SELL 600 @ 10.77 | mid 10.765 | net_before 5748
+20:09:36 +304.40s t=76  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9505 filled=0.0 vwap=None status=OPEN
+20:09:36 +304.43s t=76  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9506 filled=0.0 vwap=None status=OPEN
+20:09:36 +304.43s t=76  MM requote mid=10.775 bb=10.77 ba=10.78 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.208 net=-6948 -> bid 10.77 ask 11.01 (raw 10.95/11.01) cancel=0 post=['M/B@10.77', 'A/B@10.77'] resting=2
+20:09:36 +304.71s t=76  MM FILL CRZY_A SELL 600 @ 10.77 | mid 10.76 | net_before -5748
+20:09:37 +304.98s t=76  MM MARK CRZY_A BUY 600 @ 10.77 -> mid 10.760 after 3s: -0.010/share (-6)
+20:09:37 +304.98s t=76  MM MARK CRZY_M SELL 600 @ 10.78 -> mid 10.760 after 3s: +0.020/share (+12)
+20:09:37 +305.28s t=77  MM FILL CRZY_M BUY 600 @ 10.77 | mid 10.76 | net_before -4548
+20:09:37 +305.36s t=77  MM FILL CRZY_A BUY 600 @ 10.77 | mid 10.76 | net_before -4548
+20:09:37 +305.52s t=77  MM MARK CRZY_M BUY 600 @ 10.77 -> mid 10.760 after 3s: -0.010/share (-6)
+20:09:37 +305.53s t=77  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9539 filled=0.0 vwap=None status=OPEN
+20:09:37 +305.53s t=77  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.77} -> id=9540 filled=0.0 vwap=None status=OPEN
+20:09:37 +305.54s t=77  MM requote mid=10.760 bb=10.74 ba=10.78 vol=0.015 half=0.030 (base 0.030 vol 0.015 user-min 0.000) skew=-0.136 net=-4548 -> bid 10.77 ask 10.93 (raw 10.87/10.93) cancel=0 post=['M/B@10.77', 'A/B@10.77'] resting=2
+20:09:38 +306.02s t=77  MM MARK CRZY_M BUY 600 @ 10.77 -> mid 10.755 after 3s: -0.015/share (-9)
+20:09:38 +306.29s t=77  MM FILL CRZY_M BUY 600 @ 10.77 | mid 10.765 | net_before -2148
+20:09:38 +306.40s t=77  MM FILL CRZY_A BUY 600 @ 10.77 | mid 10.765 | net_before -2148
+20:09:38 +306.58s t=77  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.76} -> id=9572 filled=0.0 vwap=None status=OPEN
+20:09:38 +306.58s t=77  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.76} -> id=9573 filled=600.0 vwap=10.76 status=OPEN
+20:09:38 +306.58s t=77  MM requote mid=10.765 bb=10.76 ba=10.77 vol=0.020 half=0.030 (base 0.030 vol 0.020 user-min 0.000) skew=-0.064 net=-2148 -> bid 10.76 ask 10.86 (raw 10.80/10.86) cancel=0 post=['M/B@10.76', 'A/B@10.76'] resting=2
+20:09:39 +306.80s t=77  MM FILL CRZY_A BUY 600 @ 10.76 | mid 10.78 | net_before -948
+20:09:39 +306.93s t=77  MM MARK CRZY_A BUY 600 @ 10.77 -> mid 10.780 after 3s: +0.010/share (+6)
+20:09:39 +307.13s t=77  MM MARK CRZY_M SELL 600 @ 10.77 -> mid 10.780 after 3s: -0.010/share (-6)
+20:09:39 +307.63s t=77  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.78} -> id=9609 filled=0.0 vwap=None status=OPEN
+20:09:39 +307.63s t=77  ORDER ok   {'ticker': 'CRZY_M', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.84} -> id=9610 filled=0.0 vwap=None status=OPEN
+20:09:39 +307.64s t=77  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'BUY', 'price': 10.78} -> id=9611 filled=0.0 vwap=None status=OPEN
+20:09:39 +307.64s t=77  ORDER ok   {'ticker': 'CRZY_A', 'type': 'LIMIT', 'quantity': 600, 'action': 'SELL', 'price': 10.84} -> id=9612 filled=0.0 vwap=None status=OPEN
+20:09:39 +307.64s t=77  MM requote mid=10.780 bb=10.77 ba=10.79 vol=0.025 half=0.030 (base 0.030 vol 0.025 user-min 0.000) skew=-0.028 net=-948 -> bid 10.78 ask 10.84 (raw 10.78/10.84) cancel=1 post=['M/B@10.78', 'M/S@10.84', 'A/B@10.78', 'A/S@10.84'] resting=4
+20:09:40 +307.80s t=77  MM MARK CRZY_A SELL 600 @ 10.77 -> mid 10.780 after 3s: -0.010/share (-6)
+20:09:40 +307.86s t=77  cancel_all -> 200 {"cancelled_order_ids":[9609,9610,9611,9612]}
+20:09:40 +308.20s t=77  ORDER ok   {'ticker': 'CRZY_M', 'type': 'MARKET', 'quantity': 948, 'action': 'BUY'} -> id=9631 filled=948.0 vwap=10.79 status=TRANSACTED
+20:09:40 +308.20s t=77  Flattened -948 on CRZY_M (best ask 10.79)
+20:09:40 +308.21s t=77  FINAL CRZY_M pos=-474.0 realized=-3485.01 unrealized=-28.44 volume=11361435.0
+20:09:40 +308.21s t=77  FINAL CRZY_A pos=-474.0 realized=-3485.01 unrealized=-33.18 volume=10722361.0
+20:09:40 +308.22s t=77  Dumped 0 orders to c:\users\hashim_almodamagha\desktop\logs\algo1_20260910_200432_orders.csv
+20:09:40 +308.22s t=77  DONE (interrupted). NLV=-3555.45 | arb=0 miss=7 pnl=+0.00 slip=+0.00 | mm fills=157 vol=124296 adverse=+0.0026/sh (+319 total) | loop errors=0 | api calls=8516 429s=0

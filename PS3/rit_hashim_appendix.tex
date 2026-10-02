@@ -1,0 +1,25 @@
+% Appendix listing for Hashim's ALGO1 script. Save as
+% sections/rit_hashim_appendix.tex, upload algo1_arbitrage.py to sections/,
+% and \input this file at the end of sections/rit_team.tex. The line ranges
+% below match algo1_arbitrage.py as it is in the PS3 folder (1,229 lines);
+% if the file changes, re-check them.
+
+\subsection{Python script - Hashim}
+
+The complete script (\texttt{algo1\_arbitrage.py}, 1{,}229 lines) is submitted
+separately. These are the parts that make the trading decisions.
+
+\subsubsection*{Reading the combined position}
+\lstinputlisting[language=Python, firstline=444, lastline=451]{sections/algo1_arbitrage.py}
+
+\subsubsection*{Sizing a cross by walking both books}
+\lstinputlisting[language=Python, firstline=505, lastline=544]{sections/algo1_arbitrage.py}
+
+\subsubsection*{Settling an order: cancel the rest, then poll every status list}
+\lstinputlisting[language=Python, firstline=547, lastline=573]{sections/algo1_arbitrage.py}
+
+\subsubsection*{Executing both legs and measuring the leftover}
+\lstinputlisting[language=Python, firstline=589, lastline=619]{sections/algo1_arbitrage.py}
+
+\subsubsection*{Market-making quotes: spread, skew and inventory cap}
+\lstinputlisting[language=Python, firstline=827, lastline=858]{sections/algo1_arbitrage.py}

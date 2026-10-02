@@ -1,0 +1,157 @@
+20:02:21 +   0.01s t=    Connected: Hashim Almodamagha (almodamagha_hashim) | case 'Algo 2 Trading Case' | tick 11/300 | status ACTIVE | fee 0.01 rebate 0.015 | max order 10000 | orders/s 5 (using 20)
+20:02:21 +   0.01s t=    SECURITY {'ticker': 'ALGO', 'type': 'STOCK', 'size': 1, 'position': 3125.0, 'vwap': 20.0, 'nlv': 62468.75, 'last': 19.99, 'bid': 19.99, 'bid_size': 1139613.0, 'ask': 20.0, 'ask_size': 215519.0, 'volume': 4857247.0, 'unrealized': -31.25, 'realized': 178.125, 'currency': '', 'total_volume': 4857247.0, 'limits': [{'name': 'LIMIT-STOCK', 'units': 1.0}], 'interest_rate': 0.0, 'is_tradeable': True, 'is_shortable': True, 'start_period': 1, 'stop_period': 1, 'description': 'Shares of ALGO Corp.', 'unit_multiplier': 1, 'display_unit': 'share', 'start_price': 20.0, 'min_price': 0.0, 'max_price': 30.0, 'quoted_decimals': 2, 'trading_fee': 0.01, 'limit_order_rebate': 0.015, 'min_trade_size': 0, 'max_trade_size': 10000, 'required_tickers': None, 'underlying_tickers': None, 'bond_coupon': 0.0, 'interest_payments_per_period': 0, 'base_security': '', 'fixing_ticker': None, 'api_orders_per_second': 5, 'execution_delay_ms': 0, 'interest_rate_ticker': None, 'otc_price_range': 0.0}
+20:02:21 +   0.01s t=    LIMITS [{'name': 'LIMIT-STOCK', 'gross': 3125.0, 'net': 3125.0, 'gross_limit': 25000, 'net_limit': 25000, 'gross_fine': 0.0, 'net_fine': 0.1}]
+20:02:30 +   9.16s t=    Excel cockpit open: c:\users\hashim_almodamagha\desktop\algo2\ALGO2_cockpit.xlsx
+20:02:30 +   9.16s t=    PARAMS {'Enabled': 1, 'Quote size': 2500, 'Layers': 1, 'Min spread': 0.03, 'Vol mult': 1.0, 'Vol window': 3.0, 'Improve if spread >=': 0.02, 'Micro weight': 0.3, 'Drift window': 2.0, 'Drift lean': 0.3, 'Max inv': 8000, 'Skew $ at max inv': 0.04, 'Skew if spread >=': 0.02, 'Reduce boost': 0.5, 'Hard reduce |net|': 14000, 'Requote lag ticks': 3, 'Requote min sec': 0.5, 'Gross cap': 22000, 'End flat secs': 10, 'End market ticks': 3, 'Allow market orders': 0, 'Poll seconds': 0.0, 'Book depth': 10, 'Flatten now': 0, 'Panic': 0}
+20:02:30 +   9.18s t=13  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1523, 'action': 'BUY', 'price': 19.98} -> id=2754 filled=0.0 status=OPEN (10 ms)
+20:02:30 +   9.19s t=13  POST BUY 1523 @ 19.98 (top/top)
+20:02:30 +   9.23s t=13  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 4062, 'action': 'SELL', 'price': 20.01} -> id=2755 filled=0.0 status=OPEN (5 ms)
+20:02:30 +   9.23s t=13  POST SELL 4062 @ 20.01 (top/top)
+20:02:32 +  10.85s t=13  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1523, 'action': 'BUY', 'price': 19.99} -> id=2798 filled=0.0 status=OPEN (7 ms)
+20:02:32 +  10.85s t=13  POST BUY 1523 @ 19.99 (top/top)
+20:02:32 +  10.91s t=13  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1563, 'action': 'SELL', 'price': 20.02} -> id=2820 filled=0.0 status=OPEN (68 ms)
+20:02:32 +  10.91s t=13  POST SELL 1563 @ 20.02 (top/top)
+20:02:36 +  14.86s t=15  [tick  15] NLV=178.125 real=178.12 unreal=0.00 | fills=0 vol=0 edge=+0.0000/sh | net=3125 est=3125 | open=4 repl/min=4 | api/s=170 ord/s=0 429=0 loop=57ms
+20:02:43 +  21.62s t=16  FILL SELL 4062 @ 20.01 | fair  mid 20.005 bid 20.0 ask 20.01 | net_est 3125 | age 12.4s | top
+20:02:43 +  21.63s t=16  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 644, 'action': 'SELL', 'price': 20.02} -> id=3100 filled=0.0 status=OPEN (6 ms)
+20:02:43 +  21.63s t=16  POST SELL 644 @ 20.02 (top/refill)
+20:02:46 +  24.63s t=17  MARK SELL 4062 @ 20.01 -> mid 20.005: +0.005/sh
+20:02:50 +  28.97s t=18  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2207, 'action': 'SELL', 'price': 20.03} -> id=3394 filled=0.0 status=OPEN (7 ms)
+20:02:50 +  28.97s t=18  POST SELL 2207 @ 20.03 (top/top)
+20:03:01 +  40.08s t=21  PARAMS {'Min spread': 0.02}
+20:03:08 +  46.77s t=22  ! order 2820 (SELL 1563 @ 20.02) never listed in 15.0s - server dropped it? re-posting
+20:03:08 +  46.83s t=23  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1563, 'action': 'SELL', 'price': 20.02} -> id=4025 filled=0.0 status=OPEN (9 ms)
+20:03:08 +  46.83s t=23  POST SELL 1563 @ 20.02 (top/refill)
+20:03:14 +  52.98s t=24  position resync: est -937 -> server -2500 (adj -1563)
+20:03:14 +  53.02s t=24  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1954, 'action': 'BUY', 'price': 20.01} -> id=4160 filled=0.0 status=OPEN (25 ms)
+20:03:14 +  53.02s t=24  POST BUY 1954 @ 20.01 (top/top)
+20:03:14 +  53.29s t=24  ! order 3100 (SELL 644 @ 20.02) never listed in 15.0s - server dropped it? re-posting
+20:03:17 +  55.90s t=25  FILL SELL 1563 @ 20.02 | fair  mid 20.015 bid 20.01 ask 20.02 | net_est -2500 | age 9.1s | refill
+20:03:17 +  55.91s t=25  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1563, 'action': 'BUY', 'price': 20.0} -> id=4304 filled=0.0 status=OPEN (7 ms)
+20:03:17 +  55.91s t=25  POST BUY 1563 @ 20.00 (top/top)
+20:03:17 +  55.96s t=25  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1230, 'action': 'SELL', 'price': 20.02} -> id=4309 filled=0.0 status=OPEN (52 ms)
+20:03:17 +  55.96s t=25  POST SELL 1230 @ 20.02 (top/top)
+20:03:17 +  56.06s t=25  CANCEL BUY [(19.98, 1523, '4 ticks behind')]
+20:03:17 +  56.06s t=25  CANCEL SELL [(20.02, 1230, 'too aggressive')]
+20:03:17 +  56.12s t=25  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1523, 'action': 'BUY', 'price': 20.02} -> id=4347 filled=0.0 status=OPEN (40 ms)
+20:03:17 +  56.12s t=25  POST BUY 1523 @ 20.02 (top/top)
+20:03:17 +  56.21s t=25  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1230, 'action': 'SELL', 'price': 20.04} -> id=4382 filled=0.0 status=OPEN (52 ms)
+20:03:17 +  56.21s t=25  POST SELL 1230 @ 20.04 (top/top)
+20:03:18 +  56.76s t=25  FILL SELL 1230 @ 20.02 | fair  mid 20.025 bid 20.02 ask 20.03 | net_est -4063 | age 0.8s | top
+20:03:18 +  56.77s t=25  CANCEL SELL [(20.04, 1230, 'over size cap')]
+20:03:18 +  56.83s t=25  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 500, 'action': 'SELL', 'price': 20.04} -> id=4449 filled=0.0 status=OPEN (54 ms)
+20:03:18 +  56.83s t=25  POST SELL 500 @ 20.04 (top/top)
+20:03:19 +  57.42s t=25  PARAMS {'Quote size': 5000.0}
+20:03:19 +  57.45s t=25  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3730, 'action': 'BUY', 'price': 20.02} -> id=4507 filled=0.0 status=OPEN (7 ms)
+20:03:19 +  57.45s t=25  POST BUY 3730 @ 20.02 (top/refill)
+20:03:20 +  58.91s t=25  MARK SELL 1563 @ 20.02 -> mid 20.025: -0.005/sh
+20:03:20 +  59.18s t=26  FILL BUY 1523 @ 20.02 | fair  mid 20.025 bid 20.02 ask 20.03 | net_est -5293 | age 3.1s | top
+20:03:21 +  59.77s t=26  MARK SELL 1230 @ 20.02 -> mid 20.025: -0.005/sh
+20:03:23 +  62.19s t=26  MARK BUY 1523 @ 20.02 -> mid 20.025: +0.005/sh
+20:03:26 +  65.36s t=27  position resync: est -3770 -> server -4414 (adj -644)
+20:03:29 +  68.29s t=28  FILL BUY 1813 @ 20.02 | fair  mid 20.025 bid 20.02 ask 20.03 | net_est -4414 | age 10.8s | refill
+20:03:29 +  68.30s t=28  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1167, 'action': 'SELL', 'price': 20.03} -> id=4876 filled=0.0 status=OPEN (10 ms)
+20:03:29 +  68.30s t=28  POST SELL 1167 @ 20.03 (top/refill)
+20:03:30 +  69.02s t=28  FILL BUY 1917 @ 20.02 | fair  mid 20.025 bid 20.02 ask 20.03 | net_est -2601 | age 11.6s | refill
+20:03:30 +  69.06s t=28  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1198, 'action': 'SELL', 'price': 20.03} -> id=4904 filled=0.0 status=OPEN (36 ms)
+20:03:30 +  69.06s t=28  POST SELL 1198 @ 20.03 (top/refill)
+20:03:31 +  69.62s t=28  ! order 3394 (SELL 2207 @ 20.03) never listed in 15.0s - server dropped it? re-posting
+20:03:31 +  69.63s t=28  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 4072, 'action': 'SELL', 'price': 20.04} -> id=4919 filled=0.0 status=OPEN (8 ms)
+20:03:31 +  69.63s t=28  POST SELL 4072 @ 20.04 (top/refill)
+20:03:32 +  71.29s t=29  MARK BUY 1813 @ 20.02 -> mid 20.025: +0.005/sh
+20:03:32 +  71.39s t=29  FILL SELL 1167 @ 20.03 | fair  mid 20.025 bid 20.02 ask 20.03 | net_est -684 | age 3.1s | refill
+20:03:33 +  71.39s t=29  FILL SELL 1198 @ 20.03 | fair  mid 20.025 bid 20.02 ask 20.03 | net_est -684 | age 2.3s | refill
+20:03:33 +  71.41s t=29  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3009, 'action': 'BUY', 'price': 20.02} -> id=5067 filled=0.0 status=OPEN (11 ms)
+20:03:33 +  71.41s t=29  POST BUY 3009 @ 20.02 (top/top)
+20:03:33 +  71.76s t=29  PARAMS {'Max inv': 10000.0}
+20:03:33 +  72.05s t=29  MARK BUY 1917 @ 20.02 -> mid 20.025: +0.005/sh
+20:03:35 +  73.43s t=29  CANCEL BUY [(19.99, 1523, '4 ticks behind')]
+20:03:35 +  73.49s t=29  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2379, 'action': 'SELL', 'price': 20.05} -> id=5177 filled=0.0 status=OPEN (53 ms)
+20:03:35 +  73.49s t=29  POST SELL 2379 @ 20.05 (top/top)
+20:03:36 +  74.41s t=29  MARK SELL 1167 @ 20.03 -> mid 20.035: -0.005/sh
+20:03:36 +  74.41s t=29  MARK SELL 1198 @ 20.03 -> mid 20.035: -0.005/sh
+20:03:36 +  74.95s t=30  [tick  30] NLV=235.04 real=295.52 unreal=-60.48 | fills=8 vol=14473 edge=+0.0014/sh | net=-5256 est=-3049 | open=6 repl/min=15 | api/s=133 ord/s=0 429=0 loop=50ms
+20:03:41 +  79.75s t=31  position resync: est -3049 -> server -5256 (adj -2207)
+20:03:41 +  79.75s t=31  CANCEL SELL [(20.05, 2379, 'over size cap')]
+20:03:41 +  79.78s t=31  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3730, 'action': 'BUY', 'price': 20.02} -> id=5507 filled=0.0 status=OPEN (23 ms)
+20:03:41 +  79.78s t=31  POST BUY 3730 @ 20.02 (top/refill)
+20:03:44 +  82.68s t=31  ! order 4449 (SELL 500 @ 20.04) never listed in 15.0s - server dropped it? re-posting
+20:03:44 +  82.70s t=31  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 672, 'action': 'SELL', 'price': 20.05} -> id=5642 filled=0.0 status=OPEN (13 ms)
+20:03:44 +  82.70s t=31  POST SELL 672 @ 20.05 (top/top)
+20:03:44 +  83.13s t=32  CANCEL BUY [(20.0, 1563, '4 ticks behind')]
+20:03:44 +  83.13s t=32  CANCEL SELL [(20.04, 4072, 'too aggressive')]
+20:03:44 +  83.21s t=32  FILL SELL 4072 @ 20.04 | fair  mid 20.045 bid 20.04 ask 20.05 | net_est -5256 | age 13.6s | refill
+20:03:44 +  83.24s t=32  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2372, 'action': 'SELL', 'price': 20.06} -> id=5721 filled=0.0 status=OPEN (54 ms)
+20:03:44 +  83.24s t=32  POST SELL 2372 @ 20.06 (top/top)
+20:03:44 +  83.31s t=32  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 5000, 'action': 'BUY', 'price': 20.04} -> id=5740 filled=0.0 status=OPEN (13 ms)
+20:03:44 +  83.31s t=32  POST BUY 5000 @ 20.04 (top/top)
+20:03:44 +  83.38s t=32  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 635, 'action': 'BUY', 'price': 20.04} -> id=5745 filled=0.0 status=OPEN (65 ms)
+20:03:44 +  83.38s t=32  POST BUY 635 @ 20.04 (top/top)
+20:03:45 +  83.58s t=32  CANCEL SELL [(20.06, 2372, 'over size cap')]
+20:03:47 +  86.21s t=32  MARK SELL 4072 @ 20.04 -> mid 20.045: -0.005/sh
+20:03:48 +  87.28s t=33  FILL BUY 5000 @ 20.04 | fair  mid 20.045 bid 20.04 ask 20.05 | net_est -9328 | age 4.0s | top
+20:03:48 +  87.28s t=33  FILL BUY 635 @ 20.04 | fair  mid 20.045 bid 20.04 ask 20.05 | net_est -9328 | age 3.9s | top
+20:03:48 +  87.29s t=33  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3153, 'action': 'SELL', 'price': 20.06} -> id=5992 filled=0.0 status=OPEN (7 ms)
+20:03:48 +  87.29s t=33  POST SELL 3153 @ 20.06 (top/top)
+20:03:50 +  88.74s t=33  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2481, 'action': 'SELL', 'price': 20.05} -> id=6032 filled=0.0 status=OPEN (5 ms)
+20:03:50 +  88.74s t=33  POST SELL 2481 @ 20.05 (top/refill)
+20:03:51 +  90.29s t=33  MARK BUY 5000 @ 20.04 -> mid 20.045: +0.005/sh
+20:03:51 +  90.29s t=33  MARK BUY 635 @ 20.04 -> mid 20.045: +0.005/sh
+20:03:56 +  94.77s t=34  position resync: est -3693 -> server -4193 (adj -500)
+20:03:56 +  94.79s t=34  CANCEL SELL [(20.06, 3153, 'over size cap')]
+20:03:56 +  94.85s t=34  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2654, 'action': 'SELL', 'price': 20.06} -> id=6218 filled=0.0 status=OPEN (32 ms)
+20:03:56 +  94.85s t=34  POST SELL 2654 @ 20.06 (top/top)
+20:03:58 +  96.76s t=35  FILL SELL 672 @ 20.05 | fair  mid 20.045 bid 20.04 ask 20.05 | net_est -4193 | age 14.1s | top
+20:03:58 +  97.27s t=35  CANCEL BUY [(20.01, 1954, '4 ticks behind')]
+20:03:58 +  97.27s t=35  CANCEL SELL [(20.05, 2481, 'too aggressive')]
+20:03:58 +  97.39s t=35  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2481, 'action': 'SELL', 'price': 20.07} -> id=6379 filled=0.0 status=OPEN (53 ms)
+20:03:58 +  97.39s t=35  POST SELL 2481 @ 20.07 (top/top)
+20:03:59 +  97.41s t=35  FILL SELL 2481 @ 20.05 | fair  mid 20.055 bid 20.05 ask 20.06 | net_est -4865 | age 8.7s | refill
+20:03:59 +  97.45s t=35  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 3126, 'action': 'BUY', 'price': 20.05} -> id=6389 filled=0.0 status=OPEN (150 ms)
+20:03:59 +  97.45s t=35  POST BUY 3126 @ 20.05 (top/top)
+20:03:59 +  97.77s t=35  CANCEL SELL [(20.07, 2481, 'over size cap')]
+20:03:59 +  97.78s t=35  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2481, 'action': 'BUY', 'price': 20.05} -> id=6430 filled=0.0 status=OPEN (8 ms)
+20:03:59 +  97.78s t=35  POST BUY 2481 @ 20.05 (top/refill)
+20:04:01 +  99.77s t=36  MARK SELL 672 @ 20.05 -> mid 20.055: -0.005/sh
+20:04:01 + 100.03s t=36  FILL SELL 2654 @ 20.06 | fair  mid 20.055 bid 20.05 ask 20.06 | net_est -7346 | age 5.2s | top
+20:04:01 + 100.04s t=36  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2654, 'action': 'BUY', 'price': 20.05} -> id=6591 filled=0.0 status=OPEN (7 ms)
+20:04:01 + 100.04s t=36  POST BUY 2654 @ 20.05 (top/refill)
+20:04:02 + 100.41s t=36  MARK SELL 2481 @ 20.05 -> mid 20.055: -0.005/sh
+20:04:04 + 102.57s t=36  CANCEL BUY [(20.02, 3009, '4 ticks behind'), (20.02, 3730, '4 ticks behind')]
+20:04:04 + 102.63s t=36  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 5000, 'action': 'BUY', 'price': 20.06} -> id=6755 filled=0.0 status=OPEN (55 ms)
+20:04:04 + 102.63s t=36  POST BUY 5000 @ 20.06 (top/top)
+20:04:04 + 102.67s t=36  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1739, 'action': 'BUY', 'price': 20.06} -> id=6769 filled=0.0 status=OPEN (37 ms)
+20:04:04 + 102.67s t=36  POST BUY 1739 @ 20.06 (top/top)
+20:04:04 + 102.92s t=36  FILL BUY 3126 @ 20.05 | fair  mid 20.065 bid 20.06 ask 20.07 | net_est -10000 | age 5.5s | top
+20:04:04 + 102.92s t=36  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1563, 'action': 'SELL', 'price': 20.08} -> id=6819 filled=0.0 status=OPEN (5 ms)
+20:04:04 + 102.92s t=36  POST SELL 1563 @ 20.08 (top/top)
+20:04:04 + 103.04s t=37  MARK SELL 2654 @ 20.06 -> mid 20.065: -0.005/sh
+20:04:05 + 104.12s t=37  FILL BUY 357 @ 20.06 | fair  mid 20.065 bid 20.06 ask 20.07 | net_est -6874 | age 1.5s | top
+20:04:06 + 104.54s t=37  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 1741, 'action': 'SELL', 'price': 20.07} -> id=6936 filled=0.0 status=OPEN (6 ms)
+20:04:06 + 104.54s t=37  POST SELL 1741 @ 20.07 (top/top)
+20:04:07 + 105.64s t=37  FILL BUY 4643 @ 20.06 | fair  mid 20.065 bid 20.06 ask 20.07 | net_est -6517 | age 3.0s | top
+20:04:07 + 105.65s t=37  ORDER ok {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 2322, 'action': 'SELL', 'price': 20.07} -> id=6982 filled=0.0 status=OPEN (7 ms)
+20:04:07 + 105.65s t=37  POST SELL 2322 @ 20.07 (top/refill)
+20:04:07 + 105.93s t=37  FILL BUY 1739 @ 20.06 | fair  mid 20.065 bid 20.06 ask 20.07 | net_est -1874 | age 3.3s | top
+20:04:07 + 105.93s t=37  MARK BUY 3126 @ 20.05 -> mid 20.065: +0.015/sh
+20:04:08 + 107.21s t=38  MARK BUY 357 @ 20.06 -> mid 20.065: +0.005/sh
+20:04:08 + 107.30s t=38  case PAUSED - waiting (cancelling quotes)
+20:04:08 + 107.31s t=38  CANCEL all x5 (case PAUSED)
+20:04:33 + 132.08s t=38  PARAMS {'Panic': 1.0}
+20:04:33 + 132.09s t=38  PANIC - cancelling, flattening, stopping
+20:04:33 + 132.09s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:34 + 132.40s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:34 + 132.70s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:34 + 133.01s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:34 + 133.32s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:35 + 133.63s t=38  ! ORDER FAIL {'ticker': 'ALGO', 'type': 'LIMIT', 'quantity': 135, 'action': 'BUY', 'price': 20.07}: 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:35 + 133.63s t=38  FLATTEN BUY 135 @ 20.07 (panic)
+20:04:35 + 133.67s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:35 + 133.98s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:35 + 134.28s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:36 + 134.59s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:36 + 134.90s t=38  cancel_all -> 401 {"code":"UNAUTHORIZED","message":"Simulation must be running."}
+20:04:36 + 135.20s t=38  NOTE: stopped with net -135 (Allow market orders = 0, so not flattened)
+20:04:36 + 135.21s t=38  FINAL pos=-135.0 realized=282.21110374450967 unrealized=-3.2561037445096592 volume=16379945.0
+20:04:36 + 135.22s t=38  Dumped 52 orders
+20:04:36 + 135.22s t=38  DONE (panic). NLV=278.955 | fills=18 vol=39852 edge=+0.0014/sh | replaces=34 | errors=0 | api calls=16027 429s=0
