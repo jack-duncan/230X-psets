@@ -1,0 +1,96 @@
+ALGO2e | FIVE PEOPLE, ONE SHARED ACCOUNT | Python 3.9+
+Prepared 2026-10-01. No packages to install.
+
+GET RUNNING
+1. Choose ONE operator/computer. Close every old ALGO bot. The other four people
+   monitor the same session; they must not send orders or run separate bots.
+2. Open RIT Client and log into the assigned simulation account. Load ALGO2e.
+   In API settings use CLIENT REST API, not DMA REST API. Note its Port and key.
+   The default port in this launcher is your previous 45325; change it if RIT
+   shows something different. The classroom server IP belongs in RIT Client,
+   not in this bot's local connection field.
+3. Save RUN_ALGO2E.bat into a normal Windows folder and double-click it.
+   It tries C:\ProgramData\Anaconda3\python.exe, then the Python launcher/PATH.
+   You can run this one file by itself; the source ZIP is optional for operation.
+4. Choose 5 once for offline self-tests. Choose 1 for a READ-ONLY connection check.
+   Enter the Client port and API key when asked. The key stays in this process's
+   memory, so you do not re-enter it between menu actions. It is not saved in
+   the package or log. Hidden typing is normal; paste the key and press Enter.
+5. Check that CNR, RY and AC, signed fees and the server limits are correct.
+   Choose 2 to observe without placing/cancelling orders. Ctrl+C returns to menu.
+6. For a practice run, start with zero positions and no Live/Partial orders.
+   Select 3 to TRADE using balanced. You may start before the round or mid-round.
+   A fresh process rebuilds its signals; it does not know pre-start market history.
+   Empty startup books cause waiting, not the old immediate crash.
+7. Keep the window and RIT Client open. At the end the run returns to this menu.
+   Choose 3 again for the next round after confirming a fresh flat account.
+
+STOPPING AND RECOVERY
+- Ctrl+C requests cancellation and active reduction to flat, then exits the run.
+  Keep the process open until it reports the remaining positions. No software
+  can guarantee a fill when the book/API is unavailable.
+- After a halt, first inspect RIT's actual Live/Partial orders and positions.
+  A zero position alone does not mean there are no working orders.
+- Menu 4 is explicit recovery: cancel CNR/RY/AC orders, reconcile them, then
+  reduce current positions in bounded orders. It never switches into trading.
+  It requires the round to be ACTIVE and stops after 30 seconds if unresolved.
+  Stop all other writers before using it; check the displayed residual positions.
+- Unknown insertion outcome or failed cleanup: do not blindly restart. Check RIT
+  manually, cancel orders, and use recovery only after the account state is clear.
+- Local duplicate-writer lock cannot prevent someone trading the same account
+  from another computer. Team discipline is still required.
+
+STRATEGIES AND SETTINGS
+balanced (default): market making, bounded trend positioning, screened pairs.
+maker: market making plus protective trend exits; no directional targets/pairs.
+trend: market making plus trend positioning; no pairs.
+pairs: pair transactions only. It can legitimately place no orders all round.
+defensive: balanced with 500-share quotes, $30k trend target, $400 loss/$300 drawdown.
+
+Default risk: 20,000 worst-case aggregate gross/net shares including working
+orders; per-stock cap is the smaller of 7,000 shares and approximately $180,000.
+Individual orders <=5,000; normal quotes <=1,000. Trend targets <=$60,000 and
+2,500 shares per stock. Pair target starts at $20,000 in one leg; the other leg
+is beta-weighted, so combined pair notional is larger and must pass portfolio risk.
+Account loss of $750 from this process's round-start baseline, or $600 drawdown,
+latches reduce-only then stops. These are triggers, not guaranteed loss ceilings.
+
+The default end policy is FLATTEN: reduce new risk near the end and actively
+unwind in the final 10 CASE TICKS. The new brief does not promise old ALGO2 netting.
+Use menu 7 to select net ONLY if the instructor explicitly confirms how the new
+case settles. Net mode cancels quotes in the last two ticks and leaves inventory
+for the simulator; it still uses risk stops and protective exits during the round.
+
+Fee mode auto recognizes either encoding of the EXACT supplied brief. If the
+server changes economics, stop and verify its settings. Menu 7 can select net
+(raw rebate is net maker credit) or offset (raw rebate minus trading fee).
+Do not select a mode just to suppress a mismatch. RY's maker credit is NEGATIVE.
+
+Global request ceilings are 150 reads / 50 writes per second, with actual usage
+usually much lower. Per-security order limits and 429 cooldowns also apply.
+The old reported 200/100 ceilings are ceilings, not profit targets; raising them
+does not create an edge. Change numeric settings in optional settings.json;
+configuration validation and venue risk bindings still apply.
+
+YOUR FIVE ROLES
+1. Operator: the only person who starts/stops the runner or sends recovery orders.
+2. Risk monitor: aggregate positions, live orders, loss/drawdown, connectivity.
+3. Trend monitor: price direction, reversals, opposing inventory, case timing.
+4. Pairs monitor: whether a relationship is stable; no forced pair entry.
+5. Recorder: save logs, official result and any instructor changes for each round.
+
+AFTER EACH ROUND
+Keep the entire logs_algo2e folder plus the official result screenshot/export.
+Label practice and final rounds separately. Logs include exact code hashes,
+fees, positions, books, order/fill events, strategy decisions and timing.
+With the source package: python summarize_logs.py path_to_log.jsonl
+This reports each process separately; restarting does not erase earlier losses.
+
+WHAT IS VERIFIED
+Offline regression tests, local mock HTTP transport, eight synthetic risk rounds,
+chronological decisions on the usable CSV run, and old final-round failure review.
+The exact final build has NOT run against your classroom server or Windows here.
+Recorded CSVs do not identify passive queue fills, so no reliable net-profit
+backtest or claim of an optimal/profit-guaranteed algorithm is possible.
+See STRATEGY_AND_SOURCES.txt for design and sources. The separate local study
+package also includes RESEARCH_NOTES.txt and research/ with the data findings.
