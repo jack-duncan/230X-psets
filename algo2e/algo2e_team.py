@@ -83,6 +83,7 @@ import csv
 import math
 import bisect
 import time
+import json
 import threading
 import traceback
 from collections import deque
@@ -162,6 +163,9 @@ DEFAULTS = [
     ("Edge min shares",       20000, "marked shares needed before the edge health is used"),
     ("Thin touch kill",       0,     "0 = off. No adding while the median touch size (Health window) is below this"),
     ("Wall kill x",           0,     "0 = off. No adding while the largest book level > this x median touch size"),
+    ("Stock limit",           0,     "0 = off. Hard cap on this ticker: position + resting orders per side, and quote size"),
+    ("Reads per sec",         API_READS_PER_SEC, "GET calls per second for this process (live)"),
+    ("Writes per sec",        API_WRITES_PER_SEC, "order commands per second for this process; 0 = the server's rate"),
     ("Anchor kill %",         0.0,   "0 = off. No adding while the mid is more than this % from its median since the heat began"),
 ]
 # per-ticker tuning (from the 2026-10-01 live run: RY wide/volatile = the P&L engine;
@@ -186,7 +190,8 @@ PARAM_DEFAULTS = dict((d[0], d[1]) for d in DEFAULTS)
 PARAM_DEFAULTS.update(TICKER_OVERRIDES.get(TICKER, {}))
 PARAM_NOTES = dict((d[0], d[2]) for d in DEFAULTS)
 
-USE_EXCEL = True
+USE_EXCEL = False      # team build: live settings come from control.json (see ControlFile); True = Excel cockpit instead
+CONTROL_FILE = "control.json"
 EXCEL_FILE = "ALGO2e_cockpit_%s.xlsx" % TICKER
 LOG_DIR = "logs"
 
@@ -296,6 +301,8 @@ class RIT(object):
         self.ostamps = deque()
         self.orders_per_sec = DEFAULT_ORDERS_PER_SEC
         self.max_calls = MAX_CALLS_PER_SEC
+        self.read_cap = MAX_CALLS_PER_SEC             # live: `Reads per sec`
+        self.server_ops = DEFAULT_ORDERS_PER_SEC
         self.last_recover = time.time()
         self.n_calls = 0
         self.n_429 = 0
@@ -317,7 +324,7 @@ class RIT(object):
                 while self.ostamps and now - self.ostamps[0] > 1.0:
                     self.ostamps.popleft()
                 wait = 0.0
-                if now - self.last_recover > 1.0 and self.max_calls < MAX_CALLS_PER_SEC:
+                if now - self.last_recover > 1.0 and self.max_calls < self.read_cap:
                     self.max_calls += 1
                     self.last_recover = now
                 if not is_order and len(self.stamps) >= self.max_calls:
@@ -455,6 +462,64 @@ class RIT(object):
 # =============================================================================
 # Excel cockpit - runs in its own thread, talks to the loop through `shared`
 # =============================================================================
+class ControlFile(threading.Thread):
+    """Live settings from control.json (team build). One file for all three processes:
+        {"ALL": {...}, "RY": {...}, "CNR": {...}, "AC": {...}}   - the ticker section wins over ALL.
+    Checked every 0.25 s; on each save only the keys whose value changed are applied, and a key
+    deleted from the file goes back to its default. "Total limit" is a friendly name for
+    `Account gross stop`. A file with a JSON error is ignored (the last good settings stay) and
+    the error is logged. "Flatten now" / "Panic" fire when they change to 1 (never on startup);
+    set them back to 0 before using them again."""
+    ALIASES = {"Total limit": "Account gross stop"}
+    ONE_SHOT = ("Flatten now", "Panic")
+
+    def __init__(self, path, shared):
+        threading.Thread.__init__(self)
+        self.daemon = True
+        self.path, self.shared = path, shared
+        self.mtime, self.applied, self.first = None, {}, True
+
+    def _load(self):
+        with open(self.path) as fh:
+            raw = json.load(fh)
+        vals = {}
+        for sec in ("ALL", TICKER):
+            for k, v in (raw.get(sec) or {}).items():
+                k = self.ALIASES.get(k, k)
+                if k not in PARAM_DEFAULTS:
+                    log("! control.json: unknown setting %r in %s (ignored)" % (k, sec))
+                    continue
+                try:
+                    vals[k] = type(PARAM_DEFAULTS[k])(v) if isinstance(PARAM_DEFAULTS[k], (int, float)) else v
+                except (TypeError, ValueError):
+                    log("! control.json: bad value %r for %r (ignored)" % (v, k))
+        return vals
+
+    def run(self):
+        while not self.shared.stop:
+            try:
+                m = os.path.getmtime(self.path) if os.path.exists(self.path) else None
+                if m is not None and m != self.mtime:
+                    self.mtime = m
+                    vals = self._load()
+                    upd = dict((k, v) for k, v in vals.items() if self.applied.get(k) != v)
+                    for k in self.applied:
+                        if k not in vals:
+                            upd[k] = PARAM_DEFAULTS[k]
+                    for k in self.ONE_SHOT:
+                        if k in upd and (self.first or not upd[k]):
+                            upd.pop(k)                      # fire only on a change to 1 after startup
+                    self.applied, self.first = vals, False
+                    if upd:
+                        self.shared.set_params(upd)
+                        log("CONTROL %s" % upd)
+            except ValueError as e:
+                log("! control.json not applied (JSON error, last good settings kept): %s" % e)
+            except Exception as e:
+                log("! control.json: %s" % e)
+            time.sleep(0.25)
+
+
 class Shared(object):
     def __init__(self):
         self.lock = threading.Lock()
@@ -988,6 +1053,10 @@ class Quoter(object):
             base = int(base * hh["health"])
             if base < 100:
                 base = 0
+        if p["Stock limit"] > 0:                       # live per-ticker cap (small-size tests)
+            cap = min(cap, p["Stock limit"])
+            max_inv = max(min(max_inv, p["Stock limit"]), 1.0)
+            base = min(base, int(p["Stock limit"]))
         inv = max(-1.5, min(1.5, net / max_inv))
         # in a tick-constrained market a price skew just takes us off the touch
         # (no fills at all); there the skew lives in the sizes only
@@ -1035,6 +1104,8 @@ class Quoter(object):
         size_red = int(base + p["Reduce boost"] * a)
         tot_red = int(a + base // 2)
         size_red = min(size_red, tot_red)
+        if p["Stock limit"] > 0:                       # no order larger than the stock limit
+            size_red, tot_red = min(size_red, int(p["Stock limit"])), min(tot_red, int(p["Stock limit"]))
         if net > 0:
             buy_sz, buy_tot, sell_sz, sell_tot = size_add, tot_add, size_red, tot_red
         elif net < 0:
@@ -1309,6 +1380,8 @@ def main():
         api.orders_per_sec = int(API_WRITES_PER_SEC)
     elif ops:
         api.orders_per_sec = max(int(ops), 10)
+    if ops:
+        api.server_ops = max(int(ops), 10)
     log("Connected: %s %s (%s) | case '%s' | tick %s/%s | status %s | fee %s rebate %s | "
         "max order %s | orders/s %s (using %d) | reads/s cap %d"
         % (trader.get("first_name"), trader.get("last_name"), me, case.get("name"), case.get("tick"),
@@ -1333,6 +1406,9 @@ def main():
         else:
             log("Excel cockpit open: %s" % os.path.join(here, EXCEL_FILE))
 
+    if cockpit is None:
+        ControlFile(os.path.join(here, CONTROL_FILE), shared).start()
+        log("Live settings: edit %s (checked every 0.25 s)" % os.path.join(here, CONTROL_FILE))
     orders = Orders(api, shared)
     quoter = Quoter(api, orders)
     health = Health()
@@ -1365,6 +1441,9 @@ def main():
                     if changed:
                         log("PARAMS %s" % changed)
                         p_logged = dict(p)
+                    api.read_cap = max(5, int(p["Reads per sec"]))
+                    api.max_calls = min(api.max_calls, api.read_cap)
+                    api.orders_per_sec = int(p["Writes per sec"]) if p["Writes per sec"] > 0 else api.server_ops
                     case = api.case()
                     status, tick = case.get("status"), case.get("tick", 0)
                     tpp = case.get("ticks_per_period", tpp)

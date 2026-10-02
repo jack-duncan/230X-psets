@@ -1,0 +1,30 @@
+{
+  "ALL": {
+    "Enabled": 1,
+    "Total limit": 23000,
+    "Poll seconds": 0.0,
+    "Reads per sec": 160,
+    "Writes per sec": 0
+  },
+  "RY": {
+    "Stock limit": 0,
+    "Quote size": 5000,
+    "Max inv": 10000,
+    "Take edge": 0.03
+  },
+  "CNR": {
+    "Stock limit": 0,
+    "Quote size": 1500,
+    "Imb gate": 0.3,
+    "Budget share": 0.15
+  },
+  "AC": {
+    "Stock limit": 0,
+    "Quote size": 500,
+    "Imb gate": 0.3,
+    "Budget share": 0.05,
+    "Thin touch kill": 5000,
+    "Wall kill x": 50,
+    "Anchor kill %": 5.0
+  }
+}

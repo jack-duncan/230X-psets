@@ -40,3 +40,24 @@ Offline only: gate and allocator on synthetic books, health on the real recorded
 45 s run of CNR and AC against a mock RIT server (plumbing only: no errors, gated quotes, fills on both sides).
 Not tested on the real server. Parameters are round numbers set from three practice heats, not optimised.
 RY's `Take edge` (0.03) is Hashim's newest setting and has not fired live yet.
+
+## Live settings (`control.json`, no restart)
+
+All three processes read `algo2e/control.json` every 0.25 s. Edit it in any editor and save; the change is in
+effect within about half a second and is logged as `CONTROL {...}` and `PARAMS {...}` in each ticker's log.
+Sections: `ALL` applies to every ticker, `RY` / `CNR` / `AC` override `ALL` for that ticker. Any parameter in the
+`DEFAULTS` table at the top of `algo2e_team.py` can go in the file (same name). Delete a key to go back to its
+default. A file with a JSON mistake is ignored and the last good settings stay (an error line is logged).
+
+| Setting | What it does |
+|---|---|
+| `Total limit` | account-wide gross at which every ticker stops adding (same as `Account gross stop`); CNR/AC budgets scale with it |
+| `Stock limit` | per-ticker cap on position, resting orders and quote size; 0 = off. No order is ever larger than it |
+| `Enabled` | 0 cancels that ticker's orders and keeps watching; 1 resumes |
+| `Poll seconds` | extra sleep per loop (0 = as fast as the rate caps allow): the main latency dial |
+| `Reads per sec`, `Writes per sec` | API call caps per process (Writes 0 = the server's rate) |
+| `Requote min sec` | minimum seconds between replacing a quote on one side |
+| `Flatten now`, `Panic` | fire when changed to 1 (never at startup); set back to 0 before using again |
+
+Small-size test, for example: `"ALL": {"Total limit": 600}`, and `"Stock limit": 200` in each ticker section.
+The Excel cockpit is off (`USE_EXCEL = False`); setting it to True uses Excel instead of the file.
