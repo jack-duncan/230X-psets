@@ -263,7 +263,10 @@ class Pairs:
         self.diagnostics=[]
         if len(self.rows)<61: return []
         # Current observation never enters the regression or variance estimate.
-        prior=list(self.rows)[-61:-1]; current=self.rows[-1][1]
+        prior=list(self.rows)[-61:-1]
+        # Case ticks can span several wall seconds. Price entry from the latest
+        # book, while the regression still excludes every observation this tick.
+        current={t:math.log(b.mid) for t,b in books.items()}
         choices=[]
         for x,y in itertools.combinations(TICKERS,2):
             xs=[r[1][x] for r in prior]; ys=[r[1][y] for r in prior]

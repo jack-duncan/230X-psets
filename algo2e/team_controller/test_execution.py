@@ -105,10 +105,16 @@ class PairTests(unittest.TestCase):
         self.assertEqual(p.candidates(b,expensive,Config()),[])
     def test_current_spread_changes_z_not_training_coefficients(self):
         p,b,e=valid_pair(); original=p.candidates(b,e,Config())[0]
-        tick,cur=p.rows[-1]; cur=cur.copy(); cur['RY']+=original['sd']*.1; p.rows[-1]=(tick,cur)
+        mid=b['RY'].mid*math.exp(original['sd']*.1)
+        b['RY']=Book(((mid-.005,10000),),((mid+.005,10000),))
         updated=p.candidates(b,e,Config())[0]
         self.assertEqual(original['a'],updated['a']); self.assertEqual(original['beta'],updated['beta'])
         self.assertAlmostEqual(updated['z'],2.9)
+    def test_converged_spread_same_tick_does_not_enter_from_stale_sample(self):
+        p,b,e=valid_pair(); pair=p.candidates(b,e,Config())[0]
+        mid=math.exp(pair['a']+pair['beta']*math.log(b['CNR'].mid))
+        b['RY']=Book(((mid-.005,10000),),((mid+.005,10000),))
+        self.assertEqual(p.candidates(b,e,Config()),[])
     def test_two_legs_then_reversion_exit(self):
         bot,api,log=make(market_make=False,trend=False)
         p,b,e=valid_pair(); candidate=p.candidates(b,e,Config())[0]
