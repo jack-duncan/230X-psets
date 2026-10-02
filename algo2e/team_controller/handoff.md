@@ -11,3 +11,4 @@
 - Next: review new directory, then dedicated-account practice on the actual Client before final use.
 - Publishing validation: staged diff contains only new team_controller files and required handoffs; source bytes match the tested delivery. Batch files normalize to LF in Git and check out as CRLF via local .gitattributes. git diff --cached --check passed.
 - Final review fixed same-tick pair-entry staleness: fit remains prior-window-only, but entry residual uses the latest book. Added converged-within-tick regression;52 embedded tests pass in8.657s; delivery bootstrap/mock check rerun passed.
+- User-requested branch rename: alex/algo2e now matches the repository person/case convention. GitHub closed the former head-branch PR; replacement draft preserves the review workflow. Trading code and validation artifacts unchanged.
