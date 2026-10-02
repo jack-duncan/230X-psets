@@ -139,8 +139,9 @@ def clamp(x, lo, hi):
 
 # ============================ PURE LOGIC ================================
 
-def compute_fv(best_bid, best_ask, bid_size, ask_size, cap=MICRO_SIZE_CAP):
+def compute_fv(best_bid, best_ask, bid_size, ask_size, cap=None):
     """Microprice in cents; plain mid when either top size is missing."""
+    cap = MICRO_SIZE_CAP if cap is None else cap
     if not bid_size or not ask_size or bid_size <= 0 or ask_size <= 0:
         return (best_bid + best_ask) / 2
     qb, qa = min(bid_size, cap), min(ask_size, cap)
@@ -192,8 +193,9 @@ def adding_side(pos):
     return BUY if pos > 0 else SELL if pos < 0 else None
 
 
-def compute_sizes(pos, cap, clip=CLIP, guard_level=0, guard_dir=None, mk_level=None, taper=False):
+def compute_sizes(pos, cap, clip=None, guard_level=0, guard_dir=None, mk_level=None, taper=False):
     """Target resting qty per side. mk_level: {side: 0|1|2} from the markout guard."""
+    clip = CLIP if clip is None else clip
     mk_level = mk_level or {}
     add = adding_side(pos)
     facing = SELL if guard_dir == "UP" else BUY if guard_dir == "DOWN" else None
@@ -215,7 +217,10 @@ def compute_sizes(pos, cap, clip=CLIP, guard_level=0, guard_dir=None, mk_level=N
     return out
 
 
-def allocate(scores, b_total=B_TOTAL, floor=CAP_FLOOR, ceil=CAP_CEIL):
+def allocate(scores, b_total=None, floor=None, ceil=None):
+    b_total = B_TOTAL if b_total is None else b_total
+    floor = CAP_FLOOR if floor is None else floor
+    ceil = CAP_CEIL if ceil is None else ceil
     tot = sum(scores.values())
     n = len(scores)
     return {k: clamp(b_total * (v / tot if tot > 0 else 1.0 / n), floor, ceil) for k, v in scores.items()}
@@ -273,8 +278,10 @@ def shrunk_drift(mu_ewma):
     return clamp(DRIFT_SHRINK * mu_ewma, -MU_MAX, MU_MAX)
 
 
-def diff_orders(resting, desired, min_topup=MIN_TOPUP, max_order=MAX_ORDER):
+def diff_orders(resting, desired, min_topup=None, max_order=None):
     """Reconcile one side. Cancels any order not at the target price, trims excess newest first, tops up."""
+    min_topup = MIN_TOPUP if min_topup is None else min_topup
+    max_order = MAX_ORDER if max_order is None else max_order
     if desired is None or desired[1] <= 0:
         return {"cancel": [o["id"] for o in resting], "place": [], "price": None, "kept": 0}
     price, want = desired
