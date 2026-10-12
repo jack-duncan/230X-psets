@@ -1,0 +1,81 @@
+ALGO2e controller | Design and sources | 2026-10-01
+
+One Python3.9+ process coordinates three strategies on one RIT account.
+Standard library only. Default CLI operation is read-only. See START_HERE.txt.
+
+MARKET MAKING
+Quote CNR, RY and AC according to their signed fee schedules, inventory,
+volatility, recent fill markouts and visible queue depth. Preserve unchanged
+orders. Rank eligible quotes by a heuristic of edge, size and queue depth.
+This ranking is not a calibrated fill-probability model.
+
+TREND
+Use confirmed fast/slow price changes, scaled by volatility, in case ticks.
+Protective exits cancel stale exposure and actively reduce inventory opposing
+the direction, rather than waiting indefinitely for passive fills. Balanced
+also allows small directional targets and cost-gated active entries. Direction
+can reverse; the strategy does not assume a repeated instructor price path.
+
+PAIRS
+Screen every stock pair using the preceding60 complete ticks, excluding the
+current observation from regression. Require stable positive beta, positive
+return correlation, mean-reverting residual behavior, repeated crossings and
+an entry spread sufficient for conservative round-trip costs. Hedge quantities
+by beta/dollar exposure. Reserve both legs before entry; unwind failed hedges,
+broken relationships and timed-out spreads. No fundamental pair identity is
+stated in the case, and the screen is not proof of cointegration. A full round
+with no pair trades can be the correct outcome.
+
+EXECUTION AND RISK
+Use interval exposure bounds for every possible combination of outstanding
+buy/sell fills. Aggregate share limits, per-asset share/notional caps and actual
+venue limit bindings apply across strategies. Pair netting does not erase gross
+exposure. Maintain cumulative fills and require matching positions before
+another insertion. A cancel acknowledgement alone does not release capacity.
+Unknown insertion outcomes never retry automatically. Monitor account loss,
+drawdown, stale snapshots and long control-loop pauses. Stops cannot guarantee
+an execution price or protect inventory while the computer is fully frozen.
+
+Localhost aliases share a local writer lock. It cannot stop another computer
+from trading the same account. One team operator is required. Automatic restart
+into the next round is disabled; return to the menu and start deliberately.
+
+RESEARCH SOURCES
+1. Official ALGO2e Build1.00 brief:
+https://github.com/RotmanFRTL/RotmanFRTL.github.io/blob/main/RIT%20-%20Case%20Brief%20-%20ALGO2e%20-%20Algorithmic%20Market%20Making%20Captone.pdf
+The supplied copy matches its trading rules. 300ticks;5000/order;25000 aggregate
+gross/net. CNR taker+.0027/maker+.0023; RY taker-.0014/maker-.0020;
+AC taker+.0015/maker+.0011. Maker values are signed net credits. Marketable
+limit portions take liquidity. Runtime metadata can change and must be checked.
+
+2. Official Client REST documentation:
+https://rit.306w.ca/RIT-REST-API/1.0.3/
+Used for local Client authentication, order/status/cancel calls and metadata.
+Global read/write budgets and security order-entry pacing are separate.
+
+3. Official teaching starter:
+https://raw.githubusercontent.com/RotmanFRTL/RotmanFRTL.github.io/main/ALGO2e%20base%20algo%20template.py
+Useful endpoint reference; not adopted as the complete portfolio risk engine.
+It does not reserve all possible pending fills, and its nonnegative gross
+position is compared to a negative short threshold in the selling condition.
+
+4. Public exact-case implementation:
+https://github.com/YiMingChangJ/Algorithmic-Algo2e-Trading-Solution
+Reviewed fee-aware quoting, inventory skew and queue preservation. Its per-stock
+limit description differs from the supplied aggregate constraint, and generic
+POST timeout retries can duplicate accepted orders without idempotency. Those
+patterns were not adopted. External code was read, not executed or copied.
+
+5. Directional market-making research:
+https://arxiv.org/abs/1206.4810
+Fodra and Labadie model directional bets together with inventory constraints.
+This motivates the architecture; it does not validate these parameters or P&L.
+
+VALIDATION LIMITS
+Tests exercise local mock transport, order races, fees, portfolio reservations,
+trend reversals, admissible/rejected pairs and eight seeded synthetic rounds.
+Synthetic fills are for correctness, not profit estimation. Historical market
+snapshots cannot identify the passive queue fills of a strategy that was never
+run. Parameters are not claimed optimal; trend signals can lose after costs.
+Windows/class-server execution and profitable out-of-sample behavior require
+practice on the actual simulator. No classroom orders are sent by self-tests.
